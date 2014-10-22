@@ -264,6 +264,14 @@ font{
 	
 }
 
+div.labelText{
+    font-family:"Helvetica";
+	font-weight:500;
+	font-size: 140%;
+	color: white;
+	margin-top: 6px;
+
+} 
 
 @font-face {
 	font-family: 'digi';

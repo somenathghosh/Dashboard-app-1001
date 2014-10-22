@@ -31,7 +31,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/index', routes.index);
 app.get('/lockbox-inbound.html', routes.lockboxInbound);
+app.get('/keyin-detail.html', routes.keyinDetail);
 
 
 http.createServer(app).listen(app.get('port'), function(){

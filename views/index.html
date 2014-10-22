@@ -16,7 +16,17 @@
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 		
 		<link type="text/css" href="css/animate.css" rel="stylesheet">
-		<link type="text/css" href="css/jquery.jqplot.min.css" rel="stylesheet">
+
+		<script src="js/lib/d3.v3.js"></script>
+<script src="js/lib/nv.d3.js"></script>
+<script src="js/src/tooltip.js"></script>
+<script src="js/src/utils.js"></script>
+<script src="js/src/models/legend.js"></script>
+<script src="js/src/models/axis.js"></script>
+<script src="js/src/models/multiBar.js"></script>
+<script src="js/src/models/multiBarChart.js"></script>
+		<link href="js/src/nv.d3.css" rel="stylesheet" type="text/css">
+
 
 		
 		<script type="text/javascript" src = "js/jquery-2.1.1.min.js"></script>
@@ -54,8 +64,7 @@
 		<div class="content-block">
 		  
 		  <!-- Click on link with "close-panel" class will close panel -->
-		  <p><a href="#" class="go-home">Home</a></p>
-		  <p><a href="lockbox-inbound.html" class="">Lockbox Inbound</a></p>
+		  <p><a href="index" class="go-home">Home</a></p>
 		  <p><a href="#" class="close-panel">Close</a></p>
 		  <!-- Click on link with "open-panel" and data-panel="right" attribute will open Right panel -->
 		  
@@ -88,9 +97,9 @@
 		
 
 			<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-			<div class="pages navbar-through toolbar-through">
+			<div class="pages navbar-fixed toolbar-fixed">
 			  <!-- Page, "data-page" contains page name -->
-				<div data-page="index" class="page navbar-through toolbar-fixed">
+				<div data-page="index" class="page navbar-fixed toolbar-fixed">
 					<!-- Scrollable page content -->
 					<div class="page-content pull-to-refresh-content">
 						
@@ -120,10 +129,12 @@
 						
 						<div class="row no-gutter">
 							
-								<div class="boxBG col-33 inboundProcess" id="inboundProcess"> 
+								<div class="boxBG col-50 inboundProcess" id="inboundProcess"> 
+									<a href="lockbox-inbound.html" class="">
 									<div class="row">
 										
 										<div class="textAlignCenter boxFlip" id="inboundGreen" style="margin-top: 5px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
+										<div class="labelText">Lockbox Inbound Process</div>
 										<div class="textAlignCenter boxFlip" id="inboundRed"  style="margin-top: 5px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
 										
 									</div>
@@ -139,7 +150,7 @@
 										<div class="textAlignCenter boxFlip" id="inboundRed1" style="margin-top: -10px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
 										
 									</div>
-
+									</a>
 								</div>
 							
 						
@@ -147,10 +158,12 @@
 						
 						
 							
-								<div class="boxBG col-33" id="keyinProcess"> 
+								<div class="boxBG col-50" id="keyinProcess"> 
+									<a href="keyin-detail.html" class="">
 									<div class="row">
 										
 										<div class="textAlignCenter boxFlip" id="keyGreen" style="margin-top: 5px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
+										<div class="labelText">Key In Process</div>
 										<div class="textAlignCenter boxFlip" id="keyRed" style="margin-top: 5px; margin-right: 5px;" ><font class="digital" color="#FF0000">0001</font></div>
 										
 									</div>
@@ -165,16 +178,27 @@
 										<div class="textAlignCenter boxFlip" id="KeyinRed1" style="margin-top: -10px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
 										
 									</div>
-									
+									</a>
 									
 								</div>
 								
 								
 								
-								<div class="boxBG col-33" id="outboundProcess"> 
+
+								
+								
+						</div>
+						
+						
+						
+						
+						<div class="row no-gutter">
+							
+								<div class="boxBG col-50" id="outboundProcess"> 
 									<div class="row">
 										
 										<div class="textAlignCenter boxFlip" id="outboundGreen" style="margin-top: 5px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
+										<div class="labelText">Lockbox Outbound Process</div>
 										<div class="textAlignCenter boxFlip" id="outboundRed" style="margin-top: 5px; margin-right: 5px;" ><font class="digital" color="#FF0000">0001</font></div>
 										
 									</div>
@@ -193,26 +217,6 @@
 									
 								
 								</div>
-								
-								
-						</div>
-						
-						
-						
-						
-						<div class="row no-gutter">
-							
-								<div class="boxBG col-50" id="MPI"> 
-									<div class="row">
-										
-										<div class="col-50 textAlignCenter boxFlip" id="MPIGreen" style="margin-top:1em;"><font class="digital" color="#00FF00">2890</font></div>
-										<div class="col-50 textAlignCenter boxFlip" id="MPIRed" style="margin-top:1em;" ><font class="digital" color="#FF0000">0001</font></div>
-										
-									</div>
-									
-									
-									
-								</div>
 							
 						
 						
@@ -222,8 +226,20 @@
 								<div class="boxBG col-50" id="claimFileIn"> 
 									<div class="row">
 										
-										<div class="col-50 textAlignCenter boxFlip" id="claimFileInGreen" style="margin-top:1em;"><font class="digital" color="#00FF00">2890</font></div>
-										<div class="col-50 textAlignCenter boxFlip" id="claimFileInRed" style="margin-top:1em;" ><font class="digital" color="#FF0000">0001</font></div>
+										<div class=" textAlignCenter boxFlip" id="claimFileInGreen" style="margin-top: 5px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
+										<div class="labelText">Claim Process</div>
+										<div class=" textAlignCenter boxFlip" id="claimFileInRed" style="margin-top: 5px; margin-right: 5px;;" ><font class="digital" color="#FF0000">0001</font></div>
+										
+									</div>
+
+									<div class="row chartCenter">
+										<div class="col-100" id="chartL4" >  </div>
+									</div>
+									
+									<div class="row">
+										
+										<div class="textAlignCenter boxFlip" id="outboundGreen1" style="margin-top: -10px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
+										<div class="textAlignCenter boxFlip" id="outboundRed1" style="margin-top: -10px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
 										
 									</div>
 									
@@ -329,11 +345,96 @@
 			  </ul>
 			</div>
 			<div class="row">
-				<div class="col-15"></div>
-				<div class="col-15"></div>
-				<div class="col-40 submitButton"><a href="#" class="button button-big close-popup ">Submit</a></div>
-				<div class="col-15"></div>
-				<div class="col-15"></div>
+				<div class="col-10"></div>
+				<div class="col-10"></div>
+				<div class="col-60 submitButton"><a href="#" class="button button-big close-popup ">Submit</a></div>
+				<div class="col-10"></div>
+				<div class="col-10"></div>
+				
+			</div>
+
+	  </div>
+	  
+	  
+	  
+		
+ 
+	</div>
+
+	<div class="popup popup-filter-lockbox-inbound">
+    
+	
+		<div class="navbar">
+			  <div class="navbar-inner">
+				
+				<div class="left">
+				  <a href="#" class="close-popup">
+					
+					<span>Close</span>
+				   </a>
+				</div> 
+				<div class="right"> Filter Settings </div>
+				
+			  </div>
+		</div>
+           
+		
+		
+		
+		<div class="content-block">
+        
+			<div class="list-block">
+			  <ul>
+				<!-- Text inputs -->
+				<li>
+				  <div class="item-content">
+					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
+					<div class="item-inner">
+					  <div class="item-title label">Group ID</div>
+					  <div class="item-input">
+						<input type="text" id="groupIDValue2" placeholder="Group ID">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				<li>
+				  <div class="item-content">
+					<div class="item-media "><i class="icon icon-form-email"></i></div>
+					<div class="item-inner">
+					  <div class="item-title label">Site Number</div>
+					  <div class="item-input">
+						<input type="text" id="siteNumberValue2" placeholder="Site Number">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				
+				
+				<!-- Select -->
+				<li>
+				  <div class="item-content">
+					<div class="item-media box-around-icon"><span class="fa fa-building "></span></div>
+					<div class="item-inner">
+					  <div class="item-title label">Organization</div>
+					  <div class="item-input selectOrg">
+						<select id="orgValue2">
+						  <option value="HLSC">HLSC</option>
+						  <option value="TCS">TCS</option>
+						  <option value="RM">RM</option>
+						</select>
+					  </div>
+					</div>
+				  </div>
+				</li>
+				
+			  </ul>
+			</div>
+			<div class="row">
+				<div class="col-10"></div>
+				<div class="col-10"></div>
+				<div class="col-60 submitButton"><a href="#" class="button button-big close-popup ">Submit</a></div>
+				<div class="col-10"></div>
+				<div class="col-10"></div>
 				
 			</div>
 

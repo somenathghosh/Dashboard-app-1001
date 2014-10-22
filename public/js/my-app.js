@@ -38,9 +38,13 @@ $('.submitButton a').click(function(){
 	}
 
 	setTimeout(function(){
+
 		getLockboxNumbers();
+
 		getLockboxInboundDetail();
-	getLockboxOutboundDetail();	
+
+		getLockboxOutboundDetail()
+
 		$('.boxFlip').addClass('animated flip');
 	},100);
 	
@@ -55,34 +59,177 @@ $('.submitButton a').click(function(){
 
 myApp.onPageAfterAnimation('index', function (page) {
 	console.log("index");
-		
+
 });
 
 myApp.onPageInit('index', function (page) {
 	console.log("index-init");
-		
+	drawChart();
+			if($('.boxFlip').hasClass('animated flip')){
+			$('.boxFlip').removeClass('animated flip');
+			
+		}
+		else{
+			getLockboxNumbers();
+			getLockboxInboundDetail();
+			getLockboxOutboundDetail();
+			
+			$('.boxFlip').addClass('animated flip');
+		}	
 });
 	
 
 
 $$(document).on('click','.go-home',function () {
 	console.log("home");
-	mainView.loadPage('/');
+	drawChart();
+	//mainView.loadPage('/');
 });
 
 
 
 
 
-myApp.onPageInit('keyinDetail', function (page) {
-	console.log("keyInDetail");
+myApp.onPageInit('keyin-detail', function (page) {
+console.log("keyInDetail");
 
 
+function dataFactory(seriesNum, perSeries) {
+   return new d3.range(0,seriesNum).map(function(d,i) { return {
+    key: 'Stream ' + i,
+    values: new d3.range(0,perSeries).map( function(f,j) {
+      return { 
+               y: 10 + Math.random()*100,
+               x: j
+             }
+    })
+    };  
+  });
+
+}
+
+
+defaultChartConfig("chart1000", dataFactory(4,24), {
+  delay: 0,
+  transitionDuration:0,
+  groupSpacing: .2
+});
+
+
+
+function defaultChartConfig(containerId, data, chartOptions) {
+  nv.addGraph(function() {
+      var chart;
+      chart = nv.models.multiBarChart()
+        .margin({bottom: 100})
+        .transitionDuration(300)
+        ;
+
+      chart.options(chartOptions);
+      chart.multibar
+        .hideable(true);
+
+      chart.xAxis
+          .axisLabel("Current Index")
+          .showMaxMin(true)
+          .tickFormat(d3.format(',0f'));
+
+      chart.yAxis
+          .tickFormat(d3.format(',.1f'));
+
+      d3.select('#' + containerId + ' svg')
+          .datum(data)
+         .call(chart);
+
+      nv.utils.windowResize(chart.update);
+
+      chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
+
+      return chart;
+  });
+}
+
+console.log($('#chart2'));
 
 });
 
 
 
+function sequence(i){	
+	for(var j = 0; j<document.getElementsByClassName('step-'+i).length;j++){
+		document.getElementsByClassName('step-'+i)[j].classList.remove("hidden")
+	}	
+	
+}
+
+
+
+
+	
+myApp.onPageInit('lockbox-inbound', function (page) {
+
+		console.log('page initiated');
+
+		getLockboxInboundDetail();
+	
+		// clear interval when back button is clicked		
+		$('.intClear a').click(function(){
+			clearInterval(arrowSequence);
+			console.log("back");
+
+		});
+		
+		var i = 0;
+		var arrowSequence =	
+			setInterval(function(){
+				sequence(i);
+				i++;
+				if(i==7){
+					console.log(arrowSequence);
+					clearInterval(arrowSequence);
+				}
+			},1000);
+		
+		
+		$("#isSequnceSelected").change(function() { 
+			if($("#isSequnceSelected").is(':checked')){
+    			var i = 0;
+			 	 arrowSequence =	
+					setInterval(function(){
+						sequence(i);
+						i++;
+						if(i==7){
+							clearInterval(arrowSequence);
+						}
+					},1000);
+			}else{
+				clearInterval(arrowSequence);
+				$('.step').addClass('hidden');	
+    		}
+		}); 
+		
+		
+		$$('.popup-services').on('click', function () {
+		  var popupHTML = '<div class="popup">'+
+							'<div class="content-block">'+
+							  '<p>Popup created dynamically.</p>'+
+							  '<p><a href="#" class="close-popup">Close me</a></p>'+
+							'</div>'+
+						  '</div>'
+		  myApp.popup(popupHTML);
+		  
+		  
+		  
+		}); 
+
+         
+		
+});
+
+
+
+
+/*
 $$('.ac-5').on('click', function () {
     var buttons = [
         {
@@ -110,7 +257,7 @@ $$('.ac-5').on('click', function () {
     ];
     myApp.actions(buttons);
 }); 
-
+*/
 
 $$('.pull-to-refresh-content').on('refresh', function (e) {
     // Emulate 2s loading
@@ -429,32 +576,41 @@ $$('.action1').on('click', function () {
 	},300000);
 	
 	
-	var salesData=[
+
+	function drawChart (){
+		var salesData=[
+			
+			{label:"Plus", value: 1000, color:"#DC3912"},
+			{label:"Lite", value: 800, color:"#FF9900"},
+			{label:"Elite", value: 200,color:"#109618"},
+			{label:"Delux", value: 10, color:"#990099"}
+		];
+
+		var svgInbound = d3.select("#chartL1").append("svg").attr("width",300).attr("height",300);
+		var svgOutbound = d3.select("#chartL3").append("svg").attr("width",300).attr("height",300);
+		var svgKeyin = d3.select("#chartL2").append("svg").attr("width",300).attr("height",300);
+		var svgClaim = d3.select("#chartL4").append("svg").attr("width",300).attr("height",300);
+
+		svgInbound.append("g").attr("id","InboundDonut");
+		svgOutbound.append("g").attr("id","OutboundDonut");
+		svgKeyin.append("g").attr("id","KeyinPie");
+		svgClaim.append("g").attr("id","ClaimDonut");
 		
-		{label:"Plus", value: 1000, color:"#DC3912"},
-		{label:"Lite", value: 800, color:"#FF9900"},
-		{label:"Elite", value: 200,color:"#109618"},
-		{label:"Delux", value: 10, color:"#990099"}
-	];
+		Donut3D.draw("InboundDonut", salesData, 150, 150, 130, 100, 30, 0.7);
+		Donut3D.draw("OutboundDonut", salesData, 150, 150, 130, 100, 30, 0.7);
+		Donut3D.draw("ClaimDonut", salesData, 150, 150, 130, 100, 30, 0.7);
+		Donut3D.draw("KeyinPie", salesData, 150, 150, 130, 100, 30, 0.0);
 
-	var svgInbound = d3.select("#chartL1").append("svg").attr("width",300).attr("height",300);
-	var svgOutbound = d3.select("#chartL3").append("svg").attr("width",300).attr("height",300);
-	var svgKeyin = d3.select("#chartL2").append("svg").attr("width",300).attr("height",300);
-
-	svgInbound.append("g").attr("id","InboundDonut");
-	svgOutbound.append("g").attr("id","OutboundDonut");
-	svgKeyin.append("g").attr("id","KeyinPie");
-	
-	Donut3D.draw("InboundDonut", salesData, 150, 150, 130, 100, 30, 0.7);
-	Donut3D.draw("OutboundDonut", salesData, 150, 150, 130, 100, 30, 0.7);
-	Donut3D.draw("KeyinPie", salesData, 150, 150, 130, 100, 30, 0.0);
-	
-	function changeData(){
-		Donut3D.transition("InboundDonut", salesData, 130, 100, 30, 0.7);
-		Donut3D.transition("OutboundDonut", salesData, 130, 100, 30, 0.7);
-		Donut3D.transition("KeyinPie", salesData, 130, 100, 30, 0.0);
+		
+		function changeData(){
+			Donut3D.transition("InboundDonut", salesData, 130, 100, 30, 0.7);
+			Donut3D.transition("OutboundDonut", salesData, 130, 100, 30, 0.7);
+			Donut3D.transition("KeyinPie", salesData, 130, 100, 30, 0.0);
+			Donut3D.draw("ClaimDonut", salesData, 150, 150, 130, 100, 30, 0.7);
+		}
 	}
 	
+	drawChart();
 	
 });
 
