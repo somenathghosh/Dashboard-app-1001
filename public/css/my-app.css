@@ -1,11 +1,37 @@
 
+.legend {
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+}
 
+text{
+	fill:white;
+	color:white;
+}
+
+
+
+.legend-container{
+	margin-left:10px;
+	margin-right:10px;
+	padding:10px;
+	border:1px solid white;
+	background-color: gray;
+}
 
 .chartCenter{
-	margin-top: -40px; 
+	margin-top: -40px;
 	margin-left: -webkit-calc( 50% - 150px);
   	margin-left: -moz-calc(50% - 150px);
   	margin-left: calc( 50% - 150px);
+}
+
+.chartCenterBig{
+	margin-top: 0px;
+	margin-left: -webkit-calc( 50% - 250px);
+  	margin-left: -moz-calc(50% - 250px);
+  	margin-left: calc( 50% - 250px);
 }
 
 .welcomeBG{	
@@ -61,6 +87,25 @@ div.boxBG{
 	height:23.2em;
 }
 
+div.boxBG-slider{
+	
+	width:100%;
+    background: -webkit-linear-gradient(top, #000000 0%,rgba(56,56,56,1) 13%,rgba(78,78,78,1) 27%,rgba(78,78,78,1) 76%,rgba(56,56,56,1) 87%,rgba(27,27,27,1) 100%);
+	border: 1px solid white;
+	height: 100%;
+}
+
+div.boxBG-slider-row{
+	height: -webkit-calc( 50% - 15px);
+  	height: -moz-calc(50% - 15px);
+  	height: calc( 50% - 15px);
+}
+
+div.boxBG-slider-full{
+	height: -webkit-calc( 100% - 30px);
+  	height: -moz-calc(100% - 30px);
+  	height: calc( 100% - 30px);
+}
 
 div.whiteBox{
 	border: 1px solid white;
@@ -239,6 +284,18 @@ div.boxBGOutbound{
 	position:relative;
 }
 
+
+div.icoBox{
+	background-color: grey;
+    width: 35px; 
+    height:35px; 
+    border-radius:7px;
+    display:block; 
+    text-align:center;
+    color:white;
+    padding: 7px;
+
+}
 
 
 

@@ -91,9 +91,76 @@ $$(document).on('click','.go-home',function () {
 
 
 myApp.onPageInit('keyin-detail', function (page) {
-console.log("keyInDetail");
+	console.log("keyInDetail");
+		var salesData2=[
+			
+			{label:"Plus", value: 1000, color:"#DC3912"},
+			{label:"Lite", value: 800, color:"#FF9900"},
+			{label:"Elite", value: 200,color:"#109618"},
+			{label:"Super", value: 800, color:"#000099"},
+			{label:"Minor", value: 200,color:"#000000"},
+			{label:"Delux", value: 100, color:"#990099"}
+		];
+		var svgKeyinDetail = d3.select("#chartL5").append("svg").attr("width",500).attr("height",500);
+		svgKeyinDetail.append("g").attr("id","KeyinDetailPie");
+		Donut3D.draw("KeyinDetailPie", salesData2, 250, 250, 250, 193, 30, 0.0);
+
+		var salesData3=[
+			
+			{label:"Plus", value: 1000, color:"#DC3912"},
+			{label:"Lite", value: 800, color:"#FF9900"},
+			{label:"Elite", value: 200,color:"#109618"}
+		];
+
+		var svgTat = d3.select("#chartL6").append("svg").attr("width",300).attr("height",300);
+		svgTat.append("g").attr("id","TatPie");
+		Donut3D.draw("TatPie", salesData3, 150, 150, 130, 100, 30, 0.7);
 
 
+
+nv.addGraph(function() {
+  var chart = nv.models.discreteBarChart()
+      .x(function(d) { return d.label })    //Specify the data accessors.
+      .y(function(d) { return d.value })
+      .staggerLabels(false)    //Too many bars and not enough room? Try staggering labels.
+      .tooltips(false)        //Don't show tooltips
+      .showValues(true)       //...instead, show the bar value right on top of each bar.
+      .transitionDuration(350)
+      .color(['#DC3912', '#FF9900']);
+
+
+  d3.select('#chartL7 svg')
+      .datum(exampleData())
+      .call(chart);
+
+  nv.utils.windowResize(chart.update);
+
+  return chart;
+});
+
+//Each bar represents a single discrete quantity.
+function exampleData() {
+ return  [ 
+    {
+      key: "Cumulative Return",
+      values: [
+        { 
+          "label" : "Expected Volume" ,
+          "value" : 59000
+        } , 
+        { 
+          "label" : "Actual Volume" , 
+          "value" : 58000
+        } 
+      ]
+    }
+  ]
+
+}
+
+
+
+/*
 function dataFactory(seriesNum, perSeries) {
    return new d3.range(0,seriesNum).map(function(d,i) { return {
     key: 'Stream ' + i,
@@ -150,7 +217,7 @@ function defaultChartConfig(containerId, data, chartOptions) {
 }
 
 console.log($('#chart2'));
-
+*/
 });
 
 
@@ -586,6 +653,8 @@ $$('.action1').on('click', function () {
 			{label:"Delux", value: 10, color:"#990099"}
 		];
 
+
+
 		var svgInbound = d3.select("#chartL1").append("svg").attr("width",300).attr("height",300);
 		var svgOutbound = d3.select("#chartL3").append("svg").attr("width",300).attr("height",300);
 		var svgKeyin = d3.select("#chartL2").append("svg").attr("width",300).attr("height",300);
@@ -600,6 +669,7 @@ $$('.action1').on('click', function () {
 		Donut3D.draw("OutboundDonut", salesData, 150, 150, 130, 100, 30, 0.7);
 		Donut3D.draw("ClaimDonut", salesData, 150, 150, 130, 100, 30, 0.7);
 		Donut3D.draw("KeyinPie", salesData, 150, 150, 130, 100, 30, 0.0);
+
 
 		
 		function changeData(){
