@@ -112,9 +112,9 @@ myApp.onPageInit('keyin-detail', function (page) {
 			{label:"Elite", value: 200,color:"#109618"}
 		];
 
-		var svgTat = d3.select("#chartL6").append("svg").attr("width",300).attr("height",300);
+		var svgTat = d3.select("#chartL6").append("svg").attr("width",225).attr("height",225);
 		svgTat.append("g").attr("id","TatPie");
-		Donut3D.draw("TatPie", salesData3, 150, 150, 130, 100, 30, 0.7);
+		Donut3D.draw("TatPie", salesData3, 140, 120, 100, 79, 20, 0.7);
 
 
 
@@ -134,6 +134,8 @@ nv.addGraph(function() {
       .call(chart);
 
   nv.utils.windowResize(chart.update);
+  
+  
 
   return chart;
 });
