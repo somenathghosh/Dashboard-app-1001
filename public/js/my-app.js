@@ -158,6 +158,67 @@ function exampleData() {
 
 }
 
+nv.addGraph(function() {
+  var chart = nv.models.discreteBarChart()
+      .x(function(d) { return d.label })    //Specify the data accessors.
+      .y(function(d) { return d.value })
+      .staggerLabels(false)    //Too many bars and not enough room? Try staggering labels.
+      .tooltips(false)        //Don't show tooltips
+      .showValues(true)       //...instead, show the bar value right on top of each bar.
+      .transitionDuration(350)
+      .color(['#DC3912', '#FF9900','#109618','#000099','#000000','#990099','gray']);
+
+
+  d3.select('#chartL8 svg')
+      .datum(exampleData2())
+      .call(chart);
+
+  nv.utils.windowResize(chart.update);
+
+  return chart;
+});
+
+//Each bar represents a single discrete quantity.
+function exampleData2() {
+ return  [ 
+    {
+      key: "Cumulative Return",
+      values: [
+        { 
+          "label" : "Yesterday" ,
+          "value" : 61.11
+        } , 
+                { 
+          "label" : "Two Day Ago" ,
+          "value" : 67.12
+        } , 
+                { 
+          "label" : "Three days Ago" ,
+          "value" : 51.87
+        } , 
+                { 
+          "label" : "Four Days Ago" ,
+          "value" : 71.86
+        } , 
+                { 
+          "label" : "Five Days Ago" ,
+          "value" : 57.10
+        } , 
+                { 
+          "label" : "Six Days Ago" ,
+          "value" : 75.87
+        } , 
+        { 
+          "label" : "Seven Days Ago" , 
+          "value" : 80.12
+        } 
+      ]
+    }
+  ]
+
+}
+
+
 
 
 /*
