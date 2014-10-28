@@ -18,13 +18,13 @@
 		<link type="text/css" href="css/animate.css" rel="stylesheet">
 
 		<script src="js/lib/d3.v3.js"></script>
-<script src="js/lib/nv.d3.js"></script>
-<script src="js/src/tooltip.js"></script>
-<script src="js/src/utils.js"></script>
-<script src="js/src/models/legend.js"></script>
-<script src="js/src/models/axis.js"></script>
-<script src="js/src/models/multiBar.js"></script>
-<script src="js/src/models/multiBarChart.js"></script>
+		<script src="js/lib/nv.d3.js"></script>
+		<script src="js/src/tooltip.js"></script>
+		<script src="js/src/utils.js"></script>
+		<script src="js/src/models/legend.js"></script>
+		<script src="js/src/models/axis.js"></script>
+		<script src="js/src/models/multiBar.js"></script>
+		<script src="js/src/models/multiBarChart.js"></script>
 		<link href="js/src/nv.d3.css" rel="stylesheet" type="text/css">
 
 
@@ -64,7 +64,8 @@
 		<div class="content-block">
 		  
 		  <!-- Click on link with "close-panel" class will close panel -->
-		  <p><a href="index" class="go-home">Home</a></p>
+		  <p><a href="index" class="close-panel">Home</a></p>
+		  <p><a href="reports" class="close-panel">Reports</a></p>
 		  <p><a href="#" class="close-panel">Close</a></p>
 		  <!-- Click on link with "open-panel" and data-panel="right" attribute will open Right panel -->
 		  
@@ -447,11 +448,401 @@
 		
  
 	</div>
+
+	<!-- Key In Page Pop-up -->
+
+	<div class="popup keyin-popup">
+    
+	
+		<div class="navbar">
+			  <div class="navbar-inner">
+				
+				<div class="left">
+				  <a href="#" class="close-popup">
+					
+					<span>Close</span>
+				   </a>
+				</div> 
+				<div class="right"> Filter Settings </div>
+				
+			  </div>
+		</div>
+           
+		
+		
+		
+		<div class="content-block">
+        	<div class="list-block accordion-list">
+			  <ul>
+			    <li class="accordion-item"><a href="#" class="item-content item-link">
+			        <div class="item-inner">
+			          <div class="item-title">Work List Status</div>
+			        </div></a>
+			      <div class="accordion-item-content">
+			        <div class="content-block">
+			          <p>This shows Current Work list Status across the HLSC for all Groups and Sites. You can apply filter by Group Code or Site Number or Organization or any combination of filter options. To apply, please use below form and once complete , please tap on submit.</p>
+
+
+
+			          <div class="list-block">
+			  <ul>
+				<!-- Text inputs -->
+				<li>
+				  <div class="item-content">
+					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
+					<div class="item-inner">
+					  <div class="item-title label">Group ID</div>
+					  <div class="item-input">
+						<input type="text" id="groupIDValue-WL" placeholder="Group ID">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				<li>
+				  <div class="item-content">
+					<div class="item-media "><i class="icon icon-form-email"></i></div>
+					<div class="item-inner">
+					  <div class="item-title label">Site Number</div>
+					  <div class="item-input">
+						<input type="text" id="siteNumberValue-WL" placeholder="Site Number">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				
+				
+				<!-- Select -->
+				<li>
+				  <div class="item-content">
+					<div class="item-media box-around-icon"><span class="fa fa-building "></span></div>
+					<div class="item-inner">
+					  <div class="item-title label">Organization</div>
+					  <div class="item-input selectOrg">
+						<select id="orgValue-WL">
+						  <option value="HLSC">HLSC</option>
+						  <option value="TCS">TCS</option>
+						  <option value="RM">RM</option>
+						</select>
+					  </div>
+					</div>
+				  </div>
+				</li>
+				
+			  </ul>
+			</div>
+
+
+			        </div>
+			      </div>
+			    </li>
+			    <li class="accordion-item"><a href="#" class="item-content item-link">
+			        <div class="item-inner">
+			          <div class="item-title">Volume</div>
+			        </div></a>
+			      <div class="accordion-item-content">
+			        <div class="content-block">
+			          			  <ul>
+				<!-- Text inputs -->
+				<li>
+				  <div class="item-content">
+					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
+					<div class="item-inner">
+					  <div class="item-title label">Group ID</div>
+					  <div class="item-input">
+						<input type="text" id="groupIDValue-V" placeholder="Group ID">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				</ul>
+			        </div>
+			      </div>
+			    </li>
+
+			    <li class="accordion-item"><a href="#" class="item-content item-link">
+			        <div class="item-inner">
+			          <div class="item-title">TAT</div>
+			        </div></a>
+			      <div class="accordion-item-content">
+			        <div class="content-block">
+			          			  <ul>
+				<!-- Text inputs -->
+				<li>
+				  <div class="item-content">
+					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
+					<div class="item-inner">
+					  <div class="item-title label">Group ID</div>
+					  <div class="item-input">
+						<input type="text" id="groupIDValue-TAT" placeholder="Group ID">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				<li>
+				  <div class="item-content">
+					<div class="item-media "><i class="icon icon-form-email"></i></div>
+					<div class="item-inner">
+					  <div class="item-title label">Site Number</div>
+					  <div class="item-input">
+						<input type="text" id="siteNumberValue-TAT" placeholder="Site Number">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				</ul>
+			        </div>
+			      </div>
+			    </li>
+
+			    <li class="accordion-item"><a href="#" class="item-content item-link">
+			        <div class="item-inner">
+			          <div class="item-title">MPI</div>
+			        </div></a>
+			      <div class="accordion-item-content">
+			        <div class="content-block">
+			          			  <ul>
+				<!-- Text inputs -->
+				<li>
+				  <div class="item-content">
+					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
+					<div class="item-inner">
+					  <div class="item-title label">Group ID</div>
+					  <div class="item-input">
+						<input type="text" id="groupIDValue-MPI" placeholder="Group ID">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				<li>
+				  <div class="item-content">
+					<div class="item-media "><i class="icon icon-form-email"></i></div>
+					<div class="item-inner">
+					  <div class="item-title label">Site Number</div>
+					  <div class="item-input">
+						<input type="text" id="siteNumberValue-MPI" placeholder="Site Number">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				</ul>
+			        </div>
+			      </div>
+			    </li>
+			    
+			  </ul>
+
+			  <div><br></div>
+			  			<div class="row">
+				<div class="col-10"></div>
+				<div class="col-10"></div>
+				<div class="col-60 submitButton"><a href="#" class="button button-big close-popup">Submit</a></div>
+				<div class="col-10"></div>
+				<div class="col-10"></div>
+				
+			</div>
+			</div>
+			
+
+
+	  	</div>
+	  
+	  
+	  
+		
+ 
+	</div>
+
+
+	<!-- Reports Page Pop-up -->
+
+	<div class="popup reports-popup">
+    
+	
+		<div class="navbar">
+			  <div class="navbar-inner">
+				
+				<div class="left">
+				  <a href="#" class="close-popup">
+					
+					<span>Close</span>
+				   </a>
+				</div> 
+				<div class="right"> Filter Settings </div>
+				
+			  </div>
+		</div>
+           
+		
+		
+		
+		<div class="content-block">
+        	<div class="list-block accordion-list">
+			  <ul>
+			    <li class="accordion-item"><a href="#" class="item-content item-link">
+			        <div class="item-inner">
+			          <div class="item-title">Volume Trend</div>
+			        </div></a>
+			      <div class="accordion-item-content">
+			        <div class="content-block">
+			          <p>Desc </p>
+
+
+
+			        <div class="list-block">
+					  <ul>
+						<!-- Text inputs -->
+						<li>
+						  <div class="item-content">
+							<div class="item-media icoBox"><span class="fa fa-user fa-lg"></span></div>
+							<div class="item-inner">
+							  <div class="item-title label">Group ID</div>
+							  <div class="item-input">
+								<input type="text" id="groupIDValue-WL" placeholder="Group ID">
+							  </div>
+							</div>
+						  </div>
+						</li>
+						 <li>
+      <div class="item-content">
+        <div class="item-media icoBox"><span class="fa fa-arrows-h fa-lg"></span></div>
+        <div class="item-inner">
+          <div class="item-input">
+            <div class="range-slider">
+              <input type="range" min="1" max="30" value="30" step="1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+					  </ul>
+					</div>
+
+
+			        </div>
+			      </div>
+			    </li>
+			    <li class="accordion-item"><a href="#" class="item-content item-link">
+			        <div class="item-inner">
+			          <div class="item-title">Volume</div>
+			        </div></a>
+			      <div class="accordion-item-content">
+			        <div class="content-block">
+			          			  <ul>
+				<!-- Text inputs -->
+				<li>
+				  <div class="item-content">
+					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
+					<div class="item-inner">
+					  <div class="item-title label">Group ID</div>
+					  <div class="item-input">
+						<input type="text" id="groupIDValue-V" placeholder="Group ID">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				</ul>
+			        </div>
+			      </div>
+			    </li>
+
+			    <li class="accordion-item"><a href="#" class="item-content item-link">
+			        <div class="item-inner">
+			          <div class="item-title">TAT</div>
+			        </div></a>
+			      <div class="accordion-item-content">
+			        <div class="content-block">
+			          			  <ul>
+				<!-- Text inputs -->
+				<li>
+				  <div class="item-content">
+					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
+					<div class="item-inner">
+					  <div class="item-title label">Group ID</div>
+					  <div class="item-input">
+						<input type="text" id="groupIDValue-TAT" placeholder="Group ID">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				<li>
+				  <div class="item-content">
+					<div class="item-media "><i class="icon icon-form-email"></i></div>
+					<div class="item-inner">
+					  <div class="item-title label">Site Number</div>
+					  <div class="item-input">
+						<input type="text" id="siteNumberValue-TAT" placeholder="Site Number">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				</ul>
+			        </div>
+			      </div>
+			    </li>
+
+			    <li class="accordion-item"><a href="#" class="item-content item-link">
+			        <div class="item-inner">
+			          <div class="item-title">MPI</div>
+			        </div></a>
+			      <div class="accordion-item-content">
+			        <div class="content-block">
+			          			  <ul>
+				<!-- Text inputs -->
+				<li>
+				  <div class="item-content">
+					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
+					<div class="item-inner">
+					  <div class="item-title label">Group ID</div>
+					  <div class="item-input">
+						<input type="text" id="groupIDValue-MPI" placeholder="Group ID">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				<li>
+				  <div class="item-content">
+					<div class="item-media "><i class="icon icon-form-email"></i></div>
+					<div class="item-inner">
+					  <div class="item-title label">Site Number</div>
+					  <div class="item-input">
+						<input type="text" id="siteNumberValue-MPI" placeholder="Site Number">
+					  </div>
+					</div>
+				  </div>
+				</li>
+				</ul>
+			        </div>
+			      </div>
+			    </li>
+			    
+			  </ul>
+			  	
+			  	<div><br></div>
+			  	<div class="row">
+				<div class="col-10"></div>
+				<div class="col-10"></div>
+				<div class="col-60 submitButton"><a href="#" class="button button-big close-popup">Submit</a></div>
+				<div class="col-10"></div>
+				<div class="col-10"></div>
+				
+			</div>
+			</div>
+			
+
+
+	  	</div>
+	  
+	  
+	  
+		
+ 
+	</div>
   
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/my-app.js"></script>
+    <script type="text/javascript" src="js/reports.js"></script>
     <!--<script type="text/javascript" src="js/controller.js"></script> -->
   </body>
 </html>              

@@ -183,6 +183,7 @@ nv.models.multiBarChart = function() {
 
       if (showControls) {
         var controlsData = [
+          { key: 'Grouped', disabled: multibar.stacked() },
           { key: 'Stacked', disabled: !multibar.stacked() }
         ];
 
@@ -365,12 +366,17 @@ nv.models.multiBarChart = function() {
   //============================================================
   // Event Handling/Dispatching (out of chart's scope)
   //------------------------------------------------------------
-
+  var lastClicked;
+  var nvTooltipsLength;
   multibar.dispatch.on('elementClick.tooltip', function(e) {
+    nvTooltipsLength = document.getElementsByClassName('nvtooltip').length;
     e.pos = [e.pos[0] +  margin.left, e.pos[1] + margin.top];
         dispatch.tooltipHide(e);
         dispatch.tooltipShow(e);
-
+        if(lastClicked && e.pos[0] == lastClicked.pos[0] && e.pos[1] == lastClicked.pos[1] && nvTooltipsLength>0){
+          dispatch.tooltipHide(e);
+        }
+        lastClicked = e;
   });
 
   /*multibar.dispatch.on('elementMouseout.tooltip', function(e) {

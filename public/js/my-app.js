@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+	console.log($(document));
+
 // Initialize your app
 var myApp = new Framework7({
     swipePanel: 'left',
@@ -25,6 +27,129 @@ $('#siteNumberValue').val(sessionStorage.siteNumber);
 $('#groupIDValue').val('CMC');
 $('div.selectOrg select').val(sessionStorage.organization);
 $('.submitButton a').click(function(){
+
+	if($("#siteNumberValue-WL").val() != "" && $("#groupIDValue-WL").val() != "" && $("#orgValue-WL").val() != "" ){
+		var salesData2=[
+			
+			{label:"Plus", value: 500, color:"#DC3912"},
+			{label:"Lite", value: 900, color:"#FF9900"},
+			{label:"Elite", value: 400,color:"#109618"},
+			{label:"Super", value: 600, color:"#000099"},
+			{label:"Minor", value: 300,color:"#000000"},
+			{label:"Delux", value: 700, color:"#990099"}
+		];
+		Donut3D.transition("KeyinDetailPie", salesData2, 250, 193, 30, 0.0);
+
+	}
+
+
+	if($("#groupIDValue-V").val() != ""){
+		function exampleData4() {
+ return  [ 
+    {
+      key: "Cumulative Return",
+      values: [
+        { 
+          "label" : "Expected Volume" ,
+          "value" : 65000
+        } , 
+        { 
+          "label" : "Actual Volume" , 
+          "value" : 45000
+        } 
+      ]
+    }
+  ]
+
+}
+var chart = nv.models.discreteBarChart()
+      .x(function(d) { return d.label })    //Specify the data accessors.
+      .y(function(d) { return d.value })
+      .staggerLabels(false)    //Too many bars and not enough room? Try staggering labels.
+      .tooltips(false)        //Don't show tooltips
+      .showValues(true)       //...instead, show the bar value right on top of each bar.
+      .transitionDuration(350)
+      .color(['#DC3912', '#FF9900']);
+
+
+  d3.select('#chartL7 svg')
+      .datum(exampleData4())
+      .transition().duration(500)
+      .call(chart);
+
+  nv.utils.windowResize(chart.update);
+
+
+
+	}
+	if($("#siteNumberValue-TAT").val() != "" && $("#groupIDValue-TAT").val() != ""){
+
+		var salesData3=[
+			
+			{label:"Plus", value: 900, color:"#DC3912"},
+			{label:"Lite", value: 1000, color:"#FF9900"},
+			{label:"Elite", value: 500,color:"#109618"}
+		];
+		Donut3D.transition("TatPie", salesData3, 100, 79, 20, 0.7);
+
+
+	}
+	if($("#siteNumberValue-MPI").val() != "" && $("#groupIDValue-MPI").val() != ""){
+		function exampleData3() {
+ return  [ 
+    {
+      key: "Cumulative Return",
+      values: [
+        { 
+          "label" : "Yesterday" ,
+          "value" : 77.11
+        } , 
+                { 
+          "label" : "Two Day Ago" ,
+          "value" : 44.12
+        } , 
+                { 
+          "label" : "Three days Ago" ,
+          "value" : 21.87
+        } , 
+                { 
+          "label" : "Four Days Ago" ,
+          "value" : 99.86
+        } , 
+                { 
+          "label" : "Five Days Ago" ,
+          "value" : 55.10
+        } , 
+                { 
+          "label" : "Six Days Ago" ,
+          "value" : 75.87
+        } , 
+        { 
+          "label" : "Seven Days Ago" , 
+          "value" : 100.00
+        } 
+      ]
+    }
+  ]
+
+}
+	var chart = nv.models.discreteBarChart()
+      .x(function(d) { return d.label })    //Specify the data accessors.
+      .y(function(d) { return d.value })
+      .staggerLabels(false)    //Too many bars and not enough room? Try staggering labels.
+      .tooltips(false)        //Don't show tooltips
+      .showValues(true)       //...instead, show the bar value right on top of each bar.
+      .transitionDuration(350)
+      .color(['#DC3912', '#FF9900','#109618','#000099','#000000','#990099','gray']);
+		d3.select('#chartL8 svg')
+      	.datum(exampleData3())
+      	.transition().duration(500)
+        .call(chart)
+
+  		nv.utils.windowResize(chart.update);
+
+	}
+
 	console.log(sessionStorage.siteNumber);
 	
 	io.setSiteNumber($('#siteNumberValue').val());
@@ -112,7 +237,7 @@ myApp.onPageInit('keyin-detail', function (page) {
 			{label:"Elite", value: 200,color:"#109618"}
 		];
 
-		var svgTat = d3.select("#chartL6").append("svg").attr("width",225).attr("height",225);
+		var svgTat = d3.select("#chartL6").append("svg").attr("width",225).attr("height",250);
 		svgTat.append("g").attr("id","TatPie");
 		Donut3D.draw("TatPie", salesData3, 140, 120, 100, 79, 20, 0.7);
 
@@ -221,65 +346,18 @@ function exampleData2() {
 }
 
 
+$$('.labelIcon').on('click', function () {
 
+	var desc = "Donec et nulla auctor massa pharetra adipiscing ut sit amet sem. Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam mollis, vulputate turpis vel, sagittis felis.";
 
-/*
-function dataFactory(seriesNum, perSeries) {
-   return new d3.range(0,seriesNum).map(function(d,i) { return {
-    key: 'Stream ' + i,
-    values: new d3.range(0,perSeries).map( function(f,j) {
-      return { 
-               y: 10 + Math.random()*100,
-               x: j
-             }
-    })
-    };  
-  });
-
-}
-
-
-defaultChartConfig("chart1000", dataFactory(4,24), {
-  delay: 0,
-  transitionDuration:0,
-  groupSpacing: .2
+	
+		
+  	
+  	myApp.popup('.keyin-popup');
 });
 
+/*
 
-
-function defaultChartConfig(containerId, data, chartOptions) {
-  nv.addGraph(function() {
-      var chart;
-      chart = nv.models.multiBarChart()
-        .margin({bottom: 100})
-        .transitionDuration(300)
-        ;
-
-      chart.options(chartOptions);
-      chart.multibar
-        .hideable(true);
-
-      chart.xAxis
-          .axisLabel("Current Index")
-          .showMaxMin(true)
-          .tickFormat(d3.format(',0f'));
-
-      chart.yAxis
-          .tickFormat(d3.format(',.1f'));
-
-      d3.select('#' + containerId + ' svg')
-          .datum(data)
-         .call(chart);
-
-      nv.utils.windowResize(chart.update);
-
-      chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
-
-      return chart;
-  });
-}
-
-console.log($('#chart2'));
 */
 });
 
@@ -739,11 +817,74 @@ $$('.action1').on('click', function () {
 			Donut3D.transition("InboundDonut", salesData, 130, 100, 30, 0.7);
 			Donut3D.transition("OutboundDonut", salesData, 130, 100, 30, 0.7);
 			Donut3D.transition("KeyinPie", salesData, 130, 100, 30, 0.0);
-			Donut3D.draw("ClaimDonut", salesData, 150, 150, 130, 100, 30, 0.7);
+			Donut3D.transition("ClaimDonut", salesData, 150, 150, 130, 100, 30, 0.7);
 		}
 	}
 	
 	drawChart();
+
+/*-------------*/
+	myApp.onPageInit('reports', function (page) {
+		console.log("reports");
+		var streams = ['Forcasted','Actual'];
+		function dataFactory(seriesNum, perSeries) {
+   return new d3.range(0,seriesNum).map(function(d,i) { return {
+    key: streams[i],
+    values: new d3.range(0,perSeries).map( function(f,j) {
+      return { 
+               y: 10 + Math.floor(Math.random()*100000),
+               x: j+1
+             }
+    })
+    };  
+  });
+
+}
+
+
+defaultChartConfig("reports-charts-forcasted-vs-actual", dataFactory(2,30), {
+  delay: 0,
+  transitionDuration:0,
+  groupSpacing: .2
+});
+
+
+
+function defaultChartConfig(containerId, data, chartOptions) {
+  nv.addGraph(function() {
+      var chart;
+      chart = nv.models.multiBarChart()
+        .margin({bottom: 100})
+        .transitionDuration(300)
+        ;
+
+      chart.options(chartOptions);
+      chart.multibar
+        .hideable(true);
+      chart.color(['#DC3912', '#FF9900']);
+      chart.xAxis
+          .axisLabel("Volume Trend")
+          .showMaxMin(true)
+          .tickFormat(d3.format(',0f'))
+          ;
+
+      chart.yAxis
+          .tickFormat(d3.format(',0f'));
+
+      d3.select('#' + containerId + ' svg')
+          .datum(data)
+         .call(chart);
+
+      nv.utils.windowResize(chart.update);
+
+      chart.dispatch.on('stateChange', function(e) { nv.log('New State:', JSON.stringify(e)); });
+
+      return chart;
+  });
+}
+
+console.log($('#reports-charts-forcasted-vs-actual'));
+	});
 	
 });
 

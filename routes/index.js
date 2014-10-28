@@ -14,3 +14,7 @@ exports.lockboxInbound = function(req, res){
 exports.keyinDetail = function(req, res){
   res.render('keyin-detail.html');
 };
+
+exports.reports = function(req, res){
+  res.render('reports.html');
+};
