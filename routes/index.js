@@ -18,3 +18,4 @@ exports.keyinDetail = function(req, res){
 exports.reports = function(req, res){
   res.render('reports.html');
 };
+

@@ -1,532 +1,315 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Required meta tags-->
+	<head>
+		<!-- Required meta tags-->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<!-- Your app title -->
 		<title>My App</title>
-	
-
-	
-	
-  </head>
-  <body>
-    <!-- Status bar overlay for full screen mode (PhoneGap) -->
-    <div class="statusbar-overlay"></div>
-    
-    <!-- Views -->
-    <div class="views">
-      <!-- Your main view, should have "view-main" class -->
+	</head>
+	<body>
+		<!-- Status bar overlay for full screen mode (PhoneGap) -->
+		<div class="statusbar-overlay"></div>
+		<!-- Views -->
+		<div class="views">
+		<!-- Your main view, should have "view-main" class -->
 		<div class="view view-main">
 			<!-- Top Navbar-->
-		<div class="navbar">
-		  <div class="navbar-inner">
-			<div class="left intClear">
-			  <a href="#" class="back link">
-				<i class="icon icon-back"></i>
-				<span>Back</span>
-			   </a>
-			</div>
-			<div class="center sliding">Lockbox Inbound Process</div>
-			<div class="item-content pull right">
-				<div class="item-inner">
-				  <div class="item-input">
-					<label class="label-switch">
-					  <input id="isSequnceSelected" type="checkbox" checked>
-					  <div class="checkbox"></div>
-					</label>
-				  </div>
-				</div>
-			  </div>
-		  </div>
-
-		</div
-		
-
-			<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-			<div class="pages navbar-through toolbar-through">
-			  <!-- Page, "data-page" contains page name -->
-				<div data-page="lockbox-inbound" class="page navbar-through toolbar-fixed">
-					<!-- Scrollable page content -->
-					<div class="page-content pull-to-refresh-content">
-						
-						<div class="pull-to-refresh-layer">
-							<div class="preloader"></div>
-							<div class="pull-to-refresh-arrow"></div>
-						</div>
-						
-<div class="row no-gutter">
-					<div class=" welcomeBG col-50">
-					
-						<div id="welcomeName" class="textAlignLeft"> <font >Lockbox Inbound Processing</font></div>
-						<div id="lastLoginTime" class="textAlignCenter"> <font></font></div>
-						
-					
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="left intClear">
+						<a href="#" class="back link">
+						<i class="icon icon-back"></i>
+						<span>Back</span>
+						</a>
 					</div>
-				
-					<div class=" welcomeBG col-50">
-					
-						<div  class="textAlignCenter todaysDate"> <font class="Helvetica">Saturday June 14, 2014</font> </div>
-						<div  class="textAlignCenter todaysTime"> <font class="Helvetica">09:00 PM EST</font></div>
-						
-					
+					<div class="center sliding">Lockbox Inbound Process</div>
+					<div class="item-content pull right">
+						<div class="item-inner">
+							<div class="item-input">
+								<label class="label-switch">
+									<input id="isSequnceSelected" type="checkbox" checked>
+									<div class="checkbox"></div>
+								</label>
+							</div>
+						</div>
 					</div>
 				</div>
-				
-				
-				
-				
-				<div class="row no-gutter">
-					
-					<div class="boxBGInbound col-33 ">
-						<div class="row">
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="WTPGreen" ><font class="digit" color="#00FF00">100</font> </div>
-
+				</div
+				<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+				<div class="pages navbar-through toolbar-through">
+					<!-- Page, "data-page" contains page name -->
+					<div data-page="lockbox-inbound" class="page navbar-through toolbar-fixed">
+						<!-- Scrollable page content -->
+						<div class="page-content pull-to-refresh-content">
+							<div class="pull-to-refresh-layer">
+								<div class="preloader"></div>
+								<div class="pull-to-refresh-arrow"></div>
 							</div>
-
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="WTPRed" ><font class="digit" color="#FF0000">10</font></div>
+							<div class="row no-gutter">
+								<div class=" welcomeBG col-50">
+									<div id="welcomeName" class="textAlignLeft"> <font >Lockbox Inbound Processing</font></div>
+									<div id="lastLoginTime" class="textAlignCenter"> <font></font></div>
+								</div>
+								<div class=" welcomeBG col-50">
+									<div  class="textAlignCenter todaysDate"> <font class="Helvetica">Saturday June 14, 2014</font> </div>
+									<div  class="textAlignCenter todaysTime"> <font class="Helvetica">09:00 PM EST</font></div>
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox ">
-								<div id="WTPIcon" > <font size="11"><span class="fa fa-clock-o fa-4x"></span></font></div>	
+							<div class="row no-gutter">
+								<div class="boxBGInbound col-33 ">
+									<div class="row">
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="WTPGreen" ><font class="digit" color="#00FF00">100</font> </div>
+										</div>
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="WTPRed" ><font class="digit" color="#FF0000">10</font></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox ">
+											<div id="WTPIcon" > <font size="11"><span class="fa fa-clock-o fa-4x"></span></font></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox "  >
+											<div class="">Waiting to be Processed </div>
+										</div>
+									</div>
+								</div>
+								<div class="boxBGInbound col-33 ">
+									<div class="row">
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="SIGreen" ><font class="digit" color="#00FF00">100</font> </div>
+										</div>
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="SIRed" ><font class="digit" color="#FF0000">10</font></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class=" col-100 textAlignCenter innerBox">
+											<div id="SIIcon" > <span class="fa fa-home fa-4x"></span>	 </div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div class="">Site Identification</div>
+										</div>
+									</div>
+								</div>
+								<div class="boxBGInbound col-33 ">
+									<div class="row">
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="EVGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
+										</div>
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="EVRed" class=""><font class="digit" color="#FF0000">10</font></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div id="EVIcon" class="" > <span class="fa fa-share-square-o fa-4x"></span></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div class="">Extraction and Validation</div>
+										</div>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox "  >
-								<div class="">Waiting to be Processed </div>
+							<div class="row no-gutter">
+								<div class="boxBGInbound col-33 ">
+									<div class="row">
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="DMGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
+										</div>
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="DMRed" class=""><font class="digit" color="#FF0000">10</font></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div id="DMIcon" class="" > <span class="fa fa-database fa-4x"></span></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div class="">Data Management</div>
+										</div>
+									</div>
+								</div>
+								<div class="boxBGInbound col-33 ">
+									<div class="row">
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="PIGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
+										</div>
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="PIRed" class=""><font class="digit" color="#FF0000">10</font></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div id="PIIcon" class="" > <span class="fa fa-user fa-4x"></span></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div class="">Payer Identification</div>
+										</div>
+									</div>
+								</div>
+								<div class="boxBGInbound col-33 ">
+									<div class="row">
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="BSGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
+										</div>
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="BSRed" class=""><font class="digit" color="#FF0000">10</font></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div id="BSIcon" class="" > <span class="fa fa-random fa-4x"></span></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div class="">Batch Split</div>
+										</div>
+									</div>
+								</div>
+								<div class="greySubBGArrow-2 hidden step step-3" style="left:27.2em">
+									<div class="greySubBG-2  "  >
+										<img src="img/Arrow White.png"  width="70" height="30">
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-					
-					
-					<div class="boxBGInbound col-33 ">
-						<div class="row">
-	
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="SIGreen" ><font class="digit" color="#00FF00">100</font> </div>
+							<div class="row no-gutter">
+								<div class="boxBGInbound col-33 ">
+									<div class="row">
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="WLGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
+										</div>
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="WLRed" class=""><font class="digit" color="#FF0000">10</font></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div id="WLIcon" class="" > <span class="fa fa-list-alt fa-4x"></span></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div class="">WorkList Load</div>
+										</div>
+									</div>
+								</div>
+								<div class="boxBGInbound col-33 ">
+									<div class="row">
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="IAGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
+										</div>
+										<div class="col-50 textAlignCenter boxFlip">
+											<div id="IARed" class=""><font class="digit" color="#FF0000">10</font></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div id="IAIcon" class="" > <span class="fa fa-archive fa-4x"></span></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div class="">Image Archive</div>
+										</div>
+									</div>
+								</div>
+								<div class="boxBGInbound col-33 ">
+									<div class="row">
+										<div class="col-50 textAlignCenter boxFlip ">
+											<div id="ISGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
+										</div>
+										<div class="col-50 textAlignCenter boxFlip ">
+											<div id="ISRed" class=""><font class="digit" color="#FF0000">10</font></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div id="ISIcon" class="" > <span class="fa fa-image fa-4x"></span></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-100 textAlignCenter innerBox">
+											<div class="">Image Split &amp Conversion</div>
+										</div>
+									</div>
+								</div>
+								<div class="greySubBGArrow hidden step step-1" style="left:10.5em">
+									<div >
+										<img src="img/Arrow White.png"  width="70" height="30">
+									</div>
+								</div>
+								<div class="greySubBGArrow hidden step step-2" style="left:21.9em">
+									<div >
+										<img src="img/Arrow White.png"  width="70" height="30">
+									</div>
+								</div>
 							</div>
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="SIRed" ><font class="digit" color="#FF0000">10</font></div>
+							<div class="greySubBGArrow-2 hidden step step-3" style="left:27.2em">
+								<div>
+									<img src="img/Arrow White.png"  width="70" height="30">
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class=" col-100 textAlignCenter innerBox">
-								<div id="SIIcon" > <span class="fa fa-home fa-4x"></span>	 </div>
+							<div class="greySubBGArrow-3 col-sm-1 col-md-1 hidden step step-5 "style="left:10em">
+								<div >
+									<img src="img/Arrow White.png"  width="70" height="30">
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-									<div class="">Site Identification</div>
+							<div class="greySubBGArrow-3 col-sm-1 col-md-1 hidden step step-4" style="left:21.2em">
+								<div>
+									<img src="img/Arrow White.png"  width="70" height="30">
+								</div>
 							</div>
-						</div>
-						
-					</div>
-					
-
-					
-					<div class="boxBGInbound col-33 ">
-						<div class="row">
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="EVGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-							</div>	
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="EVRed" class=""><font class="digit" color="#FF0000">10</font></div>
+							<div class="greySubBGArrow-4 col-sm-1 col-md-1 hidden step step-6" style="left:4.5em">
+								<div>
+									<img src="img/Arrow White.png"  width="70" height="30">
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-								<div id="EVIcon" class="" > <span class="fa fa-share-square-o fa-4x"></span></div>
-							</div>	
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-									<div class="">Extraction and Validation</div>
-							</div>	
-						</div>
-						
-					</div>
-					
-					
-	
-
-					
-					<!--
-					<div class="greyBG col-sm-3 col-md-3 ">
-						<div class="greySubBG col-sm-6 col-md-6 ">
-							<div id="DMGreen" class="textAlignLeft"><font class="digit" color="#00FF00">100</font> </div>
-						</div>
-						
-						<div class="greySubBG col-sm-6 col-md-6 ">
-							<div id="DMRed" class="textAlignRight pull-right"><font class="digit" color="#FF0000">10</font></div>
-						</div>
-						
-						<div class="greySubBG col-sm-12 col-md-12 col-xs-12" >
-							<div id="DMIcon" class="textAlignCenter IconClass" data-container="body" data-toggle="popover" data-placement="bottom" data-content="This is where Description goes" title="Data Management"> <font size="12"><span class="fa fa-database fa-lg"></span></font> </div>
-						</div>	
-						
-						<div class="greySubBG col-sm-12 col-md-12 " >
-								<div class="textAlignCenter"><font class="Helvetica" color="#FFFFF">Data Management</font> </div>
-						</div>	
-						
-					</div>
-					
-
-					
-					<div class="greyBG col-sm-4 col-md-4 ">
-						<div class="greySubBG col-sm-6 col-md-6 ">
-							<div id="PIGreen" class="textAlignLeft"><font class="digit" color="#00FF00">100</font> </div>
-						</div>
-						<div class="greySubBG col-sm-6 col-md-6 ">	
-							<div id="PIRed" class="textAlignRight pull-right"><font class="digit" color="#FF0000">10</font></div>
-						</div>
-						<div class="greySubBG col-sm-12 col-md-12 col-xs-12">
-							<div id="PIIcon" class="textAlignCenter IconClass" data-container="body" data-toggle="popover" data-placement="bottom" data-content="This is where Description goes" title="Payer Identification">  <font  size="12"><span class="fa fa-user fa-lg"></span></font> </div>
-						</div>	
-						<div class="greySubBG col-sm-12 col-md-12 col-xs-12">
-								<div class="textAlignCenter"><font class="Helvetica" color="#FFFFF">Payer Identification</font> </div>
-						</div>	
-						
-					</div>
-					
-
-					
-					<div class="greyBG col-sm-3 col-md-3 ">
-						<div class="greySubBG col-sm-6 col-md-6 ">
-							<div id="BSGreen" class="textAlignLeft"><font class="digit" color="#00FF00">100</font> </div>
-						</div>
-							
-						<div class="greySubBG col-sm-6 col-md-6 ">	
-							<div id="BSRed" class="textAlignRight pull-right"><font class="digit" color="#FF0000">10</font></div>
-						</div>
-						
-						<div class="greySubBG col-sm-12 col-md-12">
-							<div id="BSIcon" class="textAlignCenter IconClass" data-container="body" data-toggle="popover" data-placement="bottom" data-content="This is where Description goes" title="Batch Split">  <font size="12"><span class="fa fa-random fa-lg"></span></font> </div>
-						</div>	
-						
-						<div class="greySubBG col-sm-12 col-md-12 ">
-								<div class="textAlignCenter"><font class="Helvetica" class="type" color="#FFFFF">Batch Split</font> </div>
-						</div>	
-						
-						
-					</div>
-					
-					
-
-					
-				
-					
-					<div class="greyBG col-sm-4 col-md-4 ">
-						<div class="greySubBG col-sm-4 col-md-4 col-xs-4">
-							<div id="WLGreen" class="textAlignLeft"><font class="digit" color="#00FF00">100</font> </div>
-						</div>
-						<div class="greySubBG col-sm-4 col-md-4 col-xs-4">
-							<div class="textAlignCenter hidden"><font color="#3E413E">WL</font> </div>
-						</div>
-						<div class="greySubBG col-sm-4 col-md-4 col-xs-4">
-							<div id="WLRed" class="textAlignRight pull-right"><font class="digit" color="#FF0000">10</font></div>
-						</div>
-						<div class="greySubBG col-sm-12 col-md-12 col-xs-12">
-							<div id="WLIcon" class="textAlignCenter IconClass" data-container="body" data-toggle="popover" data-placement="bottom" data-content="This is where Description goes" title="Worklist Load"> <font size="12"><center><span class="fa fa-list-alt fa-lg"></span></center></font> </div>
-						</div>	
-						<div class="greySubBG col-sm-12 col-md-12 col-xs-12">
-							<div class="textAlignCenter"><font class="Helvetica" color="#FFFFF">WorkList Load</font> </div>
-						</div>		
-						
-					</div>
-					
-
-					<div class="greyBG col-sm-3 col-md-3 ">
-						<div class="greySubBG col-sm-4 col-md-4 col-xs-4">
-							<div id="IAGreen" class="textAlignLeft"><font class="digit" color="#00FF00">100</font> </div>
-						</div>
-						<div class="greySubBG col-sm-4 col-md-4 col-xs-4">
-							<div class="textAlignCenter hidden"><font color="#3E413E">IA</font> </div>
-						</div>
-						<div class="greySubBG col-sm-4 col-md-4 col-xs-4">
-							<div id="IARed" class="textAlignRight pull-right"><font class="digit" color="#FF0000">10</font></div>
-						</div>
-						<div class="greySubBG col-sm-12 col-md-12 col-xs-12">
-							<div id="IAIcon" class="textAlignCenter IconClass" data-container="body" data-toggle="popover" data-placement="bottom" data-content="This is where Description goes" title="Image Archive">  <font  size="12"><span class="fa fa-archive fa-lg"></span></font></div>
-						</div>		
-						<div class="greySubBG col-sm-12 col-md-12 col-xs-12">
-							<div class="textAlignCenter"><font class="Helvetica" color="#FFFFF">Image Archive</font> </div>
-						</div>	
-						
-					</div>
-					
-
-				
-					<div class="greyBG col-sm-3 col-md-3 ">
-						
-						<div class="greySubBG col-sm-6 col-md-6 col-xs-4">
-							<div id="ISGreen" class="pull-left"><font class="digit" color="#00FF00">100</font> </div>
-						</div>
-						
-						<div class="greySubBG col-sm-6 col-md-6 col-xs-4">
-							<div id="ISRed" class="pull-right"><font class="digit" color="#FF0000">10</font></div>
-						</div>
-						<div class="greySubBG col-sm-12 col-md-12 col-xs-12">
-							<div id="ISIcon" class="textAlignCenter IconClass" data-container="body" data-toggle="popover" data-placement="bottom" data-content="This is where Description goes" title="Image Split & Conversion">  <font size="12"><span class="fa fa-image fa-lg"></span></font></div>
-						</div>		
-						<div class="greySubBG col-sm-12 col-md-12 col-xs-12 ">
-							<div class="textAlignCenter"><font class="Helvetica" color="#FFFFF">Image Split &amp Conversion</font> </div>
-						</div>	
-						
-						
-						
-					</div> -->
-			
-				</div>
-				
-				<div class="row no-gutter">
-					<div class="boxBGInbound col-33 ">
-						<div class="row">
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="DMGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-							</div>	
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="DMRed" class=""><font class="digit" color="#FF0000">10</font></div>
+							<div class="greySubBGArrow-4 col-sm-1 col-md-1 hidden step step-4" style="left:27.2em">
+								<div >
+									<img src="img/Arrow White.png"  width="70" height="30">
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-								<div id="DMIcon" class="" > <span class="fa fa-database fa-4x"></span></div>
-							</div>	
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-									<div class="">Data Management</div>
-							</div>	
-						</div>
-						
-					</div>
-					
-					<div class="boxBGInbound col-33 ">
-						<div class="row">
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="PIGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-							</div>	
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="PIRed" class=""><font class="digit" color="#FF0000">10</font></div>
+							<div class="greySubBGArrow-5 col-sm-1 col-md-1 hidden step step-6" style="left:10em" >
+								<div >
+									<img src="img/Arrow White.png"  width="70" height="30">
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-								<div id="PIIcon" class="" > <span class="fa fa-user fa-4x"></span></div>
-							</div>	
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-									<div class="">Payer Identification</div>
-							</div>	
-						</div>
-						
-					</div>
-					
-					<div class="boxBGInbound col-33 ">
-						<div class="row">
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="BSGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-							</div>	
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="BSRed" class=""><font class="digit" color="#FF0000">10</font></div>
+							<div class="greySubBGArrow-5 col-sm-1 col-md-1 hidden step step-5" style="left:21.2em">
+								<div >
+									<img src="img/Arrow White.png"  width="70" height="30">
+								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-								<div id="BSIcon" class="" > <span class="fa fa-random fa-4x"></span></div>
-							</div>	
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-									<div class="">Batch Split</div>
-							</div>	
-						</div>
-						
-					</div>
-					
-					
-					<div class="greySubBGArrow-2 hidden step step-3" style="left:27.2em">
-						<div class="greySubBG-2  "  >
-							 <img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-						
-					</div>
-				
-				</div>
-				
-				<div class="row no-gutter">
-					<div class="boxBGInbound col-33 ">
-						<div class="row">
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="WLGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-							</div>	
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="WLRed" class=""><font class="digit" color="#FF0000">10</font></div>
+						<div class="toolbar ">
+							<div class="toolbar-inner">
+								<a href="#tab1" class="tab-link "><span class="fa "></span></a>
+								<a href="#tab2" class="tab-link "><span class="fa "></span></a>
+								<a href="#" data-popup=".popup-filter-lockbox-inbound" class="open-popup"> &nbsp; <span class="fa  fa-gear fa-lg"></span></a>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-								<div id="WLIcon" class="" > <span class="fa fa-list-alt fa-4x"></span></div>
-							</div>	
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-									<div class="">WorkList Load</div>
-							</div>	
-						</div>
-						
-					</div>
-					
-					<div class="boxBGInbound col-33 ">
-						<div class="row">
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="IAGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-							</div>	
-							<div class="col-50 textAlignCenter boxFlip">
-								<div id="IARed" class=""><font class="digit" color="#FF0000">10</font></div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-								<div id="IAIcon" class="" > <span class="fa fa-archive fa-4x"></span></div>
-							</div>	
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-									<div class="">Image Archive</div>
-							</div>	
-						</div>
-						
-					</div>
-					
-					<div class="boxBGInbound col-33 ">
-						<div class="row">
-							<div class="col-50 textAlignCenter boxFlip ">
-								<div id="ISGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-							</div>	
-							<div class="col-50 textAlignCenter boxFlip ">
-								<div id="ISRed" class=""><font class="digit" color="#FF0000">10</font></div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-								<div id="ISIcon" class="" > <span class="fa fa-image fa-4x"></span></div>
-							</div>	
-						</div>
-						<div class="row">
-							<div class="col-100 textAlignCenter innerBox">
-									<div class="">Image Split &amp Conversion</div>
-							</div>	
-						</div>
-						
-					</div>
-					
-					
-					<div class="greySubBGArrow hidden step step-1" style="left:10.5em">
-						
-						<div >
-							<img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-						
-					</div>
-
-
-
-					<div class="greySubBGArrow hidden step step-2" style="left:21.9em">
-						
-						<div >
-							<img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-						
-					</div>
-					
-				
-				</div>
-				
-					<div class="greySubBGArrow-2 hidden step step-3" style="left:27.2em">
-						<div>
-							 <img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-						
-					</div>
-					
-					<div class="greySubBGArrow-3 col-sm-1 col-md-1 hidden step step-5 "style="left:10em">
-						
-						<div >
-							<img src="img/Arrow White.png"  width="70" height="30">
-						</div>		
-					</div>
-					
-					<div class="greySubBGArrow-3 col-sm-1 col-md-1 hidden step step-4" style="left:21.2em">
-						
-						<div>
-							<img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-					</div>
-					
-	
-					
-					<div class="greySubBGArrow-4 col-sm-1 col-md-1 hidden step step-6" style="left:4.5em">
-						<div>
-							<img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-					</div>
-					
-					<div class="greySubBGArrow-4 col-sm-1 col-md-1 hidden step step-4" style="left:27.2em">
-						<div >
-							<img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-					</div>
-					
-					<div class="greySubBGArrow-5 col-sm-1 col-md-1 hidden step step-6" style="left:10em" >
-						<div >
-							<img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-					</div>
-					
-					<div class="greySubBGArrow-5 col-sm-1 col-md-1 hidden step step-5" style="left:21.2em">
-						<div >
-							 <img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-					</div>
-					
-					
-					</div>
-					<div class="toolbar ">
-						<div class="toolbar-inner">
-							<a href="#tab1" class="tab-link "><span class="fa "></span></a>
-							<a href="#tab2" class="tab-link "><span class="fa "></span></a>
-						  
-													
-							<a href="#" data-popup=".popup-filter-lockbox-inbound" class="open-popup"> &nbsp; <span class="fa  fa-gear fa-lg"></span></a>
 						</div>
 					</div>
 				</div>
 			</div>
-		
-		
-		
-       
-     
-		
 		</div>
-		
-    </div>
-	
-	
-	
-  
-    <!-- Path to Framework7 Library JS-->
-    <script type="text/javascript" src="js/framework7.min.js"></script>
-    <!-- Path to your app js-->
-    <script type="text/javascript" src="js/my-app.js"></script>
-    <!--<script type="text/javascript" src="js/controller.js"></script> -->
-  </body>
-</html>              
+		<!-- Path to Framework7 Library JS-->
+		<script type="text/javascript" src="js/framework7.min.js"></script>
+		<!-- Path to your app js-->
+		<script type="text/javascript" src="js/my-app.js"></script>
+		<!--<script type="text/javascript" src="js/controller.js"></script> -->
+	</body>
+</html>

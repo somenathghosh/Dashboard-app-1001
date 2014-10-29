@@ -13,114 +13,108 @@
       <!-- Panels overlay-->
       <div class="panel-overlay">   </div>
       <!-- Left panel with reveal effect-->
-     
       <!-- Views -->
       <div class="views">
       <!-- Your main view, should have "view-main" class -->
       <div class="view view-main">
-         <!-- Top Navbar-->
-         <div class="navbar">
-            <div class="navbar-inner">
-               <div class="left intClear">
-                  <a href="#"  class="open-panel">
-                     <i class="fa fa-list-ul fa-lg"></i></span>
-                  </a>
-               </div>
-                 <div>
-                                    <a href="#" data-popup=".reports-popup" class="open-popup"><i class="fa fa-gear fa-2x"></i></a>
-                                 </div>
-
+      <!-- Top Navbar-->
+      <div class="navbar">
+         <div class="navbar-inner">
+            <div class="left intClear">
+               <a href="#"  class="open-panel">
+               <i class="fa fa-list-ul fa-lg"></i></span>
+               </a>
             </div>
          </div>
-         <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-         <div class="pages navbar-fixed toolbar-fixed">
-            <!-- Page, "data-page" contains page name -->
-            <div data-page="reports" class="page navbar-fixed toolbar-fixed">
-               <!-- Scrollable page content -->
-               <div class="page-content ">
-                  <div class="pull-to-refresh-layer">
-                     <div class="preloader"></div>
-                     <div class="pull-to-refresh-arrow"></div>
-                  </div>
-                  <!--    <div class="content-block">
-                     <div class="page-content">
-                       <!-- Slider -->
-                  <div class="slider-container slider-init" data-speed="400" data-spaceBetween="40" data-pagination=".slider-pagination">
-                     <div class="slider-wrapper">
-                        <div class="slider-slide" style="height:100%;">
-                           <!--<div class="row no-gutter">
-                              
-                                 </div>-->
-                           <div class="row no-gutter boxBG-slider-full" >
-                              <div class="boxBG-slider col-100" id="">
-                               
-                                 
-                                 <div class='chart half' id="reports-charts-forcasted-vs-actual" style="height:100%;width:100%;">
-                                     <svg  style="height:95%;margin-top:5%"></svg>
+      </div>
+      <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+      <div class="pages navbar-fixed toolbar-fixed">
+         <!-- Page, "data-page" contains page name -->
+         <div data-page="reports" class="page navbar-fixed toolbar-fixed">
+            <!-- Scrollable page content -->
+            <div class="page-content ">
+               <div class="pull-to-refresh-layer">
+                  <div class="preloader"></div>
+                  <div class="pull-to-refresh-arrow"></div>
+               </div>
+               <!--    <div class="content-block">
+                  <div class="page-content">
+                    <!-- Slider -->
+               <div class="slider-container slider-init" data-speed="400" data-spaceBetween="40" data-pagination=".slider-pagination">
+                  <div class="slider-wrapper">
+                     <div class="slider-slide" style="height:100%;">
+                        <!--<div class="row no-gutter">
+                           </div>-->
+                        <div class="row no-gutter boxBG-slider-full" >
 
-                                   </div>
+                           <div class="boxBG-slider col-100" id="">
+                              <div style="text-align:right ; margin-top:5px; margin-right:5px">
+                                 <a href="#" data-popup=".reports-popup" class="open-popup"><i class="fa fa-gear fa-2x"></i></a>
+                              </div>
+                              <div class='chart half' id="reports-charts-forcasted-vs-actual" style="height:95%;width:100%;">
+                                 <svg  style="height:95%;margin-top:5%"></svg>
                               </div>
                            </div>
                         </div>
-                        <div class="slider-slide" style="height:100%;">
-                           <!--<div class="row no-gutter">
-                              <div class='chart half' id="chart1000" style="width:100%;">
-                                     <svg  style="height:400px;margin-top:100px;"></svg>
-                                   </div>
-                                 </div>-->
-                           <div class="row no-gutter boxBG-slider-full" >
-                              <div class="boxBG-slider col-100" id="">
-
+                     </div>
+                     <div class="slider-slide" style="height:100%;">
+                        <!--<div class="row no-gutter">
+                           <div class='chart half' id="chart1000" style="width:100%;">
+                                  <svg  style="height:400px;margin-top:100px;"></svg>
+                                </div>
+                              </div>-->
+                        <div class="row no-gutter boxBG-slider-full" >
+                           <div class="boxBG-slider col-100" >
+                              <div style="text-align:right ; margin-top:5px; margin-right:5px">
+                                 <a href="#" data-popup=".reports-popup" class="open-popup"><i class="fa fa-gear fa-2x"></i></a>
+                              </div>
+                              <div class='' id="TAT-line-chart" style="height:95%;width:100%;">
+                                 <svg  style="height:97%;margin-top:3%"></svg>
                               </div>
                            </div>
                         </div>
-                                                <div class="slider-slide" style="height:100%;">
-                           <!--<div class="row no-gutter">
-                              <div class='chart half' id="chart1000" style="width:100%;">
-                                     <svg  style="height:400px;margin-top:100px;"></svg>
-                                   </div>
-                                 </div>-->
-                           <div class="row no-gutter boxBG-slider-full" >
-                              <div class="boxBG-slider col-100" id="">
-
-                              </div>
+                     </div>
+                     <div class="slider-slide" style="height:100%;">
+                        <!--<div class="row no-gutter">
+                           <div class='chart half' id="chart1000" style="width:100%;">
+                                  <svg  style="height:400px;margin-top:100px;"></svg>
+                                </div>
+                              </div>-->
+                        <div class="row no-gutter boxBG-slider-full" >
+                           <div class="boxBG-slider col-100" id="">
                            </div>
                         </div>
-                                                <div class="slider-slide" style="height:100%;">
-                           <!--<div class="row no-gutter">
-                              <div class='chart half' id="chart1000" style="width:100%;">
-                                     <svg  style="height:400px;margin-top:100px;"></svg>
-                                   </div>
-                                 </div>-->
-                           <div class="row no-gutter boxBG-slider-full" >
-                              <div class="boxBG-slider col-100" id="">
-
-                              </div>
+                     </div>
+                     <div class="slider-slide" style="height:100%;">
+                        <!--<div class="row no-gutter">
+                           <div class='chart half' id="chart1000" style="width:100%;">
+                                  <svg  style="height:400px;margin-top:100px;"></svg>
+                                </div>
+                              </div>-->
+                        <div class="row no-gutter boxBG-slider-full" >
+                           <div class="boxBG-slider col-100" id="">
                            </div>
                         </div>
-                                                <div class="slider-slide" style="height:100%;">
-
-                           <div class="row no-gutter boxBG-slider-full" >
-                              <div class="boxBG-slider col-100" id="">
-
-                              </div>
-                           </div>
-                        </div>                        <div class="slider-slide" style="height:100%;">
-                  
-                           <div class="row no-gutter boxBG-slider-full" >
-                              <div class="boxBG-slider col-100" id="">
-
-                              </div>
+                     </div>
+                     <div class="slider-slide" style="height:100%;">
+                        <div class="row no-gutter boxBG-slider-full" >
+                           <div class="boxBG-slider col-100" id="">
                            </div>
                         </div>
-                         <div class="slider-slide" style="height:100%;">
- 
-                           <div class="row no-gutter boxBG-slider-full" >
-                              <div class="boxBG-slider col-100" id="">
-
-                              </div>
+                     </div>
+                     <div class="slider-slide" style="height:100%;">
+                        <div class="row no-gutter boxBG-slider-full" >
+                           <div class="boxBG-slider col-100" id="">
                            </div>
-                        </div>'
+                        </div>
+                     </div>
+                     <div class="slider-slide" style="height:100%;">
+                        <div class="row no-gutter boxBG-slider-full" >
+                           <div class="boxBG-slider col-100" id="">
+                           </div>
+                        </div>
+                     </div>
+                     '
                   </div>
                   <div class="slider-pagination"></div>
                   <!--</div>

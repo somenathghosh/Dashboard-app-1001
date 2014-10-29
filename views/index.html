@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Required meta tags-->
+	<head>
+		<!-- Required meta tags-->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,9 +14,7 @@
 		<link rel="stylesheet" href="css/my-app.css">
 		<!-- awesome icon -->
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-		
 		<link type="text/css" href="css/animate.css" rel="stylesheet">
-
 		<script src="js/lib/d3.v3.js"></script>
 		<script src="js/lib/nv.d3.js"></script>
 		<script src="js/src/tooltip.js"></script>
@@ -26,823 +24,678 @@
 		<script src="js/src/models/multiBar.js"></script>
 		<script src="js/src/models/multiBarChart.js"></script>
 		<link href="js/src/nv.d3.css" rel="stylesheet" type="text/css">
-
-
-		
 		<script type="text/javascript" src = "js/jquery-2.1.1.min.js"></script>
 		<style>
 			path.slice{
-				stroke-width:2px;
+			stroke-width:2px;
 			}
 			polyline{
-				opacity: .3;
-				stroke: black;
-				stroke-width: 2px;
-				fill: none;
+			opacity: .3;
+			stroke: black;
+			stroke-width: 2px;
+			fill: none;
 			} 
 			svg text.percent{
-				fill:white;
-				text-anchor:middle;
-				font-size:12px;
+			fill:white;
+			text-anchor:middle;
+			font-size:12px;
 			}
-
 		</style>
-		
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="js/Donut3D.js"></script>
-
-	
-	
-  </head>
-  <body>
-    <!-- Status bar overlay for full screen mode (PhoneGap) -->
-    <div class="statusbar-overlay"></div>
-    <!-- Panels overlay-->
-    <div class="panel-overlay">	</div>
-    <!-- Left panel with reveal effect-->
-    <div class="panel panel-left panel-reveal">
-		<div class="content-block">
-		  
-		  <!-- Click on link with "close-panel" class will close panel -->
-		  <p><a href="index" class="close-panel">Home</a></p>
-		  <p><a href="reports" class="close-panel">Reports</a></p>
-		  <p><a href="#" class="close-panel">Close</a></p>
-		  <!-- Click on link with "open-panel" and data-panel="right" attribute will open Right panel -->
-		  
+	</head>
+	<body>
+		<!-- Status bar overlay for full screen mode (PhoneGap) -->
+		<div class="statusbar-overlay"></div>
+		<!-- Panels overlay-->
+		<div class="panel-overlay">	</div>
+		<!-- Left panel with reveal effect-->
+		<div class="panel panel-left panel-reveal">
+			<div class="content-block">
+				<!-- Click on link with "close-panel" class will close panel -->
+				<p><a href="index" class="close-panel">Home</a></p>
+				<p><a href="reports" class="close-panel">Reports</a></p>
+				<p><a href="#" class="close-panel">Close</a></p>
+				<!-- Click on link with "open-panel" and data-panel="right" attribute will open Right panel -->
+			</div>
 		</div>
-	</div>
-    <!-- Views -->
-    <div class="views">
-      <!-- Your main view, should have "view-main" class -->
-		<div class="view view-main">
-			<!-- Top Navbar-->
-			<div class="navbar">
-			  <div class="navbar-inner">
-				<!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-				<div class="content-block">
-					<div class="left sliding" >
-						<a href="#"  class="open-panel">
-							<i class="fa fa-list-ul fa-lg"></i></span>
-						</a>
+		<!-- Views -->
+		<div class="views">
+			<!-- Your main view, should have "view-main" class -->
+			<div class="view view-main">
+				<!-- Top Navbar-->
+				<div class="navbar">
+					<div class="navbar-inner">
+						<!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+						<div class="content-block">
+							<div class="left sliding" >
+								<a href="#"  class="open-panel">
+								<i class="fa fa-list-ul fa-lg"></i></span>
+								</a>
+							</div>
+						</div>
+						<div class="left sliding" style="margin-left: -40em;">
+							<img style="max-width:200px; margin-top: -7px;" src="img/bank_of_america.png">
+						</div>
 					</div>
 				</div>
-				
-				<div class="left sliding" style="margin-left: -40em;">
-				
-					<img style="max-width:200px; margin-top: -7px;" src="img/bank_of_america.png">
-				
-				</div>
-				
-			  </div>
-			</div>
-		
-
-			<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-			<div class="pages navbar-fixed toolbar-fixed">
-			  <!-- Page, "data-page" contains page name -->
-				<div data-page="index" class="page navbar-fixed toolbar-fixed">
-					<!-- Scrollable page content -->
-					<div class="page-content pull-to-refresh-content">
-						
-						<div class="pull-to-refresh-layer">
-							<div class="preloader"></div>
-							<div class="pull-to-refresh-arrow"></div>
-						</div>
-						
-						
-						<div class="row no-gutter">
-							<div class=" welcomeBG col-50">
-							
-								<div id="welcomeName" class="textAlignLeft"> <font >Welcome Stewert Parbery</font></div>
-								<div id="lastLoginTime" class="textAlignCenter"> <font>Last Login: 06-14-2014 04:00 PM EDT</font></div>
-								
-							
+				<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+				<div class="pages navbar-fixed toolbar-fixed">
+					<!-- Page, "data-page" contains page name -->
+					<div data-page="index" class="page navbar-fixed toolbar-fixed">
+						<!-- Scrollable page content -->
+						<div class="page-content ">
+							<!--<div class="pull-to-refresh-layer">
+								<div class="preloader"></div>
+								<div class="pull-to-refresh-arrow"></div>
+							</div> -->
+							<div class="row no-gutter">
+								<div class=" welcomeBG col-50">
+									<div id="welcomeName" class="textAlignLeft"> <font >Welcome Stewert Parbery</font></div>
+									<div id="lastLoginTime" class="textAlignCenter"> <font>Last Login: 06-14-2014 04:00 PM EDT</font></div>
+								</div>
+								<div class=" welcomeBG col-50">
+									<div  class="textAlignCenter todaysDate"> <font class="Helvetica">Saturday June 14, 2014</font> </div>
+									<div  class="textAlignCenter todaysTime"> <font class="Helvetica">09:00 PM EST</font></div>
+								</div>
 							</div>
-						
-							<div class=" welcomeBG col-50">
-							
-								<div  class="textAlignCenter todaysDate"> <font class="Helvetica">Saturday June 14, 2014</font> </div>
-								<div  class="textAlignCenter todaysTime"> <font class="Helvetica">09:00 PM EST</font></div>
-								
-							
-							</div>
-						</div>
-						
-						<div class="row no-gutter">
-							
-								<div class="boxBG col-50 inboundProcess" id="inboundProcess"> 
-									<a href="lockbox-inbound.html" class="">
-									<div class="row">
-										
-										<div class="textAlignCenter boxFlip" id="inboundGreen" style="margin-top: 5px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
-										<div class="labelText">Lockbox Inbound Process</div>
-										<div class="textAlignCenter boxFlip" id="inboundRed"  style="margin-top: 5px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
-										
-									</div>
+							<div class="row no-gutter">
+								<div class="boxBG col-50 inboundProcess" id="inboundProcess">
 									
-									
-									<div class="row chartCenter" >
-										<div class="col-100" id="chartL1" >  </div>
-									</div>
-									
-									<div class="row">
+										<div class="row">
+										<a href="#" data-popover=".popover-lockbox-inbound-file-process" class="open-popover">	
+											<div style="margin-top: 5px; margin-left: 5px;">
 										
-										<div class="textAlignCenter boxFlip" id="inboundGreen1" style="margin-top: -10px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
-										<div class="textAlignCenter boxFlip" id="inboundRed1" style="margin-top: -10px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
+											<div class="textAlignCenter boxFlip" id="inboundGreen-temp" ><font class="digital" color="#00FF00">1000</font></div>
 										
 									</div>
 									</a>
-								</div>
-							
-						
-						
-						
-						
-							
-								<div class="boxBG col-50" id="keyinProcess"> 
-									<a href="keyin-detail.html" class="">
-									<div class="row">
-										
-										<div class="textAlignCenter boxFlip" id="keyGreen" style="margin-top: 5px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
-										<div class="labelText">Key In Process</div>
-										<div class="textAlignCenter boxFlip" id="keyRed" style="margin-top: 5px; margin-right: 5px;" ><font class="digital" color="#FF0000">0001</font></div>
+											<div class="labelText">Lockbox Inbound Process</div>
+											<a href="#" data-popover=".popover-lockbox-inbound-file-error" class="open-popover">
+											<div style="margin-top: 5px; margin-right: 5px;">
+											
+											<div class="textAlignCenter boxFlip" id="inboundRed-temp"  ><font class="digital" color="#DC3912">18</font></div>
 										
 									</div>
+									</a>
+										</div>
+										<a href="lockbox-inbound.html" class="">
+										<div class="row chartCenter" >
+											<div class="col-100" id="chartL1" >  </div>
+										</div>
+										</a>
+										<div class="row">
+											<div class="divCenter ">
+											<a href="#" data-popover=".popover-lockbox-inbound-file-processed" class="open-popover">
+											<div class="boxFlip" id="inboundGreen1" ><font class="digital " color="#FF9900">8900</font></div>
+											</a>
+										</div>
+										</div>
 									
-									<div class="row chartCenter" >
+								</div>
+								<div class="boxBG col-50" id="keyinProcess">
+									
+										<div class="row">
+											<div class="textAlignCenter boxFlip" id="keyGreen" style="margin-top: 5px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
+											<div class="labelText">Key In Process</div>
+											<div class="textAlignCenter boxFlip" id="keyRed" style="margin-top: 5px; margin-right: 5px;" ><font class="digital" color="#FF0000">0001</font></div>
+										</div>
+										<a href="keyin-detail.html" class="">
+										<div class="row chartCenter" >
 											<div class="col-100" id="chartL2" >  </div>
-									</div>
-									
-									<div class="row">
-										
-										<div class="textAlignCenter boxFlip" id="KeyinGreen1" style="margin-top: -10px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
-										<div class="textAlignCenter boxFlip" id="KeyinRed1" style="margin-top: -10px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
-										
-									</div>
-									</a>
+										</div>
+										</a>
+										<div class="row">
+											<div class="textAlignCenter boxFlip" id="KeyinGreen1" style="margin-top: -10px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
+											<div class="textAlignCenter boxFlip" id="KeyinRed1" style="margin-top: -10px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
+										</div>
 									
 								</div>
-								
-								
-								
-
-								
-								
-						</div>
-						
-						
-						
-						
-						<div class="row no-gutter">
-							
-								<div class="boxBG col-50" id="outboundProcess"> 
+							</div>
+							<div class="row no-gutter">
+								<div class="boxBG col-50" id="outboundProcess">
 									<div class="row">
-										
 										<div class="textAlignCenter boxFlip" id="outboundGreen" style="margin-top: 5px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
 										<div class="labelText">Lockbox Outbound Process</div>
 										<div class="textAlignCenter boxFlip" id="outboundRed" style="margin-top: 5px; margin-right: 5px;" ><font class="digital" color="#FF0000">0001</font></div>
-										
 									</div>
-									
 									<div class="row chartCenter">
 										<div class="col-100" id="chartL3" >  </div>
 									</div>
-									
 									<div class="row">
-										
 										<div class="textAlignCenter boxFlip" id="outboundGreen1" style="margin-top: -10px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
 										<div class="textAlignCenter boxFlip" id="outboundRed1" style="margin-top: -10px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
-										
 									</div>
-									
-									
-								
 								</div>
-							
-						
-						
-						
-						
-							
-								<div class="boxBG col-50" id="claimFileIn"> 
+								<div class="boxBG col-50" id="claimFileIn">
 									<div class="row">
-										
 										<div class=" textAlignCenter boxFlip" id="claimFileInGreen" style="margin-top: 5px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
 										<div class="labelText">Claim Process</div>
 										<div class=" textAlignCenter boxFlip" id="claimFileInRed" style="margin-top: 5px; margin-right: 5px;;" ><font class="digital" color="#FF0000">0001</font></div>
-										
 									</div>
-
 									<div class="row chartCenter">
 										<div class="col-100" id="chartL4" >  </div>
 									</div>
-									
 									<div class="row">
-										
 										<div class="textAlignCenter boxFlip" id="outboundGreen1" style="margin-top: -10px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
 										<div class="textAlignCenter boxFlip" id="outboundRed1" style="margin-top: -10px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
-										
 									</div>
-									
-									
 								</div>
-								
-								
-															
-								
+							</div>
 						</div>
-					  
-					</div>
-					
-					
-					<div class="toolbar ">
-						<div class="toolbar-inner">
-							<a href="#tab1" class="tab-link "><span class="fa "></span></a>
-							<a href="#tab2" class="tab-link "><span class="fa "></span></a>
-						  
-													
-							<a href="#" data-popup=".popup-filter" class="open-popup"> &nbsp; <span class="fa  fa-gear fa-lg"></span></a>
+						<div class="toolbar ">
+							<div class="toolbar-inner">
+								<a href="#tab1" class="tab-link "><span class="fa "></span></a>
+								<a href="#tab2" class="tab-link "><span class="fa "></span></a>
+								<a href="#" data-popup=".popup-filter" class="open-popup"> &nbsp; <span class="fa  fa-gear fa-lg"></span></a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		
-		
-		
-       
-     
-		
 		</div>
 		
-    </div>
-	
-	
-	<div class="popup popup-filter">
-    
-	
-		<div class="navbar">
-			  <div class="navbar-inner">
-				
-				<div class="left">
-				  <a href="#" class="close-popup">
-					
-					<span>Close</span>
-				   </a>
-				</div> 
-				<div class="right"> Filter Settings </div>
-				
-			  </div>
-		</div>
-           
-		
-		
-		
-		<div class="content-block">
-        
-			<div class="list-block">
-			  <ul>
-				<!-- Text inputs -->
-				<li>
-				  <div class="item-content">
-					<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
-					<div class="item-inner">
-					  <div class="item-title label">Group ID</div>
-					  <div class="item-input">
-						<input type="text" id="groupIDValue" placeholder="Group ID">
-					  </div>
+		<!-- Home Page Filter -->
+		<div class="popup popup-filter">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="left">
+						<a href="#" class="close-popup">
+						<span>Close</span>
+						</a>
 					</div>
-				  </div>
-				</li>
-				<li>
-				  <div class="item-content">
-					<div class="item-media icoBox"><i class="fa fa-stethoscope fa-lg"></i></div>
-					<div class="item-inner">
-					  <div class="item-title label">Site Number</div>
-					  <div class="item-input">
-						<input type="text" id="siteNumberValue" placeholder="Site Number">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				
-				
-				<!-- Select -->
-				<!--
-				<li class="hidden">
-				  <div class="item-content">
-					<div class="item-media icoBox"><span class="fa fa-building "></span></div>
-					<div class="item-inner">
-					  <div class="item-title label">Organization</div>
-					  <div class="item-input selectOrg">
-						<select id="orgValue">
-						  <option value="HLSC">HLSC</option>
-						  <option value="TCS">TCS</option>
-						  <option value="RM">RM</option>
-						</select>
-					  </div>
-					</div>
-				  </div>
-				</li> 
-				-->
-				
-			  </ul>
+					<div class="right"> Filter Settings </div>
+				</div>
 			</div>
-			<div class="row">
-				<div class="col-10"></div>
-				<div class="col-10"></div>
-				<div class="col-60 submitButton"><a href="#" class="button button-big close-popup ">Submit</a></div>
-				<div class="col-10"></div>
-				<div class="col-10"></div>
-				
-			</div>
-
-	  </div>
-	  
-	  
-	  
-		
- 
-	</div>
-
-	<div class="popup popup-filter-lockbox-inbound">
-    
-	
-		<div class="navbar">
-			  <div class="navbar-inner">
-				
-				<div class="left">
-				  <a href="#" class="close-popup">
-					
-					<span>Close</span>
-				   </a>
-				</div> 
-				<div class="right"> Filter Settings </div>
-				
-			  </div>
-		</div>
-           
-		
-		
-		
-		<div class="content-block">
-        
-			<div class="list-block">
-			  <ul>
-				<!-- Text inputs -->
-				<li>
-				  <div class="item-content">
-					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
-					<div class="item-inner">
-					  <div class="item-title label">Group ID</div>
-					  <div class="item-input">
-						<input type="text" id="groupIDValue2" placeholder="Group ID">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				<li>
-				  <div class="item-content">
-					<div class="item-media "><i class="icon icon-form-email"></i></div>
-					<div class="item-inner">
-					  <div class="item-title label">Site Number</div>
-					  <div class="item-input">
-						<input type="text" id="siteNumberValue2" placeholder="Site Number">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				
-				
-				<!-- Select -->
-				<li>
-				  <div class="item-content">
-					<div class="item-media box-around-icon"><span class="fa fa-building "></span></div>
-					<div class="item-inner">
-					  <div class="item-title label">Organization</div>
-					  <div class="item-input selectOrg">
-						<select id="orgValue2">
-						  <option value="HLSC">HLSC</option>
-						  <option value="TCS">TCS</option>
-						  <option value="RM">RM</option>
-						</select>
-					  </div>
-					</div>
-				  </div>
-				</li>
-				
-			  </ul>
-			</div>
-			<div class="row">
-				<div class="col-10"></div>
-				<div class="col-10"></div>
-				<div class="col-60 submitButton"><a href="#" class="button button-big close-popup ">Submit</a></div>
-				<div class="col-10"></div>
-				<div class="col-10"></div>
-				
-			</div>
-
-	  </div>
-	  
-	  
-	  
-		
- 
-	</div>
-
-	<!-- Key In Page Pop-up -->
-
-	<div class="popup keyin-popup">
-    
-	
-		<div class="navbar">
-			  <div class="navbar-inner">
-				
-				<div class="left">
-				  <a href="#" class="close-popup">
-					
-					<span>Close</span>
-				   </a>
-				</div> 
-				<div class="right"> Filter Settings </div>
-				
-			  </div>
-		</div>
-           
-		
-		
-		
-		<div class="content-block">
-        	<div class="list-block accordion-list">
-			  <ul>
-			    <li class="accordion-item"><a href="#" class="item-content item-link">
-			        <div class="item-inner">
-			          <div class="item-title">Work List Status</div>
-			        </div></a>
-			      <div class="accordion-item-content">
-			        <div class="content-block">
-			          <p>This shows Current Work list Status across the HLSC for all Groups and Sites. You can apply filter by Group Code or Site Number or Organization or any combination of filter options. To apply, please use below form and once complete , please tap on submit.</p>
-
-
-
-			          <div class="list-block">
-			  <ul>
-				<!-- Text inputs -->
-				<li>
-				  <div class="item-content">
-					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
-					<div class="item-inner">
-					  <div class="item-title label">Group ID</div>
-					  <div class="item-input">
-						<input type="text" id="groupIDValue-WL" placeholder="Group ID">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				<li>
-				  <div class="item-content">
-					<div class="item-media "><i class="icon icon-form-email"></i></div>
-					<div class="item-inner">
-					  <div class="item-title label">Site Number</div>
-					  <div class="item-input">
-						<input type="text" id="siteNumberValue-WL" placeholder="Site Number">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				
-				
-				<!-- Select -->
-				<li>
-				  <div class="item-content">
-					<div class="item-media box-around-icon"><span class="fa fa-building "></span></div>
-					<div class="item-inner">
-					  <div class="item-title label">Organization</div>
-					  <div class="item-input selectOrg">
-						<select id="orgValue-WL">
-						  <option value="HLSC">HLSC</option>
-						  <option value="TCS">TCS</option>
-						  <option value="RM">RM</option>
-						</select>
-					  </div>
-					</div>
-				  </div>
-				</li>
-				
-			  </ul>
-			</div>
-
-
-			        </div>
-			      </div>
-			    </li>
-			    <li class="accordion-item"><a href="#" class="item-content item-link">
-			        <div class="item-inner">
-			          <div class="item-title">Volume</div>
-			        </div></a>
-			      <div class="accordion-item-content">
-			        <div class="content-block">
-			          			  <ul>
-				<!-- Text inputs -->
-				<li>
-				  <div class="item-content">
-					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
-					<div class="item-inner">
-					  <div class="item-title label">Group ID</div>
-					  <div class="item-input">
-						<input type="text" id="groupIDValue-V" placeholder="Group ID">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				</ul>
-			        </div>
-			      </div>
-			    </li>
-
-			    <li class="accordion-item"><a href="#" class="item-content item-link">
-			        <div class="item-inner">
-			          <div class="item-title">TAT</div>
-			        </div></a>
-			      <div class="accordion-item-content">
-			        <div class="content-block">
-			          			  <ul>
-				<!-- Text inputs -->
-				<li>
-				  <div class="item-content">
-					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
-					<div class="item-inner">
-					  <div class="item-title label">Group ID</div>
-					  <div class="item-input">
-						<input type="text" id="groupIDValue-TAT" placeholder="Group ID">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				<li>
-				  <div class="item-content">
-					<div class="item-media "><i class="icon icon-form-email"></i></div>
-					<div class="item-inner">
-					  <div class="item-title label">Site Number</div>
-					  <div class="item-input">
-						<input type="text" id="siteNumberValue-TAT" placeholder="Site Number">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				</ul>
-			        </div>
-			      </div>
-			    </li>
-
-			    <li class="accordion-item"><a href="#" class="item-content item-link">
-			        <div class="item-inner">
-			          <div class="item-title">MPI</div>
-			        </div></a>
-			      <div class="accordion-item-content">
-			        <div class="content-block">
-			          			  <ul>
-				<!-- Text inputs -->
-				<li>
-				  <div class="item-content">
-					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
-					<div class="item-inner">
-					  <div class="item-title label">Group ID</div>
-					  <div class="item-input">
-						<input type="text" id="groupIDValue-MPI" placeholder="Group ID">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				<li>
-				  <div class="item-content">
-					<div class="item-media "><i class="icon icon-form-email"></i></div>
-					<div class="item-inner">
-					  <div class="item-title label">Site Number</div>
-					  <div class="item-input">
-						<input type="text" id="siteNumberValue-MPI" placeholder="Site Number">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				</ul>
-			        </div>
-			      </div>
-			    </li>
-			    
-			  </ul>
-
-			  <div><br></div>
-			  			<div class="row">
-				<div class="col-10"></div>
-				<div class="col-10"></div>
-				<div class="col-60 submitButton"><a href="#" class="button button-big close-popup">Submit</a></div>
-				<div class="col-10"></div>
-				<div class="col-10"></div>
-				
-			</div>
-			</div>
-			
-
-
-	  	</div>
-	  
-	  
-	  
-		
- 
-	</div>
-
-
-	<!-- Reports Page Pop-up -->
-
-	<div class="popup reports-popup">
-    
-	
-		<div class="navbar">
-			  <div class="navbar-inner">
-				
-				<div class="left">
-				  <a href="#" class="close-popup">
-					
-					<span>Close</span>
-				   </a>
-				</div> 
-				<div class="right"> Filter Settings </div>
-				
-			  </div>
-		</div>
-           
-		
-		
-		
-		<div class="content-block">
-        	<div class="list-block accordion-list">
-			  <ul>
-			    <li class="accordion-item"><a href="#" class="item-content item-link">
-			        <div class="item-inner">
-			          <div class="item-title">Volume Trend</div>
-			        </div></a>
-			      <div class="accordion-item-content">
-			        <div class="content-block">
-			          <p>Desc </p>
-
-
-
-			        <div class="list-block">
-					  <ul>
+			<div class="content-block">
+				<div class="list-block">
+					<ul>
 						<!-- Text inputs -->
 						<li>
-						  <div class="item-content">
-							<div class="item-media icoBox"><span class="fa fa-user fa-lg"></span></div>
-							<div class="item-inner">
-							  <div class="item-title label">Group ID</div>
-							  <div class="item-input">
-								<input type="text" id="groupIDValue-WL" placeholder="Group ID">
-							  </div>
+							<div class="item-content">
+								<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+								<div class="item-inner">
+									<div class="item-title label">Group ID</div>
+									<div class="item-input">
+										<input type="text" id="groupIDValue" placeholder="Group ID">
+									</div>
+								</div>
 							</div>
-						  </div>
 						</li>
-						 <li>
-      <div class="item-content">
-        <div class="item-media icoBox"><span class="fa fa-arrows-h fa-lg"></span></div>
-        <div class="item-inner">
-          <div class="item-input">
-            <div class="range-slider">
-              <input type="range" min="1" max="30" value="30" step="1">
-            </div>
-          </div>
-        </div>
-      </div>
-    </li>
-					  </ul>
-					</div>
-
-
-			        </div>
-			      </div>
-			    </li>
-			    <li class="accordion-item"><a href="#" class="item-content item-link">
-			        <div class="item-inner">
-			          <div class="item-title">Volume</div>
-			        </div></a>
-			      <div class="accordion-item-content">
-			        <div class="content-block">
-			          			  <ul>
-				<!-- Text inputs -->
-				<li>
-				  <div class="item-content">
-					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
-					<div class="item-inner">
-					  <div class="item-title label">Group ID</div>
-					  <div class="item-input">
-						<input type="text" id="groupIDValue-V" placeholder="Group ID">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				</ul>
-			        </div>
-			      </div>
-			    </li>
-
-			    <li class="accordion-item"><a href="#" class="item-content item-link">
-			        <div class="item-inner">
-			          <div class="item-title">TAT</div>
-			        </div></a>
-			      <div class="accordion-item-content">
-			        <div class="content-block">
-			          			  <ul>
-				<!-- Text inputs -->
-				<li>
-				  <div class="item-content">
-					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
-					<div class="item-inner">
-					  <div class="item-title label">Group ID</div>
-					  <div class="item-input">
-						<input type="text" id="groupIDValue-TAT" placeholder="Group ID">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				<li>
-				  <div class="item-content">
-					<div class="item-media "><i class="icon icon-form-email"></i></div>
-					<div class="item-inner">
-					  <div class="item-title label">Site Number</div>
-					  <div class="item-input">
-						<input type="text" id="siteNumberValue-TAT" placeholder="Site Number">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				</ul>
-			        </div>
-			      </div>
-			    </li>
-
-			    <li class="accordion-item"><a href="#" class="item-content item-link">
-			        <div class="item-inner">
-			          <div class="item-title">MPI</div>
-			        </div></a>
-			      <div class="accordion-item-content">
-			        <div class="content-block">
-			          			  <ul>
-				<!-- Text inputs -->
-				<li>
-				  <div class="item-content">
-					<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
-					<div class="item-inner">
-					  <div class="item-title label">Group ID</div>
-					  <div class="item-input">
-						<input type="text" id="groupIDValue-MPI" placeholder="Group ID">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				<li>
-				  <div class="item-content">
-					<div class="item-media "><i class="icon icon-form-email"></i></div>
-					<div class="item-inner">
-					  <div class="item-title label">Site Number</div>
-					  <div class="item-input">
-						<input type="text" id="siteNumberValue-MPI" placeholder="Site Number">
-					  </div>
-					</div>
-				  </div>
-				</li>
-				</ul>
-			        </div>
-			      </div>
-			    </li>
-			    
-			  </ul>
-			  	
-			  	<div><br></div>
-			  	<div class="row">
-				<div class="col-10"></div>
-				<div class="col-10"></div>
-				<div class="col-60 submitButton"><a href="#" class="button button-big close-popup">Submit</a></div>
-				<div class="col-10"></div>
-				<div class="col-10"></div>
-				
+						<li>
+							<div class="item-content">
+								<div class="item-media icoBox"><i class="fa fa-stethoscope fa-lg"></i></div>
+								<div class="item-inner">
+									<div class="item-title label">Site Number</div>
+									<div class="item-input">
+										<input type="text" id="siteNumberValue" placeholder="Site Number">
+									</div>
+								</div>
+							</div>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="row">
+					<div class="col-10"></div>
+					<div class="col-10"></div>
+					<div class="col-60 submitButton"><a href="#" class="button button-big close-popup ">Submit</a></div>
+					<div class="col-10"></div>
+					<div class="col-10"></div>
+				</div>
 			</div>
+		</div>
+		<div class="popup popup-filter-lockbox-inbound">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="left">
+						<a href="#" class="close-popup">
+						<span>Close</span>
+						</a>
+					</div>
+					<div class="right"> Filter Settings </div>
+				</div>
 			</div>
-			
-
-
-	  	</div>
-	  
-	  
-	  
+			<div class="content-block">
+				<div class="list-block">
+					<ul>
+						<!-- Text inputs -->
+						<li>
+							<div class="item-content">
+								<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+								<div class="item-inner">
+									<div class="item-title label">Group ID</div>
+									<div class="item-input">
+										<input type="text" id="groupIDValue2" placeholder="Group ID">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-media icoBox"><i class="fa fa-stethoscope fa-lg"></i></div>
+								<div class="item-inner">
+									<div class="item-title label">Site Number</div>
+									<div class="item-input">
+										<input type="text" id="siteNumberValue2" placeholder="Site Number">
+									</div>
+								</div>
+							</div>
+						</li>
+						<!-- Select -->
+						<li>
+							<div class="item-content">
+								<div class="item-media icoBox"><span class="fa fa-building fa-lg "></span></div>
+								<div class="item-inner">
+									<div class="item-title label">Organization</div>
+									<div class="item-input selectOrg">
+										<select id="orgValue2">
+											<option value="HLSC">HLSC</option>
+											<option value="TCS">TCS</option>
+											<option value="RM">RM</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="row">
+					<div class="col-10"></div>
+					<div class="col-10"></div>
+					<div class="col-60 submitButton"><a href="#" class="button button-big close-popup ">Submit</a></div>
+					<div class="col-10"></div>
+					<div class="col-10"></div>
+				</div>
+			</div>
+		</div>
 		
- 
-	</div>
-  
-    <!-- Path to Framework7 Library JS-->
-    <script type="text/javascript" src="js/framework7.min.js"></script>
-    <!-- Path to your app js-->
-    <script type="text/javascript" src="js/my-app.js"></script>
-    <script type="text/javascript" src="js/reports.js"></script>
-    <!--<script type="text/javascript" src="js/controller.js"></script> -->
-  </body>
-</html>              
+
+		<!-- Key In Page Pop-up -->
+		<div class="popup keyin-popup">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="left">
+						<a href="#" class="close-popup">
+						<span>Close</span>
+						</a>
+					</div>
+					<div class="right"> Filter Settings </div>
+				</div>
+			</div>
+			<div class="content-block">
+				<div class="list-block accordion-list">
+					<ul>
+						<li class="accordion-item">
+							<a href="#" class="item-content item-link">
+								<div class="item-inner">
+									<div class="item-title">Work List Status</div>
+								</div>
+							</a>
+							<div class="accordion-item-content">
+								<div class="content-block">
+									<p>This shows Current Work list Status across the HLSC for all Groups and Sites. You can apply filter by Group Code or Site Number or Organization or any combination of filter options. To apply, please use below form and once complete , please tap on submit.</p>
+									<div class="list-block">
+										<ul>
+											<!-- Text inputs -->
+											<li>
+												<div class="item-content">
+													<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+													<div class="item-inner">
+														<div class="item-title label">Group ID</div>
+														<div class="item-input">
+															<input type="text" id="groupIDValue-WL" placeholder="Group ID">
+														</div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="item-content">
+													<div class="item-media icoBox"><i class="fa fa-stethoscope fa-lg"></i></div>
+													<div class="item-inner">
+														<div class="item-title label">Site Number</div>
+														<div class="item-input">
+															<input type="text" id="siteNumberValue-WL" placeholder="Site Number">
+														</div>
+													</div>
+												</div>
+											</li>
+											<!-- Select -->
+											<li>
+												<div class="item-content">
+													<div class="item-media icoBox"><span class="fa fa-building fa-lg "></span></div>
+													<div class="item-inner">
+														<div class="item-title label">Organization</div>
+														<div class="item-input selectOrg">
+															<select id="orgValue-WL">
+																<option value="HLSC">HLSC</option>
+																<option value="TCS">TCS</option>
+																<option value="RM">RM</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="accordion-item">
+							<a href="#" class="item-content item-link">
+								<div class="item-inner">
+									<div class="item-title">Volume</div>
+								</div>
+							</a>
+							<div class="accordion-item-content">
+								<div class="content-block">
+									<ul>
+										<!-- Text inputs -->
+										<li>
+											<div class="item-content">
+												<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+												<div class="item-inner">
+													<div class="item-title label">Group ID</div>
+													<div class="item-input">
+														<input type="text" id="groupIDValue-V" placeholder="Group ID">
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="accordion-item">
+							<a href="#" class="item-content item-link">
+								<div class="item-inner">
+									<div class="item-title">TAT</div>
+								</div>
+							</a>
+							<div class="accordion-item-content">
+								<div class="content-block">
+									<ul>
+										<!-- Text inputs -->
+										<li>
+											<div class="item-content">
+												<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+												<div class="item-inner">
+													<div class="item-title label">Group ID</div>
+													<div class="item-input">
+														<input type="text" id="groupIDValue-TAT" placeholder="Group ID">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="item-content">
+												<div class="item-media icoBox"><i class="fa fa-stethoscope fa-lg"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Site Number</div>
+													<div class="item-input">
+														<input type="text" id="siteNumberValue-TAT" placeholder="Site Number">
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="accordion-item">
+							<a href="#" class="item-content item-link">
+								<div class="item-inner">
+									<div class="item-title">MPI</div>
+								</div>
+							</a>
+							<div class="accordion-item-content">
+								<div class="content-block">
+									<ul>
+										<!-- Text inputs -->
+										<li>
+											<div class="item-content">
+												<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+												<div class="item-inner">
+													<div class="item-title label">Group ID</div>
+													<div class="item-input">
+														<input type="text" id="groupIDValue-MPI" placeholder="Group ID">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="item-content">
+												<div class="item-media icoBox"><i class="fa fa-stethoscope fa-lg"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Site Number</div>
+													<div class="item-input">
+														<input type="text" id="siteNumberValue-MPI" placeholder="Site Number">
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div><br></div>
+					<div class="row">
+						<div class="col-10"></div>
+						<div class="col-10"></div>
+						<div class="col-60 submitButton"><a href="#" class="button button-big close-popup">Submit</a></div>
+						<div class="col-10"></div>
+						<div class="col-10"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Reports Page Pop-up -->
+		<div class="popup reports-popup">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="left">
+						<a href="#" class="close-popup">
+						<span>Close</span>
+						</a>
+					</div>
+					<div class="right"> Filter Settings </div>
+				</div>
+			</div>
+			<div class="content-block">
+				<div class="list-block accordion-list">
+					<ul>
+						<li class="accordion-item">
+							<a href="#" class="item-content item-link">
+								<div class="item-inner">
+									<div class="item-title">Volume Trend</div>
+								</div>
+							</a>
+							<div class="accordion-item-content">
+								<div class="content-block">
+									<p>Desc </p>
+									<div class="list-block">
+										<ul>
+											<!-- Text inputs -->
+											<li>
+												<div class="item-content">
+													<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+													<div class="item-inner">
+														<div class="item-title label">Group ID</div>
+														<div class="item-input">
+															<input type="text" id="groupIDValue-WL" placeholder="Group ID">
+														</div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="item-content">
+													<div class="item-media icoBox"><span class="fa fa-arrows-h fa-lg"></span></div>
+													<div class="item-inner">
+														<div class="item-input">
+															<div class="range-slider">
+																<input type="range" min="1" max="30" value="30" step="1"><span>30</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="accordion-item">
+							<a href="#" class="item-content item-link">
+								<div class="item-inner">
+									<div class="item-title">Volume</div>
+								</div>
+							</a>
+							<div class="accordion-item-content">
+								<div class="content-block">
+									<ul>
+										<!-- Text inputs -->
+										<li>
+											<div class="item-content">
+												<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+												<div class="item-inner">
+													<div class="item-title label">Group ID</div>
+													<div class="item-input">
+														<input type="text" id="groupIDValue-V" placeholder="Group ID">
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="accordion-item">
+							<a href="#" class="item-content item-link">
+								<div class="item-inner">
+									<div class="item-title">TAT</div>
+								</div>
+							</a>
+							<div class="accordion-item-content">
+								<div class="content-block">
+									<ul>
+										<!-- Text inputs -->
+										<li>
+											<div class="item-content">
+												<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
+												<div class="item-inner">
+													<div class="item-title label">Group ID</div>
+													<div class="item-input">
+														<input type="text" id="groupIDValue-TAT" placeholder="Group ID">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="item-content">
+												<div class="item-media "><i class="icon icon-form-email"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Site Number</div>
+													<div class="item-input">
+														<input type="text" id="siteNumberValue-TAT" placeholder="Site Number">
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="accordion-item">
+							<a href="#" class="item-content item-link">
+								<div class="item-inner">
+									<div class="item-title">MPI</div>
+								</div>
+							</a>
+							<div class="accordion-item-content">
+								<div class="content-block">
+									<ul>
+										<!-- Text inputs -->
+										<li>
+											<div class="item-content">
+												<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
+												<div class="item-inner">
+													<div class="item-title label">Group ID</div>
+													<div class="item-input">
+														<input type="text" id="groupIDValue-MPI" placeholder="Group ID">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="item-content">
+												<div class="item-media "><i class="icon icon-form-email"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Site Number</div>
+													<div class="item-input">
+														<input type="text" id="siteNumberValue-MPI" placeholder="Site Number">
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div><br></div>
+					<div class="row">
+						<div class="col-10"></div>
+						<div class="col-10"></div>
+						<div class="col-60 submitButton"><a href="#" class="button button-big close-popup">Submit</a></div>
+						<div class="col-10"></div>
+						<div class="col-10"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- All Popovers -->
+		<div class="popover popover-lockbox-inbound-file-process">
+		    <div class="popover-angle"></div>
+		    <div class="popover-inner">
+		      <div class="content-block">
+		        
+		        <p>This represents the number of batches <strong> in PROCESS </strong> in Lockbox inbound process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+		      </div>
+		    </div>
+		</div>
+
+
+		<div class="popover popover-lockbox-inbound-file-error">
+		    <div class="popover-angle"></div>
+		    <div class="popover-inner">
+		      <div class="content-block">
+		        
+		        <p>This represents the number of batches <strong> in ERROR </strong> in Lockbox inbound process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+		      </div>
+		    </div>
+		</div>
+
+
+		<div class="popover popover-lockbox-inbound-file-processed">
+		    <div class="popover-angle"></div>
+		    <div class="popover-inner">
+		      <div class="content-block">
+		        
+		        <p>This represents the number of batches <strong> Already PROCESSED </strong> in Lockbox inbound process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+		      </div>
+		    </div>
+		</div>
+
+
+		<!-- Path to Framework7 Library JS-->
+		<script type="text/javascript" src="js/framework7.min.js"></script>
+		<!-- Path to your app js-->
+		<script type="text/javascript" src="js/my-app.js"></script>
+		<script type="text/javascript" src="js/reports.js"></script>
+		<!--<script type="text/javascript" src="js/controller.js"></script> -->
+	</body>
+</html>
