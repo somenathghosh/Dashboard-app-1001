@@ -238,14 +238,13 @@ nv.models.lineChart = function() {
       //------------------------------------------------------------
 
       legend.dispatch.on('stateChange', function(newState) {
-            console.log("hover");
           state = newState;
           dispatch.stateChange(state);
           chart.update();
       });
 
-      interactiveLayer.dispatch.on('elementMousemove', function(e) {
-              console.log("hover");
+      interactiveLayer.dispatch.on('elementClick', function(e) {
+
           lines.clearHighlights();
           var singlePoint, pointIndex, pointXLocation, allData = [];
           data
@@ -295,7 +294,8 @@ nv.models.lineChart = function() {
 
       });
 
-      interactiveLayer.dispatch.on("elementMouseout",function(e) {
+      interactiveLayer.dispatch.on("elementDblClick",function(e) {
+          console.log("elementDblClick");
           dispatch.tooltipHide();
           lines.clearHighlights();
       });
@@ -331,7 +331,6 @@ nv.models.lineChart = function() {
   //------------------------------------------------------------
 
   lines.dispatch.on('elementMouseover.tooltip', function(e) {
-        console.log("hover");
     e.pos = [e.pos[0] +  margin.left, e.pos[1] + margin.top];
     dispatch.tooltipShow(e);
   });

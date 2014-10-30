@@ -1,3 +1,3 @@
-myApp.onPageAfterInit('reports', function (page) {
+/*myApp.onPageAfterInit('reports', function (page) {
 
-})
+})*/

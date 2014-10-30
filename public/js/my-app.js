@@ -305,6 +305,9 @@ $(document).ready(function() {
                 .transitionDuration(350)
                 .color(['#DC3912', '#FF9900']);
 
+                chart.yAxis
+                    .tickFormat(d3.format(',0f'));
+                chart.valueFormat(d3.format(',0f'));
 
             d3.select('#chartL7 svg')
                 .datum(exampleData())
@@ -346,6 +349,10 @@ $(document).ready(function() {
                 .transitionDuration(350)
                 .color(['#DC3912', '#FF9900', '#109618', '#000099', '#000000', '#990099', 'gray']);
 
+                chart.yAxis
+                    .tickFormat(d3.format(',0f'));
+
+                chart.valueFormat(d3.format(',0f'));
 
             d3.select('#chartL8 svg')
                 .datum(exampleData2())
@@ -362,25 +369,25 @@ $(document).ready(function() {
                 key: "Cumulative Return",
                 values: [{
                     "label": "Yesterday",
-                    "value": 61.11
+                    "value": 61
                 }, {
                     "label": "Two Day Ago",
-                    "value": 67.12
+                    "value": 67
                 }, {
                     "label": "Three days Ago",
-                    "value": 51.87
+                    "value": 51
                 }, {
                     "label": "Four Days Ago",
-                    "value": 71.86
+                    "value": 71
                 }, {
                     "label": "Five Days Ago",
-                    "value": 57.10
+                    "value": 57
                 }, {
                     "label": "Six Days Ago",
-                    "value": 75.87
+                    "value": 75
                 }, {
                     "label": "Seven Days Ago",
-                    "value": 80.12
+                    "value": 80
                 }]
             }]
 
@@ -411,7 +418,9 @@ $(document).ready(function() {
 
     }
 
-
+    $("#VT-slider").on('input',function() {
+        $("#VT-slider-text").html(this.value);
+    })
 
 
     myApp.onPageInit('lockbox-inbound', function(page) {
@@ -866,9 +875,16 @@ $(document).ready(function() {
 
     drawChart();
 
+
+
+
     /*-------------*/
     myApp.onPageInit('reports', function(page) {
         console.log("reports");
+
+
+
+
 
         function lineChartData(){ return [
   {
@@ -972,6 +988,122 @@ $(document).ready(function() {
         }
 
         console.log($('#reports-charts-forcasted-vs-actual'));
+
+                var streams = ['Claim Volume'];
+
+
+
+
+        defaultChartConfig2("reports-claim-data-volume", dataFactory(1, 30), {
+            delay: 0,
+            transitionDuration: 0,
+            groupSpacing: .2
+        });
+
+
+
+        function defaultChartConfig2(containerId, data, chartOptions) {
+            nv.addGraph(function() {
+                var chart;
+                chart = nv.models.multiBarChart()
+                    .margin({
+                        bottom: 100
+                    })
+                    .transitionDuration(300);
+
+                chart.options(chartOptions);
+                chart.multibar
+                    .hideable(true);
+                chart.color(['#FF9900']);
+                chart.xAxis
+                    .axisLabel("Claim Volume Trend")
+                    .showMaxMin(true)
+                    .tickFormat(d3.format(',0f'));
+
+                chart.yAxis
+                    .tickFormat(d3.format(',0f'));
+
+                d3.select('#' + containerId + ' svg')
+                    .datum(data)
+                    .call(chart);
+
+                nv.utils.windowResize(chart.update);
+
+                chart.dispatch.on('stateChange', function(e) {
+                    nv.log('New State:', JSON.stringify(e));
+                });
+
+                return chart;
+            });
+        }
+
+        //
+var streams = ['Percentage MPI Used'];
+
+        function dataFactory2(seriesNum, perSeries) {
+            return new d3.range(0, seriesNum).map(function(d, i) {
+                return {
+                    key: streams[i],
+                    values: new d3.range(0, perSeries).map(function(f, j) {
+                        return {
+                            y: Math.floor(Math.random() * 100),
+                            x: j + 1
+                        }
+                    })
+                };
+            });
+
+        }
+
+
+        defaultChartConfig3("reports-percentage-MPI-used", dataFactory2(1, 30), {
+            delay: 0,
+            transitionDuration: 0,
+            groupSpacing: .2
+        });
+
+
+
+        function defaultChartConfig3(containerId, data, chartOptions) {
+            nv.addGraph(function() {
+                var chart;
+                chart = nv.models.multiBarChart()
+                    .margin({
+                        bottom: 100
+                    })
+                    .transitionDuration(300);
+
+                chart.options(chartOptions);
+                chart.multibar
+                    .hideable(true);
+                chart.color(['#109618']);
+                chart.xAxis
+                    .axisLabel("Percentage MPI")
+                    .showMaxMin(true)
+                    .tickFormat(d3.format(',0f'));
+
+                chart.yAxis
+                    .tickFormat(d3.format(',0f'));
+
+                d3.select('#' + containerId + ' svg')
+                    .datum(data)
+                    .call(chart);
+
+                nv.utils.windowResize(chart.update);
+
+                chart.dispatch.on('stateChange', function(e) {
+                    nv.log('New State:', JSON.stringify(e));
+                });
+
+                return chart;
+            });
+        }
     });
+
+
+
+
+
+
 
 });
