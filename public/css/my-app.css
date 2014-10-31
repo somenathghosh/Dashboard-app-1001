@@ -1,4 +1,14 @@
 
+.bigger{
+	width: 240px;
+   height: 34px;
+   overflow: hidden;
+   background: url(../img/new_arrow.jpg) no-repeat right #ddd;
+   border: 1px solid #ccc;
+   font-size: 100%;
+   margin-bottom:5px;
+}
+
 .legend {
 	border-radius: 50%;
 	width: 30px;
@@ -352,7 +362,7 @@ div.icoBox{
     display:block; 
     text-align:center;
     color:white;
-    padding: 7px;
+    padding: 5px;
 
 }
 

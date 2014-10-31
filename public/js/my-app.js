@@ -514,7 +514,7 @@ $(document).ready(function() {
         ];
         myApp.actions(buttons);
     }); 
-    */
+    
 
     $$('.pull-to-refresh-content').on('refresh', function(e) {
         // Emulate 2s loading
@@ -530,7 +530,7 @@ $(document).ready(function() {
             myApp.pullToRefreshDone();
         }, 2000);
     });
-
+    */
 
 
     /*
@@ -634,7 +634,7 @@ $(document).ready(function() {
             })
             .done(function(data) {
                 $('#welcomeName').html('<font class="Helvetica">' + 'Welcome ' + data[0].userId + '</font>');
-                $('#lastLoginTime').html('<font class="Helvetica"> Last Login: ' + data[0].lastLogin + '</font>');
+                $('#lastLoginTime').html('<font class="Helvetica"> Last Visited: ' + data[0].lastLogin + '</font>');
             });
     })();
 
@@ -847,6 +847,30 @@ $(document).ready(function() {
         ];
 
 
+        var keyInData = [
+
+            {
+                label: "File Submitted",
+                value: 300,
+                color: "#DC3912"
+            }, {
+                label: "File in Progress",
+                value: 481,
+                color: "#109618"
+            }, {
+                label: "File Assigned",
+                value: 2890,
+                color: "#FF9900"
+            },
+
+            {
+                label: "File Completed",
+                value: 1000,
+                color: "#7211CE"
+            }
+        ];
+
+
 
         var svgInbound = d3.select("#chartL1").append("svg").attr("width", 300).attr("height", 300);
         var svgOutbound = d3.select("#chartL3").append("svg").attr("width", 300).attr("height", 300);
@@ -861,14 +885,14 @@ $(document).ready(function() {
         Donut3D.draw("InboundDonut", salesData, 150, 150, 130, 100, 30, 0.7);
         Donut3D.draw("OutboundDonut", salesData, 150, 150, 130, 100, 30, 0.7);
         Donut3D.draw("ClaimDonut", salesData, 150, 150, 130, 100, 30, 0.7);
-        Donut3D.draw("KeyinPie", salesData, 150, 150, 130, 100, 30, 0.0);
+        Donut3D.draw("KeyinPie", keyInData, 150, 150, 130, 100, 30, 0.0);
 
 
 
         function changeData() {
             Donut3D.transition("InboundDonut", salesData, 130, 100, 30, 0.7);
             Donut3D.transition("OutboundDonut", salesData, 130, 100, 30, 0.7);
-            Donut3D.transition("KeyinPie", salesData, 130, 100, 30, 0.0);
+            Donut3D.transition("KeyinPie", keyInData, 130, 100, 30, 0.0);
             Donut3D.transition("ClaimDonut", salesData, 150, 150, 130, 100, 30, 0.7);
         }
     }
@@ -882,7 +906,136 @@ $(document).ready(function() {
     myApp.onPageInit('reports', function(page) {
         console.log("reports");
 
+                $("#reports-missed-TAT").append(
+                '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Acura </div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Audi</div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">BMW</div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Cadillac </div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Chevrolet </div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Chrysler </div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Dodge </div>'+
+            '</div>'+
+          '</li>'
 
+
+            );
+        $("#list-selector").change(function(){
+            console.log(this.value);
+            if(this.value ==="Site List Missed TAT"){
+                $("#reports-missed-TAT").html("");
+                        $("#reports-missed-TAT").append(
+                '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Acura1 </div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Audi1</div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">BMW1</div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Cadillac1 </div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Chevrolet1 </div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Chrysler1 </div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Dodge1 </div>'+
+            '</div>'+
+          '</li>'
+
+
+            );
+
+            }else{
+                $("#reports-missed-TAT").html("");
+                 $("#reports-missed-TAT").append(
+                '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Acura2</div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Audi2</div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">BMW2</div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Cadillac2 </div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Chevrolet2 </div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Chrysler2 </div>'+
+            '</div>'+
+          '</li>'+
+          '<li class="item-content">'+
+            '<div class="item-inner">'+
+              '<div class="item-title">Dodge2 </div>'+
+            '</div>'+
+          '</li>'
+
+
+            );
+
+            }
+
+        })
+
+       
 
 
 
@@ -914,6 +1067,47 @@ $(document).ready(function() {
         chart.color(['#00FF00', '#FF9900']);
     d3.select('#TAT-line-chart svg')
         .datum(lineChartData())
+        .call(chart);
+
+    //TODO: Figure out a good way to do this automatically
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+
+
+        function stackedAreaChartData(){ return [
+  {
+    "key": "Top 10th Percentile",
+    "values": [  [ 1 , 13] , [ 2 , 14] , [ 3 , 12] , [ 4 , 15] , [ 5 , 18] , [ 6 , 20] , [ 7 , 17] , [ 8 , 9] , [ 9 , 8] , [ 10 , 15] , [ 11 , 16] , [ 12 , 18] , [ 13 , 20] , [ 14 , 11] , [ 15 , 13] , [ 16 , 22] , [ 17 , 21] , [ 18 , 20] , [ 19 , 11] , [ 20 , 14] , [ 21 , 15] , [ 22 , 16] , [ 23 , 13] , [ 24 , 18] , [ 25 , 20] , [ 26 , 21] , [ 27 , 20] , [ 28 , 18] , [ 29 , 19] , [30 , 21]]
+    },{
+    "key": "AVG",
+    "values": [ [ 1 , 15] , [ 2 , 15] , [ 3 , 15] , [ 4 , 15] , [ 5 , 15] , [ 6 , 15] , [ 7 , 15] , [ 8 , 15] , [ 9 , 15] , [ 10 , 15] , [ 11 , 15] , [ 12 , 15] , [ 13 , 15] , [ 14 , 15] , [ 15 , 15] , [ 16 , 15] , [ 17 , 15] , [ 18 , 15] , [ 19 , 15] , [ 20 , 15] , [ 21 , 15] , [ 22 , 15] , [ 23 , 15] , [ 24 , 15] , [ 25 , 15] , [ 26 , 15] , [ 27 , 15] , [ 28 , 15] , [ 29 , 15] , [ 30 , 15]]
+      },{
+    "key": "Bottom 10th Percentile",
+    "values": [ [ 1 , 11] , [ 2 , 10] , [ 3 , 9] , [ 4 , 10] , [ 5 , 5] , [ 6 , 4] , [ 7 , 3] , [ 8 , 10] , [ 9 , 12] , [ 10 , 10] , [ 11 , 9] , [ 12 , 15] , [ 13 , 7] , [ 14 , 6] , [ 15 , 5] , [ 16 , 9] , [ 17 , 9] , [ 18 , 8] , [ 19 , 4] , [ 20 , 2] , [ 21 , 1] , [ 22 , 7] , [ 23 , 6] , [ 24 , 5] , [ 25 , 4] , [ 26 , 3] , [ 27 , 2] , [ 28 , 1] , [ 29 , 5] , [ 30 , 8]]
+      }
+];
+}
+
+
+  nv.addGraph(function() {
+    var chart = nv.models.stackedAreaChart()
+                  .x(function(d) { return d[0] })
+                  .y(function(d) { return d[1] }) //adjusting, 100% is 1.00, not 100 as it is in the data
+                  .color(d3.scale.category10().range())
+                  .useInteractiveGuideline(true)
+                  ;
+
+     chart.xAxis
+        .tickFormat(d3.format(',0f'));
+
+    chart.yAxis
+        .tickFormat(d3.format(',0f'));
+        chart.color(['#00FF00', '#FF9900','#DC3912' ]);
+    d3.select('#MPI-stacked-area-chart svg')
+        .datum(stackedAreaChartData())
         .call(chart);
 
     //TODO: Figure out a good way to do this automatically
@@ -989,7 +1183,7 @@ $(document).ready(function() {
 
         console.log($('#reports-charts-forcasted-vs-actual'));
 
-                var streams = ['Claim Volume'];
+                var streams = ['Volume'];
 
 
 
@@ -1014,7 +1208,7 @@ $(document).ready(function() {
                 chart.options(chartOptions);
                 chart.multibar
                     .hideable(true);
-                chart.color(['#FF9900']);
+                chart.color(['#F7C202']);
                 chart.xAxis
                     .axisLabel("Claim Volume Trend")
                     .showMaxMin(true)
@@ -1038,7 +1232,7 @@ $(document).ready(function() {
         }
 
         //
-var streams = ['Percentage MPI Used'];
+var streams = ['% Used'];
 
         function dataFactory2(seriesNum, perSeries) {
             return new d3.range(0, seriesNum).map(function(d, i) {
@@ -1076,9 +1270,9 @@ var streams = ['Percentage MPI Used'];
                 chart.options(chartOptions);
                 chart.multibar
                     .hideable(true);
-                chart.color(['#109618']);
+                chart.color(['#04D3A6']);
                 chart.xAxis
-                    .axisLabel("Percentage MPI")
+                    .axisLabel("Percentage of MPI Used")
                     .showMaxMin(true)
                     .tickFormat(d3.format(',0f'));
 

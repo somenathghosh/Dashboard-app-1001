@@ -343,7 +343,7 @@ nv.models.stackedAreaChart = function() {
       });
 
 
-      interactiveLayer.dispatch.on('elementMousemove', function(e) {
+      interactiveLayer.dispatch.on('elementClick', function(e) {
           stacked.clearHighlights();
           var singlePoint, pointIndex, pointXLocation, allData = [];
           data

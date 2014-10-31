@@ -13,7 +13,7 @@
 		<!-- Path to your custom app styles-->
 		<link rel="stylesheet" href="css/my-app.css">
 		<!-- awesome icon -->
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link type="text/css" href="css/animate.css" rel="stylesheet">
 		<script src="js/lib/d3.v3.js"></script>
 		<script src="js/lib/nv.d3.js"></script>
@@ -25,6 +25,7 @@
 		<script src="js/src/models/multiBarChart.js"></script>
 		<script src="js/src/models/lineChart.js"></script>
 		<script src="js/src/interactiveLayer.js"></script>
+		<script src="js/src/models/stackedAreaChart.js"></script>
 		<link href="js/src/nv.d3.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src = "js/jquery-2.1.1.min.js"></script>
 		<style>
@@ -43,7 +44,6 @@
 			font-size:12px;
 			}
 		</style>
-		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="js/Donut3D.js"></script>
 	</head>
 	<body>
@@ -55,10 +55,46 @@
 		<div class="panel panel-left panel-reveal">
 			<div class="content-block">
 				<!-- Click on link with "close-panel" class will close panel -->
-				<p><a href="index" class="close-panel">Home</a></p>
-				<p><a href="reports" class="close-panel">Reports</a></p>
-				<p><a href="#" class="close-panel">Close</a></p>
+				
 				<!-- Click on link with "open-panel" and data-panel="right" attribute will open Right panel -->
+				 <div class="list-block">
+			      <ul>
+			        <li class="item-content">
+			          <div class="item-media icoBox"><span class="fa fa-bank fa-lg"></span></div>
+			          <div class="item-inner">
+			            <div class="item-title"><a href="index" class="close-panel">Home</a></div>
+			           
+			          </div>
+			        </li>
+			        <li class="item-content">
+			          <div class="item-media icoBox"><span class="fa fa-bar-chart fa-lg"></span></div>
+			          <div class="item-inner">
+			            <div class="item-title"><a href="reports" class="close-panel">Reports</a></div>
+			           
+			          </div>
+			        </li>
+			        <li class="item-content">
+			          <div class="item-media icoBox"><span class="fa fa-angle-double-left fa-2x"></span></div>
+			          <div class="item-inner">
+			            <div class="item-title"><a href="#" class="close-panel">Close</a></div>
+			         
+			          </div>
+			        </li>
+
+			        <li class="item-content">
+			          <div class="item-media icoBox"><span class="fa fa-cogs fa-lg"></span></div>
+			          <div class="item-inner">
+			            <div class="item-title"><a href="#" class="close-panel">App Setting</a></div>
+			         
+			          </div>
+			        </li>
+
+
+			      </ul>
+			     
+			    </div>
+
+
 			</div>
 		</div>
 		<!-- Views -->
@@ -69,12 +105,10 @@
 				<div class="navbar">
 					<div class="navbar-inner">
 						<!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-						<div class="content-block">
-							<div class="left sliding" >
-								<a href="#"  class="open-panel">
-								<i class="fa fa-list-ul fa-lg"></i></span>
-								</a>
-							</div>
+						<div class="left sliding" >
+							<a href="#"  class="open-panel">
+							<i class="fa fa-list-ul fa-lg"></i></span>
+							</a>
 						</div>
 						<div class="left sliding" style="margin-left: -40em;">
 							<img style="max-width:200px; margin-top: -7px;" src="img/bank_of_america.png">
@@ -90,11 +124,11 @@
 							<!--<div class="pull-to-refresh-layer">
 								<div class="preloader"></div>
 								<div class="pull-to-refresh-arrow"></div>
-							</div> -->
+								</div> -->
 							<div class="row no-gutter">
 								<div class=" welcomeBG col-50">
 									<div id="welcomeName" class="textAlignLeft"> <font >Welcome Stewert Parbery</font></div>
-									<div id="lastLoginTime" class="textAlignCenter"> <font>Last Login: 06-14-2014 04:00 PM EDT</font></div>
+									<div id="lastLoginTime" class="textAlignCenter"> <font>Last Visited: 06-14-2014 04:00 PM EDT</font></div>
 								</div>
 								<div class=" welcomeBG col-50">
 									<div  class="textAlignCenter todaysDate"> <font class="Helvetica">Saturday June 14, 2014</font> </div>
@@ -103,84 +137,123 @@
 							</div>
 							<div class="row no-gutter">
 								<div class="boxBG col-50 inboundProcess" id="inboundProcess">
-									
-										<div class="row">
-										<a href="#" data-popover=".popover-lockbox-inbound-file-process" class="open-popover">	
+									<div class="row">
+										<a href="#" data-popover=".popover-lockbox-inbound-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
-										
-											<div class="textAlignCenter boxFlip" id="inboundGreen-temp" ><font class="digital" color="#00FF00">1000</font></div>
-										
-									</div>
-									</a>
-											<div class="labelText">Lockbox Inbound Process</div>
-											<a href="#" data-popover=".popover-lockbox-inbound-file-error" class="open-popover">
+												<div class="textAlignCenter boxFlip" id="inboundGreen-temp" ><font class="digital" color="#00FF00">1000</font></div>
+											</div>
+										</a>
+										<div class="labelText">Lockbox Inbound Process</div>
+										<a href="#" data-popover=".popover-lockbox-inbound-file-error" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
-											
-											<div class="textAlignCenter boxFlip" id="inboundRed-temp"  ><font class="digital" color="#DC3912">18</font></div>
-										
+												<div class="textAlignCenter boxFlip" id="inboundRed-temp"  ><font class="digital" color="#DC3912">18</font></div>
+											</div>
+										</a>
 									</div>
-									</a>
-										</div>
-										<a href="lockbox-inbound.html" class="">
+									<a href="lockbox-inbound.html" class="">
 										<div class="row chartCenter" >
 											<div class="col-100" id="chartL1" >  </div>
 										</div>
-										</a>
-										<div class="row">
-											<div class="divCenter ">
+									</a>
+									<div class="row">
+										<div class="divCenter ">
 											<a href="#" data-popover=".popover-lockbox-inbound-file-processed" class="open-popover">
-											<div class="boxFlip" id="inboundGreen1" ><font class="digital " color="#FF9900">8900</font></div>
+												<div class="boxFlip" id="inboundGreen1" ><font class="digital " color="#FF9900">8900</font></div>
 											</a>
 										</div>
-										</div>
-									
+									</div>
 								</div>
 								<div class="boxBG col-50" id="keyinProcess">
-									
-										<div class="row">
-											<div class="textAlignCenter boxFlip" id="keyGreen" style="margin-top: 5px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
-											<div class="labelText">Key In Process</div>
-											<div class="textAlignCenter boxFlip" id="keyRed" style="margin-top: 5px; margin-right: 5px;" ><font class="digital" color="#FF0000">0001</font></div>
+									<div class="row">
+										
+									<a href="#" data-popover=".popover-lockbox-keyin-file-assigned" class="open-popover">
+										<div style="margin-top: 5px; margin-left: 5px;">
+											<div class="textAlignCenter boxFlip" id="keyInAssigned" ><font class="digital" color="#FF9900">2890</font></div>
 										</div>
-										<a href="keyin-detail.html" class="">
+										
+									</a>
+
+
+										<div class="labelText">Key In Process</div>
+
+									<a href="#" data-popover=".popover-lockbox-keyin-file-progress" class="open-popover">
+										<div style="margin-top: 5px; margin-right: 5px;">
+											<div class="textAlignCenter boxFlip" id="keyInProgress" ><font class="digital" color="#00FF00">481</font></div>
+										</div>	
+									</a>
+
+									</div>
+									<a href="keyin-detail.html" class="">
 										<div class="row chartCenter" >
 											<div class="col-100" id="chartL2" >  </div>
 										</div>
+									</a>
+									<div class="row">
+										<a href="#" data-popover=".popover-lockbox-keyin-file-completed" class="open-popover">
+										<div style="margin-top: -10px; margin-left: 5px;">
+											<div class="textAlignCenter boxFlip" id="keyInCompleted" ><font class="digital" color="#DFC2FC">1000</font></div>
+										</div>	
 										</a>
-										<div class="row">
-											<div class="textAlignCenter boxFlip" id="KeyinGreen1" style="margin-top: -10px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
-											<div class="textAlignCenter boxFlip" id="KeyinRed1" style="margin-top: -10px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
-										</div>
-									
+
+										<a href="#" data-popover=".popover-lockbox-keyin-file-submitted" class="open-popover">
+										<div style=" margin-top: -10px;margin-right: 5px;">
+											<div class="textAlignCenter boxFlip" id="keyInSubmitted" ><font class="digital" color="#DC3912">300</font></div>
+										</div>	
+										</a>
+
+									</div>
 								</div>
 							</div>
 							<div class="row no-gutter">
 								<div class="boxBG col-50" id="outboundProcess">
 									<div class="row">
-										<div class="textAlignCenter boxFlip" id="outboundGreen" style="margin-top: 5px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
+										<a href="#" data-popover=".popover-lockbox-outbound-file-process" class="open-popover">
+											<div style="margin-top: 5px; margin-left: 5px;">
+												<div class="textAlignCenter boxFlip" id="outboundGreen-temp" ><font class="digital" color="#00FF00">1000</font></div>
+											</div>
+										</a>
 										<div class="labelText">Lockbox Outbound Process</div>
-										<div class="textAlignCenter boxFlip" id="outboundRed" style="margin-top: 5px; margin-right: 5px;" ><font class="digital" color="#FF0000">0001</font></div>
+										<a href="#" data-popover=".popover-lockbox-outbound-file-error" class="open-popover">
+											<div style="margin-top: 5px; margin-right: 5px;">
+												<div class="textAlignCenter boxFlip" id="outboundRed-temp"  ><font class="digital" color="#DC3912">18</font></div>
+											</div>
+										</a>
 									</div>
+
 									<div class="row chartCenter">
 										<div class="col-100" id="chartL3" >  </div>
 									</div>
 									<div class="row">
-										<div class="textAlignCenter boxFlip" id="outboundGreen1" style="margin-top: -10px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
-										<div class="textAlignCenter boxFlip" id="outboundRed1" style="margin-top: -10px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
+										<div class="divCenter ">
+											<a href="#" data-popover=".popover-lockbox-outbound-file-processed" class="open-popover">
+												<div class="boxFlip" id="outboundProcessed" ><font class="digital " color="#FF9900">8900</font></div>
+											</a>
+										</div>
 									</div>
 								</div>
 								<div class="boxBG col-50" id="claimFileIn">
 									<div class="row">
-										<div class=" textAlignCenter boxFlip" id="claimFileInGreen" style="margin-top: 5px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
+										<a href="#" data-popover=".popover-claim-file-process" class="open-popover">
+											<div style="margin-top: 5px; margin-left: 5px;">
+												<div class="textAlignCenter boxFlip" id="claimFileInProcess" ><font class="digital" color="#00FF00">1000</font></div>
+											</div>
+										</a>
 										<div class="labelText">Claim Process</div>
-										<div class=" textAlignCenter boxFlip" id="claimFileInRed" style="margin-top: 5px; margin-right: 5px;;" ><font class="digital" color="#FF0000">0001</font></div>
+										<a href="#" data-popover=".popover-claim-file-error" class="open-popover">
+											<div style="margin-top: 5px; margin-right: 5px;">
+												<div class="textAlignCenter boxFlip" id="claimFileInError"  ><font class="digital" color="#DC3912">18</font></div>
+											</div>
+										</a>
 									</div>
 									<div class="row chartCenter">
 										<div class="col-100" id="chartL4" >  </div>
 									</div>
 									<div class="row">
-										<div class="textAlignCenter boxFlip" id="outboundGreen1" style="margin-top: -10px; margin-left: 5px;"><font class="digital" color="#00FF00">2890</font></div>
-										<div class="textAlignCenter boxFlip" id="outboundRed1" style="margin-top: -10px; margin-right: 5px;"><font class="digital" color="#FF0000">0001</font></div>
+										<div class="divCenter ">
+											<a href="#" data-popover=".popover-claim-file-processed" class="open-popover">
+												<div class="boxFlip" id="claimProcessed" ><font class="digital " color="#FF9900">8900</font></div>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -196,7 +269,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<!-- Home Page Filter -->
 		<div class="popup popup-filter">
 			<div class="navbar">
@@ -235,7 +307,6 @@
 								</div>
 							</div>
 						</li>
-						
 					</ul>
 				</div>
 				<div class="row">
@@ -311,8 +382,6 @@
 				</div>
 			</div>
 		</div>
-		
-
 		<!-- Key In Page Pop-up -->
 		<div class="popup keyin-popup">
 			<div class="navbar">
@@ -492,7 +561,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<!-- Reports Page Pop-up -->
 		<div class="popup reports-popup">
 			<div class="navbar">
@@ -657,40 +725,131 @@
 				</div>
 			</div>
 		</div>
-
-
 		<!-- All Popovers -->
+
+		<!-- Lockbox Inbound -->
 		<div class="popover popover-lockbox-inbound-file-process">
-		    <div class="popover-angle"></div>
-		    <div class="popover-inner">
-		      <div class="content-block">
-		        
-		        <p>This represents the number of batches <strong> in PROCESS </strong> in Lockbox inbound process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
-		      </div>
-		    </div>
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> in PROCESS </strong> in Lockbox inbound process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
 		</div>
-
-
 		<div class="popover popover-lockbox-inbound-file-error">
-		    <div class="popover-angle"></div>
-		    <div class="popover-inner">
-		      <div class="content-block">
-		        
-		        <p>This represents the number of batches <strong> in ERROR </strong> in Lockbox inbound process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
-		      </div>
-		    </div>
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> in ERROR </strong> in Lockbox inbound process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
 		</div>
-
-
 		<div class="popover popover-lockbox-inbound-file-processed">
-		    <div class="popover-angle"></div>
-		    <div class="popover-inner">
-		      <div class="content-block">
-		        
-		        <p>This represents the number of batches <strong> Already PROCESSED </strong> in Lockbox inbound process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
-		      </div>
-		    </div>
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> Already PROCESSED </strong> in Lockbox inbound process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
 		</div>
+		<!-- end -->
+
+
+				<!-- Lockbox outbound -->
+		<div class="popover popover-lockbox-outbound-file-process">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> in PROCESS </strong> in Lockbox outbound process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
+		</div>
+		<div class="popover popover-lockbox-outbound-file-error">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> in ERROR </strong> in Lockbox outbound process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
+		</div>
+		<div class="popover popover-lockbox-outbound-file-processed">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> Already PROCESSED </strong> in Lockbox outbound process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
+		</div>
+		<!-- end -->
+
+
+		<!-- Lockbox Inbound -->
+		<div class="popover popover-claim-file-process">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> in PROCESS </strong> in Claim process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
+		</div>
+		<div class="popover popover-claim-file-error">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> in ERROR </strong> in Claim process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
+		</div>
+		<div class="popover popover-claim-file-processed">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> Already PROCESSED </strong> in Claim process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
+		</div>
+		<!-- end -->
+
+
+		<!-- Lockbox Keyin -->
+		<div class="popover popover-lockbox-keyin-file-assigned">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> is ASSIGNED </strong> in Lockbox Key In process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
+		</div>
+		<div class="popover popover-lockbox-keyin-file-progress">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> in PROGRESS </strong> in Lockbox Key In process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
+		</div>
+		<div class="popover popover-lockbox-keyin-file-completed">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> COMPLETED </strong> in Lockbox Key In process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="popover popover-lockbox-keyin-file-submitted">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p>This represents the number of batches <strong> SUBMITTED </strong> in Lockbox Key In process.<br> For more detailed view, you may want to tap on the charts to take you there.</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- end -->
+
+
+
 
 
 		<!-- Path to Framework7 Library JS-->
