@@ -3,7 +3,7 @@
 	<head>
 		<!-- Required meta tags-->
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<!-- Your app title -->
@@ -13,7 +13,7 @@
 		<!-- Path to your custom app styles-->
 		<link rel="stylesheet" href="css/my-app.css">
 		<!-- awesome icon -->
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="css/font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet">
 		<link type="text/css" href="css/animate.css" rel="stylesheet">
 		<script src="js/lib/d3.v3.js"></script>
 		<script src="js/lib/nv.d3.js"></script>
@@ -28,22 +28,6 @@
 		<script src="js/src/models/stackedAreaChart.js"></script>
 		<link href="js/src/nv.d3.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src = "js/jquery-2.1.1.min.js"></script>
-		<style>
-			path.slice{
-			stroke-width:2px;
-			}
-			polyline{
-			opacity: .3;
-			stroke: black;
-			stroke-width: 2px;
-			fill: none;
-			} 
-			svg text.percent{
-			fill:white;
-			text-anchor:middle;
-			font-size:12px;
-			}
-		</style>
 		<script src="js/Donut3D.js"></script>
 	</head>
 	<body>
@@ -62,7 +46,7 @@
 			        <li class="item-content">
 			          <div class="item-media icoBox"><span class="fa fa-bank fa-lg"></span></div>
 			          <div class="item-inner">
-			            <div class="item-title"><a href="index" class="close-panel">Home</a></div>
+			            <div class="item-title"><a href="#" id="goHome" class=" s close-panel">Home</a></div>
 			           
 			          </div>
 			        </li>
@@ -84,7 +68,7 @@
 			        <li class="item-content">
 			          <div class="item-media icoBox"><span class="fa fa-cogs fa-lg"></span></div>
 			          <div class="item-inner">
-			            <div class="item-title"><a href="#" class="close-panel">App Setting</a></div>
+			            <div class="item-title"><a href="#" data-popup=".popup-app-settings" class="open-popup"class="close-panel">App Setting</a></div>
 			         
 			          </div>
 			        </li>
@@ -120,11 +104,8 @@
 					<!-- Page, "data-page" contains page name -->
 					<div data-page="index" class="page navbar-fixed toolbar-fixed">
 						<!-- Scrollable page content -->
-						<div class="page-content ">
-							<!--<div class="pull-to-refresh-layer">
-								<div class="preloader"></div>
-								<div class="pull-to-refresh-arrow"></div>
-								</div> -->
+						<div class="page-content">
+
 							<div class="row no-gutter">
 								<div class=" welcomeBG col-50">
 									<div id="welcomeName" class="textAlignLeft"> <font >Welcome Stewert Parbery</font></div>
@@ -219,10 +200,11 @@
 											</div>
 										</a>
 									</div>
-
+									<a href="lockbox-outbound.html" class="">
 									<div class="row chartCenter">
 										<div class="col-100" id="chartL3" >  </div>
 									</div>
+									</a>
 									<div class="row">
 										<div class="divCenter ">
 											<a href="#" data-popover=".popover-lockbox-outbound-file-processed" class="open-popover">
@@ -245,9 +227,11 @@
 											</div>
 										</a>
 									</div>
+									<a href="claim.html" class="">
 									<div class="row chartCenter">
 										<div class="col-100" id="chartL4" >  </div>
 									</div>
+									</a>
 									<div class="row">
 										<div class="divCenter ">
 											<a href="#" data-popover=".popover-claim-file-processed" class="open-popover">
@@ -269,6 +253,10 @@
 				</div>
 			</div>
 		</div>
+
+
+
+
 		<!-- Home Page Filter -->
 		<div class="popup popup-filter">
 			<div class="navbar">
@@ -287,7 +275,7 @@
 						<!-- Text inputs -->
 						<li>
 							<div class="item-content">
-								<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+								<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 								<div class="item-inner">
 									<div class="item-title label">Group ID</div>
 									<div class="item-input">
@@ -298,7 +286,7 @@
 						</li>
 						<li>
 							<div class="item-content">
-								<div class="item-media icoBox"><i class="fa fa-stethoscope fa-lg"></i></div>
+								<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
 								<div class="item-inner">
 									<div class="item-title label">Site Number</div>
 									<div class="item-input">
@@ -318,6 +306,109 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- App Settings --> 
+
+
+		<div class="popup popup-app-settings">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="left">
+						<a href="#" class="close-popup">
+						<span>Close</span>
+						</a>
+					</div>
+					<div class="right"> App Settings</div>
+				</div>
+			</div>
+			<div class="content-block">
+				<div class="list-block">
+					<ul>
+					    <!-- Text inputs -->
+					    <li>
+					      <div class="item-content">
+					        <div class="item-media"><i class="icon icon-form-name"></i></div>
+					        <div class="item-inner">
+					          <div class="item-title label">Name</div>
+					          <div class="item-input">
+					            <input type="text" placeholder="Tapan Mishra" disabled>
+					          </div>
+					        </div>
+					      </div>
+					    </li>
+					    <li>
+					      <div class="item-content">
+					        <div class="item-media"><i class="icon icon-form-email"></i></div>
+					        <div class="item-inner">
+					          <div class="item-title label">E-mail</div>
+					          <div class="item-input">
+					            <input type="email" placeholder="tapan.mishra@bankofamerica.com" disabled>
+					          </div>
+					        </div>
+					      </div>
+					    </li>
+					    
+
+					    <!-- Date -->
+					    <li>
+					      <div class="item-content">
+					        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+					        <div class="item-inner">
+					          <div class="item-title label">Registration date</div>
+					          <div class="item-input">
+					            <input type="date" placeholder="Registered day" value="2014-04-30" disabled>
+					          </div>
+					        </div>
+					      </div>
+					    </li>
+					    <!-- Date time-->
+					    <li>
+					      <div class="item-content">
+					        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+					        <div class="item-inner">
+					          <div class="item-title label">Date time</div>
+					          <div class="item-input">
+					            <input type="datetime-local">
+					          </div>
+					        </div>
+					      </div>
+					    </li>
+					    <!-- Switch (Checkbox) -->
+					    <li>
+					      <div class="item-content">
+					        <div class="item-media"><i class="icon icon-form-toggle"></i></div>
+					        <div class="item-inner">
+					          <div class="item-title label">Admin Login</div>
+					          <div class="item-input">
+					            <label class="label-switch">
+					              <input type="checkbox">
+					              <div class="checkbox"></div>
+					            </label>
+					          </div>
+					        </div>
+					      </div>
+					    </li>
+
+					  </ul>
+
+
+
+				</div>
+				<div class="row">
+					<div class="col-10"></div>
+					<div class="col-10"></div>
+					<div class="col-60 appSetButton"><a href="#" class="button color-green button-big close-popup ">Set</a></div>
+					<div class="col-10"></div>
+					<div class="col-10"></div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<!-- Lockbox Inbound Filter Options -->
+
 		<div class="popup popup-filter-lockbox-inbound">
 			<div class="navbar">
 				<div class="navbar-inner">
@@ -335,7 +426,7 @@
 						<!-- Text inputs -->
 						<li>
 							<div class="item-content">
-								<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+								<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 								<div class="item-inner">
 									<div class="item-title label">Group ID</div>
 									<div class="item-input">
@@ -346,7 +437,7 @@
 						</li>
 						<li>
 							<div class="item-content">
-								<div class="item-media icoBox"><i class="fa fa-stethoscope fa-lg"></i></div>
+								<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
 								<div class="item-inner">
 									<div class="item-title label">Site Number</div>
 									<div class="item-input">
@@ -355,22 +446,7 @@
 								</div>
 							</div>
 						</li>
-						<!-- Select -->
-						<li>
-							<div class="item-content">
-								<div class="item-media icoBox"><span class="fa fa-building fa-lg "></span></div>
-								<div class="item-inner">
-									<div class="item-title label">Organization</div>
-									<div class="item-input selectOrg">
-										<select id="orgValue2">
-											<option value="HLSC">HLSC</option>
-											<option value="TCS">TCS</option>
-											<option value="RM">RM</option>
-										</select>
-									</div>
-								</div>
-							</div>
-						</li>
+			
 					</ul>
 				</div>
 				<div class="row">
@@ -382,6 +458,8 @@
 				</div>
 			</div>
 		</div>
+
+
 		<!-- Key In Page Pop-up -->
 		<div class="popup keyin-popup">
 			<div class="navbar">
@@ -411,7 +489,7 @@
 											<!-- Text inputs -->
 											<li>
 												<div class="item-content">
-													<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 													<div class="item-inner">
 														<div class="item-title label">Group ID</div>
 														<div class="item-input">
@@ -422,7 +500,7 @@
 											</li>
 											<li>
 												<div class="item-content">
-													<div class="item-media icoBox"><i class="fa fa-stethoscope fa-lg"></i></div>
+													<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
 													<div class="item-inner">
 														<div class="item-title label">Site Number</div>
 														<div class="item-input">
@@ -434,7 +512,7 @@
 											<!-- Select -->
 											<li>
 												<div class="item-content">
-													<div class="item-media icoBox"><span class="fa fa-building fa-lg "></span></div>
+													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-building fa-lg "></span></div>
 													<div class="item-inner">
 														<div class="item-title label">Organization</div>
 														<div class="item-input selectOrg">
@@ -464,7 +542,7 @@
 										<!-- Text inputs -->
 										<li>
 											<div class="item-content">
-												<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 												<div class="item-inner">
 													<div class="item-title label">Group ID</div>
 													<div class="item-input">
@@ -489,7 +567,7 @@
 										<!-- Text inputs -->
 										<li>
 											<div class="item-content">
-												<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 												<div class="item-inner">
 													<div class="item-title label">Group ID</div>
 													<div class="item-input">
@@ -500,7 +578,7 @@
 										</li>
 										<li>
 											<div class="item-content">
-												<div class="item-media icoBox"><i class="fa fa-stethoscope fa-lg"></i></div>
+												<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
 												<div class="item-inner">
 													<div class="item-title label">Site Number</div>
 													<div class="item-input">
@@ -525,7 +603,7 @@
 										<!-- Text inputs -->
 										<li>
 											<div class="item-content">
-												<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 												<div class="item-inner">
 													<div class="item-title label">Group ID</div>
 													<div class="item-input">
@@ -536,7 +614,7 @@
 										</li>
 										<li>
 											<div class="item-content">
-												<div class="item-media icoBox"><i class="fa fa-stethoscope fa-lg"></i></div>
+												<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
 												<div class="item-inner">
 													<div class="item-title label">Site Number</div>
 													<div class="item-input">
@@ -590,7 +668,7 @@
 											<!-- Text inputs -->
 											<li>
 												<div class="item-content">
-													<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 													<div class="item-inner">
 														<div class="item-title label">Group ID</div>
 														<div class="item-input">
@@ -601,7 +679,7 @@
 											</li>
 											<li>
 												<div class="item-content">
-													<div class="item-media icoBox"><span class="fa fa-arrows-h fa-lg"></span></div>
+													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-arrows-h fa-lg"></span></div>
 													<div class="item-inner">
 														<div class="item-input">
 															<div class="range-slider">
@@ -628,7 +706,7 @@
 										<!-- Text inputs -->
 										<li>
 											<div class="item-content">
-												<div class="item-media icoBox"><span class="fa fa-hospital-o fa-lg"></span></div>
+												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 												<div class="item-inner">
 													<div class="item-title label">Group ID</div>
 													<div class="item-input">
@@ -725,6 +803,26 @@
 				</div>
 			</div>
 		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<!-- All Popovers -->
 
 		<!-- Lockbox Inbound -->
@@ -856,7 +954,7 @@
 		<script type="text/javascript" src="js/framework7.min.js"></script>
 		<!-- Path to your app js-->
 		<script type="text/javascript" src="js/my-app.js"></script>
-		<script type="text/javascript" src="js/reports.js"></script>
+	
 		<!--<script type="text/javascript" src="js/controller.js"></script> -->
 	</body>
 </html>

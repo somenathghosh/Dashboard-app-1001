@@ -1,4 +1,26 @@
 
+
+
+path.slice{
+stroke-width:2px;
+}
+polyline{
+opacity: .3;
+stroke: black;
+stroke-width: 2px;
+fill: none;
+} 
+svg text.percent{
+fill:white;
+text-anchor:middle;
+font-size:12px;
+}
+
+
+			
+
+
+
 .bigger{
 	width: 240px;
    height: 34px;
@@ -190,33 +212,25 @@ div.whiteSubBox{
 	display: table-cell; 
 }
 
- .popover {
+
+.popover {
       width: 200px;
 }
 
-.greySubBGArrow{
+
+
+
+.greySubBGArrow-firstRow-first {
 	font-size:30px;
 	text-align: center;
 	display: table; 
 	position: absolute;
-	top: 5.5em;
+	top: -webkit-calc( 18%);
+	left: -webkit-calc( 33% - 27px);
 	z-index:1;
 }
 
-
-.greySubBGArrow-2{
-	transform:rotate(90deg);
-	-ms-transform:rotate(90deg); /* IE 9 */
-	-webkit-transform:rotate(90deg); /* Opera, Chrome, and Safari */
-	font-size:30px;
-	text-align: center;
-	display: table; 
-	position: absolute;
-	top:270px;
-	z-index:1;
-}
-
-.greySubBGArrow-3{
+.greySubBGArrow-secondRow-first {
 	transform:rotate(180deg);
 	-ms-transform:rotate(180deg); /* IE 9 */
 	-webkit-transform:rotate(180deg); /* Opera, Chrome, and Safari */
@@ -224,26 +238,13 @@ div.whiteSubBox{
 	text-align: center;
 	display: table; 
 	position: absolute;
-	top: 12em;
+	top: -webkit-calc( 46%);
+	left: -webkit-calc( 33% - 38px);
 	z-index:1;
 }
 
 
-.greySubBGArrow-4{
-	transform:rotate(90deg);
-	-ms-transform:rotate(90deg); /* IE 9 */
-	-webkit-transform:rotate(90deg); /* Opera, Chrome, and Safari */
-	font-size:30px;
-	text-align: center;
-	display: table; 
-	position: absolute;
-	top: 16em;
-	z-index:1;
-}
-
-
-
-.greySubBGArrow-5{
+.greySubBGArrow-thirdRow-first {
 	transform:rotate(180deg);
 	-ms-transform:rotate(180deg); /* IE 9 */
 	-webkit-transform:rotate(180deg); /* Opera, Chrome, and Safari */
@@ -251,20 +252,114 @@ div.whiteSubBox{
 	text-align: center;
 	display: table; 
 	position: absolute;
-	top: 19.5em;
+	top: -webkit-calc( 76.5%);
+	left: -webkit-calc( 33% - 38px);
 	z-index:1;
 }
+
+
+
+
+
+.greySubBGArrow-firstRow-second {
+	font-size:30px;
+	text-align: center;
+	display: table; 
+	position: absolute;
+	top: -webkit-calc( 18%);
+	left: -webkit-calc( 66% - 25px);
+	z-index:1;
+}
+
+
+.greySubBGArrow-secondRow-second {
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg); /* IE 9 */
+	-webkit-transform:rotate(180deg); /* Opera, Chrome, and Safari */
+	font-size:30px;
+	text-align: center;
+	display: table; 
+	position: absolute;
+	top: -webkit-calc( 46%);
+	left: -webkit-calc( 66% - 38px);
+	z-index:1;
+}
+
+
+.greySubBGArrow-thirdRow-second {
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg); /* IE 9 */
+	-webkit-transform:rotate(180deg); /* Opera, Chrome, and Safari */
+	font-size:30px;
+	text-align: center;
+	display: table; 
+	position: absolute;
+	top: -webkit-calc( 76.5%);
+	left: -webkit-calc( 66% - 38px);
+	z-index:1;
+}
+
+
+
+
+
+.greySubBGArrow-firstRow-vertical {
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); /* IE 9 */
+	-webkit-transform:rotate(90deg); /* Opera, Chrome, and Safari */
+
+	font-size:30px;
+	text-align: center;
+	display: table; 
+	position: absolute;
+	top: -webkit-calc( 33%);
+	left: -webkit-calc( 80% );
+	z-index:1;
+}
+
+
+
+.greySubBGArrow-secondRow-vertical-1 {
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); /* IE 9 */
+	-webkit-transform:rotate(90deg); /* Opera, Chrome, and Safari */
+
+	font-size:30px;
+	text-align: center;
+	display: table; 
+	position: absolute;
+	top: -webkit-calc( 63.5%);
+	left: -webkit-calc( 13.5% );
+	z-index:1;
+}
+
+
+.greySubBGArrow-secondRow-vertical-2 {
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); /* IE 9 */
+	-webkit-transform:rotate(90deg); /* Opera, Chrome, and Safari */
+
+	font-size:30px;
+	text-align: center;
+	display: table; 
+	position: absolute;
+	top: -webkit-calc( 63.5%);
+	left: -webkit-calc( 80% );
+	z-index:1;
+}
+
+
+
+
 
 
 .greySubBGArrow-Out{
-	transform:rotate(90deg);
-	-ms-transform:rotate(90deg); /* IE 9 */
-	-webkit-transform:rotate(90deg); /* Opera, Chrome, and Safari */
 	font-size:30px;
 	text-align: center;
 	display: table; 
 	position: absolute;
-	top: 7.25em;
+	top: 48%;
+	left:13.8%;
 	z-index:1;
 }
 
@@ -274,19 +369,18 @@ div.whiteSubBox{
 	text-align: center;
 	display: table; 
 	position: absolute;
-	top:300px;
+	top: 25%;
+	left:30.5%;
 	z-index:1;
 }
 
 .greySubBGArrow-3-Out{
-	transform:rotate(90deg);
-	-ms-transform:rotate(90deg); /* IE 9 */
-	-webkit-transform:rotate(90deg); /* Opera, Chrome, and Safari */
 	font-size:30px;
 	text-align: center;
 	display: table; 
 	position: absolute;
-	top:375px;
+	top: 69.8%;
+	left:30.5%;
 	z-index:1;
 }
 
@@ -296,26 +390,68 @@ div.whiteSubBox{
 	text-align: center;
 	display: table; 
 	position: absolute;
-	top: 15.1em;
+	top: 25%;
+	left:47%;
 	z-index:1;
 }
 
 
 
 .greySubBGArrow-5-Out{
-	transform:rotate(180deg);
-	-ms-transform:rotate(180deg); /* IE 9 */
-	-webkit-transform:rotate(180deg); /* Opera, Chrome, and Safari */
 	font-size:30px;
 	text-align: center;
 	display: table; 
 	position: absolute;
-	top: 14.8em;
+	top: 25%;
+	left:63.5%;
 	z-index:1;
 }
 
 
 .greySubBGArrow-6-Out{
+	font-size:30px;
+	text-align: center;
+	display: table; 
+	position: absolute;
+	top: 25%;
+	left:80.5%;
+	z-index:1;
+}
+
+
+.greySubBGArrow-7-Out{
+	font-size:30px;
+	text-align: center;
+	display: table; 
+	position: absolute;
+	top: 69.8%;
+	left:80.5%;
+	z-index:1;
+}
+
+
+
+.greySubBGArrow-Claim{
+	font-size:30px;
+	text-align: center;
+	display: table; 
+	position: absolute;
+	top: 25%;
+	left:30.5%;
+	z-index:1;
+}
+
+.greySubBGArrow-2-Claim{
+	font-size:30px;
+	text-align: center;
+	display: table; 
+	position: absolute;
+	top: 25%;
+	left:64%;
+	z-index:1;
+}
+
+.greySubBGArrow-3-Claim{
 	transform:rotate(90deg);
 	-ms-transform:rotate(90deg); /* IE 9 */
 	-webkit-transform:rotate(90deg); /* Opera, Chrome, and Safari */
@@ -323,11 +459,24 @@ div.whiteSubBox{
 	text-align: center;
 	display: table; 
 	position: absolute;
-	top: 18.2em;
+	top: 48%;
+	left:80%;
 	z-index:1;
 }
 
 
+.greySubBGArrow-4-Claim{
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg); /* IE 9 */
+	-webkit-transform:rotate(180deg); /* Opera, Chrome, and Safari */
+	font-size:30px;
+	text-align: center;
+	display: table; 
+	position: absolute;
+	top: 69.8%;
+	left:46%;
+	z-index:1;
+}
 
 .hidden{
 	display:none;
@@ -340,7 +489,7 @@ div.boxBGInbound{
 	width:100%;
     background: -webkit-linear-gradient(top, #000000 0%,rgba(56,56,56,1) 13%,rgba(78,78,78,1) 27%,rgba(78,78,78,1) 76%,rgba(56,56,56,1) 87%,rgba(27,27,27,1) 100%);
 	border: 1px solid white;
-	height:15.47em;
+	height:16em;
 	position:relative;
 }
 

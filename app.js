@@ -33,6 +33,8 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/index', routes.index);
 app.get('/lockbox-inbound.html', routes.lockboxInbound);
+app.get('/lockbox-outbound.html', routes.lockboxOutbound);
+app.get('/claim.html', routes.claim);
 app.get('/keyin-detail.html', routes.keyinDetail);
 app.get('/reports', routes.reports);
 
