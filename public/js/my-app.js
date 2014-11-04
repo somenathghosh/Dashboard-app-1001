@@ -1037,6 +1037,10 @@ $(document).ready(function () {
     myApp.onPageInit('reports', function (page) {
         console.log("reports");
         
+        $$('.slider-slide input[type="range"]').on('touchmove mousemove', function (e){
+          e.stopPropagation();
+        });
+
         $('#goHome').attr("href", "index");
         var noOfDaysFVA = 30;
 
