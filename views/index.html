@@ -32,9 +32,17 @@
 	</head>
 	<body>
 		<!-- Status bar overlay for full screen mode (PhoneGap) -->
-		<div class="statusbar-overlay"></div>
+		<div class="loadingPage">
+		
+
+		</div>
+
+    <div class="hidden overlay">
+		<div class="statusbar-overlay">
+    	</div>
 		<!-- Panels overlay-->
-		<div class="panel-overlay">	</div>
+		<div class="panel-overlay ">	
+    	</div>
 		<!-- Left panel with reveal effect-->
 		<div class="panel panel-left panel-reveal">
 			<div class="content-block">
@@ -81,8 +89,9 @@
 
 			</div>
 		</div>
+    </div>
 		<!-- Views -->
-		<div class="views">
+		<div class="views hidden">
 			<!-- Your main view, should have "view-main" class -->
 			<div class="view view-main">
 				<!-- Top Navbar-->
@@ -105,51 +114,60 @@
 					<div data-page="index" class="page navbar-fixed toolbar-fixed">
 						<!-- Scrollable page content -->
 						<div class="page-content">
-
-							<div class="row no-gutter">
-								<div class=" welcomeBG col-50">
-									<div id="welcomeName" class="textAlignLeft"> <font >Welcome Stewert Parbery</font></div>
-									<div id="lastLoginTime" class="textAlignCenter"> <font>Last Visited: 06-14-2014 04:00 PM EDT</font></div>
+							
+								<div class="row no-gutter">
+									<div class=" welcomeBG col-50">
+										<div id="welcomeName" class="textAlignLeft"> <font></font></div>
+										<div id="lastLoginTime" class="textAlignCenter"> <font></font></div>
+									</div>
+									<div class=" welcomeBG col-50">
+										<div  id="todaysDate" class="textAlignCenter "> <font ></font> </div>
+										<div  id="todaysTime" class="textAlignCenter "> <font ></font></div>
+									</div>
 								</div>
-								<div class=" welcomeBG col-50">
-									<div  class="textAlignCenter todaysDate"> <font class="Helvetica">Saturday June 14, 2014</font> </div>
-									<div  class="textAlignCenter todaysTime"> <font class="Helvetica">09:00 PM EST</font></div>
-								</div>
-							</div>
+							
 							<div class="row no-gutter">
 								<div class="boxBG col-50 inboundProcess" id="inboundProcess">
-									<div class="row">
-										<a href="#" data-popover=".popover-lockbox-inbound-file-process" class="open-popover">
-											<div style="margin-top: 5px; margin-left: 5px;">
-												<div class="textAlignCenter boxFlip" id="inboundGreen-temp" ><font class="digital" color="#00FF00">1000</font></div>
-											</div>
-										</a>
-										<div class="labelText">Lockbox Inbound Process</div>
-										<a href="#" data-popover=".popover-lockbox-inbound-file-error" class="open-popover">
-											<div style="margin-top: 5px; margin-right: 5px;">
-												<div class="textAlignCenter boxFlip" id="inboundRed-temp"  ><font class="digital" color="#DC3912">18</font></div>
-											</div>
-										</a>
-									</div>
-									<a href="lockbox-inbound.html" class="">
-										<div class="row chartCenter" >
-											<div class="col-100" id="chartL1" >  </div>
-										</div>
-									</a>
-									<div class="row">
-										<div class="divCenter ">
-											<a href="#" data-popover=".popover-lockbox-inbound-file-processed" class="open-popover">
-												<div class="boxFlip" id="inboundGreen1" ><font class="digital " color="#FF9900">8900</font></div>
+									
+								
+										<div class="row">
+											<a href="#" data-popover=".popover-lockbox-inbound-file-process" class="open-popover">
+												<div style="margin-top: 5px; margin-left: 5px;">
+													<div id="lockbox-inbound-file-process" class=" textAlignCenter boxFlip"  ><font class="digital" color="#00FF00"></font></div>
+												</div>
+											</a>
+											<div class="labelText">Lockbox Inbound Process</div>
+											<a href="#" data-popover=".popover-lockbox-inbound-file-error" class="open-popover">
+												<div style="margin-top: 5px; margin-right: 5px;">
+													<div class="textAlignCenter boxFlip" id="lockbox-inbound-file-error"  ><font class="digital" color="#DC3912"></font></div>
+												</div>
 											</a>
 										</div>
-									</div>
+									
+										<a href="lockbox-inbound.html" class="">
+											<div class="row chartCenter" >
+												<div class="col-100" id="chartL1" >  </div>
+											</div>
+										</a>
+										<div class="row">
+											<div class="divCenter ">
+												<a href="#" data-popover=".popover-lockbox-inbound-file-processed" class="open-popover">
+													<div class="boxFlip" id="lockbox-inbound-file-processed" ><font class="digital " color="#FF9900"></font>
+													</div>
+												</a>
+											</div>
+										</div>
+									
 								</div>
 								<div class="boxBG col-50" id="keyinProcess">
+									
+
+							
 									<div class="row">
 										
 									<a href="#" data-popover=".popover-lockbox-keyin-file-assigned" class="open-popover">
 										<div style="margin-top: 5px; margin-left: 5px;">
-											<div class="textAlignCenter boxFlip" id="keyInAssigned" ><font class="digital" color="#FF9900">2890</font></div>
+											<div class="textAlignCenter boxFlip" id="keyInAssigned" ><font class="digital" color="#FF9900"></font></div>
 										</div>
 										
 									</a>
@@ -159,7 +177,7 @@
 
 									<a href="#" data-popover=".popover-lockbox-keyin-file-progress" class="open-popover">
 										<div style="margin-top: 5px; margin-right: 5px;">
-											<div class="textAlignCenter boxFlip" id="keyInProgress" ><font class="digital" color="#00FF00">481</font></div>
+											<div class="textAlignCenter boxFlip" id="keyInProgress" ><font class="digital" color="#00FF00"></font></div>
 										</div>	
 									</a>
 
@@ -172,58 +190,67 @@
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-keyin-file-completed" class="open-popover">
 										<div style="margin-top: -10px; margin-left: 5px;">
-											<div class="textAlignCenter boxFlip" id="keyInCompleted" ><font class="digital" color="#DFC2FC">1000</font></div>
+											<div class="textAlignCenter boxFlip" id="keyInCompleted" ><font class="digital" color="#DFC2FC"></font></div>
 										</div>	
 										</a>
 
 										<a href="#" data-popover=".popover-lockbox-keyin-file-submitted" class="open-popover">
 										<div style=" margin-top: -10px;margin-right: 5px;">
-											<div class="textAlignCenter boxFlip" id="keyInSubmitted" ><font class="digital" color="#DC3912">300</font></div>
+											<div class="textAlignCenter boxFlip" id="keyInSubmitted" ><font class="digital" color="#DC3912"></font></div>
 										</div>	
 										</a>
 
 									</div>
+							
+
 								</div>
 							</div>
 							<div class="row no-gutter">
 								<div class="boxBG col-50" id="outboundProcess">
+									
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-outbound-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
-												<div class="textAlignCenter boxFlip" id="outboundGreen-temp" ><font class="digital" color="#00FF00">1000</font></div>
+												<div class="textAlignCenter boxFlip" id="lockbox-outbound-file-process" ><font class="digital" color="#00FF00"></font></div>
 											</div>
 										</a>
 										<div class="labelText">Lockbox Outbound Process</div>
 										<a href="#" data-popover=".popover-lockbox-outbound-file-error" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
-												<div class="textAlignCenter boxFlip" id="outboundRed-temp"  ><font class="digital" color="#DC3912">18</font></div>
+												<div class="textAlignCenter boxFlip" id="lockbox-outbound-file-process"  ><font class="digital" color="#DC3912"></font></div>
 											</div>
 										</a>
 									</div>
+
 									<a href="lockbox-outbound.html" class="">
 									<div class="row chartCenter">
 										<div class="col-100" id="chartL3" >  </div>
 									</div>
 									</a>
+
 									<div class="row">
 										<div class="divCenter ">
 											<a href="#" data-popover=".popover-lockbox-outbound-file-processed" class="open-popover">
-												<div class="boxFlip" id="outboundProcessed" ><font class="digital " color="#FF9900">8900</font></div>
+												<div class="boxFlip" id="lockbox-outbound-file-processed" ><font class="digital " color="#FF9900"></font></div>
 											</a>
 										</div>
 									</div>
+
+									
 								</div>
 								<div class="boxBG col-50" id="claimFileIn">
+									
+							
 									<div class="row">
 										<a href="#" data-popover=".popover-claim-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
-												<div class="textAlignCenter boxFlip" id="claimFileInProcess" ><font class="digital" color="#00FF00">1000</font></div>
+												<div class="textAlignCenter boxFlip" id="claim-file-process" ><font class="digital" color="#00FF00"></font></div>
 											</div>
 										</a>
 										<div class="labelText">Claim Process</div>
 										<a href="#" data-popover=".popover-claim-file-error" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
-												<div class="textAlignCenter boxFlip" id="claimFileInError"  ><font class="digital" color="#DC3912">18</font></div>
+												<div class="textAlignCenter boxFlip" id="claim-file-error"  ><font class="digital" color="#DC3912"></font></div>
 											</div>
 										</a>
 									</div>
@@ -235,10 +262,12 @@
 									<div class="row">
 										<div class="divCenter ">
 											<a href="#" data-popover=".popover-claim-file-processed" class="open-popover">
-												<div class="boxFlip" id="claimProcessed" ><font class="digital " color="#FF9900">8900</font></div>
+												<div class="boxFlip" id="claim-file-processed" ><font class="digital " color="#FF9900"></font></div>
 											</a>
 										</div>
 									</div>
+								
+
 								</div>
 							</div>
 						</div>
@@ -313,12 +342,9 @@
 		<div class="popup popup-app-settings">
 			<div class="navbar">
 				<div class="navbar-inner">
-					<div class="left">
-						<a href="#" class="close-popup">
-						<span>Close</span>
-						</a>
-					</div>
-					<div class="right"> App Settings</div>
+					<div></div>
+					<div class="center"> Device Registration</div>
+					<div></div>
 				</div>
 			</div>
 			<div class="content-block">
@@ -330,8 +356,8 @@
 					        <div class="item-media"><i class="icon icon-form-name"></i></div>
 					        <div class="item-inner">
 					          <div class="item-title label">Name</div>
-					          <div class="item-input">
-					            <input type="text" placeholder="Tapan Mishra" disabled>
+					          <div id="regName" class="item-input">
+					            <input type="text" id="name" placeholder="Full Name">
 					          </div>
 					        </div>
 					      </div>
@@ -341,53 +367,38 @@
 					        <div class="item-media"><i class="icon icon-form-email"></i></div>
 					        <div class="item-inner">
 					          <div class="item-title label">E-mail</div>
-					          <div class="item-input">
-					            <input type="email" placeholder="tapan.mishra@bankofamerica.com" disabled>
+					          <div id="regEmail" class="item-input">
+					            <input type="email" id="email" placeholder="email">
 					          </div>
 					        </div>
 					      </div>
 					    </li>
 					    
+					    <li>
+					      <div class="item-content">
+					        <div class="item-media"><i class="icon icon-form-password"></i></div>
+					        <div class="item-inner">
+					          <div class="item-title label">Device ID</div>
+					          <div id="regId" class="item-input">
+					            <input type="text" id="deviceID" placeholder="ID">
+					          </div>
+					        </div>
+					      </div>
+					    </li>
 
 					    <!-- Date -->
 					    <li>
 					      <div class="item-content">
 					        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
 					        <div class="item-inner">
-					          <div class="item-title label">Registration date</div>
+					          <div class="item-title label">Registration Date</div>
 					          <div class="item-input">
-					            <input type="date" placeholder="Registered day" value="2014-04-30" disabled>
+					            <input type="text" id="registrationDate" placeholder="Registered day" value="" disabled>
 					          </div>
 					        </div>
 					      </div>
 					    </li>
-					    <!-- Date time-->
-					    <li>
-					      <div class="item-content">
-					        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
-					        <div class="item-inner">
-					          <div class="item-title label">Date time</div>
-					          <div class="item-input">
-					            <input type="datetime-local">
-					          </div>
-					        </div>
-					      </div>
-					    </li>
-					    <!-- Switch (Checkbox) -->
-					    <li>
-					      <div class="item-content">
-					        <div class="item-media"><i class="icon icon-form-toggle"></i></div>
-					        <div class="item-inner">
-					          <div class="item-title label">Admin Login</div>
-					          <div class="item-input">
-					            <label class="label-switch">
-					              <input type="checkbox">
-					              <div class="checkbox"></div>
-					            </label>
-					          </div>
-					        </div>
-					      </div>
-					    </li>
+					   
 
 					  </ul>
 
@@ -397,7 +408,7 @@
 				<div class="row">
 					<div class="col-10"></div>
 					<div class="col-10"></div>
-					<div class="col-60 appSetButton"><a href="#" class="button color-green button-big close-popup ">Set</a></div>
+					<div class="col-60 appSetButton"><a href="#" class="button color-green button-big">Set</a></div>
 					<div class="col-10"></div>
 					<div class="col-10"></div>
 				</div>
@@ -677,18 +688,7 @@
 													</div>
 												</div>
 											</li>
-											<li>
-												<div class="item-content">
-													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-arrows-h fa-lg"></span></div>
-													<div class="item-inner">
-														<div class="item-input">
-															<div class="range-slider">
-																<input id="VT-slider" type="range" min="1" max="30" value="30" step="1" style="width:95%"><span id="VT-slider-text" style="position:relative;top:-8px;margin-left:5px">30</span>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
+								
 										</ul>
 									</div>
 								</div>
@@ -946,6 +946,104 @@
 
 		<!-- end -->
 
+		<!-- Lockbox Inbound Pop-over -->
+		<div class="popover popover-WPIcon">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p><Strong>Waiting to be Processed</strong></p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="popover popover-SIIcon">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p><Strong>Waiting to be Processed</strong></p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="popover popover-EVIcon">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p><Strong>Waiting to be Processed</strong></p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="popover popover-BSIcon">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p><Strong>Waiting to be Processed</strong></p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="popover popover-PIIcon">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p><Strong>Waiting to be Processed</strong></p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="popover popover-DMIcon">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p><Strong>Waiting to be Processed</strong></p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="popover popover-ISIcon">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p><Strong>Waiting to be Processed</strong></p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="popover popover-IAIcon">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p><Strong>Waiting to be Processed</strong></p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="popover popover-WLIcon">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="content-block">
+					<p><Strong>Waiting to be Processed</strong></p>
+					<p></p>
+				</div>
+			</div>
+		</div>
+
+		<!-- end -->
+
+
+
+
 
 
 
@@ -954,6 +1052,8 @@
 		<script type="text/javascript" src="js/framework7.min.js"></script>
 		<!-- Path to your app js-->
 		<script type="text/javascript" src="js/my-app.js"></script>
+
+
 	
 		<!--<script type="text/javascript" src="js/controller.js"></script> -->
 	</body>

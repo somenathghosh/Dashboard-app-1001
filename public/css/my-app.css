@@ -1,5 +1,14 @@
+.errorClass { border:  1px solid red; }
 
 
+a.anchorColor
+{
+    
+
+    color: white;
+
+     
+}
 
 path.slice{
 stroke-width:2px;
@@ -17,7 +26,12 @@ font-size:12px;
 }
 
 
-			
+.loadingPage{
+	height:100%;
+	width:100%;
+	background-repeat: no-repeat;
+	background-image: url(../img/OS-X-Dashboard-Wallpaper-1024x768.jpg);
+}		
 
 
 

@@ -9,6 +9,7 @@ $(document).ready(function () {
         actionsCloseByOutside: false,
         modalCloseByOutside: false,
         popupCloseByOutside: false
+        //modalPreloaderTitle: "Your Dashboard is getting prepared. Please wait….!!!"
     });
 
     // Export selectors engine 
@@ -20,199 +21,612 @@ $(document).ready(function () {
         dynamicNavbar: true
     });
 
+    var mySlider = myApp.slider('.slider-container', {
+        pagination: '.slider-pagination'
+    });
 
 
-
-    $('#siteNumberValue').val(sessionStorage.siteNumber);
-    $('#groupIDValue').val('CMC');
-    $('div.selectOrg select').val(sessionStorage.organization);
-    $('.submitButton a').click(function () {
-
-        if ($("#siteNumberValue-WL").val() != "" && $("#groupIDValue-WL").val() != "" && $("#orgValue-WL").val() != "") {
-            var salesData2 = [
-
-            {
-                label: "Plus",
-                value: 500,
-                color: "#DC3912"
-            }, {
-                label: "Lite",
-                value: 900,
-                color: "#FF9900"
-            }, {
-                label: "Elite",
-                value: 400,
-                color: "#109618"
-            }, {
-                label: "Super",
-                value: 600,
-                color: "#000099"
-            }, {
-                label: "Minor",
-                value: 300,
-                color: "#000000"
-            }, {
-                label: "Delux",
-                value: 700,
-                color: "#990099"
-            }];
-            Donut3D.transition("KeyinDetailPie", salesData2, 250, 193, 30, 0.0);
-
-        }
+    /**************************************************************************************************/
 
 
-        if ($("#groupIDValue-V").val() != "") {
-            function exampleData4() {
-                return [{
-                    key: "Cumulative Return",
-                    values: [{
-                        "label": "Expected Volume",
-                        "value": 65000
-                    }, {
-                        "label": "Actual Volume",
-                        "value": 45000
-                    }]
-                }]
+    var Store = (function(){
+
+        var obj = [];
+
+        var instance;
+
+        var Storage = function(){
+            
+            this.retrieve = function(type){
+
+                return obj[type];
+            };
+
+            this.store = function(data, type){
+
+                obj[type] = data;
+
+            };
+
+        };
+
+        return {
+            getInstance: function(){
+                if(!instance){
+                    var instance = new Storage();
+
+                }
+                
+                return instance;
 
             }
-            var chart = nv.models.discreteBarChart().x(function (d) {
-                return d.label
-            }) //Specify the data accessors.
-            .y(function (d) {
-                return d.value
-            }).staggerLabels(false) //Too many bars and not enough room? Try staggering labels.
-            .tooltips(false) //Don't show tooltips
-            .showValues(true) //...instead, show the bar value right on top of each bar.
-            .transitionDuration(350).color(['#DC3912', '#FF9900']);
-
-
-            d3.select('#chartL7 svg').datum(exampleData4()).transition().duration(500).call(chart);
-
-            nv.utils.windowResize(chart.update);
-
 
 
         }
-        if ($("#siteNumberValue-TAT").val() != "" && $("#groupIDValue-TAT").val() != "") {
 
-            var salesData3 = [
 
-            {
-                label: "Plus",
-                value: 900,
-                color: "#DC3912"
-            }, {
-                label: "Lite",
-                value: 1000,
-                color: "#FF9900"
-            }, {
-                label: "Elite",
-                value: 500,
-                color: "#109618"
-            }];
-            Donut3D.transition("TatPie", salesData3, 100, 79, 20, 0.7);
+    })();
 
+
+    
+
+      
+    var ViewMapper = function( target, port, model) {
+
+        var template = $$(port).html();
+
+        var compiledTemplate = Template7.compile(template);
+        
+        var html = compiledTemplate(model);
+        $(target).html(html);
+
+
+    };
+
+    var ViewModelHomeInbound = function(){
+
+        this.applyModel = function(data){    
+
+            var date = new Date();
+
+            this.initialize();
+
+            $('#welcomeName').html('<font>'+localStorage.name+'</font>');
+            $('#lastLoginTime').html('<font>'+localStorage.lastVisitedDateTime+'</font>');
+            $('#todaysDate').html('<font >'+date.dateNow() +'</font>');
+            $('#todaysTime').html('<font >'+date.timeNow() +'</font>');
+            $('#lockbox-inbound-file-process').html('<font class="digital" color="#00FF00">'+ data.fileInProcess+'</font>');
+            $('#lockbox-inbound-file-error').html('<font class="digital" color="#DC3912">'+data.fileInError+'</font>');
+            $('#lockbox-inbound-file-processed').html('<font class="digital " color="#FF9900">'+data.fileProcessed+'</font>');
+            /*
+            $('#keyInAssigned').html('');
+            $('#keyInProgress').html('');
+            $('#keyInCompleted').html('');
+            $('#keyInSubmitted').html('');
+            $('#lockbox-outbound-file-process').html('');
+            $('#lockbox-outbound-file-process').html('');
+            $('#lockbox-outbound-file-processed').html('');
+            $('#claim-file-process').html('');
+            $('#claim-file-error').html('');
+            $('#claim-file-processed').html('');
+            */
+
+
+        };
+
+        this.initialize = function(){
+            $('#welcomeName').html('');
+            $('#lastLoginTime').html('');
+            $('#todaysDate').html('');
+            $('#todaysTime').html('');
+            $('#lockbox-inbound-file-process').html('');
+            $('#lockbox-inbound-file-error').html('');
+            $('#lockbox-inbound-file-processed').html('');
+            /*
+            $('#keyInAssigned').html('');
+            $('#keyInProgress').html('');
+            $('#keyInCompleted').html('');
+            $('#keyInSubmitted').html('');
+            $('#lockbox-outbound-file-process').html('');
+            $('#lockbox-outbound-file-process').html('');
+            $('#lockbox-outbound-file-processed').html('');
+            $('#claim-file-process').html('');
+            $('#claim-file-error').html('');
+            $('#claim-file-processed').html('');
+            */
+
+        };
+
+
+    }
+
+
+    var ViewModelHomeKeyIn= function(){
+
+        this.applyModel = function(data){    
+
+            var date = new Date();
+
+            this.initialize();
+
+            
+            
+            $('#keyInAssigned').html('<font class="digital" color="#FF9900">'+data.assigned+'</font>');
+            $('#keyInProgress').html('<font class="digital" color="#00FF00">'+data.inProgress+'</font>');
+            $('#keyInCompleted').html('<font class="digital" color="#DFC2FC">'+data.completed+'</font>');
+            $('#keyInSubmitted').html('<font class="digital" color="#DC3912">'+data.submitted+'</font>');
+            /*
+            $('#lockbox-outbound-file-process').html('');
+            $('#lockbox-outbound-file-process').html('');
+            $('#lockbox-outbound-file-processed').html('');
+            $('#claim-file-process').html('');
+            $('#claim-file-error').html('');
+            $('#claim-file-processed').html('');
+            */
+
+
+        };
+
+        this.initialize = function(){
+            
+          
+            $('#keyInAssigned').html('');
+            $('#keyInProgress').html('');
+            $('#keyInCompleted').html('');
+            $('#keyInSubmitted').html('');
+              /*
+            $('#lockbox-outbound-file-process').html('');
+            $('#lockbox-outbound-file-process').html('');
+            $('#lockbox-outbound-file-processed').html('');
+            $('#claim-file-process').html('');
+            $('#claim-file-error').html('');
+            $('#claim-file-processed').html('');
+            */
+
+        };
+
+
+    }
+
+
+ 
+    var ViewModelInbound = function(){
+
+        this.applyModel = function(data){
+
+            this.initialize();
+            $('#WTPGreen').html('<font class="digit" color="#00FF00">' + data.STEP1.fileInProcess +'</font> ');
+            $('#SIGreen').html('<font class="digit" color="#00FF00">' + data.STEP2.fileInProcess +'</font> ');
+            $('#EVGreen').html('<font class="digit" color="#00FF00">' + data.STEP3.fileInProcess +'</font> ');
+            $('#DMGreen').html('<font class="digit" color="#00FF00">' + data.STEP4.fileInProcess +'</font> ');
+            $('#PIGreen').html('<font class="digit" color="#00FF00">' + data.STEP5.fileInProcess +'</font> ');
+            $('#BSGreen').html('<font class="digit" color="#00FF00">' + data.STEP6.fileInProcess +'</font> ');
+            $('#WLGreen').html('<font class="digit" color="#00FF00">' + data.STEP7.fileInProcess +'</font> ');
+            $('#IAGreen').html('<font class="digit" color="#00FF00">' + data.STEP8.fileInProcess +'</font> ');
+            $('#ISGreen').html('<font class="digit" color="#00FF00">' + data.STEP9.fileInProcess +'</font> ');
+
+            $('#WTPRed').html('<font class="digit" color="#FF0000">' + data.STEP1.fileInError +'</font> ');
+            $('#SIRed').html('<font class="digit" color="#FF0000">' + data.STEP2.fileInError +'</font> ');
+            $('#EVRed').html('<font class="digit" color="#FF0000">' + data.STEP3.fileInError +'</font> ');
+            $('#DMRed').html('<font class="digit" color="#FF0000">' + data.STEP4.fileInError +'</font> ');
+            $('#PIRed').html('<font class="digit" color="#FF0000">' + data.STEP5.fileInError +'</font> ');
+            $('#BSRed').html('<font class="digit" color="#FF0000">' + data.STEP6.fileInError +'</font> ');
+            $('#WLRed').html('<font class="digit" color="#FF0000">' + data.STEP7.fileInError +'</font> ');
+            $('#IARed').html('<font class="digit" color="#FF0000">' + data.STEP8.fileInError +'</font> ');
+            $('#ISRed').html('<font class="digit" color="#FF0000">' + data.STEP9.fileInError +'</font> ');
+
+            
+        };
+
+        this.initialize = function(){
+            $('#WTPGreen').html('');
+            $('#SIGreen').html('');
+            $('#EVGreen').html('');
+            $('#DMGreen').html('');
+            $('#PIGreen').html('');
+            $('#BSGreen').html('');
+            $('#WLGreen').html('');
+            $('#IAGreen').html('');
+            $('#ISGreen').html('');
+
+            $('#WTPRed').html('');
+            $('#SIRed').html('');
+            $('#EVRed').html('');
+            $('#DMRed').html('');
+            $('#PIRed').html('');
+            $('#BSRed').html('');
+            $('#WLRed').html('');
+            $('#IARed').html('');
+            $('#ISRed').html('');
+
+
+        };
+
+
+    };
+
+
+        
+
+
+
+    
+
+
+
+    
+    (function () {
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+        Date.prototype.getMonthName = function () {
+            return months[this.getMonth()];
+        };
+        Date.prototype.getDayName = function () {
+            return days[this.getDay()];
+        };
+
+        Date.prototype.dateNow = function(){
+            var date = new Date();
+            return date.getDayName() + ' ' + date.getMonthName() + ' ' + date.getDate() + ',' + date.getFullYear();
+
+
+        };
+
+        Date.prototype.timeNow = function(){
+            var date = new Date();
+            return date.getHours() + ':' + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':' + (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()) + ' ' + date.toString().match(/\(([A-Za-z\s].*)\)/)[1];
+
+        };
+
+
+    })();
+
+
+    var API = function(){
+
+        this.getIt = function(url, callback){
+
+            $.ajax({
+            url: url,
+           
+            beforeSend: function(xhr) {
+                xhr.overrideMimeType("text/plain; charset=x-user-defined");
+            }
+            })
+            .done(function(data) {
+                
+                try {
+                    
+                    var jsonData = JSON.parse(data);
+                    callback(true, jsonData);
+
+                }
+                catch(e){
+                
+                    console.log(e);
+                    callback(false);
+                }
+                
+
+            }).fail(function(err) {
+                console.log('call fails for ' + url);
+                callback(false);
+
+            });
+
+        };
+
+
+    };
+    
+
+    function registration(data, callback) {
+        console.log(data);
+
+         $.ajax({
+            url: "https://dashboard-server-1001.herokuapp.com/api/v1/users",
+            type: "POST",
+            data: JSON.stringify(data),
+            contentType: "application/json"
+            
+        })
+        .done(function(data) {
+            callback(true);
+        
+        }).fail(function(err) {
+            serverDidConnect = false;
+            callback(false);
+
+        });
+ 
+    };
+
+    
+
+
+    var drawChartHome = function(data, selector, id, r) {
+        var svgInbound = d3.select(selector).append("svg").attr("width", 300).attr("height", 300);
+       
+
+        svgInbound.append("g").attr("id", id);
+   
+        
+        Donut3D.draw(id, data, 150, 150, 130, 100, 30, r);
+        
+    };
+
+    var drawChartChangeData = function(id, data, r ) {
+            Donut3D.transition(id, data, 130, 100, 30, r);
+       
+    };
+
+        
+
+        
+
+
+   var ChartDataCreator = function(data){
+
+        this.chartData = [
+
+                            {
+                                label: "File In Error",
+                                value: data.fileInError,
+                                color: "#DC3912"
+                            }, {
+                                label: "File in Process",
+                                value: data.fileInProcess,
+                                color: "#109618"
+                            }, {
+                                label: "File Processed",
+                                value: data.fileProcessed,
+                                color: "#FF9900"
+                            }
+                        ]; 
+       
+        this.chartKeyinData = [
+
+                                {
+                                    label: "File Submitted",
+                                    value: data.submitted,
+                                    color: "#DC3912"
+                                }, {
+                                    label: "File in Progress",
+                                    value: data.inProgress,
+                                    color: "#109618"
+                                }, {
+                                    label: "File Assigned",
+                                    value: data.assigned,
+                                    color: "#FF9900"
+                                },
+
+                                {
+                                    label: "File Completed",
+                                    value: data.completed,
+                                    color: "#7211CE"
+                                }
+                            ];
+
+    
+   };
+
+
+
+    
+
+    
+ 
+
+    //---------------------------------------------------------------------------------------------//
+
+
+
+    /************************************************************************************************/
+
+
+    var date = new Date();
+   
+    myApp.showPreloader('Preparing Dashboard');
+    
+    //localStorage.removeItem("deviceID"); // remove it to Test
+
+    if(!localStorage.deviceID){
+
+        myApp.hidePreloader();
+        
+        $('#registrationDate').val(date.dateNow());
+        myApp.popup('.popup-app-settings');
+        $('.appSetButton').click(function(){               
+            var data = {};
+            var checkFlag = true;
+            if($('#name').val()){
+                $('#regName').removeClass("errorClass");
+                data.name = $('#name').val();
+            }else{
+                checkFlag = false;
+                $('#regName').addClass("errorClass");
+                //thow error
+            }
+            if($('#email').val().indexOf("@")>-1){
+                $('#regEmail').removeClass("errorClass");
+                data.email = $('#email').val();
+            }else{
+                $('#regEmail').addClass("errorClass");
+                checkFlag = false;
+                //throw error
+            }
+            if($('#deviceID').val()){
+                $('#regId').removeClass("errorClass");
+                data.deviceID = $('#deviceID').val();
+            }else{
+                $('#regId').addClass("errorClass");
+                checkFlag = false;
+            }
+
+            if(checkFlag){
+                myApp.closeModal('.popup-app-settings');
+            
+            data.registrationDate = $('#registrationDate').val();
+            myApp.showPreloader('Registering your Device...');
+            
+            registration(data, function(success){
+                if(success){
+                    
+                    localStorage.deviceID = data.deviceID;
+                    localStorage.name = data.name;
+
+                    buildHomePage();
+
+
+                }
+                else{
+
+                    myApp.alert('Could not Connect to the Server while Registering', 'Error:', function() {
+                        myApp.hidePreloader();
+                        myApp.popup('.popup-app-settings');
+                    });
+                }
+
+
+            });
 
         }
-        if ($("#siteNumberValue-MPI").val() != "" && $("#groupIDValue-MPI").val() != "") {
-            function exampleData3() {
-                return [{
-                    key: "Cumulative Return",
-                    values: [{
-                        "label": "Yesterday",
-                        "value": 77.11
-                    }, {
-                        "label": "Two Day Ago",
-                        "value": 44.12
-                    }, {
-                        "label": "Three days Ago",
-                        "value": 21.87
-                    }, {
-                        "label": "Four Days Ago",
-                        "value": 99.86
-                    }, {
-                        "label": "Five Days Ago",
-                        "value": 55.10
-                    }, {
-                        "label": "Six Days Ago",
-                        "value": 75.87
-                    }, {
-                        "label": "Seven Days Ago",
-                        "value": 100.00
-                    }]
-                }]
+
+        });
+
+
+
+
+    }
+
+    else{
+
+        localStorage.lastVisitedDateTime = localStorage.visitedNow || (date.dateNow() + ' '+  date.timeNow());
+        localStorage.visitedNow = date.dateNow() + ' '+  date.timeNow();
+        
+
+        buildHomePage();
+
+
+    }
+   
+
+    function buildHomePage (){
+
+        
+
+
+        var api = new API();
+
+        function inboundHomeCallback (success, data){
+
+            if(success){
+
+                //ViewMapper('#lockboxInboundHomeBar', '#lockboxInboundHomeTemplate', data);
+                var vm = new ViewModelHomeInbound();
+                vm.applyModel(data);
+                var cData = new ChartDataCreator(data);
+                drawChartHome(cData.chartData, "#chartL1","InboundDonut", 0.7);
+                var api = new API();
+                api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home",outboundHomeCallback);
 
             }
-            var chart = nv.models.discreteBarChart().x(function (d) {
-                return d.label
-            }) //Specify the data accessors.
-            .y(function (d) {
-                return d.value
-            }).staggerLabels(false) //Too many bars and not enough room? Try staggering labels.
-            .tooltips(false) //Don't show tooltips
-            .showValues(true) //...instead, show the bar value right on top of each bar.
-            .transitionDuration(350).color(['#DC3912', '#FF9900', '#109618', '#000099', '#000000', '#990099', 'gray']);
-            d3.select('#chartL8 svg').datum(exampleData3()).transition().duration(500).call(chart)
+            else{
+                
+                  myApp.alert('Could not Connect to the Server - 1', 'Error:', function() {
+                    myApp.hidePreloader();
+                  });
 
-            nv.utils.windowResize(chart.update);
+            }
 
-        }
-
-        //console.log(sessionStorage.siteNumber);
-
-        io.setSiteNumber($('#siteNumberValue').val());
-        io.setOrganization($('#orgValue').val());
-
-        sessionStorage.siteNumber = $('#siteNumberValue').val();
-        sessionStorage.organization = $('#orgValue').val();
-
-        if ($('.boxFlip').hasClass('animated flip')) {
-            $('.boxFlip').removeClass('animated flip');
-        }
-
-        setTimeout(function () {
-
-            getLockboxNumbers();
-
-            getLockboxInboundDetail();
-
-            getLockboxOutboundDetail()
-
-            $('.boxFlip').addClass('animated flip');
-        }, 100);
-
-        $('div.selectOrg select').val(io.getOrganization());
-        $('#siteNumberValue').val(io.getSiteNumber());
-
-    });
+        };
 
 
+        function outboundHomeCallback (success, data){
+            
+            if(success){
+                //ViewMapper('#lockboxOutboundHomeBar', '#lockboxOutboundHomeTemplate', data);
+                api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home",keyInHomeCallback);
+                var cData = new ChartDataCreator(data);
+                drawChartHome(cData.chartData, "#chartL3","OutboundDonut", 0.7);
+
+            }
+            else{
+                
+                  myApp.alert('Could not Connect to the Server -2 ', 'Error:', function() {
+                    myApp.hidePreloader();
+                  });
+
+            }
+
+        };
+
+        function keyInHomeCallback (success, data){
+
+            if(success){
+                //ViewMapper('#lockboxKeyinHomeBar', '#lockboxKeyinHomeTemplate', data);
+                var vm = new ViewModelHomeKeyIn();
+                vm.applyModel(data);
+                api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home",claimHomeCallback);
+                
+                var cData = new ChartDataCreator(data);
+                drawChartHome(cData.chartKeyinData, "#chartL2","keyInboundDonut", 0.0);
+
+
+            }
+            else{
+            
+                  myApp.alert('Could not Connect to the Server - 3', 'Error:', function() {
+                    myApp.hidePreloader();
+                  });
+
+            }
+
+        };
+
+
+        function claimHomeCallback (success, data){
+
+            if(success){
+                //ViewMapper('#claimHomeBar', '#claimHomeTemplate', data);
+                var cData = new ChartDataCreator(data);
+
+                drawChartHome(cData.chartData, "#chartL4","claimDonut", 0.7);
+
+                setTimeout(function(){
+                    myApp.hidePreloader();
+                    $(".loadingPage").addClass("hidden");
+                    $(".views").removeClass("hidden");
+                    $(".overlay").removeClass("hidden");
+
+
+                },2000);
+
+            }
+            else{
+                
+                  myApp.alert('Could not Connect to the Server -4 ', 'Error:', function() {
+                    myApp.hidePreloader();
+                  });
+
+            }
+
+        };
+
+
+        api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home",inboundHomeCallback);
+
+       
+    };
 
 
 
-
-    myApp.onPageInit('index', function (page) {
-        console.log("index-init");
-        drawChart();
-        if ($('.boxFlip').hasClass('animated flip')) {
-            $('.boxFlip').removeClass('animated flip');
-
-        } else {
-            getLockboxNumbers();
-            getLockboxInboundDetail();
-            getLockboxOutboundDetail();
-
-            $('.boxFlip').addClass('animated flip');
-        }
-    });
+    /************************************************************************************************/
 
 
 
-    $$(document).on('click', '.go-home', function () {
-        console.log("home");
-        drawChart();
-        //mainView.loadPage('/');
-    });
 
 
 
@@ -430,8 +844,8 @@ $(document).ready(function () {
     });
 
     myApp.onPageInit('lockbox-outbound', function (page) {
-                    getLockboxOutboundDetail(); 
-        console.log('page initiated');
+        getLockboxOutboundDetail(); 
+        
 
         // clear interval when back button is clicked       
         $('.intClear a').click(function(){
@@ -487,142 +901,15 @@ $(document).ready(function () {
 
     myApp.onPageInit('lockbox-inbound', function (page) {
 
-        //console.log('page initiated');
-
-        
-
-        $$('#WTPIcon').on('click', function(){
-            var popoverHTML = '<div class="popover">'+
-                      '<div class="popover-inner">'+
-                        '<div class="content-block">'+
-                          '<p><Strong>Waiting to be Processed</strong></p>'+
-                          '<p>Lorem ipsum dolor sit amet</p>'+
-                        '</div>'+
-                      '</div>'+
-                    '</div>';
-            var target = this;
-            var removeOnClose = true;
-            myApp.popover(popoverHTML, target, removeOnClose);
-        });
-
-        $$('#SIIcon').on('click', function(){
-            var popoverHTML = '<div class="popover">'+
-                      '<div class="popover-inner">'+
-                        '<div class="content-block">'+
-                          '<p><Strong>Site Identification</strong></p>'+
-                          '<p>Lorem ipsum dolor sit amet</p>'+
-                        '</div>'+
-                      '</div>'+
-                    '</div>';
-            var target = this;
-            var removeOnClose = true;
-            myApp.popover(popoverHTML, target, removeOnClose);
-        });
-        
-        $$('#EVIcon').on('click', function(){
-            var popoverHTML = '<div class="popover">'+
-                      '<div class="popover-inner">'+
-                        '<div class="content-block">'+
-                          '<p><Strong>Extraction and Validation</strong></p>'+
-                          '<p>Lorem ipsum dolor sit amet</p>'+
-                        '</div>'+
-                      '</div>'+
-                    '</div>';
-            var target = this;
-            var removeOnClose = true;
-            myApp.popover(popoverHTML, target, removeOnClose);
-        });
-
-        $$('#DMIcon').on('click', function(){
-            var popoverHTML = '<div class="popover">'+
-                      '<div class="popover-inner">'+
-                        '<div class="content-block">'+
-                          '<p><Strong>Data Management</strong></p>'+
-                          '<p>Lorem ipsum dolor sit amet</p>'+
-                        '</div>'+
-                      '</div>'+
-                    '</div>';
-            var target = this;
-            var removeOnClose = true;
-            myApp.popover(popoverHTML, target, removeOnClose);
-        });
-        
-        $$('#PIIcon').on('click', function(){
-            var popoverHTML = '<div class="popover">'+
-                      '<div class="popover-inner">'+
-                        '<div class="content-block">'+
-                          '<p><Strong>Payer Identification</strong></p>'+
-                          '<p>Lorem ipsum dolor sit amet</p>'+
-                        '</div>'+
-                      '</div>'+
-                    '</div>';
-            var target = this;
-            var removeOnClose = true;
-            myApp.popover(popoverHTML, target, removeOnClose);
-        });
-        
-        $$('#BSIcon').on('click', function(){
-            var popoverHTML = '<div class="popover">'+
-                      '<div class="popover-inner">'+
-                        '<div class="content-block">'+
-                          '<p><Strong>Batch Split</strong></p>'+
-                          '<p>Lorem ipsum dolor sit amet</p>'+
-                        '</div>'+
-                      '</div>'+
-                    '</div>';
-            var target = this;
-            var removeOnClose = true;
-            myApp.popover(popoverHTML, target, removeOnClose);
-        });
-
-        $$('#WLIcon').on('click', function(){
-            var popoverHTML = '<div class="popover">'+
-                      '<div class="popover-inner">'+
-                        '<div class="content-block">'+
-                          '<p><Strong>Worklist Load</strong></p>'+
-                          '<p>Lorem ipsum dolor sit amet</p>'+
-                        '</div>'+
-                      '</div>'+
-                    '</div>';
-            var target = this;
-            var removeOnClose = true;
-            myApp.popover(popoverHTML, target, removeOnClose);
-        });
-
-        $$('#IAIcon').on('click', function(){
-            var popoverHTML = '<div class="popover">'+
-                      '<div class="popover-inner">'+
-                        '<div class="content-block">'+
-                          '<p><Strong>Image Archive</strong></p>'+
-                          '<p>Lorem ipsum dolor sit amet</p>'+
-                        '</div>'+
-                      '</div>'+
-                    '</div>';
-            var target = this;
-            var removeOnClose = true;
-            myApp.popover(popoverHTML, target, removeOnClose);
-        });
-
-        $$('#ISIcon').on('click', function(){
-            var popoverHTML = '<div class="popover">'+
-                      '<div class="popover-inner">'+
-                        '<div class="content-block">'+
-                          '<p><Strong>Image Split & Conversion</strong></p>'+
-                          '<p>Lorem ipsum dolor sit amet</p>'+
-                        '</div>'+
-                      '</div>'+
-                    '</div>';
-            var target = this;
-            var removeOnClose = true;
-            myApp.popover(popoverHTML, target, removeOnClose);
-        });
-
         getLockboxInboundDetail();
+        
+
+       
 
         // clear interval when back button is clicked       
         $('.intClear a').click(function () {
             clearInterval(arrowSequence);
-            console.log("back");
+            //console.log("back");
 
         });
 
@@ -631,7 +918,7 @@ $(document).ready(function () {
             sequence(i);
             i++;
             if (i == 7) {
-                console.log(arrowSequence);
+                //console.log(arrowSequence);
                 clearInterval(arrowSequence);
             }
         }, 1000);
@@ -653,382 +940,30 @@ $(document).ready(function () {
             }
         });
 
+        
+       
 
-        $$('.popup-services').on('click', function () {
-            var popupHTML = '<div class="popup">' + '<div class="content-block">' + '<p>Popup created dynamically.</p>' + '<p><a href="#" class="close-popup">Close me</a></p>' + '</div>' + '</div>'
-            myApp.popup(popupHTML);
-
-
-
-        });
-
-
+       
 
     });
 
 
 
 
-/*
+
+
+
+
+
+
+
+
 
     
 
-    $$('.pull-to-refresh-content').on('refresh', function(e) {
-        // Emulate 2s loading
-        if ($('.boxFlip').hasClass('animated flip')) {
-            $('.boxFlip').removeClass('animated flip');
-        }
-        setTimeout(function() {
-            //alert('working');
-            getLockboxNumbers();
-            getLockboxInboundDetail();
-            getLockboxOutboundDetail();
-            $('.boxFlip').addClass('animated flip');
-            myApp.pullToRefreshDone();
-        }, 2000);
-    });
 
-*/
 
 
-
-
-
-
-
-    var mySlider = myApp.slider('.slider-container', {
-        pagination: '.slider-pagination'
-    });
-
-
-
-
-
-
-
-    /****************************************************************************************************************************/
-
-
-
-    $('#siteNumberInput').val('11');
-    sessionStorage.siteNumber = '11';
-    sessionStorage.organization = 'HLSC';
-
-    function IPObject(siteNumber, organization) {
-
-        this.siteNumber = siteNumber;
-        this.organization = organization;
-        this.getSite = function () {
-
-        };
-
-    };
-
-    IPObject.prototype.getSiteNumber = function () {
-        return this.siteNumber;
-    };
-
-    IPObject.prototype.getOrganization = function () {
-        return this.organization;
-    };
-
-    IPObject.prototype.setSiteNumber = function (number) {
-        this.siteNumber = number;
-    };
-
-    IPObject.prototype.setOrganization = function (org) {
-        this.organization = org;
-    };
-    //
-
-
-    io = new IPObject(sessionStorage.siteNumber, sessionStorage.organization);
-
-    //console.log(io);
-
-    var date = new Date();
-    (function () {
-        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-        Date.prototype.getMonthName = function () {
-            return months[this.getMonth()];
-        };
-        Date.prototype.getDayName = function () {
-            return days[this.getDay()];
-        };
-    })();
-
-    $('.todaysDate').html('<font class="Helvetica">' + date.getDayName() + ' ' + date.getMonthName() + ' ' + date.getDate() + ',' + date.getFullYear() + '</font>');
-    $('.todaysTime').html('<font class="Helvetica">' + date.getHours() + ':' + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':' + (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()) + ' ' + date.toString().match(/\(([A-Za-z\s].*)\)/)[1] + '</font>');
-
-
-    //Get Name and Last Login info from Server
-
-    (function () {
-        var loginAPI = "http://server-test42.herokuapp.com/login";
-        $.getJSON(loginAPI, {
-            format: "json"
-        }).done(function (data) {
-            $('#welcomeName').html('<font class="Helvetica">' + 'Welcome ' + data[0].userId + '</font>');
-            $('#lastLoginTime').html('<font class="Helvetica"> Last Visited: ' + data[0].lastLogin + '</font>');
-        });
-    })();
-
-    //
-
-
-    //Define Function to get the data from server
-
-    function getResource(io, callback) {
-        var resourceAPI = "http://server-test42.herokuapp.com/resources/" + io.getSiteNumber() + "&" + io.getOrganization();
-        $.getJSON(resourceAPI, {
-            format: "json"
-        }).done(function (data) {
-            var err = null;
-            try {
-
-                var data = data[0];
-                sessionStorage.setItem('data', JSON.stringify(data));
-                //console.log(sessionStorage.data);
-
-            } catch (error) {
-                err = error;
-                console.log(err);
-            }
-            //console.log(data);
-            callback(err, data);
-        });
-
-
-
-
-    };
-
-
-
-    function getLockboxNumbers() {
-        getResource(io, function (err, d) {
-            if (err) alert('Server-Error-1001');
-            else {
-
-                var sumInGreen = d.S1.G + d.S2.G + d.S3.G + d.S4.G + d.S5.G + d.S6.G + d.S7.G + d.S8.G + d.S9.G;
-                var sumInRed = d.S1.R + d.S2.R + d.S3.R + d.S4.R + d.S5.R + d.S6.R + d.S7.R + d.S8.R + d.S9.R;
-                var percentageIn = parseInt((sumInGreen / (sumInGreen + sumInRed)) * 100, 10);
-                //console.log(percentageIn);
-                var sumKyGreen = d.S10.G;
-                var sumKyRed = d.S10.R;
-                var percentageKy = parseInt((sumKyGreen / (sumKyGreen + sumKyRed)) * 100, 10);
-                var sumOtGreen = d.S11.G + d.S12.G + d.S13.G + d.S14.G + d.S15.G + d.S16.G + d.S17.G;
-                var sumOtRed = d.S11.R + d.S12.R + d.S13.R + d.S14.R + d.S15.R + d.S16.R + d.S17.R;
-                var percentageOt = parseInt((sumOtGreen / (sumOtGreen + sumOtRed)) * 100, 10);
-
-
-                $('#inboundGreen').html('');
-                $('#inboundRed').html('');
-                $('#outboundGreen').html('');
-                $('#outboundRed').html('');
-                $('#keyGreen').html('');
-                $('#keyRed').html('');
-
-                $('#inboundGreen').html('<font class="digital"  color="#00FF00">' + sumInGreen + '</font>');
-                $('#inboundRed').html('<font class="digital"  color="#FF0000">' + sumInRed + '</font>');
-
-                $('#outboundGreen').html('<font class="digital"  color="#00FF00">' + sumOtGreen + '</font>');
-                $('#outboundRed').html('<font class="digital"  color="#FF0000">' + sumOtRed + '</font>');
-
-
-                $('#keyGreen').html('<font class="digital"  color="#00FF00">' + sumKyGreen + '</font>');
-                $('#keyRed').html('<font class="digital"  color="#FF0000">' + sumKyRed + '</font>');
-
-
-            }
-        });
-
-    };
-
-    //call for 1st time loading
-    (function () {
-
-        getLockboxNumbers();
-        getLockboxInboundDetail();
-        getLockboxOutboundDetail();
-        $('.boxFlip').addClass('animated flip');
-
-    })();
-
-
-    function getLockboxInboundDetail() {
-        try {
-            //console.log(sessionStorage.data);
-            var data = $.parseJSON(sessionStorage.data);
-            //console.log(data);
-            $('#WTPGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S1.G + '</strong></font></div>');
-            $('#WTPRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S1.R + '</strong></font></div>');
-
-
-            $('#SIGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S2.G + '</strong></font></div>');
-            $('#SIRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S2.R + '</strong></font></div>');
-
-
-            $('#EVGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S3.G + '</strong></font></div>');
-            $('#EVRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S3.R + '</strong></font></div>');
-
-
-            $('#BSGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S4.G + '</strong></font></div>');
-            $('#BSRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S4.R + '</strong></font></div>');
-
-
-            $('#PIGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S5.G + '</strong></font></div>');
-            $('#PIRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S5.R + '</strong></font></div>');
-
-
-            $('#DMGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S6.G + '</strong></font></div>');
-            $('#DMRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S6.R + '</strong></font></div>');
-
-
-            $('#ISGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S7.G + '</strong></font></div>');
-            $('#ISRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S7.R + '</strong></font></div>');
-
-
-            $('#IAGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S8.G + '</strong></font></div>');
-            $('#IARed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S8.R + '</strong></font></div>');
-
-
-            $('#WLGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S9.G + '</strong></font></div>');
-            $('#WLRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S9.R + '</strong></font></div>');
-
-        } catch (err) {
-            console.log(err);
-            //alert('Server-Error-1002');
-        }
-    }
-
-    function getLockboxOutboundDetail() {
-        try {
-            //console.log(sessionStorage.data);
-            var data = $.parseJSON(sessionStorage.data);
-            console.log(data);
-            $('#CRGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S11.G + '</strong></font></div>');
-            $('#CRRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S11.R + '</strong></font></div>');
-
-
-            $('#PPGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S12.G + '</strong></font></div>');
-            $('#PPRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S12.R + '</strong></font></div>');
-
-
-            $('#DM2Green').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S13.G + '</strong></font></div>');
-            $('#DM2Red').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S13.R + '</strong></font></div>');
-
-
-            $('#OGGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S14.G + '</strong></font></div>');
-            $('#OGRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S14.R + '</strong></font></div>');
-
-
-            $('#MRGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S15.G + '</strong></font></div>');
-            $('#MRRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S15.R + '</strong></font></div>');
-
-
-            $('#RAGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S16.G + '</strong></font></div>');
-            $('#RARed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S16.R + '</strong></font></div>');
-
-
-            $('#THGreen').html('<div class="boxFlip"><font class="digit" color="#00FF00"><strong>' + data.S17.G + '</strong></font></div>');
-            $('#THRed').html('<div class="boxFlip"><font class="digit" color="#FF0000"><strong>' + data.S17.R + '</strong></font></div>');
-
-
-        } catch (err) {
-            console.log(err);
-            //alert('Server-Error-1002');
-        }
-    }
-
-
-    setInterval(function () {
-        if ($('.boxFlip').hasClass('animated flip')) {
-            $('.boxFlip').removeClass('animated flip');
-
-        } else {
-            getLockboxNumbers();
-            getLockboxInboundDetail();
-            getLockboxOutboundDetail();
-
-            $('.boxFlip').addClass('animated flip');
-        }
-
-    }, 300000);
-
-
-
-    function drawChart() {
-        var salesData = [
-
-        {
-            label: "File In Error",
-            value: 80,
-            color: "#DC3912"
-        }, {
-            label: "File in Process",
-            value: 1000,
-            color: "#109618"
-        }, {
-            label: "File Processed",
-            value: 8900,
-            color: "#FF9900"
-        }];
-
-
-        var keyInData = [
-
-        {
-            label: "File Submitted",
-            value: 300,
-            color: "#DC3912"
-        }, {
-            label: "File in Progress",
-            value: 481,
-            color: "#109618"
-        }, {
-            label: "File Assigned",
-            value: 2890,
-            color: "#FF9900"
-        },
-
-        {
-            label: "File Completed",
-            value: 1000,
-            color: "#7211CE"
-        }];
-
-
-
-        var svgInbound = d3.select("#chartL1").append("svg").attr("width", 300).attr("height", 300);
-        var svgOutbound = d3.select("#chartL3").append("svg").attr("width", 300).attr("height", 300);
-        var svgKeyin = d3.select("#chartL2").append("svg").attr("width", 300).attr("height", 300);
-        var svgClaim = d3.select("#chartL4").append("svg").attr("width", 300).attr("height", 300);
-
-        svgInbound.append("g").attr("id", "InboundDonut");
-        svgOutbound.append("g").attr("id", "OutboundDonut");
-        svgKeyin.append("g").attr("id", "KeyinPie");
-        svgClaim.append("g").attr("id", "ClaimDonut");
-
-        Donut3D.draw("InboundDonut", salesData, 150, 150, 130, 100, 30, 0.7);
-        Donut3D.draw("OutboundDonut", salesData, 150, 150, 130, 100, 30, 0.7);
-        Donut3D.draw("ClaimDonut", salesData, 150, 150, 130, 100, 30, 0.7);
-        Donut3D.draw("KeyinPie", keyInData, 150, 150, 130, 100, 30, 0.0);
-
-
-
-        function changeData() {
-            Donut3D.transition("InboundDonut", salesData, 130, 100, 30, 0.7);
-            Donut3D.transition("OutboundDonut", salesData, 130, 100, 30, 0.7);
-            Donut3D.transition("KeyinPie", keyInData, 130, 100, 30, 0.0);
-            Donut3D.transition("ClaimDonut", salesData, 150, 150, 130, 100, 30, 0.7);
-        }
-    }
-
-    drawChart();
 
 
 
@@ -1043,17 +978,88 @@ $(document).ready(function () {
 
         $('#goHome').attr("href", "index");
         var noOfDaysFVA = 30;
+        var noOfDaysCV = 30;
+         var noOfDaysPMU = 30;
+         var noOfDaysMLT= 30;
+         var noOfDaysTAT= 30;
 
             $("#VT-slider").on('input', function () {
                 $("#VT-slider-text").html(this.value);
                 streams = ['Forcasted', 'Actual'];
                 noOfDaysFVA=this.value;
-                        defaultChartConfig("reports-charts-forcasted-vs-actual", dataFactory(2, noOfDaysFVA), {
+            defaultChartConfig("reports-charts-forcasted-vs-actual", dataFactory(2, noOfDaysFVA), {
             delay: 0,
             transitionDuration: 0,
             groupSpacing: .2
         });
             })
+
+        $("#CV-slider").on('input', function () {
+                $("#CV-slider-text").html(this.value);
+                noOfDaysCV=this.value;
+                streams = ['Volume'];
+                defaultChartConfig2("reports-claim-data-volume", dataFactory(1, noOfDaysCV), {
+                    delay: 0,
+                    transitionDuration: 0,
+                    groupSpacing: .2
+                });
+            })
+
+        $("#PMU-slider").on('input', function () {
+                $("#PMU-slider-text").html(this.value);
+                noOfDaysPMU=this.value;
+                 streams = ['% Used'];
+        defaultChartConfig3("reports-percentage-MPI-used", dataFactory2(1, noOfDaysPMU), {
+            delay: 0,
+            transitionDuration: 0,
+            groupSpacing: .2
+        });
+            })
+
+        $("#MLT-slider").on('input', function () {
+                $("#MLT-slider-text").html(this.value);
+                noOfDaysMLT=this.value;
+                    var chart = nv.models.stackedAreaChart().x(function (d) {
+                return d[0]
+            }).y(function (d) {
+                return d[1]
+            }) //adjusting, 100% is 1.00, not 100 as it is in the data
+            .color(d3.scale.category10().range()).useInteractiveGuideline(true);
+
+            chart.xAxis.tickFormat(d3.format(',0f'));
+
+            chart.yAxis.tickFormat(d3.format(',0f'));
+            chart.color(['#00FF00', '#FF9900', '#DC3912']);
+            d3.select('#MPI-stacked-area-chart svg').datum(stackedAreaChartData(noOfDaysMLT)).call(chart);
+
+            //TODO: Figure out a good way to do this automatically
+            nv.utils.windowResize(chart.update);
+            })
+
+
+        $("#TAT-slider").on('input', function () {
+                $("#TAT-slider-text").html(this.value);
+                noOfDaysTAT=this.value;
+            var chart = nv.models.lineChart().x(function (d) {
+                return d[0]
+            }).y(function (d) {
+                return d[1]
+            }) //adjusting, 100% is 1.00, not 100 as it is in the data
+            .color(d3.scale.category10().range()).useInteractiveGuideline(true);
+
+            chart.xAxis.tickFormat(d3.format(',0f'));
+
+            chart.yAxis.tickFormat(d3.format(',0f'));
+            chart.color(['#00FF00', '#FF9900']);
+            d3.select('#TAT-line-chart svg').datum(lineChartData(noOfDaysTAT)).call(chart);
+
+            //TODO: Figure out a good way to do this automatically
+            nv.utils.windowResize(chart.update);
+
+            return chart;
+            })
+
+
 
 
         $("#reports-missed-TAT").append('<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Acura1 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Audi1</div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">BMW1</div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Cadillac1 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Chevrolet1 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Chrysler1 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Dodge1 </div>' + '</div>' + '</li>'
@@ -1084,75 +1090,25 @@ $(document).ready(function () {
 
 
 
-        function lineChartData() {
-            return [{
+        function lineChartData(range) {
+            var data = [];
+            data.push({
                 "key": "AVG",
-                "values": [
-                    [1, 13],
-                    [2, 14],
-                    [3, 12],
-                    [4, 15],
-                    [5, 18],
-                    [6, 20],
-                    [7, 17],
-                    [8, 9],
-                    [9, 8],
-                    [10, 15],
-                    [11, 16],
-                    [12, 18],
-                    [13, 20],
-                    [14, 11],
-                    [15, 13],
-                    [16, 22],
-                    [17, 21],
-                    [18, 20],
-                    [19, 11],
-                    [20, 14],
-                    [21, 15],
-                    [22, 16],
-                    [23, 13],
-                    [24, 18],
-                    [25, 20],
-                    [26, 21],
-                    [27, 20],
-                    [28, 18],
-                    [29, 19]
-                ]
-            }, {
+                "values": []
+            });
+            data.push( {
                 "key": "Median",
-                "values": [
-                    [1, 15],
-                    [1, 15],
-                    [2, 15],
-                    [3, 15],
-                    [4, 15],
-                    [5, 15],
-                    [6, 15],
-                    [7, 15],
-                    [8, 15],
-                    [9, 15],
-                    [10, 15],
-                    [11, 15],
-                    [12, 15],
-                    [13, 15],
-                    [14, 15],
-                    [15, 15],
-                    [16, 15],
-                    [17, 15],
-                    [18, 15],
-                    [19, 15],
-                    [20, 15],
-                    [21, 15],
-                    [22, 15],
-                    [23, 15],
-                    [24, 15],
-                    [25, 15],
-                    [26, 15],
-                    [27, 15],
-                    [28, 15],
-                    [30, 15]
-                ]
-            }];
+                "values": []
+            });
+            if(range<1){
+                range = Math.abs(range);
+            }
+
+            for(var i=1;i<=range;i++){
+                data[0].values.push([i,Math.floor(Math.random()*24)]);
+                data[1].values.push([i,15]);
+            }
+            return data;
         }
 
 
@@ -1168,7 +1124,7 @@ $(document).ready(function () {
 
             chart.yAxis.tickFormat(d3.format(',0f'));
             chart.color(['#00FF00', '#FF9900']);
-            d3.select('#TAT-line-chart svg').datum(lineChartData()).call(chart);
+            d3.select('#TAT-line-chart svg').datum(lineChartData(noOfDaysTAT)).call(chart);
 
             //TODO: Figure out a good way to do this automatically
             nv.utils.windowResize(chart.update);
@@ -1178,110 +1134,30 @@ $(document).ready(function () {
 
 
 
-        function stackedAreaChartData() {
-            return [{
+        function stackedAreaChartData(range) {
+            var data = [];
+            data.push({
                 "key": "Top 10th Percentile",
-                "values": [
-                    [1, 13],
-                    [2, 14],
-                    [3, 12],
-                    [4, 15],
-                    [5, 18],
-                    [6, 20],
-                    [7, 17],
-                    [8, 9],
-                    [9, 8],
-                    [10, 15],
-                    [11, 16],
-                    [12, 18],
-                    [13, 20],
-                    [14, 11],
-                    [15, 13],
-                    [16, 22],
-                    [17, 21],
-                    [18, 20],
-                    [19, 11],
-                    [20, 14],
-                    [21, 15],
-                    [22, 16],
-                    [23, 13],
-                    [24, 18],
-                    [25, 20],
-                    [26, 21],
-                    [27, 20],
-                    [28, 18],
-                    [29, 19],
-                    [30, 21]
-                ]
-            }, {
+                "values": []
+            });
+            data.push( {
                 "key": "AVG",
-                "values": [
-                    [1, 15],
-                    [2, 15],
-                    [3, 15],
-                    [4, 15],
-                    [5, 15],
-                    [6, 15],
-                    [7, 15],
-                    [8, 15],
-                    [9, 15],
-                    [10, 15],
-                    [11, 15],
-                    [12, 15],
-                    [13, 15],
-                    [14, 15],
-                    [15, 15],
-                    [16, 15],
-                    [17, 15],
-                    [18, 15],
-                    [19, 15],
-                    [20, 15],
-                    [21, 15],
-                    [22, 15],
-                    [23, 15],
-                    [24, 15],
-                    [25, 15],
-                    [26, 15],
-                    [27, 15],
-                    [28, 15],
-                    [29, 15],
-                    [30, 15]
-                ]
-            }, {
+                "values": []
+            });
+            data.push({
                 "key": "Bottom 10th Percentile",
-                "values": [
-                    [1, 11],
-                    [2, 10],
-                    [3, 9],
-                    [4, 10],
-                    [5, 5],
-                    [6, 4],
-                    [7, 3],
-                    [8, 10],
-                    [9, 12],
-                    [10, 10],
-                    [11, 9],
-                    [12, 15],
-                    [13, 7],
-                    [14, 6],
-                    [15, 5],
-                    [16, 9],
-                    [17, 9],
-                    [18, 8],
-                    [19, 4],
-                    [20, 2],
-                    [21, 1],
-                    [22, 7],
-                    [23, 6],
-                    [24, 5],
-                    [25, 4],
-                    [26, 3],
-                    [27, 2],
-                    [28, 1],
-                    [29, 5],
-                    [30, 8]
-                ]
-            }];
+                "values": []
+            })
+            if(range<1){
+                range = Math.abs(range);
+            }
+
+            for(var i=1;i<=range;i++){
+                data[0].values.push([i,Math.floor(Math.random()*20) +4 ]);
+                data[1].values.push([i,15]);
+                data[2].values.push([i,Math.floor(Math.random()*12)]);
+            }
+            return data;
         }
 
 
@@ -1297,7 +1173,7 @@ $(document).ready(function () {
 
             chart.yAxis.tickFormat(d3.format(',0f'));
             chart.color(['#00FF00', '#FF9900', '#DC3912']);
-            d3.select('#MPI-stacked-area-chart svg').datum(stackedAreaChartData()).call(chart);
+            d3.select('#MPI-stacked-area-chart svg').datum(stackedAreaChartData(noOfDaysMLT)).call(chart);
 
             //TODO: Figure out a good way to do this automatically
             nv.utils.windowResize(chart.update);
@@ -1368,7 +1244,7 @@ $(document).ready(function () {
 
 
 
-        defaultChartConfig2("reports-claim-data-volume", dataFactory(1, 30), {
+        defaultChartConfig2("reports-claim-data-volume", dataFactory(1, noOfDaysCV), {
             delay: 0,
             transitionDuration: 0,
             groupSpacing: .2
@@ -1421,7 +1297,7 @@ $(document).ready(function () {
         }
 
 
-        defaultChartConfig3("reports-percentage-MPI-used", dataFactory2(1, 30), {
+        defaultChartConfig3("reports-percentage-MPI-used", dataFactory2(1, noOfDaysPMU), {
             delay: 0,
             transitionDuration: 0,
             groupSpacing: .2
@@ -1456,8 +1332,118 @@ $(document).ready(function () {
         }
     });
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    var firstTimeFlag = true;
 
 
+    var getLockboxInboundDetail = function(groupCode , siteNumber){
+
+        myApp.showPreloader('Preparing');
+
+        var api = new API();
+
+        if(groupCode && siteNumber){
+
+
+        }
+        else{
+
+
+       
+
+            api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/detail",inboundDetailcallback);
+        
+        
+        }
+
+        
+        function inboundDetailcallback (success, data){
+
+            if(success){
+
+                
+                
+               var vm = new ViewModelInbound();
+
+               vm.applyModel(data);
+
+
+                
+                setTimeout(function(){
+
+                    myApp.hidePreloader();
+
+                },500);
+                
+
+            }
+
+            else{
+
+                myApp.alert('Could not Connect to the Server - 5 ', 'Error:', function() {
+                    myApp.hidePreloader();
+                });
+            }
+
+
+
+        };
+
+
+    };
+
+  
+
+
+    var getLockboxOutboundDetail = function(groupCode , siteNumber){
+
+        myApp.showPreloader('Preparing');
+
+        var api = new API();
+
+        if(groupCode && siteNumber){
+
+
+        }
+        else{
+
+
+       
+
+            api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/detail",outboundDetailcallback);
+        
+        
+        }
+
+
+        function outboundDetailcallback (success, data){
+
+            if(success){
+               
+    
+                setTimeout(function(){
+
+                    myApp.hidePreloader();
+
+                },500);
+                
+
+            }
+
+            else{
+
+                myApp.alert('Could not Connect to the Server - 6 ', 'Error:', function() {
+                    myApp.hidePreloader();
+                });
+            }
+
+
+
+        };
+
+
+    };
 
 
 
