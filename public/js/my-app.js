@@ -9,6 +9,7 @@ $(document).ready(function () {
         actionsCloseByOutside: false,
         modalCloseByOutside: false,
         popupCloseByOutside: false
+
         //modalPreloaderTitle: "Your Dashboard is getting prepared. Please wait….!!!"
     });
 
@@ -21,329 +22,17 @@ $(document).ready(function () {
         dynamicNavbar: true
     });
 
-    var mySlider = myApp.slider('.slider-container', {
-        pagination: '.slider-pagination'
+    var homePopupView = myApp.addView('.popup-view',{
+        
+        dynamicNavbar: true
     });
+
+
 
 
     /**************************************************************************************************/
 
 
-    var Store = (function(){
-
-        var obj = [];
-
-        var instance;
-
-        var Storage = function(){
-            
-            this.retrieve = function(type){
-
-                return obj[type];
-            };
-
-            this.store = function(data, type){
-
-                obj[type] = data;
-
-            };
-
-        };
-
-        return {
-            getInstance: function(){
-                if(!instance){
-                    var instance = new Storage();
-
-                }
-                
-                return instance;
-
-            }
-
-
-        }
-
-
-    })();
-
-
-    
-
-      
-    var ViewMapper = function( target, port, model) {
-
-        var template = $$(port).html();
-
-        var compiledTemplate = Template7.compile(template);
-        
-        var html = compiledTemplate(model);
-        $(target).html(html);
-
-
-    };
-
-    var ViewModelHomeInbound = function(){
-
-        this.applyModel = function(data){    
-
-            var date = new Date();
-
-            this.initialize();
-
-            $('#welcomeName').html('<font>'+localStorage.name+'</font>');
-            $('#lastLoginTime').html('<font>'+localStorage.lastVisitedDateTime+'</font>');
-            $('#todaysDate').html('<font >'+date.dateNow() +'</font>');
-            $('#todaysTime').html('<font >'+date.timeNow() +'</font>');
-            $('#lockbox-inbound-file-process').html('<font class="digital" color="#00FF00">'+ data.fileInProcess+'</font>');
-            $('#lockbox-inbound-file-error').html('<font class="digital" color="#DC3912">'+data.fileInError+'</font>');
-            $('#lockbox-inbound-file-processed').html('<font class="digital " color="#FF9900">'+data.fileProcessed+'</font>');
-            /*
-            $('#keyInAssigned').html('');
-            $('#keyInProgress').html('');
-            $('#keyInCompleted').html('');
-            $('#keyInSubmitted').html('');
-            $('#lockbox-outbound-file-process').html('');
-            $('#lockbox-outbound-file-process').html('');
-            $('#lockbox-outbound-file-processed').html('');
-            $('#claim-file-process').html('');
-            $('#claim-file-error').html('');
-            $('#claim-file-processed').html('');
-            */
-
-
-        };
-
-        this.initialize = function(){
-            $('#welcomeName').html('');
-            $('#lastLoginTime').html('');
-            $('#todaysDate').html('');
-            $('#todaysTime').html('');
-            $('#lockbox-inbound-file-process').html('');
-            $('#lockbox-inbound-file-error').html('');
-            $('#lockbox-inbound-file-processed').html('');
-            /*
-            $('#keyInAssigned').html('');
-            $('#keyInProgress').html('');
-            $('#keyInCompleted').html('');
-            $('#keyInSubmitted').html('');
-            $('#lockbox-outbound-file-process').html('');
-            $('#lockbox-outbound-file-process').html('');
-            $('#lockbox-outbound-file-processed').html('');
-            $('#claim-file-process').html('');
-            $('#claim-file-error').html('');
-            $('#claim-file-processed').html('');
-            */
-
-        };
-
-
-    }
-
-
-    var ViewModelHomeKeyIn= function(){
-
-        this.applyModel = function(data){    
-
-            var date = new Date();
-
-            this.initialize();
-
-            
-            
-            $('#keyInAssigned').html('<font class="digital" color="#FF9900">'+data.assigned+'</font>');
-            $('#keyInProgress').html('<font class="digital" color="#00FF00">'+data.inProgress+'</font>');
-            $('#keyInCompleted').html('<font class="digital" color="#DFC2FC">'+data.completed+'</font>');
-            $('#keyInSubmitted').html('<font class="digital" color="#DC3912">'+data.submitted+'</font>');
-            /*
-            $('#lockbox-outbound-file-process').html('');
-            $('#lockbox-outbound-file-process').html('');
-            $('#lockbox-outbound-file-processed').html('');
-            $('#claim-file-process').html('');
-            $('#claim-file-error').html('');
-            $('#claim-file-processed').html('');
-            */
-
-
-        };
-
-        this.initialize = function(){
-            
-          
-            $('#keyInAssigned').html('');
-            $('#keyInProgress').html('');
-            $('#keyInCompleted').html('');
-            $('#keyInSubmitted').html('');
-              /*
-            $('#lockbox-outbound-file-process').html('');
-            $('#lockbox-outbound-file-process').html('');
-            $('#lockbox-outbound-file-processed').html('');
-            $('#claim-file-process').html('');
-            $('#claim-file-error').html('');
-            $('#claim-file-processed').html('');
-            */
-
-        };
-
-
-    }
-
-
- 
-    var ViewModelInbound = function(){
-
-        this.applyModel = function(data){
-
-            this.initialize();
-            $('#WTPGreen').html('<font class="digit" color="#00FF00">' + data.STEP1.fileInProcess +'</font> ');
-            $('#SIGreen').html('<font class="digit" color="#00FF00">' + data.STEP2.fileInProcess +'</font> ');
-            $('#EVGreen').html('<font class="digit" color="#00FF00">' + data.STEP3.fileInProcess +'</font> ');
-            $('#DMGreen').html('<font class="digit" color="#00FF00">' + data.STEP4.fileInProcess +'</font> ');
-            $('#PIGreen').html('<font class="digit" color="#00FF00">' + data.STEP5.fileInProcess +'</font> ');
-            $('#BSGreen').html('<font class="digit" color="#00FF00">' + data.STEP6.fileInProcess +'</font> ');
-            $('#WLGreen').html('<font class="digit" color="#00FF00">' + data.STEP7.fileInProcess +'</font> ');
-            $('#IAGreen').html('<font class="digit" color="#00FF00">' + data.STEP8.fileInProcess +'</font> ');
-            $('#ISGreen').html('<font class="digit" color="#00FF00">' + data.STEP9.fileInProcess +'</font> ');
-
-            $('#WTPRed').html('<font class="digit" color="#FF0000">' + data.STEP1.fileInError +'</font> ');
-            $('#SIRed').html('<font class="digit" color="#FF0000">' + data.STEP2.fileInError +'</font> ');
-            $('#EVRed').html('<font class="digit" color="#FF0000">' + data.STEP3.fileInError +'</font> ');
-            $('#DMRed').html('<font class="digit" color="#FF0000">' + data.STEP4.fileInError +'</font> ');
-            $('#PIRed').html('<font class="digit" color="#FF0000">' + data.STEP5.fileInError +'</font> ');
-            $('#BSRed').html('<font class="digit" color="#FF0000">' + data.STEP6.fileInError +'</font> ');
-            $('#WLRed').html('<font class="digit" color="#FF0000">' + data.STEP7.fileInError +'</font> ');
-            $('#IARed').html('<font class="digit" color="#FF0000">' + data.STEP8.fileInError +'</font> ');
-            $('#ISRed').html('<font class="digit" color="#FF0000">' + data.STEP9.fileInError +'</font> ');
-
-            
-        };
-
-        this.initialize = function(){
-            $('#WTPGreen').html('');
-            $('#SIGreen').html('');
-            $('#EVGreen').html('');
-            $('#DMGreen').html('');
-            $('#PIGreen').html('');
-            $('#BSGreen').html('');
-            $('#WLGreen').html('');
-            $('#IAGreen').html('');
-            $('#ISGreen').html('');
-
-            $('#WTPRed').html('');
-            $('#SIRed').html('');
-            $('#EVRed').html('');
-            $('#DMRed').html('');
-            $('#PIRed').html('');
-            $('#BSRed').html('');
-            $('#WLRed').html('');
-            $('#IARed').html('');
-            $('#ISRed').html('');
-
-
-        };
-
-
-    };
-
-
-        
-
-
-
-    
-
-
-
-    
-    (function () {
-        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-        Date.prototype.getMonthName = function () {
-            return months[this.getMonth()];
-        };
-        Date.prototype.getDayName = function () {
-            return days[this.getDay()];
-        };
-
-        Date.prototype.dateNow = function(){
-            var date = new Date();
-            return date.getDayName() + ' ' + date.getMonthName() + ' ' + date.getDate() + ',' + date.getFullYear();
-
-
-        };
-
-        Date.prototype.timeNow = function(){
-            var date = new Date();
-            return date.getHours() + ':' + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':' + (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()) + ' ' + date.toString().match(/\(([A-Za-z\s].*)\)/)[1];
-
-        };
-
-
-    })();
-
-
-    var API = function(){
-
-        this.getIt = function(url, callback){
-
-            $.ajax({
-            url: url,
-           
-            beforeSend: function(xhr) {
-                xhr.overrideMimeType("text/plain; charset=x-user-defined");
-            }
-            })
-            .done(function(data) {
-                
-                try {
-                    
-                    var jsonData = JSON.parse(data);
-                    callback(true, jsonData);
-
-                }
-                catch(e){
-                
-                    console.log(e);
-                    callback(false);
-                }
-                
-
-            }).fail(function(err) {
-                console.log('call fails for ' + url);
-                callback(false);
-
-            });
-
-        };
-
-
-    };
-    
-
-    function registration(data, callback) {
-        console.log(data);
-
-         $.ajax({
-            url: "https://dashboard-server-1001.herokuapp.com/api/v1/users",
-            type: "POST",
-            data: JSON.stringify(data),
-            contentType: "application/json"
-            
-        })
-        .done(function(data) {
-            callback(true);
-        
-        }).fail(function(err) {
-            serverDidConnect = false;
-            callback(false);
-
-        });
- 
-    };
-
-    
 
 
     var drawChartHome = function(data, selector, id, r) {
@@ -391,7 +80,7 @@ $(document).ready(function () {
                                 {
                                     label: "File Submitted",
                                     value: data.submitted,
-                                    color: "#DC3912"
+                                    color: "#FF9900"
                                 }, {
                                     label: "File in Progress",
                                     value: data.inProgress,
@@ -399,7 +88,7 @@ $(document).ready(function () {
                                 }, {
                                     label: "File Assigned",
                                     value: data.assigned,
-                                    color: "#FF9900"
+                                    color: "#DC3912"
                                 },
 
                                 {
@@ -409,10 +98,46 @@ $(document).ready(function () {
                                 }
                             ];
 
+        this.chartKeyinDataWorkList = [
+
+                                    {
+                                        label: "File Submitted",
+                                        value: data.submitted,
+                                        color: "#DC3912"
+                                    }, {
+                                        label: "File Assigned",
+                                        value: data.assigned,
+                                        color: "#FF9900"
+                                    }, {
+                                        label: "File in Progress",
+                                        value: data.assigned,
+                                        color: "#109618"
+                                    }, {
+                                        label: "File Completed",
+                                        value: data.completed,
+                                        color: "#7211CE"
+                                    }, {
+                                        label: "File UnAssigned",
+                                        value: data.unassigned,
+                                        color: "#990099"
+                                    }, {
+                                        label: "File Rejected",
+                                        value: data.rejected,
+                                        color: "#000000"
+                                    }
+                                ];
+
     
    };
 
+    
 
+    function sequence(i) {
+        for (var j = 0; j < document.getElementsByClassName('step-' + i).length; j++) {
+            document.getElementsByClassName('step-' + i)[j].classList.remove("hidden")
+        }
+
+    };
 
     
 
@@ -425,119 +150,172 @@ $(document).ready(function () {
 
     /************************************************************************************************/
 
+    myApp.showPreloader('Loading');
 
     var date = new Date();
    
-    myApp.showPreloader('Preparing Dashboard');
+    var homelink = $('#goHome');
     
-    //localStorage.removeItem("deviceID"); // remove it to Test
+    setTimeout(function(){
 
-    if(!localStorage.deviceID){
+        if(!localStorage.deviceID){
 
-        myApp.hidePreloader();
-        
-        $('#registrationDate').val(date.dateNow());
-        myApp.popup('.popup-app-settings');
-        $('.appSetButton').click(function(){               
-            var data = {};
-            var checkFlag = true;
-            if($('#name').val()){
-                $('#regName').removeClass("errorClass");
-                data.name = $('#name').val();
-            }else{
-                checkFlag = false;
-                $('#regName').addClass("errorClass");
-                //thow error
-            }
-            if($('#email').val().indexOf("@")>-1){
-                $('#regEmail').removeClass("errorClass");
-                data.email = $('#email').val();
-            }else{
-                $('#regEmail').addClass("errorClass");
-                checkFlag = false;
-                //throw error
-            }
-            if($('#deviceID').val()){
-                $('#regId').removeClass("errorClass");
-                data.deviceID = $('#deviceID').val();
-            }else{
-                $('#regId').addClass("errorClass");
-                checkFlag = false;
-            }
-
-            if(checkFlag){
-                myApp.closeModal('.popup-app-settings');
+            myApp.hidePreloader();
             
-            data.registrationDate = $('#registrationDate').val();
-            myApp.showPreloader('Registering your Device...');
-            
-            registration(data, function(success){
-                if(success){
+            $('#registrationDate').val(date.dateNow());
+            myApp.popup('.popup-app-settings');
+            $('.appSetButton').click(function(){               
+                var data = {};
+                var checkFlag = true;
+                if($('#name').val()){
+                    $('#regName').removeClass("errorClass");
+                    data.fullName = $('#name').val();
+                }else{
+                    checkFlag = false;
+                    $('#regName').addClass("errorClass");
                     
-                    localStorage.deviceID = data.deviceID;
-                    localStorage.name = data.name;
-
-                    buildHomePage();
-
-
                 }
-                else{
+                if($('#email').val().indexOf("@")>-1){
+                    $('#regEmail').removeClass("errorClass");
+                    data.email = $('#email').val();
+                }else{
+                    $('#regEmail').addClass("errorClass");
+                    checkFlag = false;
+                    
+                }
+                if($('#deviceID').val()){
+                    $('#regId').removeClass("errorClass");
+                    data.deviceID = $('#deviceID').val();
+                }else{
+                    $('#regId').addClass("errorClass");
+                    checkFlag = false;
+                }
 
-                    myApp.alert('Could not Connect to the Server while Registering', 'Error:', function() {
-                        myApp.hidePreloader();
-                        myApp.popup('.popup-app-settings');
+                if(checkFlag){
+                    myApp.closeModal('.popup-app-settings');
+                
+                    data.registrationDate = $('#registrationDate').val();
+                    myApp.showPreloader('Registering your Device');
+                    
+                    _.registration(data, function(success){
+                        if(success){
+                            
+                            localStorage.deviceID = data.deviceID;
+                            localStorage.registeredUser = data.fullName;
+                            
+                            setTimeout(function(){
+
+                                myApp.hidePreloader();
+                                
+                                buildHomePage(function(){
+                                    setTimeout(function(){
+                                         myApp.hidePreloader();
+
+                                    },1000);
+                                });
+
+                            },500);
+
+
+
+                        }
+                        else{
+
+                            myApp.alert('This Device is not registered. Please contact help desk for more information. <br> HelpDesk: 800-XXX-XXXX', 'Error:', function() {
+                                myApp.hidePreloader();
+                                myApp.popup('.popup-app-settings');
+                            });
+
+                            
+                        }
+
+
                     });
-                }
 
+                 }
 
             });
 
+
+
+
         }
 
-        });
+        else{
+
+            myApp.hidePreloader();
+
+            localStorage.lastVisitedDateTime = localStorage.visitedNow || (date.dateNow() + ' '+  date.timeNow());
+            localStorage.visitedNow = date.dateNow() + ' '+  date.timeNow();
+            
+
+            buildHomePage(function(){
+
+                setTimeout(function(){
+                     myApp.hidePreloader();
+
+                },1000);
+               
+
+            });
 
 
-
-
-    }
-
-    else{
-
-        localStorage.lastVisitedDateTime = localStorage.visitedNow || (date.dateNow() + ' '+  date.timeNow());
-        localStorage.visitedNow = date.dateNow() + ' '+  date.timeNow();
-        
-
-        buildHomePage();
-
-
-    }
+        }
    
+    },500);
 
-    function buildHomePage (){
+    $$('.popup-filter').on('open', function () {
+      
+        var vm = new _.ViewModelGroupCode();
+        var vmSite = new _.ViewModelSiteNumber();
+        var data = ['XXX', 'YYY', 'VVV', 'CCC', 'NNN', 'MMM', 'AAA', 'BBB', 'CCC'];
+
+        var data = ['XXX', 'YYY', 'VVV', 'CCC', 'NNN', 'MMM', 'AAA', 'BBB', 'CCC'];
+
+
+        vm.applyModel(data.sort(), '.group-Code-home-filter', '.item-after'); 
+        vmSite.applyModel(data.sort(), '.site-number-home-filter', '.item-after');
+
+
+
+    });
+
+
+    function buildHomePage (callback){
 
         
+        myApp.showPreloader('Preparing Dashboard');
 
-
-        var api = new API();
+        var api = new _.API();
 
         function inboundHomeCallback (success, data){
 
             if(success){
 
-                //ViewMapper('#lockboxInboundHomeBar', '#lockboxInboundHomeTemplate', data);
-                var vm = new ViewModelHomeInbound();
+                
+                var vm = new _.ViewModelHomeInbound();
                 vm.applyModel(data);
                 var cData = new ChartDataCreator(data);
                 drawChartHome(cData.chartData, "#chartL1","InboundDonut", 0.7);
-                var api = new API();
+               
+                var api = new _.API();
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home",outboundHomeCallback);
 
             }
             else{
                 
-                  myApp.alert('Could not Connect to the Server - 1', 'Error:', function() {
-                    myApp.hidePreloader();
-                  });
+                  
+
+                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                    function () {
+                        myApp.hidePreloader();
+                    },
+
+                    function () {
+                        myApp.hidePreloader();
+                    }
+                );
 
             }
 
@@ -547,18 +325,28 @@ $(document).ready(function () {
         function outboundHomeCallback (success, data){
             
             if(success){
-                //ViewMapper('#lockboxOutboundHomeBar', '#lockboxOutboundHomeTemplate', data);
+               
+                var vm = new _.ViewModelOutboundHome();
+                vm.applyModel(data);
+
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home",keyInHomeCallback);
                 var cData = new ChartDataCreator(data);
                 drawChartHome(cData.chartData, "#chartL3","OutboundDonut", 0.7);
+        
 
             }
             else{
                 
-                  myApp.alert('Could not Connect to the Server -2 ', 'Error:', function() {
-                    myApp.hidePreloader();
-                  });
+                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
 
+                    function () {
+                        myApp.hidePreloader();
+                    },
+
+                    function () {
+                        myApp.hidePreloader();
+                    }
+                );
             }
 
         };
@@ -566,22 +354,29 @@ $(document).ready(function () {
         function keyInHomeCallback (success, data){
 
             if(success){
-                //ViewMapper('#lockboxKeyinHomeBar', '#lockboxKeyinHomeTemplate', data);
-                var vm = new ViewModelHomeKeyIn();
+                
+                var vm = new _.ViewModelHomeKeyIn();
                 vm.applyModel(data);
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home",claimHomeCallback);
                 
                 var cData = new ChartDataCreator(data);
                 drawChartHome(cData.chartKeyinData, "#chartL2","keyInboundDonut", 0.0);
+               
 
 
             }
             else{
             
-                  myApp.alert('Could not Connect to the Server - 3', 'Error:', function() {
-                    myApp.hidePreloader();
-                  });
+                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
 
+                    function () {
+                        myApp.hidePreloader();
+                    },
+
+                    function () {
+                        myApp.hidePreloader();
+                    }
+                );
             }
 
         };
@@ -590,26 +385,37 @@ $(document).ready(function () {
         function claimHomeCallback (success, data){
 
             if(success){
-                //ViewMapper('#claimHomeBar', '#claimHomeTemplate', data);
+                
+                var vm = new _.ViewModelClaim();
+                vm.applyModel(data);
+
                 var cData = new ChartDataCreator(data);
 
-                drawChartHome(cData.chartData, "#chartL4","claimDonut", 0.7);
+                drawChartHome(cData.chartData, "#chartL4","ClaimDonut", 0.7);
+            
 
-                setTimeout(function(){
-                    myApp.hidePreloader();
-                    $(".loadingPage").addClass("hidden");
-                    $(".views").removeClass("hidden");
-                    $(".overlay").removeClass("hidden");
+             
+                    //myApp.hidePreloader();
+                $(".loadingPage").addClass("hidden");
+                $(".views").removeClass("hidden");
+                $(".overlay").removeClass("hidden");
+                callback();
 
-
-                },2000);
+              
 
             }
             else{
                 
-                  myApp.alert('Could not Connect to the Server -4 ', 'Error:', function() {
-                    myApp.hidePreloader();
-                  });
+                  myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                    function () {
+                        myApp.hidePreloader();
+                    },
+
+                    function () {
+                        myApp.hidePreloader();
+                    }
+                );
 
             }
 
@@ -623,181 +429,523 @@ $(document).ready(function () {
 
 
 
-    /************************************************************************************************/
+    function refreshBuildHomePage (groupCode, siteNumber, callback){
+
+        
+
+        myApp.showPreloader('Refreshing');
+
+        var api = new _.API();
+
+        function inboundHomeCallback (success, data){
+
+            if(success){
+
+                
+                var vm = new _.ViewModelHomeInbound();
+                vm.applyModel(data);
+                var cData = new ChartDataCreator(data);
+                drawChartChangeData("InboundDonut", cData.chartData, 0.7);
+
+                var api = new _.API();
+                api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home?forGroupCode="+groupCode+"&forSiteNumber="+siteNumber,outboundHomeCallback);
+
+            }
+            else{
+                
+                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                    function () {
+                        myApp.hidePreloader();
+                    },
+
+                    function () {
+                        myApp.hidePreloader();
+                    }
+                );
+
+            }
+
+        };
 
 
+        function outboundHomeCallback (success, data){
+            
+            if(success){
+               
+                var vm = new _.ViewModelOutboundHome();
+                vm.applyModel(data);
+
+                api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home?forGroupCode="+groupCode+"&forSiteNumber="+siteNumber,keyInHomeCallback);
+                var cData = new ChartDataCreator(data);
+                //console.log('100');
+                drawChartChangeData("OutboundDonut", cData.chartData, 0.7);
+
+            }
+            else{
+                
+                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                    function () {
+                        myApp.hidePreloader();
+                    },
+
+                    function () {
+                        myApp.hidePreloader();
+                    }
+                );
+
+            }
+
+        };
+
+        function keyInHomeCallback (success, data){
+
+            if(success){
+                
+                var vm = new _.ViewModelHomeKeyIn();
+                vm.applyModel(data);
+                api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home?forGroupCode="+groupCode+"&forSiteNumber="+siteNumber,claimHomeCallback);
+                
+                var cData = new ChartDataCreator(data);
+                //console.log(cData.chartKeyinData);
+                drawChartChangeData("keyInboundDonut", cData.chartKeyinData, 0.0);
 
 
+            }
+            else{
+            
+                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                    function () {
+                        myApp.hidePreloader();
+                    },
+
+                    function () {
+                        myApp.hidePreloader();
+                    }
+                );
+
+            }
+
+        };
 
 
+        function claimHomeCallback (success, data){
 
-    myApp.onPageInit('keyin-detail', function (page) {
-        console.log("keyInDetail");
-        var salesData2 = [
+            if(success){
+                
+                var vm = new _.ViewModelClaim();
+                vm.applyModel(data);
 
-        {
-            label: "Plus",
-            value: 1000,
-            color: "#DC3912"
-        }, {
-            label: "Lite",
-            value: 800,
-            color: "#FF9900"
-        }, {
-            label: "Elite",
-            value: 200,
-            color: "#109618"
-        }, {
-            label: "Super",
-            value: 800,
-            color: "#0855C0"
-        }, {
-            label: "Minor",
-            value: 200,
-            color: "#000000"
-        }, {
-            label: "Delux",
-            value: 100,
-            color: "#990099"
-        }];
-        var svgKeyinDetail = d3.select("#chartL5").append("svg").attr("width", 500).attr("height", 500);
-        svgKeyinDetail.append("g").attr("id", "KeyinDetailPie");
-        Donut3D.draw("KeyinDetailPie", salesData2, 250, 250, 250, 193, 30, 0.0);
+                var cData = new ChartDataCreator(data);
+                drawChartChangeData("ClaimDonut", cData.chartData, 0.7);
+                callback();
 
-        var salesData3 = [
+            }
+            else{
+                
+                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
 
-        {
-            label: "Plus",
-            value: 1000,
-            color: "#DC3912"
-        }, {
-            label: "Lite",
-            value: 800,
-            color: "#FF9900"
-        }, {
-            label: "Elite",
-            value: 200,
-            color: "#109618"
-        }];
+                    function () {
+                        myApp.hidePreloader();
+                    },
 
-        var svgTat = d3.select("#chartL6").append("svg").attr("width", 225).attr("height", 250);
-        svgTat.append("g").attr("id", "TatPie");
-        Donut3D.draw("TatPie", salesData3, 140, 120, 100, 79, 20, 0.7);
+                    function () {
+                        myApp.hidePreloader();
+                    }
+                );
+
+            }
+
+        };
 
 
+        api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home?forGroupCode="+groupCode+"&forSiteNumber="+siteNumber,inboundHomeCallback);
 
-        nv.addGraph(function () {
-            var chart = nv.models.discreteBarChart().x(function (d) {
-                return d.label
-            }) //Specify the data accessors.
-            .y(function (d) {
-                return d.value
-            }).staggerLabels(false) //Too many bars and not enough room? Try staggering labels.
-            .tooltips(false) //Don't show tooltips
-            .showValues(true) //...instead, show the bar value right on top of each bar.
-            .transitionDuration(350).color(['#DC3912', '#FF9900']);
-
-            chart.yAxis.tickFormat(d3.format(',0f'));
-            chart.valueFormat(d3.format(',0f'));
-
-            d3.select('#chartL7 svg').datum(exampleData()).call(chart);
-
-            nv.utils.windowResize(chart.update);
+       
+    };
 
 
+    $('.submitButton-home').click(function(){
 
-            return chart;
+        var groupCode = $('#groupCode-home').val();
+        var siteNumber = $('#siteNumber-home').val();
+
+        refreshBuildHomePage(groupCode, siteNumber, function(){
+
+            setTimeout(function(){
+
+                    myApp.hidePreloader();
+                   
+            },500);
+
         });
 
-        //Each bar represents a single discrete quantity.
-
-
-        function exampleData() {
-            return [{
-                key: "Cumulative Return",
-                values: [{
-                    "label": "Expected Volume",
-                    "value": 59000
-                }, {
-                    "label": "Actual Volume",
-                    "value": 58000
-                }]
-            }]
-
-        }
-
-        nv.addGraph(function () {
-            var chart = nv.models.discreteBarChart().x(function (d) {
-                return d.label
-            }) //Specify the data accessors.
-            .y(function (d) {
-                return d.value
-            }).staggerLabels(false) //Too many bars and not enough room? Try staggering labels.
-            .tooltips(false) //Don't show tooltips
-            .showValues(true) //...instead, show the bar value right on top of each bar.
-            .transitionDuration(350).color(['#DC3912', '#FF9900', '#109618', '#000099', '#000000', '#990099', 'gray']);
-
-            chart.yAxis.tickFormat(d3.format(',0f'));
-
-            chart.valueFormat(d3.format(',0f'));
-
-            d3.select('#chartL8 svg').datum(exampleData2()).call(chart);
-
-            nv.utils.windowResize(chart.update);
-
-            return chart;
-        });
-
-        //Each bar represents a single discrete quantity.
-
-
-        function exampleData2() {
-            return [{
-                key: "Cumulative Return",
-                values: [{
-                    "label": "Yesterday",
-                    "value": 61
-                }, {
-                    "label": "Two Day Ago",
-                    "value": 67
-                }, {
-                    "label": "Three days Ago",
-                    "value": 51
-                }, {
-                    "label": "Four Days Ago",
-                    "value": 71
-                }, {
-                    "label": "Five Days Ago",
-                    "value": 57
-                }, {
-                    "label": "Six Days Ago",
-                    "value": 75
-                }, {
-                    "label": "Seven Days Ago",
-                    "value": 80
-                }]
-            }]
-
-        }
 
     });
 
 
 
-    function sequence(i) {
-        for (var j = 0; j < document.getElementsByClassName('step-' + i).length; j++) {
-            document.getElementsByClassName('step-' + i)[j].classList.remove("hidden")
+
+
+    
+
+    /************************************************************************************************/
+
+
+     myApp.onPageInit('index', function (page) {
+        myApp.showPreloader("Preparing");
+        buildHomePage(function(){
+            setTimeout(function(){
+                myApp.hidePreloader();
+
+            },500);
+            
+        });
+        
+        homelink.prop("href", "#");
+        
+        
+
+    });
+
+    
+
+    myApp.onPageInit('*', function (page) {
+      console.log(page.name + ' initialized'); 
+    });
+
+
+
+    function renderKeyInDetailWorklist(groupCode, siteNumber, org){
+        myApp.showPreloader('Preparing');
+        var api = new _.API();
+
+        if(groupCode && siteNumber && org){
+
+            myApp.showPreloader('Refreshing');
+            api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/worklist?forGroupCode='+groupCode+'&forSiteNumber='+siteNumber+'&forOrg='+org,function(success, data){
+                if(success){
+                    var cData = new ChartDataCreator(data);
+                    Donut3D.transition("KeyinDetailPie", cData.chartKeyinDataWorkList,250, 193, 35, 0.0);
+                    setTimeout(function(){
+                        myApp.hidePreloader();
+
+                    },200);
+                    
+                }
+                else{
+                    
+                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                    );
+
+
+                }
+
+            });
+
+
+
+
+        }
+        else{
+
+
+        
+            api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/worklist',function(success, data){
+                if(success){
+                    var cData = new ChartDataCreator(data);
+                    var svgKeyinDetail = d3.select("#chartL5").append("svg").attr("width", 500).attr("height", 500);
+                    svgKeyinDetail.append("g").attr("id", "KeyinDetailPie");
+                    Donut3D.draw("KeyinDetailPie", cData.chartKeyinDataWorkList, 250, 250, 250, 193, 35, 0.0);
+                   
+                }
+                else{
+                    
+                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                    );
+
+
+                }
+
+            });
+
+         }
+
+
+    };
+
+    function renderKeyInDetailTAT(groupCode, siteNumber){
+        
+        var api = new _.API();
+
+        if(groupCode && siteNumber){
+            
+            api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/batchTAT?forGroupCode='+groupCode+'&forSiteNumber='+siteNumber,function(success, data){
+                if(success){
+
+                    Donut3D.transition("TatPie", data, 100, 79, 20, 0.7);
+                    
+
+                   
+                }
+
+                else{
+
+                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                    );
+
+                }
+
+            });
+
+
         }
 
-    }
+        else{
+
+
+        
+
+            api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/batchTAT',function(success, data){
+                if(success){
+
+                    var svgTat = d3.select("#chartL6").append("svg").attr("width", 225).attr("height", 250);
+                    svgTat.append("g").attr("id", "TatPie");
+                    Donut3D.draw("TatPie", data, 140, 120, 100, 79, 20, 0.7);
+                   
+                }
+
+                else{
+
+                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                    );
+
+                }
+
+            });
+
+        }
+
+    };
+
+
+    function renderKeyInDetailVolume(groupCode){
+        
+        var api = new _.API();
+        var url;
+        if(groupCode){
+
+            url = 'https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/volume?forGroupCode='+groupCode;
+
+        }
+        else{
+
+            url = 'https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/volume';
+        }
+
+            
+
+        
+        api.getIt(url,function(success, data){
+            if(success){
+
+                var discreteBarChart = new D3DiscreteBarChart();
+
+                discreteBarChart.triggerIt({
+
+                    color: ['#DC3912', '#FF9900'],
+                    containerId: '#chartL7',
+                    data: data
+
+
+                }, function(success){
+
+
+                });
+
+            }
+
+            else{
+
+                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                );
+
+            }
+
+        });
+
+        
+
+
+    };
+
+    function renderKeyInDetailMPI(groupCode, siteNumber){
+        
+        var api = new _.API();
+        var url;
+
+        if(groupCode && siteNumber){
+
+            url = 'https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/MPI?forGroupCode='+groupCode+'&forSiteNumber='+siteNumber;
+        }
+        else{
+            url = 'https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/MPI';
+
+        }
+        api.getIt(url,function(success, data){
+            if(success){
+
+                var discreteBarChart = new D3DiscreteBarChart();
+
+                discreteBarChart.triggerIt({
+
+                    color: ['#DC3912', '#FF9900', '#109618', '#000099', '#000000', '#990099', 'gray'],
+                    containerId: '#chartL8',
+                    data: data
+
+
+                }, function(success){
+
+
+                });
+                
+
+            }
+            else{
+                
+                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                );
+
+            }
+
+
+        });
+
+
+    };
+
+
+
+    myApp.onPageInit('keyin-detail', function (page) {
+        
+        renderKeyInDetailWorklist();
+        renderKeyInDetailVolume();
+        renderKeyInDetailTAT();
+        renderKeyInDetailMPI();
+       
+        setTimeout(function(){
+
+            myApp.hidePreloader();
+
+        },1000);
+       
+        $('.submitButton-keyin-worklist').click(function(){
+
+
+            var groupCode = $('#groupCode-keyin-worklist').val();
+            var siteNumber = $('#siteNumber-keyin-worklist').val();
+            var org = $('#org-keyin-worklist').val();
+            renderKeyInDetailWorklist(groupCode, siteNumber, org);
+
+        });
+
+        $('.submitButton-keyin-volume').click(function(){
+
+
+            var groupCode = $('#groupCode-keyin-volume').val();
+            
+            renderKeyInDetailVolume(groupCode);
+
+        });
+
+
+        $('.submitButton-keyin-TAT').click(function(){
+
+
+            var groupCode = $('#groupCode-keyin-TAT').val();
+            var siteNumber = $('#siteNumber-keyin-TAT').val();
+            
+            renderKeyInDetailTAT(groupCode, siteNumber);
+
+        });
+
+        $('.submitButton-keyin-MPI').click(function(){
+
+
+            var groupCode = $('#groupCode-keyin-MPI').val();
+            var siteNumber = $('#siteNumber-keyin-MPI').val();
+            
+            renderKeyInDetailMPI(groupCode, siteNumber);
+
+        });
+
+
+    });
+
+
+
+ 
 
 
 
     myApp.onPageInit('claim', function (page) {
-        console.log("claim");
+        
+        getClaimDetail();
+
         $('.intClear a').click(function(){
             clearInterval(arrowSequence);
-            console.log("back");
+            homelink.prop("href", "#");
+
 
         });
         
@@ -807,7 +955,7 @@ $(document).ready(function () {
                 sequence(i);
                 i++;
                 if(i==5){
-                    console.log(arrowSequence);
+                    
                     clearInterval(arrowSequence);
                 }
             },1000);
@@ -830,27 +978,33 @@ $(document).ready(function () {
             }
         }); 
         
+
+
+        $('.submitButton-claim-detail').click(function(){
+
+                var groupCode = $('#groupCode-claim').val();
+                var siteNumber = $('#siteNumber-claim').val();
+                getClaimDetail(groupCode, siteNumber);
+
+
+        });
+
         
-        $$('.popup-services').on('click', function () {
-          var popupHTML = '<div class="popup">'+
-                            '<div class="content-block">'+
-                              '<p>Popup created dynamically.</p>'+
-                              '<p><a href="#" class="close-popup">Close me</a></p>'+
-                            '</div>'+
-                          '</div>'
-          myApp.popup(popupHTML);
-          
-    }); 
+        
+     
     });
+
+
+
+
 
     myApp.onPageInit('lockbox-outbound', function (page) {
         getLockboxOutboundDetail(); 
         
-
-        // clear interval when back button is clicked       
+     
         $('.intClear a').click(function(){
+
             clearInterval(arrowSequence);
-            console.log("back");
 
         });
         
@@ -860,7 +1014,7 @@ $(document).ready(function () {
                 sequence(i);
                 i++;
                 if(i==5){
-                    console.log(arrowSequence);
+                    //console.log(arrowSequence);
                     clearInterval(arrowSequence);
                 }
             },1000);
@@ -884,16 +1038,18 @@ $(document).ready(function () {
         }); 
         
         
-        $$('.popup-services').on('click', function () {
-          var popupHTML = '<div class="popup">'+
-                            '<div class="content-block">'+
-                              '<p>Popup created dynamically.</p>'+
-                              '<p><a href="#" class="close-popup">Close me</a></p>'+
-                            '</div>'+
-                          '</div>'
-          myApp.popup(popupHTML);
-          
-    }); 
+            
+        $('.submitButton-Outbound-detail').click(function(){
+
+                var groupCode = $('#groupCode-outbound').val();
+                var siteNumber = $('#siteNumber-outbound').val();
+
+                getLockboxOutboundDetail(groupCode, siteNumber);
+
+
+        });
+
+        
 
     });
 
@@ -903,14 +1059,12 @@ $(document).ready(function () {
 
         getLockboxInboundDetail();
         
-
        
 
-        // clear interval when back button is clicked       
+              
         $('.intClear a').click(function () {
             clearInterval(arrowSequence);
-            //console.log("back");
-
+            
         });
 
         var i = 0;
@@ -941,7 +1095,18 @@ $(document).ready(function () {
         });
 
         
-       
+         $('.submitButton-Inbound-detail').click(function(){
+
+
+                var groupCode = $('#groupCode-inbound').val();
+                var siteNumber = $('#siteNumber-inbound').val();
+
+                getLockboxInboundDetail(groupCode, siteNumber);
+
+
+        });
+
+  
 
        
 
@@ -970,127 +1135,146 @@ $(document).ready(function () {
 
     /*-------------*/
     myApp.onPageInit('reports', function (page) {
-        console.log("reports");
+        
+        myApp.showPreloader('Preparing');
+
+        var slides = [
+                'Forcasted vs Actual Volume',
+                'TAT Average and Median',
+                'Claim Volume',
+                'Percentage of MPI Used',
+                'MPI Load Time Statistics',
+                'Miscellaneous Reports'
+
+        ];
+
+
+
+        var mySlider = myApp.slider('.slider-container', {
+            speed: 400,
+            spaceBetween: 40,
+            nextButton:'#slideLinkName-next',
+            prevButton: '#slideLinkName-prev',
+            onSlideChangeEnd: function(slider){
+                var slideName;
+                if(slides[mySlider.activeSlideIndex+1]){
+
+                    slideName = slides[mySlider.activeSlideIndex+1] +  '&nbsp; <span class="fa  fa-angle-right fa-lg"></span>'
+
+
+                }
+                else{
+
+                    slideName = '';
+                }
+                 
+                
+                $('#slideLinkName-next').html( slideName );
+                
+
+            },
+            onSlideChangeStart: function(slider){
+
+                var slideName;
+                if(slides[mySlider.activeSlideIndex-1]){
+
+                    slideName = '<span class="fa  fa-angle-left fa-lg"></span> &nbsp;'+ slides[mySlider.activeSlideIndex-1] ;
+
+
+                }
+                else{
+
+                    slideName = '';
+                }
+
+
+                $('#slideLinkName-prev').html(slideName);
+
+            }
+
+
+        });
+
+        $('#slideLinkName-next').html(slides[mySlider.activeSlideIndex+1] + '&nbsp; <span class="fa  fa-angle-right fa-lg"></span>');
+        
+        
         
         $$('.slider-slide input[type="range"]').on('touchmove mousemove', function (e){
           e.stopPropagation();
         });
 
-        $('#goHome').attr("href", "index");
-        var noOfDaysFVA = 30;
-        var noOfDaysCV = 30;
-         var noOfDaysPMU = 30;
-         var noOfDaysMLT= 30;
-         var noOfDaysTAT= 30;
-
-            $("#VT-slider").on('input', function () {
-                $("#VT-slider-text").html(this.value);
-                streams = ['Forcasted', 'Actual'];
-                noOfDaysFVA=this.value;
-            defaultChartConfig("reports-charts-forcasted-vs-actual", dataFactory(2, noOfDaysFVA), {
-            delay: 0,
-            transitionDuration: 0,
-            groupSpacing: .2
-        });
-            })
-
-        $("#CV-slider").on('input', function () {
-                $("#CV-slider-text").html(this.value);
-                noOfDaysCV=this.value;
-                streams = ['Volume'];
-                defaultChartConfig2("reports-claim-data-volume", dataFactory(1, noOfDaysCV), {
-                    delay: 0,
-                    transitionDuration: 0,
-                    groupSpacing: .2
-                });
-            })
-
-        $("#PMU-slider").on('input', function () {
-                $("#PMU-slider-text").html(this.value);
-                noOfDaysPMU=this.value;
-                 streams = ['% Used'];
-        defaultChartConfig3("reports-percentage-MPI-used", dataFactory2(1, noOfDaysPMU), {
-            delay: 0,
-            transitionDuration: 0,
-            groupSpacing: .2
-        });
-            })
-
-        $("#MLT-slider").on('input', function () {
-                $("#MLT-slider-text").html(this.value);
-                noOfDaysMLT=this.value;
-                    var chart = nv.models.stackedAreaChart().x(function (d) {
-                return d[0]
-            }).y(function (d) {
-                return d[1]
-            }) //adjusting, 100% is 1.00, not 100 as it is in the data
-            .color(d3.scale.category10().range()).useInteractiveGuideline(true);
-
-            chart.xAxis.tickFormat(d3.format(',0f'));
-
-            chart.yAxis.tickFormat(d3.format(',0f'));
-            chart.color(['#00FF00', '#FF9900', '#DC3912']);
-            d3.select('#MPI-stacked-area-chart svg').datum(stackedAreaChartData(noOfDaysMLT)).call(chart);
-
-            //TODO: Figure out a good way to do this automatically
-            nv.utils.windowResize(chart.update);
-            })
+        $('#goHome').prop("href", "index");
 
 
-        $("#TAT-slider").on('input', function () {
-                $("#TAT-slider-text").html(this.value);
-                noOfDaysTAT=this.value;
-            var chart = nv.models.lineChart().x(function (d) {
-                return d[0]
-            }).y(function (d) {
-                return d[1]
-            }) //adjusting, 100% is 1.00, not 100 as it is in the data
-            .color(d3.scale.category10().range()).useInteractiveGuideline(true);
+        var dataFactory = function (seriesNum, perSeries, streams) {
+            return new d3.range(0, seriesNum).map(function (d, i) {
+                return {
+                    key: streams[i],
+                    values: new d3.range(0, perSeries).map(function (f, j) {
+                        return {
+                            y: 10 + Math.floor(Math.random() * 10000) + 30000,
+                            x: j + 1
+                        }
+                    })
+                };
+            });
 
-            chart.xAxis.tickFormat(d3.format(',0f'));
+        }
 
-            chart.yAxis.tickFormat(d3.format(',0f'));
-            chart.color(['#00FF00', '#FF9900']);
-            d3.select('#TAT-line-chart svg').datum(lineChartData(noOfDaysTAT)).call(chart);
 
-            //TODO: Figure out a good way to do this automatically
-            nv.utils.windowResize(chart.update);
+        var dataFactoryFilter = function (seriesNum, perSeries, streams) {
+            return new d3.range(0, seriesNum).map(function (d, i) {
+                return {
+                    key: streams[i],
+                    values: new d3.range(0, perSeries).map(function (f, j) {
+                        return {
+                            y: 10 + Math.floor(Math.random() * 1000) + 300,
+                            x: j + 1
+                        }
+                    })
+                };
+            });
 
-            return chart;
-            })
+        }
 
 
 
 
-        $("#reports-missed-TAT").append('<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Acura1 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Audi1</div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">BMW1</div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Cadillac1 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Chevrolet1 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Chrysler1 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Dodge1 </div>' + '</div>' + '</li>'
+        var dataFactory2 = function (seriesNum, perSeries, streams) {
+            return new d3.range(0, seriesNum).map(function (d, i) {
+                return {
+                    key: streams[i],
+                    values: new d3.range(0, perSeries).map(function (f, j) {
+                        return {
+                            y: Math.floor(Math.random() * 10)+ 70,
+                            x: j + 1
+                        }
+                    })
+                };
+            });
+
+        }
+
+        var dataFactory2Filter = function (seriesNum, perSeries, streams) {
+            return new d3.range(0, seriesNum).map(function (d, i) {
+                return {
+                    key: streams[i],
+                    values: new d3.range(0, perSeries).map(function (f, j) {
+                        return {
+                            y: Math.floor(Math.random() * 10)+ 50,
+                            x: j + 1
+                        }
+                    })
+                };
+            });
+
+        }
 
 
-        );
-        $("#list-selector").change(function () {
-            console.log(this.value);
-            if (this.value === "Site List Missed TAT") {
-                $("#reports-missed-TAT").html("");
-                $("#reports-missed-TAT").append('<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Acura1 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Audi1</div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">BMW1</div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Cadillac1 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Chevrolet1 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Chrysler1 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Dodge1 </div>' + '</div>' + '</li>'
 
 
-                );
-
-            } else {
-                $("#reports-missed-TAT").html("");
-                $("#reports-missed-TAT").append('<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Acura2</div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Audi2</div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">BMW2</div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Cadillac2 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Chevrolet2 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Chrysler2 </div>' + '</div>' + '</li>' + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">Dodge2 </div>' + '</div>' + '</li>'
-
-
-                );
-
-            }
-
-        })
-
-
-
-
-
-        function lineChartData(range) {
+        var lineChartData = function (range) {
+            
             var data = [];
             data.push({
                 "key": "AVG",
@@ -1100,251 +1284,333 @@ $(document).ready(function () {
                 "key": "Median",
                 "values": []
             });
+
             if(range<1){
                 range = Math.abs(range);
             }
 
             for(var i=1;i<=range;i++){
-                data[0].values.push([i,Math.floor(Math.random()*24)]);
-                data[1].values.push([i,15]);
+                data[0].values.push([i,Math.floor(Math.random()*10)+14]);
+                data[1].values.push([i,18]);
             }
             return data;
-        }
+        };
 
 
-        nv.addGraph(function () {
-            var chart = nv.models.lineChart().x(function (d) {
-                return d[0]
-            }).y(function (d) {
-                return d[1]
-            }) //adjusting, 100% is 1.00, not 100 as it is in the data
-            .color(d3.scale.category10().range()).useInteractiveGuideline(true);
-
-            chart.xAxis.tickFormat(d3.format(',0f'));
-
-            chart.yAxis.tickFormat(d3.format(',0f'));
-            chart.color(['#00FF00', '#FF9900']);
-            d3.select('#TAT-line-chart svg').datum(lineChartData(noOfDaysTAT)).call(chart);
-
-            //TODO: Figure out a good way to do this automatically
-            nv.utils.windowResize(chart.update);
-
-            return chart;
-        });
-
-
-
-        function stackedAreaChartData(range) {
+        var stackedAreaChartData = function (range) {
             var data = [];
             data.push({
-                "key": "Top 10th Percentile",
+                "key": "Bottom 10th Percentile",
                 "values": []
             });
+            
             data.push( {
                 "key": "AVG",
                 "values": []
             });
+
             data.push({
-                "key": "Bottom 10th Percentile",
+                "key": "Top 10th Percentile",
                 "values": []
-            })
+            });
+            
             if(range<1){
                 range = Math.abs(range);
             }
 
             for(var i=1;i<=range;i++){
-                data[0].values.push([i,Math.floor(Math.random()*20) +4 ]);
+                data[0].values.push([i,Math.floor(Math.random()*10) +1 ]);
                 data[1].values.push([i,15]);
-                data[2].values.push([i,Math.floor(Math.random()*12)]);
+                data[2].values.push([i,Math.floor(Math.random()*10)+14]);
             }
             return data;
         }
 
 
-        nv.addGraph(function () {
-            var chart = nv.models.stackedAreaChart().x(function (d) {
-                return d[0]
-            }).y(function (d) {
-                return d[1]
-            }) //adjusting, 100% is 1.00, not 100 as it is in the data
-            .color(d3.scale.category10().range()).useInteractiveGuideline(true);
+        var vBar = new D3VerticalBarChart();
+        var stackedChart = new D3StackedAreaChart();
+        var lChart = new D3LineChart();
 
-            chart.xAxis.tickFormat(d3.format(',0f'));
+        var reportsVolume = function(n,m,c){
 
-            chart.yAxis.tickFormat(d3.format(',0f'));
-            chart.color(['#00FF00', '#FF9900', '#DC3912']);
-            d3.select('#MPI-stacked-area-chart svg').datum(stackedAreaChartData(noOfDaysMLT)).call(chart);
-
-            //TODO: Figure out a good way to do this automatically
-            nv.utils.windowResize(chart.update);
-
-            return chart;
-        });
-
-
-
-
-
-        var streams = ['Forcasted', 'Actual'];
-
-        function dataFactory(seriesNum, perSeries) {
-            return new d3.range(0, seriesNum).map(function (d, i) {
-                return {
-                    key: streams[i],
-                    values: new d3.range(0, perSeries).map(function (f, j) {
-                        return {
-                            y: 10 + Math.floor(Math.random() * 100000),
-                            x: j + 1
-                        }
-                    })
-                };
-            });
 
         }
+        
 
 
-        defaultChartConfig("reports-charts-forcasted-vs-actual", dataFactory(2, noOfDaysFVA), {
-            delay: 0,
-            transitionDuration: 0,
-            groupSpacing: .2
+        ////////
+
+        var colorSlide0 = ['#DC3912', '#FF9900'];
+        var streamsSlide0 = ['Forcasted', 'Actual'];
+
+        var publicStorage= _.PublicStore.openPort();
+        publicStorage.put('dataVolume', dataFactory);
+       
+
+
+
+        vBar.triggerIt({containerId:'#reports-charts-forcasted-vs-actual',  
+                        dataFactory: publicStorage.get('dataVolume')(2, 30,streamsSlide0), 
+                        axisLabel: 'Lockbox EOB Volume Trend',
+                        color: colorSlide0 
+                        }, function(){
+
+
+                        });
+
+       
+        $("#VT-slider").on('input', function () {
+
+            $("#VT-slider-text").html(this.value);
+           
+            vBar.triggerIt({containerId:'#reports-charts-forcasted-vs-actual',
+                            dataFactory: publicStorage.get('dataVolume')(2, this.value,streamsSlide0), 
+                            axisLabel: 'Lockbox EOB Volume Trend',
+                            color: colorSlide0 });
+        
+
+        });
+
+        $('.submitButton-reports-volume').click(function(e){
+
+            //console.log('clicked');
+            publicStorage.put('dataVolume', dataFactoryFilter);
+
+            vBar.triggerIt({containerId:'#reports-charts-forcasted-vs-actual',
+                            dataFactory: publicStorage.get('dataVolume')(2, 30 ,streamsSlide0), 
+                            axisLabel: 'Lockbox EOB Volume Trend',
+                            color: colorSlide0 });
+
+        });
+    
+        ////////
+
+        //////
+
+        var colorSlide2 = ['#FF9900'];
+        var streamsSlide2 = ['Volume'];
+        publicStorage.put('claimVolume', dataFactory);
+
+        vBar.triggerIt({containerId:'#reports-claim-data-volume',  
+                        dataFactory: publicStorage.get('claimVolume')(1, 30,streamsSlide2), 
+                        axisLabel: 'Claim Volume Trend',
+                        color: colorSlide2 
+                        });
+
+
+        $("#CV-slider").on('input', function () {
+                $("#CV-slider-text").html(this.value);
+                
+                vBar.triggerIt({containerId:'#reports-claim-data-volume',  
+                        dataFactory: publicStorage.get('claimVolume')(1, this.value,streamsSlide2), 
+                        axisLabel: 'Claim Volume Trend',
+                        color: colorSlide2 
+                        });
+        });
+
+        $('.submitButton-reports-claim').click(function(e){
+
+            publicStorage.put('claimVolume', dataFactoryFilter);
+            vBar.triggerIt({containerId:'#reports-claim-data-volume',  
+                        dataFactory: publicStorage.get('claimVolume')(1, 30,streamsSlide2), 
+                        axisLabel: 'Claim Volume Trend',
+                        color: colorSlide2 
+                        });
+
+        });
+        
+        //////
+
+        var colorSlide3 = ['#61C106'];
+        var streamsSlide3 = ['% Used'];
+
+        publicStorage.put('PMU', dataFactory2);
+
+
+        vBar.triggerIt({containerId:'#reports-percentage-MPI-used',  
+                        dataFactory: publicStorage.get('PMU')(1, 30,streamsSlide3), 
+                        axisLabel: 'Percentage of MPI Used ',
+                        color: colorSlide3 
+                        });
+
+
+        $("#PMU-slider").on('input', function () {
+                $("#PMU-slider-text").html(this.value);
+
+                vBar.triggerIt({containerId:'#reports-percentage-MPI-used',  
+                        dataFactory: publicStorage.get('PMU')(1, this.value ,streamsSlide3), 
+                        axisLabel: 'Percentage of MPI Used ',
+                        color: colorSlide3 
+                        });
         });
 
 
+        $('.submitButton-reports-MPI-used').click(function(e){
 
-        function defaultChartConfig(containerId, data, chartOptions) {
-            nv.addGraph(function () {
-                var chart;
-                chart = nv.models.multiBarChart().margin({
-                    bottom: 100
-                }).transitionDuration(300);
+            publicStorage.put('PMU',dataFactory2Filter );
 
-                chart.options(chartOptions);
-                chart.multibar.hideable(true);
-                chart.color(['#DC3912', '#FF9900']);
-                chart.xAxis.axisLabel("Volume Trend").showMaxMin(true).tickFormat(d3.format(',0f'));
+            vBar.triggerIt({containerId:'#reports-percentage-MPI-used',  
+                        dataFactory: publicStorage.get('PMU')(1, 30,streamsSlide3), 
+                        axisLabel: 'Percentage of MPI Used ',
+                        color: colorSlide3 
+                        });
 
-                chart.yAxis.tickFormat(d3.format(',0f'));
+        });
 
-                d3.select('#' + containerId + ' svg').datum(data).call(chart);
+        //////
 
-                nv.utils.windowResize(chart.update);
 
-                chart.dispatch.on('stateChange', function (e) {
-                    nv.log('New State:', JSON.stringify(e));
+        /////
+        
+
+        publicStorage.put('MPI',stackedAreaChartData );
+
+
+        lChart.triggerIt({
+
+            containerId: '#MPI-stacked-area-chart',
+            color: ['#FF2E2E', '#FF9900','#00FF00'],
+            data: publicStorage.get('MPI')(30)
+
+        }, function(){
+
+
+        });
+
+
+        $("#MLT-slider").on('input', function () {
+                $("#MLT-slider-text").html(this.value);
+                lChart.triggerIt({
+
+                    containerId: '#MPI-stacked-area-chart',
+                    color: ['#FF2E2E', '#FF9900','#00FF00'],
+                    data: publicStorage.get('MPI')(this.value)
+
                 });
 
-                return chart;
-            });
-        }
-
-        console.log($('#reports-charts-forcasted-vs-actual'));
-
-        var streams = ['Volume'];
+        });
 
 
+        
+
+        //////
 
 
-        defaultChartConfig2("reports-claim-data-volume", dataFactory(1, noOfDaysCV), {
-            delay: 0,
-            transitionDuration: 0,
-            groupSpacing: .2
+        /////
+
+
+
+        
+        publicStorage.put('TAT',lineChartData);
+
+        lChart.triggerIt({
+
+                containerId: '#TAT-line-chart',
+                color: ['#00FF00', '#FF9900'],
+                data: publicStorage.get('TAT')(30)
+        }, function(){
+
+
+        });
+
+        $("#TAT-slider").on('input', function () {
+                
+                $("#TAT-slider-text").html(this.value);
+
+                lChart.triggerIt({
+
+                    containerId: '#TAT-line-chart',
+                    color: ['#00FF00', '#FF9900'],
+                    data: publicStorage.get('TAT')(this.value)
+                });  
+        });
+
+        $('.submitButton-reports-TAT').click(function(){
+
+            lChart.triggerIt({
+
+                    containerId: '#TAT-line-chart',
+                    color: ['#00FF00', '#FF9900'],
+                    data: publicStorage.get('TAT')(30)
+            }); 
+
+        });
+
+
+        /////
+
+
+        var TATMissedSites = [
+            'AAA - 078 - Lorem ipsum dolor sit amet',
+            'AAA - 00V58 - consectetuer adipiscing elit',
+            'AAA - 041 - Aenean commodo ligula eget dolor',
+            'BBB - 677 - Aenean massa. Cum sociis natoque ',
+            'DDD - 00V57 - Donec quam felis, ultricies nec, pellentesque eu',
+            'DDD - 051 - Donec pede justo, fringilla vel',
+            'DDD - 00C67 - Nullam dictum felis eu pede ',
+            'XXX - 00X34 - Aenean leo ligula',
+            'XYZ - 067 - viverra quis, feugiat a, tellus'
+        ];
+
+
+        var ClientMPIDecline = [
+            'BBB - 078 - Lorem ipsum dolor sit amet',
+            'CCC - 00V58 - consectetuer adipiscing elit',
+            'DDD - 041 - Aenean commodo ligula eget dolor',
+            'EEE - 677 - Aenean massa. Cum sociis natoque ',
+            'GGG - 00V57 - Donec quam felis, ultricies nec, pellentesque eu',
+            'VVV - 051 - Donec pede justo, fringilla vel',
+            'WWW - 00C67 - Nullam dictum felis eu pede ',
+            'XXX - 00X34 - Aenean leo ligula',
+            'XYZ - 067 - viverra quis, feugiat a, tellus'
+        ];
+
+
+
+
+        var vm = new _.ViewModelSiteMissedTATAndClientMPIDecline();
+
+        vm.applyModel(TATMissedSites,"#reports-missed" );
+
+
+       
+
+        $("#list-selector").change(function () {
+            console.log(this.value);
+            if (this.value === "Site List Missed TAT") {
+                 vm.applyModel(TATMissedSites,"#reports-missed" );
+
+            } else {
+                 vm.applyModel(ClientMPIDecline,"#reports-missed" );
+
+            }
+
         });
 
 
 
-        function defaultChartConfig2(containerId, data, chartOptions) {
-            nv.addGraph(function () {
-                var chart;
-                chart = nv.models.multiBarChart().margin({
-                    bottom: 100
-                }).transitionDuration(300);
+        
 
-                chart.options(chartOptions);
-                chart.multibar.hideable(true);
-                chart.color(['#F7C202']);
-                chart.xAxis.axisLabel("Claim Volume Trend").showMaxMin(true).tickFormat(d3.format(',0f'));
+        setTimeout(function(){
+            myApp.hidePreloader();
 
-                chart.yAxis.tickFormat(d3.format(',0f'));
-
-                d3.select('#' + containerId + ' svg').datum(data).call(chart);
-
-                nv.utils.windowResize(chart.update);
-
-                chart.dispatch.on('stateChange', function (e) {
-                    nv.log('New State:', JSON.stringify(e));
-                });
-
-                return chart;
-            });
-        }
-
-        //
-        var streams = ['% Used'];
-
-        function dataFactory2(seriesNum, perSeries) {
-            return new d3.range(0, seriesNum).map(function (d, i) {
-                return {
-                    key: streams[i],
-                    values: new d3.range(0, perSeries).map(function (f, j) {
-                        return {
-                            y: Math.floor(Math.random() * 100),
-                            x: j + 1
-                        }
-                    })
-                };
-            });
-
-        }
-
-
-        defaultChartConfig3("reports-percentage-MPI-used", dataFactory2(1, noOfDaysPMU), {
-            delay: 0,
-            transitionDuration: 0,
-            groupSpacing: .2
-        });
-
-
-
-        function defaultChartConfig3(containerId, data, chartOptions) {
-            nv.addGraph(function () {
-                var chart;
-                chart = nv.models.multiBarChart().margin({
-                    bottom: 100
-                }).transitionDuration(300);
-
-                chart.options(chartOptions);
-                chart.multibar.hideable(true);
-                chart.color(['#04D3A6']);
-                chart.xAxis.axisLabel("Percentage of MPI Used").showMaxMin(true).tickFormat(d3.format(',0f'));
-
-                chart.yAxis.tickFormat(d3.format(',0f'));
-
-                d3.select('#' + containerId + ' svg').datum(data).call(chart);
-
-                nv.utils.windowResize(chart.update);
-
-                chart.dispatch.on('stateChange', function (e) {
-                    nv.log('New State:', JSON.stringify(e));
-                });
-
-                return chart;
-            });
-        }
+        },1000);
+        
     });
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    var firstTimeFlag = true;
 
 
     var getLockboxInboundDetail = function(groupCode , siteNumber){
 
         myApp.showPreloader('Preparing');
 
-        var api = new API();
+        var api = new _.API();
 
         if(groupCode && siteNumber){
 
+            api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/detail?forGroupCode="+groupCode+"&forSiteNumber="+siteNumber,inboundDetailcallback);
 
         }
         else{
@@ -1364,7 +1630,7 @@ $(document).ready(function () {
 
                 
                 
-               var vm = new ViewModelInbound();
+               var vm = new _.ViewModelInbound();
 
                vm.applyModel(data);
 
@@ -1381,9 +1647,16 @@ $(document).ready(function () {
 
             else{
 
-                myApp.alert('Could not Connect to the Server - 5 ', 'Error:', function() {
-                    myApp.hidePreloader();
-                });
+                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                );
             }
 
 
@@ -1400,9 +1673,11 @@ $(document).ready(function () {
 
         myApp.showPreloader('Preparing');
 
-        var api = new API();
+        var api = new _.API();
 
         if(groupCode && siteNumber){
+            
+            api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/detail?forGroupCode="+groupCode+"&forSiteNumber="+siteNumber,outboundDetailcallback);
 
 
         }
@@ -1421,6 +1696,10 @@ $(document).ready(function () {
 
             if(success){
                
+
+               var vm = new _.ViewModelOutbound();
+
+               vm.applyModel(data);
     
                 setTimeout(function(){
 
@@ -1433,9 +1712,16 @@ $(document).ready(function () {
 
             else{
 
-                myApp.alert('Could not Connect to the Server - 6 ', 'Error:', function() {
-                    myApp.hidePreloader();
-                });
+                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                );
             }
 
 
@@ -1444,6 +1730,76 @@ $(document).ready(function () {
 
 
     };
+
+
+
+
+    var getClaimDetail = function(groupCode , siteNumber){
+
+        myApp.showPreloader('Preparing');
+
+        var api = new _.API();
+
+        if(groupCode && siteNumber){
+
+            api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/detail?forGroupCode="+groupCode+"&forSiteNumber="+siteNumber,claimDetailcallback);
+
+
+        }
+        else{
+
+
+       
+
+            api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/detail",claimDetailcallback);
+        
+        
+        }
+
+
+        function claimDetailcallback (success, data){
+
+            if(success){
+               
+
+               var vm = new _.ViewModelClaimDetail();
+
+               vm.applyModel(data);
+    
+                setTimeout(function(){
+
+                    myApp.hidePreloader();
+
+                },500);
+                
+
+            }
+
+            else{
+
+                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                );
+
+            }
+
+
+
+        };
+
+
+    };
+    
+
+
+
 
 
 

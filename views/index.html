@@ -8,13 +8,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<!-- Your app title -->
 		<title>My App</title>
-		<!-- Path to Framework7 Library CSS-->
-		<link rel="stylesheet" href="css/framework7.css">
-		<!-- Path to your custom app styles-->
-		<link rel="stylesheet" href="css/my-app.css">
-		<!-- awesome icon -->
-		<link href="css/font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet">
-		<link type="text/css" href="css/animate.css" rel="stylesheet">
+		
 		<script src="js/lib/d3.v3.js"></script>
 		<script src="js/lib/nv.d3.js"></script>
 		<script src="js/src/tooltip.js"></script>
@@ -26,70 +20,66 @@
 		<script src="js/src/models/lineChart.js"></script>
 		<script src="js/src/interactiveLayer.js"></script>
 		<script src="js/src/models/stackedAreaChart.js"></script>
-		<link href="js/src/nv.d3.css" rel="stylesheet" type="text/css">
-		<script type="text/javascript" src = "js/jquery-2.1.1.min.js"></script>
 		<script src="js/Donut3D.js"></script>
+		<script type="text/javascript" src = "js/jquery-2.1.1.min.js"></script>
+	
+
+		<!-- Path to Framework7 Library CSS-->
+		<link rel="stylesheet" href="css/framework7.css">
+		<link rel="stylesheet" href="css/framework7.themes.css">
+		<!-- Path to your custom app styles-->
+		<link rel="stylesheet" href="css/my-app.css">
+		<!-- awesome icon -->
+		<link href="css/font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet">
+		<link type="text/css" href="css/animate.css" rel="stylesheet">
+		<link href="js/src/nv.d3.css" rel="stylesheet" type="text/css">
+		
 	</head>
 	<body>
 		<!-- Status bar overlay for full screen mode (PhoneGap) -->
 		<div class="loadingPage">
-		
-
 		</div>
-
-    <div class="hidden overlay">
-		<div class="statusbar-overlay">
-    	</div>
-		<!-- Panels overlay-->
-		<div class="panel-overlay ">	
-    	</div>
-		<!-- Left panel with reveal effect-->
-		<div class="panel panel-left panel-reveal">
-			<div class="content-block">
-				<!-- Click on link with "close-panel" class will close panel -->
-				
-				<!-- Click on link with "open-panel" and data-panel="right" attribute will open Right panel -->
-				 <div class="list-block">
-			      <ul>
-			        <li class="item-content">
-			          <div class="item-media icoBox"><span class="fa fa-bank fa-lg"></span></div>
-			          <div class="item-inner">
-			            <div class="item-title"><a href="#" id="goHome" class=" s close-panel">Home</a></div>
-			           
-			          </div>
-			        </li>
-			        <li class="item-content">
-			          <div class="item-media icoBox"><span class="fa fa-bar-chart fa-lg"></span></div>
-			          <div class="item-inner">
-			            <div class="item-title"><a href="reports" class="close-panel">Reports</a></div>
-			           
-			          </div>
-			        </li>
-			        <li class="item-content">
-			          <div class="item-media icoBox"><span class="fa fa-angle-double-left fa-2x"></span></div>
-			          <div class="item-inner">
-			            <div class="item-title"><a href="#" class="close-panel">Close</a></div>
-			         
-			          </div>
-			        </li>
-
-			        <li class="item-content">
-			          <div class="item-media icoBox"><span class="fa fa-cogs fa-lg"></span></div>
-			          <div class="item-inner">
-			            <div class="item-title"><a href="#" data-popup=".popup-app-settings" class="open-popup"class="close-panel">App Setting</a></div>
-			         
-			          </div>
-			        </li>
-
-
-			      </ul>
-			     
-			    </div>
-
-
+		<div class="hidden overlay">
+			<div class="statusbar-overlay">
+			</div>
+			<!-- Panels overlay-->
+			<div class="panel-overlay ">	
+			</div>
+			<!-- Left panel with reveal effect-->
+			<div class="panel panel-left panel-reveal">
+				<div class="content-block">
+					
+					<div class="list-block">
+						<ul>
+							<li class="item-content" >
+								<div class="item-media icoBox"><span class="fa fa-bank fa-lg"></span></div>
+								<div class="item-inner ">
+									<div class="item-title"><a href="#"  id="goHome" class="close-panel">Home</a></div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-media icoBox"><span class="fa fa-bar-chart fa-lg"></span></div>
+								<div class="item-inner">
+									<div class="item-title"><a href="reports" class="close-panel">Reports</a></div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-media icoBox"><span class="fa fa-angle-double-left fa-2x"></span></div>
+								<div class="item-inner">
+									<div class="item-title"><a href="#" class="close-panel">Close</a></div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-media icoBox"><span class="fa fa-cogs fa-lg"></span></div>
+								<div class="item-inner">
+									<div class="item-title"><a id="app-settings" href="#" class="close-panel">App Setting</a></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
-    </div>
 		<!-- Views -->
 		<div class="views hidden">
 			<!-- Your main view, should have "view-main" class -->
@@ -114,73 +104,58 @@
 					<div data-page="index" class="page navbar-fixed toolbar-fixed">
 						<!-- Scrollable page content -->
 						<div class="page-content">
-							
-								<div class="row no-gutter">
-									<div class=" welcomeBG col-50">
-										<div id="welcomeName" class="textAlignLeft"> <font></font></div>
-										<div id="lastLoginTime" class="textAlignCenter"> <font></font></div>
-									</div>
-									<div class=" welcomeBG col-50">
-										<div  id="todaysDate" class="textAlignCenter "> <font ></font> </div>
-										<div  id="todaysTime" class="textAlignCenter "> <font ></font></div>
-									</div>
+							<div class="row no-gutter">
+								<div class=" welcomeBG col-50">
+									<div id="welcomeName" class="textAlignLeft"> <font></font></div>
+									<div id="lastLoginTime" class="textAlignCenter"> <font></font></div>
 								</div>
-							
+								<div class=" welcomeBG col-50">
+									<div  id="todaysDate" class="textAlignCenter "> <font ></font> </div>
+									<div  id="todaysTime" class="textAlignCenter "> <font ></font></div>
+								</div>
+							</div>
 							<div class="row no-gutter">
 								<div class="boxBG col-50 inboundProcess" id="inboundProcess">
-									
-								
-										<div class="row">
-											<a href="#" data-popover=".popover-lockbox-inbound-file-process" class="open-popover">
-												<div style="margin-top: 5px; margin-left: 5px;">
-													<div id="lockbox-inbound-file-process" class=" textAlignCenter boxFlip"  ><font class="digital" color="#00FF00"></font></div>
-												</div>
-											</a>
-											<div class="labelText">Lockbox Inbound Process</div>
-											<a href="#" data-popover=".popover-lockbox-inbound-file-error" class="open-popover">
-												<div style="margin-top: 5px; margin-right: 5px;">
-													<div class="textAlignCenter boxFlip" id="lockbox-inbound-file-error"  ><font class="digital" color="#DC3912"></font></div>
-												</div>
-											</a>
-										</div>
-									
-										<a href="lockbox-inbound.html" class="">
-											<div class="row chartCenter" >
-												<div class="col-100" id="chartL1" >  </div>
+									<div class="row">
+										<a href="#" data-popover=".popover-lockbox-inbound-file-process" class="open-popover">
+											<div style="margin-top: 5px; margin-left: 5px;">
+												<div id="lockbox-inbound-file-process" class=" textAlignCenter boxFlip"  ><font class="digital" color="#00FF00"></font></div>
 											</div>
 										</a>
-										<div class="row">
-											<div class="divCenter ">
-												<a href="#" data-popover=".popover-lockbox-inbound-file-processed" class="open-popover">
-													<div class="boxFlip" id="lockbox-inbound-file-processed" ><font class="digital " color="#FF9900"></font>
-													</div>
-												</a>
+										<div class="labelText">Lockbox Inbound Process</div>
+										<a href="#" data-popover=".popover-lockbox-inbound-file-error" class="open-popover">
+											<div style="margin-top: 5px; margin-right: 5px;">
+												<div class="textAlignCenter boxFlip" id="lockbox-inbound-file-error"  ><font class="digital" color="#DC3912"></font></div>
 											</div>
+										</a>
+									</div>
+									<a href="lockbox-inbound.html" class="">
+										<div class="row chartCenter" >
+											<div class="col-100" id="chartL1" >  </div>
 										</div>
-									
+									</a>
+									<div class="row">
+										<div class="divCenter ">
+											<a href="#" data-popover=".popover-lockbox-inbound-file-processed" class="open-popover">
+												<div class="boxFlip" id="lockbox-inbound-file-processed" ><font class="digital " color="#FF9900"></font>
+												</div>
+											</a>
+										</div>
+									</div>
 								</div>
 								<div class="boxBG col-50" id="keyinProcess">
-									
-
-							
 									<div class="row">
-										
-									<a href="#" data-popover=".popover-lockbox-keyin-file-assigned" class="open-popover">
-										<div style="margin-top: 5px; margin-left: 5px;">
-											<div class="textAlignCenter boxFlip" id="keyInAssigned" ><font class="digital" color="#FF9900"></font></div>
-										</div>
-										
-									</a>
-
-
+										<a href="#" data-popover=".popover-lockbox-keyin-file-assigned" class="open-popover">
+											<div style="margin-top: 5px; margin-left: 5px;">
+												<div class="textAlignCenter boxFlip" id="keyInAssigned" ><font class="digital" color="#FF9900"></font></div>
+											</div>
+										</a>
 										<div class="labelText">Key In Process</div>
-
-									<a href="#" data-popover=".popover-lockbox-keyin-file-progress" class="open-popover">
-										<div style="margin-top: 5px; margin-right: 5px;">
-											<div class="textAlignCenter boxFlip" id="keyInProgress" ><font class="digital" color="#00FF00"></font></div>
-										</div>	
-									</a>
-
+										<a href="#" data-popover=".popover-lockbox-keyin-file-progress" class="open-popover">
+											<div style="margin-top: 5px; margin-right: 5px;">
+												<div class="textAlignCenter boxFlip" id="keyInProgress" ><font class="digital" color="#00FF00"></font></div>
+											</div>
+										</a>
 									</div>
 									<a href="keyin-detail.html" class="">
 										<div class="row chartCenter" >
@@ -189,25 +164,20 @@
 									</a>
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-keyin-file-completed" class="open-popover">
-										<div style="margin-top: -10px; margin-left: 5px;">
-											<div class="textAlignCenter boxFlip" id="keyInCompleted" ><font class="digital" color="#DFC2FC"></font></div>
-										</div>	
+											<div style="margin-top: -10px; margin-left: 5px;">
+												<div class="textAlignCenter boxFlip" id="keyInCompleted" ><font class="digital" color="#DFC2FC"></font></div>
+											</div>
 										</a>
-
 										<a href="#" data-popover=".popover-lockbox-keyin-file-submitted" class="open-popover">
-										<div style=" margin-top: -10px;margin-right: 5px;">
-											<div class="textAlignCenter boxFlip" id="keyInSubmitted" ><font class="digital" color="#DC3912"></font></div>
-										</div>	
+											<div style=" margin-top: -10px;margin-right: 5px;">
+												<div class="textAlignCenter boxFlip" id="keyInSubmitted" ><font class="digital" color="#DC3912"></font></div>
+											</div>
 										</a>
-
 									</div>
-							
-
 								</div>
 							</div>
 							<div class="row no-gutter">
 								<div class="boxBG col-50" id="outboundProcess">
-									
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-outbound-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
@@ -217,17 +187,15 @@
 										<div class="labelText">Lockbox Outbound Process</div>
 										<a href="#" data-popover=".popover-lockbox-outbound-file-error" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
-												<div class="textAlignCenter boxFlip" id="lockbox-outbound-file-process"  ><font class="digital" color="#DC3912"></font></div>
+												<div class="textAlignCenter boxFlip" id="lockbox-outbound-file-error"  ><font class="digital" color="#DC3912"></font></div>
 											</div>
 										</a>
 									</div>
-
 									<a href="lockbox-outbound.html" class="">
-									<div class="row chartCenter">
-										<div class="col-100" id="chartL3" >  </div>
-									</div>
+										<div class="row chartCenter">
+											<div class="col-100" id="chartL3" >  </div>
+										</div>
 									</a>
-
 									<div class="row">
 										<div class="divCenter ">
 											<a href="#" data-popover=".popover-lockbox-outbound-file-processed" class="open-popover">
@@ -235,12 +203,8 @@
 											</a>
 										</div>
 									</div>
-
-									
 								</div>
 								<div class="boxBG col-50" id="claimFileIn">
-									
-							
 									<div class="row">
 										<a href="#" data-popover=".popover-claim-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
@@ -255,9 +219,9 @@
 										</a>
 									</div>
 									<a href="claim.html" class="">
-									<div class="row chartCenter">
-										<div class="col-100" id="chartL4" >  </div>
-									</div>
+										<div class="row chartCenter">
+											<div class="col-100" id="chartL4" >  </div>
+										</div>
 									</a>
 									<div class="row">
 										<div class="divCenter ">
@@ -266,8 +230,6 @@
 											</a>
 										</div>
 									</div>
-								
-
 								</div>
 							</div>
 						</div>
@@ -282,63 +244,65 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
 		<!-- Home Page Filter -->
 		<div class="popup popup-filter">
-			<div class="navbar">
-				<div class="navbar-inner">
-					<div class="left">
-						<a href="#" class="close-popup">
-						<span>Close</span>
-						</a>
+			<div class="view popup-view">
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="left">
+							<a href="#" class="close-popup">
+							<span>Close</span>
+							</a>
+						</div>
+						<div class="right"> Filter Settings </div>
 					</div>
-					<div class="right"> Filter Settings </div>
 				</div>
-			</div>
-			<div class="content-block">
-				<div class="list-block">
-					<ul>
-						<!-- Text inputs -->
-						<li>
-							<div class="item-content">
-								<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
-								<div class="item-inner">
-									<div class="item-title label">Group ID</div>
-									<div class="item-input">
-										<input type="text" id="groupIDValue" placeholder="Group ID">
-									</div>
+				<div class="pages">
+					<div class="page" data-page="home-filter">
+						<div class="page-content">
+							<div class="content-block">
+								<div class="list-block">
+									<br>
+									<ul>
+										<!-- Text inputs -->
+										<li>
+											<div class="item-content">
+												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
+												<div class="item-inner">
+													<div class="item-title label">Group Code</div>
+													<div class="item-input">
+														<input type="text" id="groupCode-home" placeholder="Group Code">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="item-content">
+												<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Site Number</div>
+													<div class="item-input">
+														<input type="text" id="siteNumber-home" placeholder="Site Number">
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="row">
+									<div class="col-10"></div>
+									<div class="col-10"></div>
+									<div class="col-60 submitButton-home"><a href="#" class="button button-big close-popup ">Submit</a></div>
+									<div class="col-10"></div>
+									<div class="col-10"></div>
 								</div>
 							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
-								<div class="item-inner">
-									<div class="item-title label">Site Number</div>
-									<div class="item-input">
-										<input type="text" id="siteNumberValue" placeholder="Site Number">
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="row">
-					<div class="col-10"></div>
-					<div class="col-10"></div>
-					<div class="col-60 submitButton"><a href="#" class="button button-big close-popup ">Submit</a></div>
-					<div class="col-10"></div>
-					<div class="col-10"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-
-		<!-- App Settings --> 
-
-
+		<!-- Registration Settings --> 
 		<div class="popup popup-app-settings">
 			<div class="navbar">
 				<div class="navbar-inner">
@@ -350,60 +314,53 @@
 			<div class="content-block">
 				<div class="list-block">
 					<ul>
-					    <!-- Text inputs -->
-					    <li>
-					      <div class="item-content">
-					        <div class="item-media"><i class="icon icon-form-name"></i></div>
-					        <div class="item-inner">
-					          <div class="item-title label">Name</div>
-					          <div id="regName" class="item-input">
-					            <input type="text" id="name" placeholder="Full Name">
-					          </div>
-					        </div>
-					      </div>
-					    </li>
-					    <li>
-					      <div class="item-content">
-					        <div class="item-media"><i class="icon icon-form-email"></i></div>
-					        <div class="item-inner">
-					          <div class="item-title label">E-mail</div>
-					          <div id="regEmail" class="item-input">
-					            <input type="email" id="email" placeholder="email">
-					          </div>
-					        </div>
-					      </div>
-					    </li>
-					    
-					    <li>
-					      <div class="item-content">
-					        <div class="item-media"><i class="icon icon-form-password"></i></div>
-					        <div class="item-inner">
-					          <div class="item-title label">Device ID</div>
-					          <div id="regId" class="item-input">
-					            <input type="text" id="deviceID" placeholder="ID">
-					          </div>
-					        </div>
-					      </div>
-					    </li>
-
-					    <!-- Date -->
-					    <li>
-					      <div class="item-content">
-					        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
-					        <div class="item-inner">
-					          <div class="item-title label">Registration Date</div>
-					          <div class="item-input">
-					            <input type="text" id="registrationDate" placeholder="Registered day" value="" disabled>
-					          </div>
-					        </div>
-					      </div>
-					    </li>
-					   
-
-					  </ul>
-
-
-
+						<!-- Text inputs -->
+						<li>
+							<div class="item-content">
+								<div class="item-media"><i class="icon icon-form-name"></i></div>
+								<div class="item-inner">
+									<div class="item-title label">Name</div>
+									<div id="regName" class="item-input">
+										<input type="text" id="name" placeholder="Full Name">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-media"><i class="icon icon-form-email"></i></div>
+								<div class="item-inner">
+									<div class="item-title label">E-mail</div>
+									<div id="regEmail" class="item-input">
+										<input type="email" id="email" placeholder="email">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-media"><i class="icon icon-form-password"></i></div>
+								<div class="item-inner">
+									<div class="item-title label">Device ID</div>
+									<div id="regId" class="item-input">
+										<input type="text" id="deviceID" placeholder="ID">
+									</div>
+								</div>
+							</div>
+						</li>
+						<!-- Date -->
+						<li>
+							<div class="item-content">
+								<div class="item-media"><i class="icon icon-form-calendar"></i></div>
+								<div class="item-inner">
+									<div class="item-title label">Registration Date</div>
+									<div class="item-input">
+										<input type="text" id="registrationDate" placeholder="Registered day" value="" disabled>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
 				</div>
 				<div class="row">
 					<div class="col-10"></div>
@@ -414,12 +371,7 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
 		<!-- Lockbox Inbound Filter Options -->
-
 		<div class="popup popup-filter-lockbox-inbound">
 			<div class="navbar">
 				<div class="navbar-inner">
@@ -439,9 +391,9 @@
 							<div class="item-content">
 								<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 								<div class="item-inner">
-									<div class="item-title label">Group ID</div>
+									<div class="item-title label">Group Code</div>
 									<div class="item-input">
-										<input type="text" id="groupIDValue2" placeholder="Group ID">
+										<input type="text" id="groupCode-inbound" placeholder="Group Code">
 									</div>
 								</div>
 							</div>
@@ -452,25 +404,120 @@
 								<div class="item-inner">
 									<div class="item-title label">Site Number</div>
 									<div class="item-input">
-										<input type="text" id="siteNumberValue2" placeholder="Site Number">
+										<input type="text" id="siteNumber-inbound" placeholder="Site Number">
 									</div>
 								</div>
 							</div>
 						</li>
-			
 					</ul>
 				</div>
 				<div class="row">
 					<div class="col-10"></div>
 					<div class="col-10"></div>
-					<div class="col-60 submitButton"><a href="#" class="button button-big close-popup ">Submit</a></div>
+					<div class="col-60 submitButton-Inbound-detail"><a href="#" class="button button-big close-popup ">Submit</a></div>
 					<div class="col-10"></div>
 					<div class="col-10"></div>
 				</div>
 			</div>
 		</div>
-
-
+		<!-- Lockbox Outbound Filter Options -->
+		<div class="popup popup-filter-lockbox-outbound">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="left">
+						<a href="#" class="close-popup">
+						<span>Close</span>
+						</a>
+					</div>
+					<div class="right"> Filter Settings </div>
+				</div>
+			</div>
+			<div class="content-block">
+				<div class="list-block">
+					<ul>
+						<!-- Text inputs -->
+						<li>
+							<div class="item-content">
+								<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
+								<div class="item-inner">
+									<div class="item-title label">Group Code</div>
+									<div class="item-input">
+										<input type="text" id="groupCode-outbound" placeholder="Group Code">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
+								<div class="item-inner">
+									<div class="item-title label">Site Number</div>
+									<div class="item-input">
+										<input type="text" id="siteNumber-outbound" placeholder="Site Number">
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="row">
+					<div class="col-10"></div>
+					<div class="col-10"></div>
+					<div class="col-60 submitButton-Outbound-detail"><a href="#" class="button button-big close-popup ">Submit</a></div>
+					<div class="col-10"></div>
+					<div class="col-10"></div>
+				</div>
+			</div>
+		</div>
+		<!-- Claim Filter Options -->
+		<div class="popup popup-filter-claim">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="left">
+						<a href="#" class="close-popup">
+						<span>Close</span>
+						</a>
+					</div>
+					<div class="right"> Filter Settings </div>
+				</div>
+			</div>
+			<div class="content-block">
+				<div class="list-block">
+					<ul>
+						<!-- Text inputs -->
+						<li>
+							<div class="item-content">
+								<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
+								<div class="item-inner">
+									<div class="item-title label">Group Code</div>
+									<div class="item-input">
+										<input type="text" id="groupCode-claim" placeholder="Group Code">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
+								<div class="item-inner">
+									<div class="item-title label">Site Number</div>
+									<div class="item-input">
+										<input type="text" id="siteNumber-claim" placeholder="Site Number">
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="row">
+					<div class="col-10"></div>
+					<div class="col-10"></div>
+					<div class="col-60 submitButton-claim-detail"><a href="#" class="button button-big close-popup ">Submit</a></div>
+					<div class="col-10"></div>
+					<div class="col-10"></div>
+				</div>
+			</div>
+		</div>
 		<!-- Key In Page Pop-up -->
 		<div class="popup keyin-popup">
 			<div class="navbar">
@@ -502,9 +549,9 @@
 												<div class="item-content">
 													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 													<div class="item-inner">
-														<div class="item-title label">Group ID</div>
+														<div class="item-title label">Group Code</div>
 														<div class="item-input">
-															<input type="text" id="groupIDValue-WL" placeholder="Group ID">
+															<input type="text" id="groupCode-keyin-worklist" placeholder="Group Code">
 														</div>
 													</div>
 												</div>
@@ -515,7 +562,7 @@
 													<div class="item-inner">
 														<div class="item-title label">Site Number</div>
 														<div class="item-input">
-															<input type="text" id="siteNumberValue-WL" placeholder="Site Number">
+															<input type="text" id="siteNumber-keyin-worklist" placeholder="Site Number">
 														</div>
 													</div>
 												</div>
@@ -527,7 +574,7 @@
 													<div class="item-inner">
 														<div class="item-title label">Organization</div>
 														<div class="item-input selectOrg">
-															<select id="orgValue-WL">
+															<select id="org-keyin-worklist">
 																<option value="HLSC">HLSC</option>
 																<option value="TCS">TCS</option>
 																<option value="RM">RM</option>
@@ -537,6 +584,14 @@
 												</div>
 											</li>
 										</ul>
+										<div><br></div>
+										<div class="row">
+											<div class="col-10"></div>
+											<div class="col-10"></div>
+											<div class="col-60 submitButton-keyin-worklist"><a href="#" class="button button-big close-popup">Submit</a></div>
+											<div class="col-10"></div>
+											<div class="col-10"></div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -549,20 +604,31 @@
 							</a>
 							<div class="accordion-item-content">
 								<div class="content-block">
-									<ul>
-										<!-- Text inputs -->
-										<li>
-											<div class="item-content">
-												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
-												<div class="item-inner">
-													<div class="item-title label">Group ID</div>
-													<div class="item-input">
-														<input type="text" id="groupIDValue-V" placeholder="Group ID">
+									<p>This shows Current Work list Status across the HLSC for all Groups and Sites. You can apply filter by Group Code or Site Number or Organization or any combination of filter options. To apply, please use below form and once complete , please tap on submit.</p>
+									<div class="list-block">
+										<ul>
+											<!-- Text inputs -->
+											<li>
+												<div class="item-content">
+													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
+													<div class="item-inner">
+														<div class="item-title label">Group Code</div>
+														<div class="item-input">
+															<input type="text" id="groupCode-keyin-volume" placeholder="Group Code">
+														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-									</ul>
+											</li>
+										</ul>
+										<div><br></div>
+										<div class="row">
+											<div class="col-10"></div>
+											<div class="col-10"></div>
+											<div class="col-60 submitButton-keyin-volume"><a href="#" class="button button-big close-popup">Submit</a></div>
+											<div class="col-10"></div>
+											<div class="col-10"></div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</li>
@@ -574,31 +640,42 @@
 							</a>
 							<div class="accordion-item-content">
 								<div class="content-block">
-									<ul>
-										<!-- Text inputs -->
-										<li>
-											<div class="item-content">
-												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
-												<div class="item-inner">
-													<div class="item-title label">Group ID</div>
-													<div class="item-input">
-														<input type="text" id="groupIDValue-TAT" placeholder="Group ID">
+									<p>This shows Current Work list Status across the HLSC for all Groups and Sites. You can apply filter by Group Code or Site Number or Organization or any combination of filter options. To apply, please use below form and once complete , please tap on submit.</p>
+									<div class="list-block">
+										<ul>
+											<!-- Text inputs -->
+											<li>
+												<div class="item-content">
+													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
+													<div class="item-inner">
+														<div class="item-title label">Group Code</div>
+														<div class="item-input">
+															<input type="text" id="groupCode-keyin-TAT" placeholder="Group Code">
+														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-										<li>
-											<div class="item-content">
-												<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
-												<div class="item-inner">
-													<div class="item-title label">Site Number</div>
-													<div class="item-input">
-														<input type="text" id="siteNumberValue-TAT" placeholder="Site Number">
+											</li>
+											<li>
+												<div class="item-content">
+													<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
+													<div class="item-inner">
+														<div class="item-title label">Site Number</div>
+														<div class="item-input">
+															<input type="text" id="siteNumber-keyin-TAT" placeholder="Site Number">
+														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-									</ul>
+											</li>
+										</ul>
+										<div><br></div>
+										<div class="row">
+											<div class="col-10"></div>
+											<div class="col-10"></div>
+											<div class="col-60 submitButton-keyin-TAT"><a href="#" class="button button-big close-popup">Submit</a></div>
+											<div class="col-10"></div>
+											<div class="col-10"></div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</li>
@@ -610,43 +687,47 @@
 							</a>
 							<div class="accordion-item-content">
 								<div class="content-block">
-									<ul>
-										<!-- Text inputs -->
-										<li>
-											<div class="item-content">
-												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
-												<div class="item-inner">
-													<div class="item-title label">Group ID</div>
-													<div class="item-input">
-														<input type="text" id="groupIDValue-MPI" placeholder="Group ID">
+									<p>This shows Current Work list Status across the HLSC for all Groups and Sites. You can apply filter by Group Code or Site Number or Organization or any combination of filter options. To apply, please use below form and once complete , please tap on submit.</p>
+									<div class="list-block">
+										<ul>
+											<!-- Text inputs -->
+											<li>
+												<div class="item-content">
+													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
+													<div class="item-inner">
+														<div class="item-title label">Group Code</div>
+														<div class="item-input">
+															<input type="text" id="groupCode-keyin-MPI" placeholder="Group Code">
+														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-										<li>
-											<div class="item-content">
-												<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
-												<div class="item-inner">
-													<div class="item-title label">Site Number</div>
-													<div class="item-input">
-														<input type="text" id="siteNumberValue-MPI" placeholder="Site Number">
+											</li>
+											<li>
+												<div class="item-content">
+													<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
+													<div class="item-inner">
+														<div class="item-title label">Site Number</div>
+														<div class="item-input">
+															<input type="text" id="siteNumber-keyin-MPI" placeholder="Site Number">
+														</div>
 													</div>
 												</div>
-											</div>
-										</li>
-									</ul>
+											</li>
+										</ul>
+										<div><br></div>
+										<div class="row">
+											<div class="col-10"></div>
+											<div class="col-10"></div>
+											<div class="col-60 submitButton-keyin-MPI"><a href="#" class="button button-big close-popup">Submit</a></div>
+											<div class="col-10"></div>
+											<div class="col-10"></div>
+										</div>
+										<div><br></div>
+									</div>
 								</div>
 							</div>
 						</li>
 					</ul>
-					<div><br></div>
-					<div class="row">
-						<div class="col-10"></div>
-						<div class="col-10"></div>
-						<div class="col-60 submitButton"><a href="#" class="button button-big close-popup">Submit</a></div>
-						<div class="col-10"></div>
-						<div class="col-10"></div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -668,12 +749,14 @@
 						<li class="accordion-item">
 							<a href="#" class="item-content item-link">
 								<div class="item-inner">
-									<div class="item-title">Volume Trend</div>
+									<div class="item-title">Forecasted vs Actual Volume</div>
 								</div>
 							</a>
 							<div class="accordion-item-content">
 								<div class="content-block">
-									<p>Desc </p>
+
+									<p>This shows Current Work list Status across the HLSC for all Groups and Sites. You can apply filter by Group Code or Site Number or Organization or any combination of filter options. To apply, please use below form and once complete , please tap on submit.</p>
+									
 									<div class="list-block">
 										<ul>
 											<!-- Text inputs -->
@@ -681,15 +764,23 @@
 												<div class="item-content">
 													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 													<div class="item-inner">
-														<div class="item-title label">Group ID</div>
+														<div class="item-title label">Group Code</div>
 														<div class="item-input">
-															<input type="text" id="groupIDValue-WL" placeholder="Group ID">
+															<input type="text" id="groupCode-reports-volume" placeholder="Group Code">
 														</div>
 													</div>
 												</div>
 											</li>
-								
 										</ul>
+										<div><br></div>
+										<div class="row">
+											<div class="col-10"></div>
+											<div class="col-10"></div>
+											<div class="col-60 submitButton-reports-volume"><a href="#" class="button button-big close-popup">Submit</a></div>
+											<div class="col-10"></div>
+											<div class="col-10"></div>
+										</div>
+										<div><br></div>
 									</div>
 								</div>
 							</div>
@@ -697,7 +788,7 @@
 						<li class="accordion-item">
 							<a href="#" class="item-content item-link">
 								<div class="item-inner">
-									<div class="item-title">Volume</div>
+									<div class="item-title">TAT Average &amp; Median</div>
 								</div>
 							</a>
 							<div class="accordion-item-content">
@@ -708,21 +799,41 @@
 											<div class="item-content">
 												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 												<div class="item-inner">
-													<div class="item-title label">Group ID</div>
+													<div class="item-title label">Group Code</div>
 													<div class="item-input">
-														<input type="text" id="groupIDValue-V" placeholder="Group ID">
+														<input type="text" id="groupCode-resports-TAT" placeholder="Group Code">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="item-content">
+												<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Site Number</div>
+													<div class="item-input">
+														<input type="text" id="siteNumber-reports-TAT" placeholder="Site Number">
 													</div>
 												</div>
 											</div>
 										</li>
 									</ul>
+									<div><br></div>
+									<div class="row">
+										<div class="col-10"></div>
+										<div class="col-10"></div>
+										<div class="col-60 submitButton-reports-TAT"><a href="#" class="button button-big close-popup">Submit</a></div>
+										<div class="col-10"></div>
+										<div class="col-10"></div>
+									</div>
+									<div><br></div>
 								</div>
 							</div>
 						</li>
 						<li class="accordion-item">
 							<a href="#" class="item-content item-link">
 								<div class="item-inner">
-									<div class="item-title">TAT</div>
+									<div class="item-title">Claim Volume</div>
 								</div>
 							</a>
 							<div class="accordion-item-content">
@@ -731,34 +842,43 @@
 										<!-- Text inputs -->
 										<li>
 											<div class="item-content">
-												<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
+												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 												<div class="item-inner">
-													<div class="item-title label">Group ID</div>
+													<div class="item-title label">Group Co</div>
 													<div class="item-input">
-														<input type="text" id="groupIDValue-TAT" placeholder="Group ID">
+														<input type="text" id="groupCode-reports-claim" placeholder="Group Code">
 													</div>
 												</div>
 											</div>
 										</li>
 										<li>
 											<div class="item-content">
-												<div class="item-media "><i class="icon icon-form-email"></i></div>
+												<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
 												<div class="item-inner">
 													<div class="item-title label">Site Number</div>
 													<div class="item-input">
-														<input type="text" id="siteNumberValue-TAT" placeholder="Site Number">
+														<input type="text" id="site-number-reports-claim" placeholder="Site Number">
 													</div>
 												</div>
 											</div>
 										</li>
 									</ul>
+									<div><br></div>
+									<div class="row">
+										<div class="col-10"></div>
+										<div class="col-10"></div>
+										<div class="col-60 submitButton-reports-claim"><a href="#" class="button button-big close-popup">Submit</a></div>
+										<div class="col-10"></div>
+										<div class="col-10"></div>
+									</div>
+									<div><br></div>
 								</div>
 							</div>
 						</li>
 						<li class="accordion-item">
 							<a href="#" class="item-content item-link">
 								<div class="item-inner">
-									<div class="item-title">MPI</div>
+									<div class="item-title">Percentage of MPI Used</div>
 								</div>
 							</a>
 							<div class="accordion-item-content">
@@ -767,64 +887,44 @@
 										<!-- Text inputs -->
 										<li>
 											<div class="item-content">
-												<div class="item-media box-around-icon"><span class="fa fa-user "></span></div>
+												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
 												<div class="item-inner">
-													<div class="item-title label">Group ID</div>
+													<div class="item-title label">Group Code</div>
 													<div class="item-input">
-														<input type="text" id="groupIDValue-MPI" placeholder="Group ID">
+														<input type="text" id="groupCode-reports-MPI-used" placeholder="Group Code">
 													</div>
 												</div>
 											</div>
 										</li>
 										<li>
 											<div class="item-content">
-												<div class="item-media "><i class="icon icon-form-email"></i></div>
+												<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
 												<div class="item-inner">
 													<div class="item-title label">Site Number</div>
 													<div class="item-input">
-														<input type="text" id="siteNumberValue-MPI" placeholder="Site Number">
+														<input type="text" id="site-number-reports-MPI-used" placeholder="Site Number">
 													</div>
 												</div>
 											</div>
 										</li>
 									</ul>
+									<div><br></div>
+									<div class="row">
+										<div class="col-10"></div>
+										<div class="col-10"></div>
+										<div class="col-60 submitButton-reports-MPI-used"><a href="#" class="button button-big close-popup">Submit</a></div>
+										<div class="col-10"></div>
+										<div class="col-10"></div>
+									</div>
+									<div><br></div>
 								</div>
 							</div>
 						</li>
 					</ul>
-					<div><br></div>
-					<div class="row">
-						<div class="col-10"></div>
-						<div class="col-10"></div>
-						<div class="col-60 submitButton"><a href="#" class="button button-big close-popup">Submit</a></div>
-						<div class="col-10"></div>
-						<div class="col-10"></div>
-					</div>
 				</div>
 			</div>
 		</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		<!-- All Popovers -->
-
 		<!-- Lockbox Inbound -->
 		<div class="popover popover-lockbox-inbound-file-process">
 			<div class="popover-angle"></div>
@@ -851,9 +951,7 @@
 			</div>
 		</div>
 		<!-- end -->
-
-
-				<!-- Lockbox outbound -->
+		<!-- Lockbox outbound -->
 		<div class="popover popover-lockbox-outbound-file-process">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
@@ -879,8 +977,6 @@
 			</div>
 		</div>
 		<!-- end -->
-
-
 		<!-- Lockbox Inbound -->
 		<div class="popover popover-claim-file-process">
 			<div class="popover-angle"></div>
@@ -907,8 +1003,6 @@
 			</div>
 		</div>
 		<!-- end -->
-
-
 		<!-- Lockbox Keyin -->
 		<div class="popover popover-lockbox-keyin-file-assigned">
 			<div class="popover-angle"></div>
@@ -934,7 +1028,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="popover popover-lockbox-keyin-file-submitted">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
@@ -943,9 +1036,7 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- end -->
-
 		<!-- Lockbox Inbound Pop-over -->
 		<div class="popover popover-WPIcon">
 			<div class="popover-angle"></div>
@@ -956,7 +1047,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="popover popover-SIIcon">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
@@ -966,7 +1056,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="popover popover-EVIcon">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
@@ -976,8 +1065,6 @@
 				</div>
 			</div>
 		</div>
-
-
 		<div class="popover popover-BSIcon">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
@@ -987,7 +1074,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="popover popover-PIIcon">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
@@ -997,7 +1083,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="popover popover-DMIcon">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
@@ -1007,7 +1092,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="popover popover-ISIcon">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
@@ -1017,7 +1101,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="popover popover-IAIcon">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
@@ -1027,8 +1110,6 @@
 				</div>
 			</div>
 		</div>
-
-
 		<div class="popover popover-WLIcon">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
@@ -1038,23 +1119,29 @@
 				</div>
 			</div>
 		</div>
+		<div class="popover popup-over-reports-slider">
+			<div class="popover-angle"></div>
+			<div class="popover-inner">
+				<div class="list-block">
+					<ul>
+						<li><a href="#" class="list-button item-link">Forecasted vs Actual Volume</a></li>
+						<li><a href="#" class="list-button item-link">TAT Average &amp; Median </a></li>
+						<li><a href="#" class="list-button item-link">Claim Volume</a></li>
+						<li><a href="#" class="list-button item-link">Percetage of MPI Used</a></li>
+						<li><a href="#" class="list-button item-link">MPI Load Time Statistics</a></li>
+						<li><a href="#" class="list-button item-link">Miscellaneous Reports</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 
-		<!-- end -->
-
-
-
-
-
-
-
-
-		<!-- Path to Framework7 Library JS-->
+		
 		<script type="text/javascript" src="js/framework7.min.js"></script>
-		<!-- Path to your app js-->
 		<script type="text/javascript" src="js/my-app.js"></script>
+		<script type="text/javascript" src="js/reports.js"></script>
+		<script type="text/javascript" src="js/ViewModel.js"></script>
+		<script type="text/javascript" src="js/Tools.js"></script>
+		
 
-
-	
-		<!--<script type="text/javascript" src="js/controller.js"></script> -->
 	</body>
 </html>

@@ -25,114 +25,115 @@
       <div class="views">
       <!-- Your main view, should have "view-main" class -->
       <div class="view view-main">
-      <!-- Top Navbar-->
-      <div class="navbar">
-         <div class="navbar-inner">
-            <div class="left intClear">
-               <a href="#" class="back link">
-               <i class="icon icon-back"></i>
-               <span>Back</span>
-               </a>
+         <!-- Top Navbar-->
+         <div class="navbar">
+            <div class="navbar-inner">
+               <div class="left intClear">
+                  <a href="#" class="back link">
+                  <i class="icon icon-back"></i>
+                  <span>Back</span>
+                  </a>
+               </div>
+               <div class="center sliding">Key In</div>
             </div>
-            <div class="center sliding">Key In</div>
          </div>
-      </div>
-      <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-      <div class="pages navbar-fixed toolbar-fixed">
-         <!-- Page, "data-page" contains page name -->
-         <div data-page="keyin-detail" class="page navbar-fixed toolbar-fixed">
-            <!-- Scrollable page content -->
-            <div class="page-content ">
-               
-         
-               <div class="slider-container slider-init" data-speed="400" data-spaceBetween="40" data-pagination=".slider-pagination">
-                  <div class="slider-wrapper">
-                     <div class="slider-slide" style="height:100%;">
-                        <!-- -->
-                        <div class="row no-gutter boxBG-slider-full" >
-                           <div class="boxBG-slider col-100" id="">
-                              <div class="row">
-                                 <div></div>
-                                 <div class="labelText">Work List Status</div>
-                                 <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="fa fa-gear fa-2x"></i></a>
-                              </div>
-                              <div class="row chartCenterBig">
-                                 <div class="col-100" id="chartL5" >  </div>
-                              </div>
-                              <div class="row legend-container">
-                                 <div class="legend" style="background-color:#DC3912;"></div>
-                                 <div class="labelText">Un-Assigned</div>
-                                 <div class="legend" style="background-color:#FF9900;"></div>
-                                 <div class="labelText">Assigned</div>
-                                 <div class="legend" style="background-color:#109618;"></div>
-                                 <div class="labelText">In Progress</div>
-                                 <div class="legend" style="background-color:#0855C0;"></div>
-                                 <div class="labelText">Completed</div>
-                                 <div class="legend" style="background-color:#000000;"></div>
-                                 <div class="labelText">Submitted</div>
-                                 <div class="legend" style="background-color:#990099;"></div>
-                                 <div class="labelText">Rejected</div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="slider-slide" style="height:100%;">
-                        <div class="row no-gutter boxBG-slider-row" >
-                           <div class="boxBG-slider col-50" id="">
-                              <div class="row">
-                                 <div></div>
-                                 <div class="labelText">Volume</div>
-                                 <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="fa fa-gear fa-2x"></i></a>
-                              </div>
-                              <div class="row" style="height:100%">
-                                 <div class="col-100" id="chartL7" style="height:100%" >
-                                    <svg class="bar-chart" style="height:95%">
-                                    </svg>
+         <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+         <div class="pages navbar-fixed toolbar-fixed">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="keyin-detail" class="page navbar-fixed toolbar-fixed">
+               <!-- Scrollable page content -->
+               <div class="page-content ">
+                  <div class="slider-container slider-init" data-speed="400" data-spaceBetween="40" data-pagination=".slider-pagination">
+                     <div class="slider-wrapper">
+                        <div class="slider-slide" style="height:100%;">
+                           <!-- -->
+                           <div class="row no-gutter boxBG-slider-full" >
+                              <div class="boxBG-slider col-100" id="">
+                                 <div class="row">
+                                    <div></div>
+                                    <div class="labelText">Work List Status</div>
+                                    <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="fa fa-gear fa-2x"></i></a>
+                                 </div>
+                                 <div class="row chartCenterBig">
+                                    <div class="col-100" id="chartL5" >  </div>
+                                 </div>
+                                 <div class="row legend-container">
+                                    <div class="legend" style="background-color:#DC3912;"></div>
+                                    <div class="labelText">Un-Assigned</div>
+                                    <div class="legend" style="background-color:#FF9900;"></div>
+                                    <div class="labelText">Assigned</div>
+                                    <div class="legend" style="background-color:#109618;"></div>
+                                    <div class="labelText">In Progress</div>
+                                    <div class="legend" style="background-color:#0855C0;"></div>
+                                    <div class="labelText">Completed</div>
+                                    <div class="legend" style="background-color:#000000;"></div>
+                                    <div class="labelText">Submitted</div>
+                                    <div class="legend" style="background-color:#990099;"></div>
+                                    <div class="labelText">Rejected</div>
                                  </div>
                               </div>
-                              <div class="row">
-                              </div>
-                           </div>
-                           <div class="boxBG-slider col-50" id="">
-                              <div class="row">
-                                 <div></div>
-                                 <div class="labelText">TAT</div>
-                                 <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="fa fa-gear fa-2x"></i></a>
-                              </div>
-                              <div class="row chartCenter">
-                                 <div class="col-100" id="chartL6" >  </div>
-                              </div>
-                              <div class="row legend-container-small">
-                                 <div class="legend-small" style="background-color:#DC3912;"></div>
-                                 <div class="labelTextSmall">% Missing</div>
-                                 <div class="legend-small" style="background-color:#FF9900;"></div>
-                                 <div class="labelTextSmall">% Expected To Miss</div>
-                                 <div class="legend-small" style="background-color:#109618;"></div>
-                                 <div class="labelTextSmall">% Meeting</div>
-                              </div>
                            </div>
                         </div>
-                        <div class="row no-gutter boxBG-slider-row" >
-                           <div class="boxBG-slider col-100" id="">
-                              <div class="row">
-                                 <div></div>
-                                 <div class="labelText">MPI</div>
-                                 <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="fa fa-gear fa-2x"></i></a>
-                              </div>
-                              <div class="row" style="height:100%">
-                                 <div class="col-100" id="chartL8" style="height:100%" >
-                                    <svg class="bar-chart" style="height:95%">
-                                    </svg>
+                        <div class="slider-slide" style="height:100%;">
+                           <div class="row no-gutter boxBG-slider-row" >
+                              <div class="boxBG-slider col-50" id="">
+                                 <div class="row">
+                                    <div></div>
+                                    <div class="labelText">Volume</div>
+                                    <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="fa fa-gear fa-2x"></i></a>
+                                 </div>
+                                 <div class="row" style="height:100%">
+                                    <div class="col-100" id="chartL7" style="height:100%" >
+                                       <svg class="bar-chart" style="height:95%">
+                                       </svg>
+                                    </div>
                                  </div>
                                  <div class="row">
                                  </div>
                               </div>
+                              <div class="boxBG-slider col-50" id="">
+                                 <div class="row">
+                                    <div></div>
+                                    <div class="labelText">TAT</div>
+                                    <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="fa fa-gear fa-2x"></i></a>
+                                 </div>
+                                 <div class="row chartCenter">
+                                    <div class="col-100" id="chartL6" >  </div>
+                                 </div>
+                                 <div class="row legend-container-small">
+                                    <div class="legend-small" style="background-color:#DC3912;"></div>
+                                    <div class="labelTextSmall">% Missing</div>
+                                    <div class="legend-small" style="background-color:#FF9900;"></div>
+                                    <div class="labelTextSmall">% Expected To Miss</div>
+                                    <div class="legend-small" style="background-color:#109618;"></div>
+                                    <div class="labelTextSmall">% Meeting</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row no-gutter boxBG-slider-row" >
+                              <div class="boxBG-slider col-100" id="">
+                                 <div class="row">
+                                    <div></div>
+                                    <div class="labelText">MPI</div>
+                                    <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="fa fa-gear fa-2x"></i></a>
+                                 </div>
+                                 <div class="row" style="height:100%">
+                                    <div class="col-100" id="chartL8" style="height:100%" >
+                                       <svg class="bar-chart" style="height:95%">
+                                       </svg>
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                 </div>
+                              </div>
                            </div>
                         </div>
                      </div>
+                     <div class="slider-pagination"></div>
                   </div>
-                  <div class="slider-pagination"></div>
                </div>
             </div>
          </div>
       </div>
+   </body>
+</html>

@@ -1,8 +1,6 @@
-
-
 <html>
-  <head>
-    <!-- Required meta tags-->
+	<head>
+		<!-- Required meta tags-->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -10,234 +8,167 @@
 		<!-- Your app title -->
 		<title>My App</title>
 		<!-- Path to Framework7 Library CSS-->
-
-  </head>
-
-  <body>
+	</head>
+	<body>
 		<div class="navbar">
-		  <div class="navbar-inner">
-			<div class="left intClear">
-			  <a href="#" class="back link">
-				<i class="icon icon-back"></i>
-				<span>Back</span>
-			   </a>
-			</div>
-			<div class="center sliding">Claim Process</div>
-			<div class="item-content pull right">
-				<div class="item-inner">
-				  <div class="item-input">
-					<label class="label-switch">
-					  <input id="isSequnceSelectedClaim" type="checkbox" checked>
-					  <div class="checkbox"></div>
-					</label>
-				  </div>
+			<div class="navbar-inner">
+				<div class="left intClear">
+					<a href="#" class="back link">
+					<i class="icon icon-back"></i>
+					<span>Back</span>
+					</a>
 				</div>
-			  </div>
-		  </div>
-
+				<div class="center sliding">Claim Process</div>
+				<div class="item-content pull right">
+					<div class="item-inner">
+						<div class="item-input">
+							Flow :
+							<label class="label-switch">
+								<input id="isSequnceSelectedClaim" type="checkbox" checked>
+								<div class="checkbox"></div>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-
-		
 		<div class="pages">
 		<div data-page="claim" class="page">
 			<div class="page-content">
-				
-				
-
-				
-					<div class="row no-gutter" style="width:100%; height:100%">
+				<div class="row no-gutter" style="width:100%; height:100%">
 					<div class="boxBGOutbound" style="width:33.1%; height:50%">
 						<div class="row">
 							<div class="col-50 textAlignCenter boxFlip">
-								<div id="PPGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-							</div>	
+								<div id="claim-wtp-green" class=""><font class="digit" color="#00FF00">100</font> </div>
+							</div>
 							<div class="col-50 textAlignCenter boxFlip">
-								<div id="PPRed" class=""><font class="digit" color="#FF0000">10</font></div>
+								<div id="claim-wtp-red" class=""><font class="digit" color="#FF0000">10</font></div>
 							</div>
 						</div>
 						<div class="row" style="position:relative; top:20%">
 							<div class="col-100 textAlignCenter innerBoxOut">
-								<div id="PPIcon" class="" > <span class="fa fa-forward fa-4x"></span></div>
-							</div>	
+								<div id="claim-wtp-icon" class="" > <span class="fa fa-clock-o fa-4x"></span></div>
+							</div>
 						</div>
 						<div class="row" style="position:relative; top:20%">
 							<div class="col-100 textAlignCenter innerBoxOut">
-									<div class="">Pre-Process</div>
-							</div>	
+								<div class="">Waiting to Processed</div>
+							</div>
 						</div>
-						
 					</div>
-				
-			
-					
 					<div class="boxBGOutbound" style="width:33.1%; height:50%">
 						<div class="row">
 							<div class="col-50 textAlignCenter boxFlip">
-								<div id="CRGreen" ><font class="digit" color="#00FF00">100</font> </div>
-
+								<div id="claim-si-green" ><font class="digit" color="#00FF00">100</font> </div>
 							</div>
-
 							<div class="col-50 textAlignCenter boxFlip">
-								<div id="CRRed" ><font class="digit" color="#FF0000">10</font></div>
+								<div id="claim-si-red" ><font class="digit" color="#FF0000">10</font></div>
 							</div>
 						</div>
 						<div class="row" style="position:relative; top:20%">
 							<div class="col-100 textAlignCenter innerBoxOut ">
-								<div id="CRIcon" > <font size="11"><span class="fa fa-unlock fa-4x"></span></font></div>	
+								<div id="claim-si-icon" > <font size="11"><span class="fa fa-home fa-4x"></span></font></div>
 							</div>
 						</div>
 						<div class="row" style="position:relative; top:20%">
 							<div class="col-100 textAlignCenter innerBoxOut "  >
-								<div class="">Controlled Release</div>
+								<div class="">Site Identification</div>
 							</div>
 						</div>
 					</div>
-					
-			
-			
-				<!--</div>-->
-				
-				<!--<div class="row no-gutter">-->
-					
-
-					
+					<!--</div>-->
+					<!--<div class="row no-gutter">-->
 					<div class="boxBGOutbound " style="width:33.1%; height:50%">
 						<div class="row">
 							<div class="col-50 textAlignCenter boxFlip">
-								<div id="DM2Green" class=""><font class="digit" color="#00FF00">100</font> </div>
-							</div>	
+								<div id="claim-ex-green" class=""><font class="digit" color="#00FF00">100</font> </div>
+							</div>
 							<div class="col-50 textAlignCenter boxFlip">
-								<div id="DM2Red" class=""><font class="digit" color="#FF0000">10</font></div>
+								<div id="claim-ex-red" class=""><font class="digit" color="#FF0000">10</font></div>
 							</div>
 						</div>
 						<div class="row" style="position:relative; top:20%">
 							<div class="col-100 textAlignCenter innerBoxOut">
-								<div id="DM2Icon" class="" > <span class="fa fa-thumbs-o-down fa-4x"></span></div>
-							</div>	
+								<div id="claim-ex-icon" class="" > <span class="fa fa-share-square-o fa-4x"></span></div>
+							</div>
 						</div>
 						<div class="row" style="position:relative; top:20%">
 							<div class="col-100 textAlignCenter innerBoxOut">
-									<div class="">Denial Management</div>
-							</div>	
+								<div class="">Extraction &amp; File Type Identification</div>
+							</div>
 						</div>
-						
 					</div>
-					
-					
-
-				
-				<!--</div>-->
-				
-				<!--<div class="row no-gutter">-->
+					<!--</div>-->
+					<!--<div class="row no-gutter">-->
 					<div class="boxBGOutbound" style="width:49.8%; height:50%">
 						<div class="row">
 							<div class="col-50 textAlignCenter boxFlip">
-								<div id="RAGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-							</div>	
+								<div id="claim-mpi-green" class=""><font class="digit" color="#00FF00">100</font> </div>
+							</div>
 							<div class="col-50 textAlignCenter boxFlip">
-								<div id="RARed" class=""><font class="digit" color="#FF0000">10</font></div>
+								<div id="claim-mpi-red" class=""><font class="digit" color="#FF0000">10</font></div>
 							</div>
 						</div>
 						<div class="row" style="position:relative; top:20%">
 							<div class="col-100 textAlignCenter innerBoxOut">
-								<div id="RAIcon" class="" > <span class="fa fa-cube fa-4x"></span></div>
-							</div>	
+								<div id="claim-mpi-icon" class="" > <span class="fa fa-list-alt fa-4x"></span></div>
+							</div>
 						</div>
 						<div class="row" style="position:relative; top:20%">
 							<div class="col-100 textAlignCenter innerBoxOut">
-									<div class="">RA Package</div>
-							</div>	
+								<div class="">MPI Load</div>
+							</div>
 						</div>
-						
 					</div>
-					
 					<div class="boxBGOutbound" style="width:49.8%; height:50%">
 						<div class="row">
 							<div class="col-50 textAlignCenter boxFlip">
-								<div id="OGGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-							</div>	
+								<div id="claim-pl-green" class=""><font class="digit" color="#00FF00">100</font> </div>
+							</div>
 							<div class="col-50 textAlignCenter boxFlip">
-								<div id="OGRed" class=""><font class="digit" color="#FF0000">10</font></div>
+								<div id="claim-pl-red" class=""><font class="digit" color="#FF0000">10</font></div>
 							</div>
 						</div>
 						<div class="row" style="position:relative; top:20%">
 							<div class="col-100 textAlignCenter innerBoxOut">
-								<div id="OGIcon" class="" > <span class="fa fa-mail-forward fa-4x"></span></div>
-							</div>	
+								<div id="claim-pl-icon" class="" > <span class="fa fa-cloud-upload fa-4x"></span></div>
+							</div>
 						</div>
 						<div class="row" style="position:relative; top:20%">
 							<div class="col-100 textAlignCenter innerBoxOut">
-									<div class="">Output Generation</div>
-							</div>	
+								<div class="">Parsing &amp; Loading</div>
+							</div>
 						</div>
-						
 					</div>
-					
-					
-				  			
-			</div>
-					
-					
-
-				
 				</div>
-				
-					<div class="greySubBGArrow-Claim hidden step step-1">
-						
-						<div >
-							<img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-						
-					</div>
-
-
-
-
-					<div class="greySubBGArrow-2-Claim hidden step step-2">
-						<div>
-							 <img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-						
-					</div>
-
-					<div class="greySubBGArrow-3-Claim hidden step step-3">
-						
-						<div >
-							<img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-						
-					</div>
-					
-					
-					<div class="greySubBGArrow-4-Claim hidden step step-4">
-						<div>
-							<img src="img/Arrow White.png"  width="70" height="30">
-						</div>	
-					</div>
-					
-					
-					
-								
-		
-			
-			
-			
-			
+			</div>
+			<div class="greySubBGArrow-Claim hidden step step-1">
+				<div >
+					<img src="img/Arrow White.png"  width="70" height="30">
+				</div>
+			</div>
+			<div class="greySubBGArrow-2-Claim hidden step step-2">
+				<div>
+					<img src="img/Arrow White.png"  width="70" height="30">
+				</div>
+			</div>
+			<div class="greySubBGArrow-3-Claim hidden step step-3">
+				<div >
+					<img src="img/Arrow White.png"  width="70" height="30">
+				</div>
+			</div>
+			<div class="greySubBGArrow-4-Claim hidden step step-4">
+				<div>
+					<img src="img/Arrow White.png"  width="70" height="30">
+				</div>
+			</div>
 			<div class="toolbar ">
 				<div class="toolbar-inner">
 					<a href="#tab1" class="tab-link "><span class="fa "></span></a>
 					<a href="#tab2" class="tab-link "><span class="fa "></span></a>
-				  
-					
-					<a href="#" data-popup=".popup-about" class="open-popup">Settings &nbsp; <span class="fa  fa-gear fa-lg"></span></a>
+					<a href="#" data-popup=".popup-filter-claim" class="open-popup"><span class="fa  fa-gear fa-lg"></span></a>
 				</div>
 			</div>
-		</div>        
-		
-		
-	
-
-  </body>
-	
-
-</html>     
+		</div>
+	</body>
+</html>
