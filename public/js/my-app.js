@@ -25,7 +25,8 @@ $(document).ready(function () {
 
         actionsCloseByOutside: false,
         modalCloseByOutside: false,
-        popupCloseByOutside: false
+        popupCloseByOutside: false,
+        preloadPreviousPage:false
 
         //modalPreloaderTitle: "Your Dashboard is getting prepared. Please wait….!!!"
     });
@@ -1401,7 +1402,8 @@ $(document).ready(function () {
                 publicStorage.put('dataVolume', dataFactoryFilter);
             }
             
-
+            $("#VT-slider").val(30);
+            $("#VT-slider-text").html(30);
             vBar.triggerIt({containerId:'#reports-charts-forcasted-vs-actual',
                             dataFactory: publicStorage.get('dataVolume')(2, 30 ,streamsSlide0), 
                             axisLabel: 'Lockbox EOB Volume Trend',
@@ -1450,7 +1452,8 @@ $(document).ready(function () {
 
             }
 
-            
+            $("#CV-slider").val(30);
+            $("#CV-slider-text").html(30);
             vBar.triggerIt({containerId:'#reports-claim-data-volume',  
                         dataFactory: publicStorage.get('claimVolume')(1, 30,streamsSlide2), 
                         axisLabel: 'Claim Volume Trend',
@@ -1501,7 +1504,8 @@ $(document).ready(function () {
                 publicStorage.put('PMU',dataFactory2Filter );
             }
 
-            
+            $("#PMU-slider").val(30);
+            $("#PMU-slider-text").html(30);
 
             vBar.triggerIt({containerId:'#reports-percentage-MPI-used',  
                         dataFactory: publicStorage.get('PMU')(1, 30,streamsSlide3), 
@@ -1583,6 +1587,8 @@ $(document).ready(function () {
 
             var groupCode = $('#groupCode-resports-TAT').val();
             var siteNumber = $('#siteNumber-reports-TAT').val();
+            $("#TAT-slider").val(30);
+            $("#TAT-slider-text").html(30);
 
             lChart.triggerIt({
 
