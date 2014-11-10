@@ -11,8 +11,8 @@ var _ = (function(module, $){
             self.initialize();
 
             
-            $('#welcomeName').html('<font>'+localStorage.registeredUser+'</font>');
-            $('#lastLoginTime').html('<font>'+localStorage.lastVisitedDateTime+'</font>');
+            $('#welcomeName').html('<font>'+'Welcome:  ' + localStorage.registeredUser+'</font>');
+            //$('#lastLoginTime').html('<font>'+localStorage.lastVisitedDateTime+'</font>');
             $('#todaysDate').html('<font >'+date.dateNow() +'</font>');
             $('#todaysTime').html('<font >'+date.timeNow() +'</font>');
             $('#lockbox-inbound-file-process').html('<font class="digital" color="#00FF00">'+ data.fileInProcess+'</font>');
