@@ -1,3 +1,19 @@
+/**********************************************************************************************************
+ * Dashboard App 1.0
+ * Full Featured Dashboard App
+ *
+ * Copyright 2014, TCS 
+ *
+ *Developed by: Somenath Ghosh & Steve Pettit
+ *
+ * Licensed under TCS Corporation
+ *
+ * Released on: November 10, 2014
+ ********************************************************************************************************/
+
+
+
+
 $(document).ready(function () {
 
 
@@ -13,10 +29,10 @@ $(document).ready(function () {
         //modalPreloaderTitle: "Your Dashboard is getting prepared. Please wait….!!!"
     });
 
-    // Export selectors engine 
+    
     var $$ = Framework7.$;
 
-    // Add view
+    
     var mainView = myApp.addView('.view-main', {
         
         dynamicNavbar: true
