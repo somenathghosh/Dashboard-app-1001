@@ -4,7 +4,7 @@
  *
  * Copyright 2014, TCS 
  *
- *Developed by: Somenath Ghosh & Steve Pettit
+ * Developed by: Somenath Ghosh & Steve Pettit
  *
  * Licensed under TCS Corporation
  *
