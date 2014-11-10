@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     // Add view
     var mainView = myApp.addView('.view-main', {
-        // Because we use fixed-through navbar we can enable dynamic navbar
+        
         dynamicNavbar: true
     });
 
@@ -1200,7 +1200,7 @@ $(document).ready(function () {
         
         
         $$('.slider-slide input[type="range"]').on('touchmove mousemove', function (e){
-          e.stopPropagation();
+           e.stopPropagation();
         });
 
         $('#goHome').prop("href", "index");
@@ -1373,8 +1373,17 @@ $(document).ready(function () {
 
         $('.submitButton-reports-volume').click(function(e){
 
-            //console.log('clicked');
-            publicStorage.put('dataVolume', dataFactoryFilter);
+            var groupCode = $('#groupCode-reports-volume').val();
+
+            if(!groupCode || groupCode === ''){
+                //console.log(groupCode);
+                publicStorage.put('dataVolume', dataFactory);
+            }
+            else{
+                //console.log(groupCode);
+                publicStorage.put('dataVolume', dataFactoryFilter);
+            }
+            
 
             vBar.triggerIt({containerId:'#reports-charts-forcasted-vs-actual',
                             dataFactory: publicStorage.get('dataVolume')(2, 30 ,streamsSlide0), 
@@ -1410,7 +1419,21 @@ $(document).ready(function () {
 
         $('.submitButton-reports-claim').click(function(e){
 
-            publicStorage.put('claimVolume', dataFactoryFilter);
+            var groupCode = $('#groupCode-reports-claim').val();
+            var siteNumber = $('#site-number-reports-claim').val();
+           
+            if(!groupCode || !siteNumber || groupCode === '' || siteNumber === ''){
+
+                publicStorage.put('claimVolume', dataFactory);
+
+            }
+            else{
+                
+                publicStorage.put('claimVolume', dataFactoryFilter);
+
+            }
+
+            
             vBar.triggerIt({containerId:'#reports-claim-data-volume',  
                         dataFactory: publicStorage.get('claimVolume')(1, 30,streamsSlide2), 
                         axisLabel: 'Claim Volume Trend',
@@ -1437,6 +1460,8 @@ $(document).ready(function () {
         $("#PMU-slider").on('input', function () {
                 $("#PMU-slider-text").html(this.value);
 
+               
+
                 vBar.triggerIt({containerId:'#reports-percentage-MPI-used',  
                         dataFactory: publicStorage.get('PMU')(1, this.value ,streamsSlide3), 
                         axisLabel: 'Percentage of MPI Used ',
@@ -1446,8 +1471,20 @@ $(document).ready(function () {
 
 
         $('.submitButton-reports-MPI-used').click(function(e){
+            
+            var groupCode = $('#roupCode-reports-MPI-used').val();
+            var siteNumber = $('#site-number-reports-MPI-used').val();
 
-            publicStorage.put('PMU',dataFactory2Filter );
+            if(!groupCode || !siteNumber || groupCode ==='' || siteNumber ===''){
+                publicStorage.put('PMU',dataFactory2 );
+
+            }
+            else{
+
+                publicStorage.put('PMU',dataFactory2Filter );
+            }
+
+            
 
             vBar.triggerIt({containerId:'#reports-percentage-MPI-used',  
                         dataFactory: publicStorage.get('PMU')(1, 30,streamsSlide3), 
@@ -1526,6 +1563,9 @@ $(document).ready(function () {
         });
 
         $('.submitButton-reports-TAT').click(function(){
+
+            var groupCode = $('#groupCode-resports-TAT').val();
+            var siteNumber = $('#siteNumber-reports-TAT').val();
 
             lChart.triggerIt({
 
