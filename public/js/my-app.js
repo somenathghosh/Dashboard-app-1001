@@ -63,6 +63,43 @@ $(document).ready(function () {
         Donut3D.draw(id, data, 150, 150, 130, 100, 30, r);
         
     };
+    
+    var drawNvd3Home = function(data, selector, isDonut, donutRatio){
+
+//Donut chart example
+nv.addGraph(function() {
+
+ var svgInbound = d3.select(selector).append("svg").attr("width", 300).attr("height", 300);
+ 	var colors = [];
+ 	for(var index in data){
+ 		colors.push(data[index].color);
+ 	}
+	console.log(colors);
+  var chart = nv.models.pieChart()
+      .x(function(d) { return d.label })
+      .y(function(d) { return d.value })
+      .showLabels(true)     //Display pie labels
+      .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+      .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+      .donut(isDonut)          //Turn on Donut mode. Makes pie chart look tasty!
+      .donutRatio(donutRatio)     //Configure how big you want the donut hole size to be.
+      .showLegend(false)
+      .width(300)
+      .height(300)
+      .color(colors)
+      .pieLabelsOutside(false)
+      ;
+    
+     
+	console.log(data);
+    d3.select(selector+" svg")
+        .datum(data)
+        .transition().duration(350)
+        .call(chart);
+
+  return chart;
+});
+    }
 
     var drawChartChangeData = function(id, data, r ) {
             Donut3D.transition(id, data, 130, 100, 30, r);
@@ -85,11 +122,11 @@ $(document).ready(function () {
                             }, {
                                 label: "File in Process",
                                 value: data.fileInProcess,
-                                color: "#109618"
+                                color: "#FF9900"
                             }, {
                                 label: "File Processed",
                                 value: data.fileProcessed,
-                                color: "#FF9900"
+                                color: "#109618"
                             }
                         ]; 
        
@@ -271,7 +308,13 @@ $(document).ready(function () {
 
                 setTimeout(function(){
                      myApp.hidePreloader();
-
+                      var labels = document.getElementsByClassName("nv-label");
+      					for(var index in labels){
+      						if(labels[index].children){
+      							labels[index].children[1].style.fill="white";
+      						}
+      	
+      					}
                 },1000);
                
 
@@ -314,7 +357,8 @@ $(document).ready(function () {
                 var vm = new _.ViewModelHomeInbound();
                 vm.applyModel(data);
                 var cData = new ChartDataCreator(data);
-                drawChartHome(cData.chartData, "#chartL1","InboundDonut", 0.7);
+                //drawChartHome(cData.chartData, "#chartL1","InboundDonut", 0.7);
+                drawNvd3Home(cData.chartData, "#chartL1", true,0.35);
                
                 var api = new _.API();
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home",outboundHomeCallback);
@@ -349,7 +393,8 @@ $(document).ready(function () {
 
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home",keyInHomeCallback);
                 var cData = new ChartDataCreator(data);
-                drawChartHome(cData.chartData, "#chartL3","OutboundDonut", 0.7);
+                //drawChartHome(cData.chartData, "#chartL3","OutboundDonut", 0.7);
+                drawNvd3Home(cData.chartData, "#chartL3", true,0.35);
         
 
             }
@@ -378,8 +423,8 @@ $(document).ready(function () {
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home",claimHomeCallback);
                 
                 var cData = new ChartDataCreator(data);
-                drawChartHome(cData.chartKeyinData, "#chartL2","keyInboundDonut", 0.0);
-               
+               // drawChartHome(cData.chartKeyinData, "#chartL2","keyInboundDonut", 0.0);
+               drawNvd3Home(cData.chartKeyinData, "#chartL2", false,0);
 
 
             }
@@ -409,8 +454,8 @@ $(document).ready(function () {
 
                 var cData = new ChartDataCreator(data);
 
-                drawChartHome(cData.chartData, "#chartL4","ClaimDonut", 0.7);
-            
+                //drawChartHome(cData.chartData, "#chartL4","ClaimDonut", 0.7);
+            	drawNvd3Home(cData.chartData, "#chartL4", true,0.35);
 
              
                     //myApp.hidePreloader();
