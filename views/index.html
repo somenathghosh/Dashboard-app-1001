@@ -6,6 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="apple-touch-icon" sizes="152x152" href="img/iOS-7-Cydia-Icon-3.png">
 		<!-- Your app title -->
 		<title>My App</title>
 		
@@ -52,29 +54,30 @@
 					<div class="list-block">
 						<ul>
 							<li class="item-content" >
-								<div class="item-media icoBox"><span class="fa fa-bank fa-lg"></span></div>
+								<div class="item-media icoBox"><i class="icon icon-bank"></i></div>
 								<div class="item-inner ">
 									<div class="item-title"><a href="#"  id="goHome" class="close-panel">Home</a></div>
 								</div>
 							</li>
 							<li class="item-content">
-								<div class="item-media icoBox"><span class="fa fa-bar-chart fa-lg"></span></div>
+								<div class="item-media icoBox"><i class="icon icon-report"></i></div>
 								<div class="item-inner">
 									<div class="item-title"><a href="reports" class="close-panel">Reports</a></div>
 								</div>
 							</li>
 							<li class="item-content">
-								<div class="item-media icoBox"><span class="fa fa-angle-double-left fa-2x"></span></div>
+								<div class="item-media icoBox"><i class="icon icon-matrix"></i></div>
+								<div class="item-inner">
+									<div class="item-title"><a id="app-settings" href="#" class="close-panel">Quality Matrix</a></div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-media icoBox"><i class="icon icon-leftClose"></i></div>
 								<div class="item-inner">
 									<div class="item-title"><a href="#" class="close-panel">Close</a></div>
 								</div>
 							</li>
-							<li class="item-content">
-								<div class="item-media icoBox"><span class="fa fa-cogs fa-lg"></span></div>
-								<div class="item-inner">
-									<div class="item-title"><a id="app-settings" href="#" class="close-panel">App Setting</a></div>
-								</div>
-							</li>
+							
 						</ul>
 					</div>
 				</div>
@@ -90,11 +93,11 @@
 						<!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
 						<div class="left sliding" >
 							<a href="#"  class="open-panel">
-							<i class="fa fa-list-ul fa-lg"></i></span>
+							<i class="icon icon-menu"></i></span>
 							</a>
 						</div>
-						<div class="left sliding" style="margin-left: -40em;">
-							<img style="max-width:200px; margin-top: -7px;" src="img/bank_of_america.png">
+						<div class="right sliding" >
+							<img style="max-width:150px; " src="img/bank_of_america.png">
 						</div>
 					</div>
 				</div>
@@ -114,8 +117,8 @@
 									<div  id="todaysTime" class="textAlignCenter "> <font ></font></div>
 								</div>
 							</div>
-							<div class="row no-gutter">
-								<div class="boxBG col-50 inboundProcess" id="inboundProcess">
+							<div class="row no-gutter boxBG">
+								<div class="boxBG-right-1 col-50 inboundProcess" id="inboundProcess">
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-inbound-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
@@ -143,7 +146,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="boxBG col-50" id="keyinProcess">
+								<div class="boxBG-left-1 col-50" id="keyinProcess">
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-keyin-file-assigned" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
@@ -164,20 +167,20 @@
 									</a>
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-keyin-file-completed" class="open-popover">
-											<div style="margin-top: -10px; margin-left: 5px;">
+											<div style="margin-top: -7px; margin-left: 5px;">
 												<div class="textAlignCenter boxFlip" id="keyInCompleted" ><font class="digital" color="#DFC2FC"></font></div>
 											</div>
 										</a>
 										<a href="#" data-popover=".popover-lockbox-keyin-file-submitted" class="open-popover">
-											<div style=" margin-top: -10px;margin-right: 5px;">
+											<div style=" margin-top: -7px; margin-right: 5px;">
 												<div class="textAlignCenter boxFlip" id="keyInSubmitted" ><font class="digital" color="#DC3912"></font></div>
 											</div>
 										</a>
 									</div>
 								</div>
 							</div>
-							<div class="row no-gutter">
-								<div class="boxBG col-50" id="outboundProcess">
+							<div class="row no-gutter boxBG">
+								<div class="boxBG-right-2 col-50" id="outboundProcess">
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-outbound-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
@@ -204,7 +207,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="boxBG col-50" id="claimFileIn">
+								<div class="boxBG-left-2 col-50" id="claimFileIn">
 									<div class="row">
 										<a href="#" data-popover=".popover-claim-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
@@ -237,7 +240,7 @@
 							<div class="toolbar-inner">
 								<a href="#tab1" class="tab-link "><span class="fa "></span></a>
 								<a href="#tab2" class="tab-link "><span class="fa "></span></a>
-								<a href="#" data-popup=".popup-filter" class="open-popup"> &nbsp; <span class="fa  fa-gear fa-lg"></span></a>
+								<a href="#" data-popup=".popup-filter" class="open-popup"><i class="icon icon-filter "></i></a>
 							</div>
 						</div>
 					</div>
@@ -249,12 +252,12 @@
 			<div class="view popup-view">
 				<div class="navbar">
 					<div class="navbar-inner">
-						<div class="left">
+						<div class="right">
 							<a href="#" class="close-popup">
-							<span>Close</span>
+							<i class="icon icon-cancel"></i>
 							</a>
 						</div>
-						<div class="right"> Filter Settings </div>
+						<div class="left"> Filter Settings </div>
 					</div>
 				</div>
 				<div class="pages">
@@ -271,7 +274,7 @@
 										<!-- Text inputs -->
 										<li>
 											<div class="item-content">
-												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
+												<div class="item-media icoBox" style=""><i class="icon icon-hospital"></i></div>
 												<div class="item-inner">
 													<div class="item-title label">Group Code</div>
 													<div class="item-input">
@@ -282,7 +285,7 @@
 										</li>
 										<li>
 											<div class="item-content">
-												<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
+												<div class="item-media icoBox" style=""><i class="icon icon-site"></i></div>
 												<div class="item-inner">
 													<div class="item-title label">Site Number</div>
 													<div class="item-input">

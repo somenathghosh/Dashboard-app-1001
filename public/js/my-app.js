@@ -210,7 +210,7 @@ nv.addGraph(function() {
     var date = new Date();
    
     var homelink = $('#goHome');
-    
+    localStorage.deviceID = '6ac90d0e-20db-4766-9767-c675bde0ef1f';
     setTimeout(function(){
 
         if(!localStorage.deviceID){
