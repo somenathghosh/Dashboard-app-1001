@@ -64,7 +64,7 @@ $(document).ready(function () {
         
     };
     
-    var drawNvd3Home = function(data, selector, isDonut, donutRatio){
+    var drawNvd3Home = function(data, selector, isDonut, donutRatio, page){
 
 //Donut chart example
 nv.addGraph(function() {
@@ -75,7 +75,7 @@ nv.addGraph(function() {
  		colors.push(data[index].color);
  	}
 	console.log(colors);
-  var chart = nv.models.pieChart()
+  var chart = nv.models.pieChart(mainView, page)
       .x(function(d) { return d.label })
       .y(function(d) { return d.value })
       .showLabels(true)     //Display pie labels
@@ -358,7 +358,7 @@ nv.addGraph(function() {
                 vm.applyModel(data);
                 var cData = new ChartDataCreator(data);
                 //drawChartHome(cData.chartData, "#chartL1","InboundDonut", 0.7);
-                drawNvd3Home(cData.chartData, "#chartL1", true,0.35);
+                drawNvd3Home(cData.chartData, "#chartL1", true,0.35,"lockbox-inbound.html");
                
                 var api = new _.API();
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home",outboundHomeCallback);
@@ -394,7 +394,7 @@ nv.addGraph(function() {
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home",keyInHomeCallback);
                 var cData = new ChartDataCreator(data);
                 //drawChartHome(cData.chartData, "#chartL3","OutboundDonut", 0.7);
-                drawNvd3Home(cData.chartData, "#chartL3", true,0.35);
+                drawNvd3Home(cData.chartData, "#chartL3", true,0.35,"lockbox-outbound.html");
         
 
             }
@@ -424,7 +424,7 @@ nv.addGraph(function() {
                 
                 var cData = new ChartDataCreator(data);
                // drawChartHome(cData.chartKeyinData, "#chartL2","keyInboundDonut", 0.0);
-               drawNvd3Home(cData.chartKeyinData, "#chartL2", false,0);
+               drawNvd3Home(cData.chartKeyinData, "#chartL2", false,0,"keyin-detail.html");
 
 
             }
@@ -455,7 +455,7 @@ nv.addGraph(function() {
                 var cData = new ChartDataCreator(data);
 
                 //drawChartHome(cData.chartData, "#chartL4","ClaimDonut", 0.7);
-            	drawNvd3Home(cData.chartData, "#chartL4", true,0.35);
+            	drawNvd3Home(cData.chartData, "#chartL4", true,0.35,"claim.html");
 
              
                     //myApp.hidePreloader();
@@ -1905,6 +1905,20 @@ nv.addGraph(function() {
 
     };
     
+
+		$("#inboundTransition").on("click", function(){
+	  		 mainView.loadPage("lockbox-inbound.html");
+		});
+		$("#outboundTransition").on("click", function(){
+	  		 mainView.loadPage("lockbox-outbound.html");
+		});
+		$("#keyinTransition").on("click", function(){
+	  		 mainView.loadPage("keyin-detail.html");
+		});
+		$("#claimTransition").on("click", function(){
+	  		 mainView.loadPage("claim.html");
+		});
+
 
 
 
