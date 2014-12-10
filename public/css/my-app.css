@@ -647,7 +647,7 @@ font.navBarFont{
 @font-face {
 	font-family: 'digi';
 	/*src: url('http://cssdeck.com/uploads/resources/fonts/digii/DS-DIGII.TTF'); */
-	src: url('../fonts/SFDigitalReadout-Light.TTF');
+	src: url('../fonts/SFDigitalReadout-Light.ttf');
 }
 
 font.digital{
