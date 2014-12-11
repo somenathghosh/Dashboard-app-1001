@@ -64,12 +64,12 @@ $(document).ready(function () {
         
     };
     
-    var drawNvd3Home = function(data, selector, isDonut, donutRatio, page){
+    var drawNvd3Home = function(data, selector, isDonut, donutRatio, page, showLegend, height, width){
 
 //Donut chart example
 nv.addGraph(function() {
 
- var svgInbound = d3.select(selector).append("svg").attr("width", 300).attr("height", 300);
+ var svgInbound = d3.select(selector).append("svg").attr("width", width|300).attr("height", height|300);
  	var colors = [];
  	for(var index in data){
  		colors.push(data[index].color);
@@ -83,9 +83,9 @@ nv.addGraph(function() {
       .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
       .donut(isDonut)          //Turn on Donut mode. Makes pie chart look tasty!
       .donutRatio(donutRatio)     //Configure how big you want the donut hole size to be.
-      .showLegend(false)
-      .width(300)
-      .height(300)
+      .showLegend(showLegend)
+      .width(width|300)
+      .height(height|300)
       .color(colors)
       .pieLabelsOutside(false)
       ;
@@ -342,34 +342,74 @@ nv.addGraph(function() {
         vmSite.applyModel(data.sort(), '.site-number-home-filter', '.item-after');
 		*/
 		var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
-		$("#group-codes").html("");
+		$(".group-codes").html("");
 		for(var index in data){
 			if(index == 0){
-				$("#group-codes").append("<option value="+data[index].groupCode+" selected>"+data[index].groupCode+"</option>");
-				$("#group-code-after").html(data[index].groupCode);
-				$("#site-numbers").html("");
-				for(var index2 in data[index].siteNumbers){
-					if(index2 == 0){
-						$("#site-numbers").append("<option value="+data[index].siteNumbers[index2]+" selected>"+data[index].siteNumbers[index2]+"</option>");
-						$("#site-number-after").html(data[index].siteNumbers[index2]);
-					}else{
-						$("#site-numbers").append("<option value="+data[index].siteNumbers[index2]+" >"+data[index].siteNumbers[index2]+"</option>");
-					}
-				}
+				$(".group-codes").append("<option value="+data[index].groupCode+" selected>"+data[index].groupCode+"</option>");
+				$(".group-code-after").html(data[index].groupCode);
+                setSiteNumbers(data, index);
 			}else{
-				$("#group-codes").append("<option value="+data[index].groupCode+">"+data[index].groupCode+"</option>");
+				$(".group-codes").append("<option value="+data[index].groupCode+">"+data[index].groupCode+"</option>");
 			}
 
 		}
 
 
     });
-	$("#group-codes").on("change", function (e) {
+
+    $$('.popup-filter-lockbox-inbound').on('open', function () {
+      /*
+        var vm = new _.ViewModelGroupCode();
+        var vmSite = new _.ViewModelSiteNumber();
+        var data = ['XXX', 'YYY', 'VVV', 'CCC', 'NNN', 'MMM', 'AAA', 'BBB', 'CCC'];
+
+        
+
+
+        vm.applyModel(data.sort(), '.group-Code-home-filter', '.item-after'); 
+        vmSite.applyModel(data.sort(), '.site-number-home-filter', '.item-after');
+        */
+        var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
+        $(".group-codes").html("");
+        for(var index in data){
+            if(index == 0){
+                $(".group-codes").append("<option value="+data[index].groupCode+" selected>"+data[index].groupCode+"</option>");
+                $(".group-code-after").html(data[index].groupCode);
+                setSiteNumbers(data, index);
+            }else{
+                $(".group-codes").append("<option value="+data[index].groupCode+">"+data[index].groupCode+"</option>");
+            }
+
+        }
+
+
+    });
+
+
+
+
+
+	$(".group-codes").on("change", function (e) {
 		var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
-		
-		
-	
+		for(var index in data){
+            if($(".group-codes").val()==data[index].groupCode){
+                setSiteNumbers(data, index);
+            }
+        }
 	});
+
+
+    function setSiteNumbers(data, index){
+                $(".site-numbers").html("");
+                for(var index2 in data[index].siteNumbers){
+                    if(index2 == 0){
+                        $(".site-numbers").append("<option value="+data[index].siteNumbers[index2]+" selected>"+data[index].siteNumbers[index2]+"</option>");
+                        $(".site-number-after").html(data[index].siteNumbers[index2]);
+                    }else{
+                        $(".site-numbers").append("<option value="+data[index].siteNumbers[index2]+" >"+data[index].siteNumbers[index2]+"</option>");
+                    }
+                }
+    }
 
     function buildHomePage (callback){
 
@@ -387,7 +427,7 @@ nv.addGraph(function() {
                 vm.applyModel(data);
                 var cData = new ChartDataCreator(data);
                 //drawChartHome(cData.chartData, "#chartL1","InboundDonut", 0.7);
-                drawNvd3Home(cData.chartData, "#chartL1", true,0.35,"lockbox-inbound.html");
+                drawNvd3Home(cData.chartData, "#chartL1", true,0.35,"lockbox-inbound.html",false);
                
                 var api = new _.API();
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home",outboundHomeCallback);
@@ -423,7 +463,7 @@ nv.addGraph(function() {
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home",keyInHomeCallback);
                 var cData = new ChartDataCreator(data);
                 //drawChartHome(cData.chartData, "#chartL3","OutboundDonut", 0.7);
-                drawNvd3Home(cData.chartData, "#chartL3", true,0.35,"lockbox-outbound.html");
+                drawNvd3Home(cData.chartData, "#chartL3", true,0.35,"lockbox-outbound.html",false);
         
 
             }
@@ -453,7 +493,7 @@ nv.addGraph(function() {
                 
                 var cData = new ChartDataCreator(data);
                // drawChartHome(cData.chartKeyinData, "#chartL2","keyInboundDonut", 0.0);
-               drawNvd3Home(cData.chartKeyinData, "#chartL2", false,0,"keyin-detail.html");
+               drawNvd3Home(cData.chartKeyinData, "#chartL2", false,0,"keyin-detail.html",false);
 
 
             }
@@ -484,7 +524,7 @@ nv.addGraph(function() {
                 var cData = new ChartDataCreator(data);
 
                 //drawChartHome(cData.chartData, "#chartL4","ClaimDonut", 0.7);
-            	drawNvd3Home(cData.chartData, "#chartL4", true,0.35,"claim.html");
+            	drawNvd3Home(cData.chartData, "#chartL4", true,0.35,"claim.html",false);
 
              
                     //myApp.hidePreloader();
@@ -706,6 +746,7 @@ nv.addGraph(function() {
 
     myApp.onPageInit('*', function (page) {
       console.log(page.name + ' initialized'); 
+
     });
 
 
@@ -713,6 +754,7 @@ nv.addGraph(function() {
     function renderKeyInDetailWorklist(groupCode, siteNumber, org){
         myApp.showPreloader('Preparing');
         var api = new _.API();
+
 
         if(groupCode && siteNumber && org){
 
@@ -756,10 +798,11 @@ nv.addGraph(function() {
             api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/worklist',function(success, data){
                 if(success){
                     var cData = new ChartDataCreator(data);
-                    var svgKeyinDetail = d3.select("#chartL5").append("svg").attr("width", 500).attr("height", 500);
-                    svgKeyinDetail.append("g").attr("id", "KeyinDetailPie");
-                    Donut3D.draw("KeyinDetailPie", cData.chartKeyinDataWorkList, 250, 250, 250, 193, 35, 0.0);
-                   
+                    //var svgKeyinDetail = d3.select("#chartL5").append("svg").attr("width", 500).attr("height", 500);
+                    //svgKeyinDetail.append("g").attr("id", "KeyinDetailPie");
+                   // Donut3D.draw("KeyinDetailPie", cData.chartKeyinDataWorkList, 250, 250, 250, 193, 35, 0.0);
+                   drawNvd3Home(cData.chartKeyinDataWorkList, "#chartL5", false, 0, "", true,500,500);
+
                 }
                 else{
                     
@@ -827,9 +870,11 @@ nv.addGraph(function() {
             api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/batchTAT',function(success, data){
                 if(success){
 
-                    var svgTat = d3.select("#chartL6").append("svg").attr("width", 225).attr("height", 250);
-                    svgTat.append("g").attr("id", "TatPie");
-                    Donut3D.draw("TatPie", data, 140, 120, 100, 79, 20, 0.7);
+                    //var svgTat = d3.select("#chartL6").append("svg").attr("width", 225).attr("height", 250);
+                    //svgTat.append("g").attr("id", "TatPie");
+                    //Donut3D.draw("TatPie", data, 140, 120, 100, 79, 20, 0.7);
+
+                    drawNvd3Home(data, "#chartL6", true, 0.35, "", true);
                    
                 }
 
@@ -978,6 +1023,14 @@ nv.addGraph(function() {
         setTimeout(function(){
 
             myApp.hidePreloader();
+                                                        var labels = document.getElementsByClassName("nv-label");
+                        for(var index in labels){
+                            if(labels[index].children){
+                                labels[index].children[1].style.fill="white";
+                            }
+        
+                        }
+
 
         },1000);
        

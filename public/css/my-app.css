@@ -11,7 +11,7 @@ a.anchorColor
      
 }
 
-/* Steve's Change Start*/
+
 .page > .searchbar{
 	top:44px;
 	z-index:2000;
@@ -128,13 +128,15 @@ display: none;
 }
 
 .chartCenter{
-	margin-top: -39px;
-	margin-left: -webkit-calc( 50% - 150px);
-  	margin-left: -moz-calc(50% - 150px);
-  	margin-left: calc( 50% - 150px);
+	margin-top:-40px;
+	margin-left: -webkit-calc( 50% - 160px);
+  	margin-left: -moz-calc(50% - 160px);
+  	margin-left: calc( 50% - 160px);
 }
 
 .chartCenterBig{
+	position:relative;
+	top:20px;
 	margin-left: -webkit-calc( 50% - 250px);
   	margin-left: -moz-calc(50% - 250px);
   	margin-left: calc( 50% - 250px);
