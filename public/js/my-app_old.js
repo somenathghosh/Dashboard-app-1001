@@ -211,7 +211,6 @@ nv.addGraph(function() {
    
     var homelink = $('#goHome');
     localStorage.deviceID = '6ac90d0e-20db-4766-9767-c675bde0ef1f';
-    //localStorage.removeItem("deviceID");
     setTimeout(function(){
 
         if(!localStorage.deviceID){
@@ -277,12 +276,9 @@ nv.addGraph(function() {
                         }
                         else{
 
-
                             myApp.alert('This Device is not registered. Please contact help desk for more information. <br> HelpDesk: 800-XXX-XXXX', 'Error:', function() {
                                 myApp.hidePreloader();
                                 myApp.popup('.popup-app-settings');
-                                
-                                
                             });
 
                             
@@ -330,46 +326,21 @@ nv.addGraph(function() {
     },500);
 
     $$('.popup-filter').on('open', function () {
-      /*
+      
         var vm = new _.ViewModelGroupCode();
         var vmSite = new _.ViewModelSiteNumber();
         var data = ['XXX', 'YYY', 'VVV', 'CCC', 'NNN', 'MMM', 'AAA', 'BBB', 'CCC'];
 
-        
+        var data = ['XXX', 'YYY', 'VVV', 'CCC', 'NNN', 'MMM', 'AAA', 'BBB', 'CCC'];
 
 
         vm.applyModel(data.sort(), '.group-Code-home-filter', '.item-after'); 
         vmSite.applyModel(data.sort(), '.site-number-home-filter', '.item-after');
-		*/
-		var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
-		$("#group-codes").html("");
-		for(var index in data){
-			if(index == 0){
-				$("#group-codes").append("<option value="+data[index].groupCode+" selected>"+data[index].groupCode+"</option>");
-				$("#group-code-after").html(data[index].groupCode);
-				$("#site-numbers").html("");
-				for(var index2 in data[index].siteNumbers){
-					if(index2 == 0){
-						$("#site-numbers").append("<option value="+data[index].siteNumbers[index2]+" selected>"+data[index].siteNumbers[index2]+"</option>");
-						$("#site-number-after").html(data[index].siteNumbers[index2]);
-					}else{
-						$("#site-numbers").append("<option value="+data[index].siteNumbers[index2]+" >"+data[index].siteNumbers[index2]+"</option>");
-					}
-				}
-			}else{
-				$("#group-codes").append("<option value="+data[index].groupCode+">"+data[index].groupCode+"</option>");
-			}
 
-		}
 
 
     });
-	$("#group-codes").on("change", function (e) {
-		var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
-		
-		
-	
-	});
+
 
     function buildHomePage (callback){
 

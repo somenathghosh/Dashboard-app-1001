@@ -7,9 +7,10 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-		<link rel="apple-touch-icon" sizes="152x152" href="img/Dasboard.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="img/iOS-7-Cydia-Icon-3.png">
+		<link rel="apple-touch-startup-image" href="img/OS-X-Dashboard-Wallpaper-1024x768.jpg">
 		<!-- Your app title -->
-		<title>HL-Board</title>
+		<title>My App</title>
 		
 		<script src="js/lib/d3.v3.js"></script>
 		<script src="js/lib/nv.d3.js"></script>
@@ -259,14 +260,14 @@
 		<!-- Home Page Filter -->
 		<div class="popup popup-filter">
 			<div class="view popup-view">
-				<div class="navbar popupNavBar" >
+				<div class="navbar">
 					<div class="navbar-inner">
 						<div class="right">
 							<a href="#" class="close-popup">
 							<i class="icon icon-cancel"></i>
 							</a>
 						</div>
-						<div class="center" style="color:#F2F2F2"> Filter Settings </div>
+						<div class="left"> Filter Settings </div>
 					</div>
 				</div>
 				<div class="pages">
@@ -282,7 +283,7 @@
 									<ul>
 										<!-- Text inputs -->
 										<li>
-											<!--<div class="item-content">
+											<div class="item-content">
 												<div class="item-media icoBox" style=""><i class="icon icon-hospital"></i></div>
 												<div class="item-inner">
 													<div class="item-title label">Group Code</div>
@@ -290,24 +291,10 @@
 														<input type="text" id="groupCode-home" placeholder="Group Code">
 													</div>
 												</div>
-											</div>-->
-									      <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="group-codes" name="group-codes">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Group Code</div>
-									            <!-- Selected value, not required -->
-									            <div id="group-code-after" class="item-after"></div>
-									          </div>
-									        </div>
-									      </a>
+											</div>
 										</li>
 										<li>
-											<!--<div class="item-content">
+											<div class="item-content">
 												<div class="item-media icoBox" style=""><i class="icon icon-site"></i></div>
 												<div class="item-inner">
 													<div class="item-title label">Site Number</div>
@@ -315,21 +302,7 @@
 														<input type="text" id="siteNumber-home" placeholder="Site Number">
 													</div>
 												</div>
-											</div>-->
-										<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="site-numbers" name="site-numbers">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Site Number</div>
-									            <!-- Selected value, not required -->
-									            <div id="site-number-after" class="item-after"></div>
-									          </div>
-									        </div>
-									      </a>
+											</div>
 										</li>
 									</ul>
 								</div>
@@ -346,25 +319,16 @@
 				</div>
 			</div>
 		</div>
-
-
 		<!-- Registration Settings --> 
-		<div  class="popup popup-app-settings ">
-			<div class="view popup-view">
-			<div class="navbar" style="background: #3a7cd8;">
+		<div class="popup popup-app-settings">
+			<div class="navbar">
 				<div class="navbar-inner">
-					
-					<div class="center" style="color:#F2F2F2"> Device Registration</div>
-					
+					<div></div>
+					<div class="center"> Device Registration</div>
+					<div></div>
 				</div>
 			</div>
-			<div class="pages">
-					<div class="page" data-page="Registration-filter">
-						<div class="page-content">
 			<div class="content-block">
-				<div class="row">
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-								</div>
 				<div class="list-block">
 					<ul>
 						<!-- Text inputs -->
@@ -418,15 +382,10 @@
 				<div class="row">
 					<div class="col-10"></div>
 					<div class="col-10"></div>
-					<div class="col-60 appSetButton"><a href="#" class="button color-blue button-big">Set</a></div>
+					<div class="col-60 appSetButton"><a href="#" class="button color-green button-big">Set</a></div>
 					<div class="col-10"></div>
 					<div class="col-10"></div>
 				</div>
-			</div>
-
-		</div>
-		</div>
-		</div>
 			</div>
 		</div>
 		<!-- Lockbox Inbound Filter Options -->

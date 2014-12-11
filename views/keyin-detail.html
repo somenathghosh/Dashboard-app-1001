@@ -11,16 +11,7 @@
       <!-- Status bar overlay for full screen mode (PhoneGap) -->
       <div class="statusbar-overlay"></div>
       <!-- Panels overlay-->
-      <div class="panel-overlay">   </div>
-      <!-- Left panel with reveal effect-->
-      <div class="panel panel-left panel-reveal">
-         <div class="content-block">
-            <!-- Click on link with "close-panel" class will close panel -->
-            <p><a href="index" class="go-home">Home</a></p>
-            <p><a href="#" class="close-panel">Close</a></p>
-            <!-- Click on link with "open-panel" and data-panel="right" attribute will open Right panel -->
-         </div>
-      </div>
+      
       <!-- Views -->
       <div class="views">
       <!-- Your main view, should have "view-main" class -->
@@ -34,7 +25,7 @@
                   <span>Back</span>
                   </a>
                </div>
-               <div class="center sliding">Key In</div>
+               <div class="center sliding"><font class="navBarCaption">Key In</font></div>
             </div>
          </div>
          <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
@@ -52,7 +43,7 @@
                                  <div class="row">
                                     <div></div>
                                     <div class="labelText">Work List Status</div>
-                                    <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="fa fa-gear fa-2x"></i></a>
+                                    <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="icon icon-filter"></i></a>
                                  </div>
                                  <div class="row chartCenterBig">
                                     <div class="col-100" id="chartL5" >  </div>
@@ -75,12 +66,12 @@
                            </div>
                         </div>
                         <div class="slider-slide" style="height:100%;">
-                           <div class="row no-gutter boxBG-slider-row" >
-                              <div class="boxBG-slider col-50" id="">
+                           <div class="row no-gutter boxBG-slider-row boxBG-slider" >
+                              <div class="boxBG-slider-keyin col-50" id="">
                                  <div class="row">
                                     <div></div>
                                     <div class="labelText">Volume</div>
-                                    <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="fa fa-gear fa-2x"></i></a>
+                                    <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="icon icon-filter"></i></a>
                                  </div>
                                  <div class="row" style="height:100%">
                                     <div class="col-100" id="chartL7" style="height:100%" >
@@ -91,11 +82,11 @@
                                  <div class="row">
                                  </div>
                               </div>
-                              <div class="boxBG-slider col-50" id="">
+                              <div class="boxBG-slider-keyincol-50" id="">
                                  <div class="row">
                                     <div></div>
                                     <div class="labelText">TAT</div>
-                                    <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="fa fa-gear fa-2x"></i></a>
+                                    <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="icon icon-filter"></i></a>
                                  </div>
                                  <div class="row chartCenter">
                                     <div class="col-100" id="chartL6" >  </div>
@@ -115,7 +106,7 @@
                                  <div class="row">
                                     <div></div>
                                     <div class="labelText">MPI</div>
-                                    <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="fa fa-gear fa-2x"></i></a>
+                                    <a href="#" data-popup=".keyin-popup" class=" labelIcon open-popup"><i class="icon icon-filter"></i></a>
                                  </div>
                                  <div class="row" style="height:100%">
                                     <div class="col-100" id="chartL8" style="height:100%" >
