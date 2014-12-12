@@ -366,35 +366,39 @@ nv.addGraph(function() {
         vm.applyModel(data.sort(), '.group-Code-home-filter', '.item-after'); 
         vmSite.applyModel(data.sort(), '.site-number-home-filter', '.item-after');
 		*/
-		var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
-		$(".group-codes").html("");
-		for(var index in data){
-			if(index == 0){
-				$(".group-codes").append("<option value="+data[index].groupCode+" selected>"+data[index].groupCode+"</option>");
-				$(".group-code-after").html(data[index].groupCode);
-                setSiteNumbers(data, index);
-			}else{
-				$(".group-codes").append("<option value="+data[index].groupCode+">"+data[index].groupCode+"</option>");
-			}
+      setGroupCodes();
+    });
 
-		}
-
-
+    $$('.keyin-popup').on('open', function () {
+       setGroupCodes();
     });
 
     $$('.popup-filter-lockbox-inbound').on('open', function () {
-      /*
-        var vm = new _.ViewModelGroupCode();
-        var vmSite = new _.ViewModelSiteNumber();
-        var data = ['XXX', 'YYY', 'VVV', 'CCC', 'NNN', 'MMM', 'AAA', 'BBB', 'CCC'];
+       setGroupCodes();
+    });
 
-        
+    $$('.popup-filter-lockbox-outbound').on('open', function () {
+       setGroupCodes();
+    });
+    
+    $$('.popup-filter-claim').on('open', function () {
+       setGroupCodes();
+    });
 
 
-        vm.applyModel(data.sort(), '.group-Code-home-filter', '.item-after'); 
-        vmSite.applyModel(data.sort(), '.site-number-home-filter', '.item-after');
-        */
-        var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
+
+	$(".group-codes").on("change", function (e) {
+    var changedGroup = $(this);
+		var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
+		for(var index in data){
+            if(changedGroup.val()==data[index].groupCode){
+                setSiteNumbers(data, index);
+            }
+        }
+	});
+  
+  function setGroupCodes(){
+            var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
         $(".group-codes").html("");
         for(var index in data){
             if(index == 0){
@@ -404,24 +408,8 @@ nv.addGraph(function() {
             }else{
                 $(".group-codes").append("<option value="+data[index].groupCode+">"+data[index].groupCode+"</option>");
             }
-
         }
-
-
-    });
-
-
-
-
-
-	$(".group-codes").on("change", function (e) {
-		var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
-		for(var index in data){
-            if($(".group-codes").val()==data[index].groupCode){
-                setSiteNumbers(data, index);
-            }
-        }
-	});
+  }
 
 
     function setSiteNumbers(data, index){
