@@ -46,7 +46,26 @@ $(document).ready(function () {
     });
 
 
+    var inboundPopupView = myApp.addView('.popup-view-inbound',{
+        
+        dynamicNavbar: true
+    });
 
+
+     var outboundPopupView = myApp.addView('.popup-view-outbound',{
+        
+        dynamicNavbar: true
+    });
+
+    var claimPopupView = myApp.addView('.popup-view-claim',{
+        
+        dynamicNavbar: true
+    });
+
+     var keyinPopupView = myApp.addView('.popup-view-keyin',{
+        
+        dynamicNavbar: true
+    });
 
     /**************************************************************************************************/
 
@@ -319,7 +338,13 @@ nv.addGraph(function() {
       						}
       	
       					}
+                        $('#main-view-test-fadein').removeClass('animated zoomIn');
                 },1000);
+                setTimeout(function(){
+
+
+                },1000);
+                
                
 
             });
@@ -327,7 +352,7 @@ nv.addGraph(function() {
 
         }
    
-    },500);
+    },1500);
 
     $$('.popup-filter').on('open', function () {
       /*
@@ -428,6 +453,7 @@ nv.addGraph(function() {
                 var cData = new ChartDataCreator(data);
                 //drawChartHome(cData.chartData, "#chartL1","InboundDonut", 0.7);
                 drawNvd3Home(cData.chartData, "#chartL1", true,0.35,"lockbox-inbound.html",false);
+                $('#chartL1').addClass('animated zoomIn');
                
                 var api = new _.API();
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home",outboundHomeCallback);
@@ -464,6 +490,7 @@ nv.addGraph(function() {
                 var cData = new ChartDataCreator(data);
                 //drawChartHome(cData.chartData, "#chartL3","OutboundDonut", 0.7);
                 drawNvd3Home(cData.chartData, "#chartL3", true,0.35,"lockbox-outbound.html",false);
+                $('#chartL3').addClass('animated zoomIn');
         
 
             }
@@ -494,6 +521,7 @@ nv.addGraph(function() {
                 var cData = new ChartDataCreator(data);
                // drawChartHome(cData.chartKeyinData, "#chartL2","keyInboundDonut", 0.0);
                drawNvd3Home(cData.chartKeyinData, "#chartL2", false,0,"keyin-detail.html",false);
+               $('#chartL2').addClass('animated zoomIn');
 
 
             }
@@ -525,12 +553,13 @@ nv.addGraph(function() {
 
                 //drawChartHome(cData.chartData, "#chartL4","ClaimDonut", 0.7);
             	drawNvd3Home(cData.chartData, "#chartL4", true,0.35,"claim.html",false);
-
+                $('#chartL4').addClass('animated zoomIn');
              
                     //myApp.hidePreloader();
                 $(".loadingPage").addClass("hidden");
                 $(".views").removeClass("hidden");
                 $(".overlay").removeClass("hidden");
+                //$('#main-view-test-fadein').addClass('animated zoomIn');
                 callback();
 
               
@@ -802,6 +831,7 @@ nv.addGraph(function() {
                     //svgKeyinDetail.append("g").attr("id", "KeyinDetailPie");
                    // Donut3D.draw("KeyinDetailPie", cData.chartKeyinDataWorkList, 250, 250, 250, 193, 35, 0.0);
                    drawNvd3Home(cData.chartKeyinDataWorkList, "#chartL5", false, 0, "", true,500,500);
+                   $('#chartL5').addClass('animated zoomIn');
 
                 }
                 else{
@@ -1014,6 +1044,7 @@ nv.addGraph(function() {
 
 
     myApp.onPageInit('keyin-detail', function (page) {
+        
         
         renderKeyInDetailWorklist();
         renderKeyInDetailVolume();
@@ -1280,7 +1311,7 @@ nv.addGraph(function() {
 
     /*-------------*/
     myApp.onPageInit('reports', function (page) {
-        
+       
         myApp.showPreloader('Preparing');
 
         var slides = [
@@ -1493,14 +1524,14 @@ nv.addGraph(function() {
        
 
 
-
+        
         vBar.triggerIt({containerId:'#reports-charts-forcasted-vs-actual',  
                         dataFactory: publicStorage.get('dataVolume')(2, 30,streamsSlide0), 
                         axisLabel: 'Lockbox EOB Volume Trend',
                         color: colorSlide0 
                         }, function(){
 
-
+                            $('#reports-charts-forcasted-vs-actual').addClass('animated zoomIn');
                         });
 
        

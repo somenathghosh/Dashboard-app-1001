@@ -2711,7 +2711,7 @@ Copyright (c) 2014 Daniel Eden
 @-webkit-keyframes zoomIn {
   0% {
     opacity: 0;
-    -webkit-transform: scale3d(.3, .3, .3);
+    -webkit-transform: scale3d(.05, .05, .05);
     transform: scale3d(.3, .3, .3);
   }
 

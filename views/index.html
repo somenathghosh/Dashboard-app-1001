@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
+		<link rel="apple-touch-startup-image" href="img/startup-landscape.png">
 		<link rel="apple-touch-icon" sizes="152x152" href="img/Dasboard.png">
 		<!-- Your app title -->
 		<title>HL-Board</title>
@@ -85,7 +85,7 @@
 			</div>
 		</div>
 		<!-- Views -->
-		<div class="views hidden">
+		<div  class="views hidden">
 			<!-- Your main view, should have "view-main" class -->
 			<div class="view view-main">
 				<!-- Top Navbar-->
@@ -107,7 +107,7 @@
 					<!-- Page, "data-page" contains page name -->
 					<div data-page="index" class="page navbar-fixed toolbar-fixed">
 						<!-- Scrollable page content -->
-						<div class="page-content">
+						<div id="main-view-test-fadein" class="page-content">
 							<div class="row no-gutter">
 								<div class=" welcomeBG col-50">
 									<div id="welcomeName" class="textAlignLeft"> <font></font></div>
@@ -293,7 +293,7 @@
 											</div>-->
 									      <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
 									        <!-- select -->
-									        <select id="groupCode-home" class="group-codes" name="group-codes">
+									        <select id="group-codes" name="group-codes">
 									          
 									        </select>
 									        <div class="item-content">
@@ -301,7 +301,7 @@
 									            <!-- Select label -->
 									            <div class="item-title">Group Code</div>
 									            <!-- Selected value, not required -->
-									            <div id="group-code-after" class="item-after group-code-after"></div>
+									            <div id="group-code-after" class="item-after"></div>
 									          </div>
 									        </div>
 									      </a>
@@ -318,7 +318,7 @@
 											</div>-->
 										<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
 									        <!-- select -->
-									        <select id="siteNumber-home" class="site-numbers" name="site-numbers">
+									        <select id="site-numbers" name="site-numbers">
 									          
 									        </select>
 									        <div class="item-content">
@@ -326,7 +326,7 @@
 									            <!-- Select label -->
 									            <div class="item-title">Site Number</div>
 									            <!-- Selected value, not required -->
-									            <div id="site-number-after" class="item-after site-number-after"></div>
+									            <div id="site-number-after" class="item-after"></div>
 									          </div>
 									        </div>
 									      </a>
@@ -346,6 +346,285 @@
 				</div>
 			</div>
 		</div>
+
+
+
+		<div class=" popup popup-filter-lockbox-inbound">
+			<div class="view popup-view-inbound">
+				<div class="navbar popupNavBar" >
+					<div class="navbar-inner">
+						<div class="right">
+							<a href="#" class="close-popup">
+							<i class="icon icon-cancel"></i>
+							</a>
+						</div>
+						<div class="center" style="color:#F2F2F2"> Filter Settings </div>
+					</div>
+				</div>
+				<div class="pages">
+					<div class="page" data-page="home-filter">
+						<div class="page-content">
+
+							<div class="content-block">
+								<div class="row">
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+								</div>
+								<div class="list-block">
+									
+									<ul>
+										<!-- Text inputs -->
+										<li>
+											<!--<div class="item-content">
+												<div class="item-media icoBox" style=""><i class="icon icon-hospital"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Group Code</div>
+													<div class="item-input">
+														<input type="text" id="groupCode-home" placeholder="Group Code">
+													</div>
+												</div>
+											</div>-->
+									      <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+									        <!-- select -->
+									        <select id="group-codes" name="group-codes">
+									          
+									        </select>
+									        <div class="item-content">
+									          <div class="item-inner">
+									            <!-- Select label -->
+									            <div class="item-title">Group Code</div>
+									            <!-- Selected value, not required -->
+									            <div id="group-code-after" class="item-after"></div>
+									          </div>
+									        </div>
+									      </a>
+										</li>
+										<li>
+											<!--<div class="item-content">
+												<div class="item-media icoBox" style=""><i class="icon icon-site"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Site Number</div>
+													<div class="item-input">
+														<input type="text" id="siteNumber-home" placeholder="Site Number">
+													</div>
+												</div>
+											</div>-->
+										<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+									        <!-- select -->
+									        <select id="site-numbers" name="site-numbers">
+									          
+									        </select>
+									        <div class="item-content">
+									          <div class="item-inner">
+									            <!-- Select label -->
+									            <div class="item-title">Site Number</div>
+									            <!-- Selected value, not required -->
+									            <div id="site-number-after" class="item-after"></div>
+									          </div>
+									        </div>
+									      </a>
+										</li>
+									</ul>
+								</div>
+								<div class="row">
+									<div class="col-10"></div>
+									<div class="col-10"></div>
+									<div class="col-60 submitButton-home"><a href="#" class="button button-big close-popup ">Submit</a></div>
+									<div class="col-10"></div>
+									<div class="col-10"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class=" popup popup-filter-lockbox-outbound">
+			<div class="view popup-view-outbound">
+				<div class="navbar popupNavBar" >
+					<div class="navbar-inner">
+						<div class="right">
+							<a href="#" class="close-popup">
+							<i class="icon icon-cancel"></i>
+							</a>
+						</div>
+						<div class="center" style="color:#F2F2F2"> Filter Settings </div>
+					</div>
+				</div>
+				<div class="pages">
+					<div class="page" data-page="home-filter">
+						<div class="page-content">
+
+							<div class="content-block">
+								<div class="row">
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+								</div>
+								<div class="list-block">
+									
+									<ul>
+										<!-- Text inputs -->
+										<li>
+											<!--<div class="item-content">
+												<div class="item-media icoBox" style=""><i class="icon icon-hospital"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Group Code</div>
+													<div class="item-input">
+														<input type="text" id="groupCode-home" placeholder="Group Code">
+													</div>
+												</div>
+											</div>-->
+									      <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+									        <!-- select -->
+									        <select id="group-codes" name="group-codes">
+									          
+									        </select>
+									        <div class="item-content">
+									          <div class="item-inner">
+									            <!-- Select label -->
+									            <div class="item-title">Group Code</div>
+									            <!-- Selected value, not required -->
+									            <div id="group-code-after" class="item-after"></div>
+									          </div>
+									        </div>
+									      </a>
+										</li>
+										<li>
+											<!--<div class="item-content">
+												<div class="item-media icoBox" style=""><i class="icon icon-site"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Site Number</div>
+													<div class="item-input">
+														<input type="text" id="siteNumber-home" placeholder="Site Number">
+													</div>
+												</div>
+											</div>-->
+										<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+									        <!-- select -->
+									        <select id="site-numbers" name="site-numbers">
+									          
+									        </select>
+									        <div class="item-content">
+									          <div class="item-inner">
+									            <!-- Select label -->
+									            <div class="item-title">Site Number</div>
+									            <!-- Selected value, not required -->
+									            <div id="site-number-after" class="item-after"></div>
+									          </div>
+									        </div>
+									      </a>
+										</li>
+									</ul>
+								</div>
+								<div class="row">
+									<div class="col-10"></div>
+									<div class="col-10"></div>
+									<div class="col-60 submitButton-home"><a href="#" class="button button-big close-popup ">Submit</a></div>
+									<div class="col-10"></div>
+									<div class="col-10"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<div class=" popup popup-filter-claim">
+			<div class="view popup-view-claim">
+				<div class="navbar popupNavBar" >
+					<div class="navbar-inner">
+						<div class="right">
+							<a href="#" class="close-popup">
+							<i class="icon icon-cancel"></i>
+							</a>
+						</div>
+						<div class="center" style="color:#F2F2F2"> Filter Settings </div>
+					</div>
+				</div>
+				<div class="pages">
+					<div class="page" data-page="home-filter">
+						<div class="page-content">
+
+							<div class="content-block">
+								<div class="row">
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+								</div>
+								<div class="list-block">
+									
+									<ul>
+										<!-- Text inputs -->
+										<li>
+											<!--<div class="item-content">
+												<div class="item-media icoBox" style=""><i class="icon icon-hospital"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Group Code</div>
+													<div class="item-input">
+														<input type="text" id="groupCode-home" placeholder="Group Code">
+													</div>
+												</div>
+											</div>-->
+									      <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+									        <!-- select -->
+									        <select id="group-codes" name="group-codes">
+									          
+									        </select>
+									        <div class="item-content">
+									          <div class="item-inner">
+									            <!-- Select label -->
+									            <div class="item-title">Group Code</div>
+									            <!-- Selected value, not required -->
+									            <div id="group-code-after" class="item-after"></div>
+									          </div>
+									        </div>
+									      </a>
+										</li>
+										<li>
+											<!--<div class="item-content">
+												<div class="item-media icoBox" style=""><i class="icon icon-site"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Site Number</div>
+													<div class="item-input">
+														<input type="text" id="siteNumber-home" placeholder="Site Number">
+													</div>
+												</div>
+											</div>-->
+										<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+									        <!-- select -->
+									        <select id="site-numbers" name="site-numbers">
+									          
+									        </select>
+									        <div class="item-content">
+									          <div class="item-inner">
+									            <!-- Select label -->
+									            <div class="item-title">Site Number</div>
+									            <!-- Selected value, not required -->
+									            <div id="site-number-after" class="item-after"></div>
+									          </div>
+									        </div>
+									      </a>
+										</li>
+									</ul>
+								</div>
+								<div class="row">
+									<div class="col-10"></div>
+									<div class="col-10"></div>
+									<div class="col-60 submitButton-home"><a href="#" class="button button-big close-popup ">Submit</a></div>
+									<div class="col-10"></div>
+									<div class="col-10"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 
 
 		<!-- Registration Settings --> 
@@ -429,169 +708,32 @@
 		</div>
 			</div>
 		</div>
-		<!-- Lockbox Inbound Filter Options -->
-		<div class="popup popup-filter-lockbox-inbound">
-			<div class="navbar">
-				<div class="navbar-inner">
-					<div class="left">
-						<a href="#" class="close-popup">
-						<span>Close</span>
-						</a>
-					</div>
-					<div class="right"> Filter Settings </div>
-				</div>
-			</div>
-			<div class="content-block">
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-				<div class="list-block">
-					<ul>
-						<!-- Text inputs -->
-						<li>
-							<div class="item-content">
-								<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
-								<div class="item-inner">
-									<div class="item-title label">Group Code</div>
-									<div class="item-input">
-										<input type="text" id="groupCode-inbound" placeholder="Group Code">
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
-								<div class="item-inner">
-									<div class="item-title label">Site Number</div>
-									<div class="item-input">
-										<input type="text" id="siteNumber-inbound" placeholder="Site Number">
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="row">
-					<div class="col-10"></div>
-					<div class="col-10"></div>
-					<div class="col-60 submitButton-Inbound-detail"><a href="#" class="button button-big close-popup ">Submit</a></div>
-					<div class="col-10"></div>
-					<div class="col-10"></div>
-				</div>
-			</div>
-		</div>
-		<!-- Lockbox Outbound Filter Options -->
-		<div class="popup popup-filter-lockbox-outbound">
-			<div class="navbar">
-				<div class="navbar-inner">
-					<div class="left">
-						<a href="#" class="close-popup">
-						<span>Close</span>
-						</a>
-					</div>
-					<div class="right"> Filter Settings </div>
-				</div>
-			</div>
-			<div class="content-block">
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-				<div class="list-block">
-					<ul>
-						<!-- Text inputs -->
-						<li>
-							<div class="item-content">
-								<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
-								<div class="item-inner">
-									<div class="item-title label">Group Code</div>
-									<div class="item-input">
-										<input type="text" id="groupCode-outbound" placeholder="Group Code">
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
-								<div class="item-inner">
-									<div class="item-title label">Site Number</div>
-									<div class="item-input">
-										<input type="text" id="siteNumber-outbound" placeholder="Site Number">
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="row">
-					<div class="col-10"></div>
-					<div class="col-10"></div>
-					<div class="col-60 submitButton-Outbound-detail"><a href="#" class="button button-big close-popup ">Submit</a></div>
-					<div class="col-10"></div>
-					<div class="col-10"></div>
-				</div>
-			</div>
-		</div>
+		
 		<!-- Claim Filter Options -->
-		<div class="popup popup-filter-claim">
-			<div class="navbar">
-				<div class="navbar-inner">
-					<div class="left">
-						<a href="#" class="close-popup">
-						<span>Close</span>
-						</a>
-					</div>
-					<div class="right"> Filter Settings </div>
-				</div>
-			</div>
-			<div class="content-block">
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-				<div class="list-block">
-					<ul>
-						<!-- Text inputs -->
-						<li>
-							<div class="item-content">
-								<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
-								<div class="item-inner">
-									<div class="item-title label">Group Code</div>
-									<div class="item-input">
-										<input type="text" id="groupCode-claim" placeholder="Group Code">
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
-								<div class="item-inner">
-									<div class="item-title label">Site Number</div>
-									<div class="item-input">
-										<input type="text" id="siteNumber-claim" placeholder="Site Number">
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="row">
-					<div class="col-10"></div>
-					<div class="col-10"></div>
-					<div class="col-60 submitButton-claim-detail"><a href="#" class="button button-big close-popup ">Submit</a></div>
-					<div class="col-10"></div>
-					<div class="col-10"></div>
-				</div>
-			</div>
-		</div>
+
 		<!-- Key In Page Pop-up -->
 		<div class="popup keyin-popup">
-			<div class="navbar">
+			<div class="view popup-view-keyin">
+			<div class="navbar popupNavBar   ">
 				<div class="navbar-inner">
-					<div class="left">
-						<a href="#" class="close-popup">
-						<span>Close</span>
-						</a>
-					</div>
-					<div class="right"> Filter Settings </div>
+					<div class="right">
+							<a href="#" class="close-popup">
+							<i class="icon icon-cancel"></i>
+							</a>
+						</div>
+						<div class="center" style="color:#F2F2F2"> Filter Settings </div>
 				</div>
 			</div>
+				<div class="pages">
+					<div class="page" data-page="home-filter">
+						<div class="page-content">
+		
+
+
 			<div class="content-block">
+				<div class="row">
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+								</div>
 				<div class="list-block accordion-list">
 					<ul>
 						<li class="accordion-item">
@@ -607,26 +749,36 @@
 										<ul>
 											<!-- Text inputs -->
 											<li>
-												<div class="item-content">
-													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
-													<div class="item-inner">
-														<div class="item-title label">Group Code</div>
-														<div class="item-input">
-															<input type="text" id="groupCode-keyin-worklist" placeholder="Group Code">
-														</div>
-													</div>
-												</div>
+												 <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+									        <!-- select -->
+									        <select id="group-codes" name="group-codes">
+									          
+									        </select>
+									        <div class="item-content">
+									          <div class="item-inner">
+									            <!-- Select label -->
+									            <div class="item-title">Group Code</div>
+									            <!-- Selected value, not required -->
+									            <div id="group-code-after" class="item-after"></div>
+									          </div>
+									        </div>
+									      </a>
 											</li>
 											<li>
-												<div class="item-content">
-													<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
-													<div class="item-inner">
-														<div class="item-title label">Site Number</div>
-														<div class="item-input">
-															<input type="text" id="siteNumber-keyin-worklist" placeholder="Site Number">
-														</div>
-													</div>
-												</div>
+												<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+									        <!-- select -->
+									        <select id="site-numbers" name="site-numbers">
+									          
+									        </select>
+									        <div class="item-content">
+									          <div class="item-inner">
+									            <!-- Select label -->
+									            <div class="item-title">Site Number</div>
+									            <!-- Selected value, not required -->
+									            <div id="site-number-after" class="item-after"></div>
+									          </div>
+									        </div>
+									      </a>
 											</li>
 											<!-- Select -->
 											<li>
@@ -806,7 +958,18 @@
 					</ul>
 				</div>
 			</div>
+			</div>
+			</div>
+			</div>
+
+
+			</div>
 		</div>
+
+
+
+
+
 		<!-- Reports Page Pop-up -->
 		<div class="popup reports-popup">
 			<div class="navbar">
