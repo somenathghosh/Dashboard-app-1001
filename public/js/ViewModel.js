@@ -15,9 +15,9 @@ var _ = (function(module, $){
             //$('#lastLoginTime').html('<font>'+localStorage.lastVisitedDateTime+'</font>');
             $('#todaysDate').html('<font >'+date.dateNow() +'</font>');
             $('#todaysTime').html('<font >'+date.timeNow() +'</font>');
-            $('#lockbox-inbound-file-process').html('<font class="digital" color="#00FF00">'+ data.fileInProcess+'</font>');
+            $('#lockbox-inbound-file-process').html('<font class="digital" color="#FF9900">'+ data.fileInProcess+'</font>');
             $('#lockbox-inbound-file-error').html('<font class="digital" color="#DC3912">'+data.fileInError+'</font>');
-            $('#lockbox-inbound-file-processed').html('<font class="digital " color="#FF9900">'+data.fileProcessed+'</font>');
+            $('#lockbox-inbound-file-processed').html('<font class="digital " color="#00FF00">'+data.fileProcessed+'</font>');
        
 
 
@@ -86,9 +86,9 @@ var _ = (function(module, $){
 
             
             
-            $('#lockbox-outbound-file-process').html('<font class="digital" color="#00FF00">'+ data.fileInProcess+'</font>');
+            $('#lockbox-outbound-file-process').html('<font class="digital" color="#FF9900">'+ data.fileInProcess+'</font>');
             $('#lockbox-outbound-file-error').html('<font class="digital" color="#DC3912">'+data.fileInError+'</font>');
-            $('#lockbox-outbound-file-processed').html('<font class="digital " color="#FF9900">'+data.fileProcessed+'</font>');
+            $('#lockbox-outbound-file-processed').html('<font class="digital " color="#00FF00">'+data.fileProcessed+'</font>');
             
 
 
@@ -119,9 +119,9 @@ var _ = (function(module, $){
 
             
             
-            $('#claim-file-process').html('<font class="digital" color="#00FF00">'+ data.fileInProcess+'</font>');
+            $('#claim-file-process').html('<font class="digital" color="#FF9900">'+ data.fileInProcess+'</font>');
             $('#claim-file-error').html('<font class="digital" color="#DC3912">'+data.fileInError+'</font>');
-            $('#claim-file-processed').html('<font class="digital " color="#FF9900">'+data.fileProcessed+'</font>');
+            $('#claim-file-processed').html('<font class="digital " color="#00FF00">'+data.fileProcessed+'</font>');
             
 
 

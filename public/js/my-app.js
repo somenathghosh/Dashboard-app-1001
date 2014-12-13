@@ -85,39 +85,39 @@ $(document).ready(function () {
     
     var drawNvd3Home = function(data, selector, isDonut, donutRatio, page, showLegend, height, width){
 
-//Donut chart example
-nv.addGraph(function() {
 
- var svgInbound = d3.select(selector).append("svg").attr("width", width|300).attr("height", height|300);
- 	var colors = [];
- 	for(var index in data){
- 		colors.push(data[index].color);
- 	}
-	console.log(colors);
-  var chart = nv.models.pieChart(mainView, page)
-      .x(function(d) { return d.label })
-      .y(function(d) { return d.value })
-      .showLabels(true)     //Display pie labels
-      .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
-      .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
-      .donut(isDonut)          //Turn on Donut mode. Makes pie chart look tasty!
-      .donutRatio(donutRatio)     //Configure how big you want the donut hole size to be.
-      .showLegend(showLegend)
-      .width(width|300)
-      .height(height|300)
-      .color(colors)
-      .pieLabelsOutside(false)
-      ;
-    
-     
-	console.log(data);
-    d3.select(selector+" svg")
-        .datum(data)
-        .transition().duration(350)
-        .call(chart);
+        nv.addGraph(function() {
 
-  return chart;
-});
+            //var svgInbound = d3.select(selector).append("svg").attr("width", width|300).attr("height", height|300);
+         	var colors = [];
+         	for(var index in data){
+         		colors.push(data[index].color);
+         	}
+            //console.log(colors);
+            var chart = nv.models.pieChart(mainView, page)
+                  .x(function(d) { return d.label })
+                  .y(function(d) { return d.value })
+                  .showLabels(true)     //Display pie labels
+                  .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+                  .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+                  .donut(isDonut)          //Turn on Donut mode. Makes pie chart look tasty!
+                  .donutRatio(donutRatio)     //Configure how big you want the donut hole size to be.
+                  .showLegend(showLegend)
+                  .width(width|300)
+                  .height(height|300)
+                  .color(colors)
+                  .pieLabelsOutside(false)
+                  ;
+                
+                 
+            	//console.log(data);
+                d3.select(selector+" svg")
+                    .datum(data)
+                    .transition().duration(350)
+                    .call(chart);
+
+              return chart;
+        });
     }
 
     var drawChartChangeData = function(id, data, r ) {
@@ -141,7 +141,7 @@ nv.addGraph(function() {
                             }, {
                                 label: "File in Process",
                                 value: data.fileInProcess,
-                                color: "#FF9900"
+                                color: "#FCB446"
                             }, {
                                 label: "File Processed",
                                 value: data.fileProcessed,
@@ -154,15 +154,15 @@ nv.addGraph(function() {
                                 {
                                     label: "File Submitted",
                                     value: data.submitted,
-                                    color: "#FF9900"
+                                    color: "#109618"
                                 }, {
                                     label: "File in Progress",
                                     value: data.inProgress,
-                                    color: "#109618"
+                                    color: "#FCB446"
                                 }, {
                                     label: "File Assigned",
                                     value: data.assigned,
-                                    color: "#DC3912"
+                                    color: "#AE2706"
                                 },
 
                                 {
@@ -214,7 +214,42 @@ nv.addGraph(function() {
     };
 
     
+    $(".group-codes").on("change", function (e) {
+        var changedGroup = $(this);
+        var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
+        for(var index in data){
+            if(changedGroup.val()==data[index].groupCode){
+                setSiteNumbers(data, index);
+            }
+        }
+    });
+  
+  function setGroupCodes(){
+        var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
+        $(".group-codes").html("");
+        for(var index in data){
+            if(index == 0){
+                $(".group-codes").append("<option value="+data[index].groupCode+" selected>"+data[index].groupCode+"</option>");
+                $(".group-code-after").html(data[index].groupCode);
+                setSiteNumbers(data, index);
+            }else{
+                $(".group-codes").append("<option value="+data[index].groupCode+">"+data[index].groupCode+"</option>");
+            }
+        }
+  }
 
+
+    function setSiteNumbers(data, index){
+        $(".site-numbers").html("");
+        for(var index2 in data[index].siteNumbers){
+            if(index2 == 0){
+                $(".site-numbers").append("<option value="+data[index].siteNumbers[index2]+" selected>"+data[index].siteNumbers[index2]+"</option>");
+                $(".site-number-after").html(data[index].siteNumbers[index2]);
+            }else{
+                $(".site-numbers").append("<option value="+data[index].siteNumbers[index2]+" >"+data[index].siteNumbers[index2]+"</option>");
+            }
+        }
+    }
     
  
 
@@ -224,8 +259,8 @@ nv.addGraph(function() {
 
     /************************************************************************************************/
 
-    myApp.showPreloader('Loading');
-
+    //myApp.showPreloader('Loading');
+    myApp.showIndicator();
     var date = new Date();
    
     var homelink = $('#goHome');
@@ -235,7 +270,7 @@ nv.addGraph(function() {
 
         if(!localStorage.deviceID){
 
-            myApp.hidePreloader();
+            myApp.hideIndicator();
             
             $('#registrationDate').val(date.dateNow());
             myApp.popup('.popup-app-settings');
@@ -270,6 +305,7 @@ nv.addGraph(function() {
                     myApp.closeModal('.popup-app-settings');
                 
                     data.registrationDate = $('#registrationDate').val();
+                    myApp.hideIndicator();
                     myApp.showPreloader('Registering your Device');
                     
                     _.registration(data, function(success){
@@ -281,12 +317,13 @@ nv.addGraph(function() {
                             setTimeout(function(){
 
                                 myApp.hidePreloader();
-                                
+                                myApp.showIndicator();
                                 buildHomePage(function(){
                                     setTimeout(function(){
-                                         myApp.hidePreloader();
+                                        myApp.hideIndicator();
+                                        $('#main-view-test-fadein').removeClass('animated zoomIn');
 
-                                    },1000);
+                                    },500);
                                 });
 
                             },500);
@@ -321,29 +358,22 @@ nv.addGraph(function() {
 
         else{
 
-            myApp.hidePreloader();
+            //myApp.hidePreloader();
 
             localStorage.lastVisitedDateTime = localStorage.visitedNow || (date.dateNow() + ' '+  date.timeNow());
             localStorage.visitedNow = date.dateNow() + ' '+  date.timeNow();
             
+            //myApp.showIndicator();
 
             buildHomePage(function(){
 
                 setTimeout(function(){
-                     myApp.hidePreloader();
-                      var labels = document.getElementsByClassName("nv-label");
-      					for(var index in labels){
-      						if(labels[index].children){
-      							labels[index].children[1].style.fill="white";
-      						}
-      	
-      					}
-                        $('#main-view-test-fadein').removeClass('animated zoomIn');
-                },1000);
-                setTimeout(function(){
+                    myApp.hideIndicator();
+                
+                    $('#main-view-test-fadein').removeClass('animated zoomIn');
 
-
-                },1000);
+                },200);
+                
                 
                
 
@@ -352,20 +382,9 @@ nv.addGraph(function() {
 
         }
    
-    },1500);
+    },2500);
 
     $$('.popup-filter').on('open', function () {
-      /*
-        var vm = new _.ViewModelGroupCode();
-        var vmSite = new _.ViewModelSiteNumber();
-        var data = ['XXX', 'YYY', 'VVV', 'CCC', 'NNN', 'MMM', 'AAA', 'BBB', 'CCC'];
-
-        
-
-
-        vm.applyModel(data.sort(), '.group-Code-home-filter', '.item-after'); 
-        vmSite.applyModel(data.sort(), '.site-number-home-filter', '.item-after');
-		*/
       setGroupCodes();
     });
 
@@ -387,193 +406,270 @@ nv.addGraph(function() {
 
 
 
-	$(".group-codes").on("change", function (e) {
-    var changedGroup = $(this);
-		var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
-		for(var index in data){
-            if(changedGroup.val()==data[index].groupCode){
-                setSiteNumbers(data, index);
-            }
-        }
-	});
-  
-  function setGroupCodes(){
-            var data = [{'groupCode':'XXX','siteNumbers':['123','456','789']}, {'groupCode':'YYY','siteNumbers':['098','765','432']}, {'groupCode':'VVV','siteNumbers':['146','257','369']}, {'groupCode':'CCC','siteNumbers':['098','765','432']}, {'groupCode':'NNN','siteNumbers':['111','222','333']}, {'groupCode':'MMM','siteNumbers':['444','555','777']}, {'groupCode':'AAA','siteNumbers':['888','999','000']}, {'groupCode':'BBB','siteNumbers':['112','223','445']}];
-        $(".group-codes").html("");
-        for(var index in data){
-            if(index == 0){
-                $(".group-codes").append("<option value="+data[index].groupCode+" selected>"+data[index].groupCode+"</option>");
-                $(".group-code-after").html(data[index].groupCode);
-                setSiteNumbers(data, index);
-            }else{
-                $(".group-codes").append("<option value="+data[index].groupCode+">"+data[index].groupCode+"</option>");
-            }
-        }
-  }
 
-
-    function setSiteNumbers(data, index){
-                $(".site-numbers").html("");
-                for(var index2 in data[index].siteNumbers){
-                    if(index2 == 0){
-                        $(".site-numbers").append("<option value="+data[index].siteNumbers[index2]+" selected>"+data[index].siteNumbers[index2]+"</option>");
-                        $(".site-number-after").html(data[index].siteNumbers[index2]);
-                    }else{
-                        $(".site-numbers").append("<option value="+data[index].siteNumbers[index2]+" >"+data[index].siteNumbers[index2]+"</option>");
-                    }
-                }
-    }
 
     function buildHomePage (callback){
 
         
-        myApp.showPreloader('Preparing Dashboard');
-
-        var api = new _.API();
-
-        function inboundHomeCallback (success, data){
-
-            if(success){
-
-                
-                var vm = new _.ViewModelHomeInbound();
-                vm.applyModel(data);
-                var cData = new ChartDataCreator(data);
-                //drawChartHome(cData.chartData, "#chartL1","InboundDonut", 0.7);
-                drawNvd3Home(cData.chartData, "#chartL1", true,0.35,"lockbox-inbound.html",false);
-                $('#chartL1').addClass('animated zoomIn');
-               
-                var api = new _.API();
-                api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home",outboundHomeCallback);
-
-            }
-            else{
-                
-                  
-
-                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
-
-                    function () {
-                        myApp.hidePreloader();
-                    },
-
-                    function () {
-                        myApp.hidePreloader();
-                    }
-                );
-
-            }
-
-        };
+    
 
 
-        function outboundHomeCallback (success, data){
-            
-            if(success){
-               
-                var vm = new _.ViewModelOutboundHome();
-                vm.applyModel(data);
 
-                api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home",keyInHomeCallback);
-                var cData = new ChartDataCreator(data);
-                //drawChartHome(cData.chartData, "#chartL3","OutboundDonut", 0.7);
-                drawNvd3Home(cData.chartData, "#chartL3", true,0.35,"lockbox-outbound.html",false);
-                $('#chartL3').addClass('animated zoomIn');
+       
+
+        function startAnimation (callbackForStartAnimation){
+            var chartData = [
+
+                            {
+                                label: "File In Error",
+                                value: 2,
+                                color: "#DC3912"
+                            }, {
+                                label: "File in Process",
+                                value: 30,
+                                color: "#FF9900"
+                            }, {
+                                label: "File Processed",
+                                value: 68,
+                                color: "#109618"
+                            }
+                        ]; 
+       
+            var chartKeyinData = [
+
+                                {
+                                    label: "File Submitted",
+                                    value: 40,
+                                    color: "#FF9900"
+                                }, {
+                                    label: "File in Progress",
+                                    value: 60,
+                                    color: "#109618"
+                                }, {
+                                    label: "File Assigned",
+                                    value: 20,
+                                    color: "#DC3912"
+                                },
+
+                                {
+                                    label: "File Completed",
+                                    value: 100,
+                                    color: "#7211CE"
+                                }
+                            ];
+
         
-
-            }
-            else{
+            $(".loadingPage").addClass('animated zoomOut');
                 
-                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
-
-                    function () {
-                        myApp.hidePreloader();
-                    },
-
-                    function () {
-                        myApp.hidePreloader();
-                    }
-                );
-            }
-
-        };
-
-        function keyInHomeCallback (success, data){
-
-            if(success){
-                
-                var vm = new _.ViewModelHomeKeyIn();
-                vm.applyModel(data);
-                api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home",claimHomeCallback);
-                
-                var cData = new ChartDataCreator(data);
-               // drawChartHome(cData.chartKeyinData, "#chartL2","keyInboundDonut", 0.0);
-               drawNvd3Home(cData.chartKeyinData, "#chartL2", false,0,"keyin-detail.html",false);
-               $('#chartL2').addClass('animated zoomIn');
-
-
-            }
-            else{
-            
-                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
-
-                    function () {
-                        myApp.hidePreloader();
-                    },
-
-                    function () {
-                        myApp.hidePreloader();
-                    }
-                );
-            }
-
-        };
-
-
-        function claimHomeCallback (success, data){
-
-            if(success){
-                
-                var vm = new _.ViewModelClaim();
-                vm.applyModel(data);
-
-                var cData = new ChartDataCreator(data);
-
-                //drawChartHome(cData.chartData, "#chartL4","ClaimDonut", 0.7);
-            	drawNvd3Home(cData.chartData, "#chartL4", true,0.35,"claim.html",false);
-                $('#chartL4').addClass('animated zoomIn');
-             
-                    //myApp.hidePreloader();
+            setTimeout(function(){   
                 $(".loadingPage").addClass("hidden");
                 $(".views").removeClass("hidden");
                 $(".overlay").removeClass("hidden");
-                //$('#main-view-test-fadein').addClass('animated zoomIn');
-                callback();
 
-              
+                $('#main-view-test-fadein').addClass('animated zoomIn');
+                setTimeout(function(){
+                    drawNvd3Home(chartData, "#chartL1", true,0.35,"lockbox-inbound.html",false);
+                    $('#chartL1').addClass('animated zoomIn');
+                    //vm.applyModel(data);
+                    setTimeout(function(){
+                        drawNvd3Home(chartData, "#chartL3", true,0.35,"lockbox-outbound.html",false);
+                        $('#chartL3').addClass('animated zoomIn');
+                        //vm.applyModel(data);
+                        setTimeout(function(){
+                            drawNvd3Home(chartKeyinData, "#chartL2", false,0,"keyin-detail.html",false);
+                            $('#chartL2').addClass('animated zoomIn');
+                            //vm.applyModel(data);
+                            setTimeout(function(){
+                                drawNvd3Home(chartData, "#chartL4", true,0.35,"claim.html",false);
+                                $('#chartL4').addClass('animated zoomIn');
+                                //vm.applyModel(data);
+                                callbackForStartAnimation();
+                            },500);
 
-            }
-            else{
+                        },500);
+
+                    },500);
+
+
+                },500);
+            },1000);
+
+
+
+        }
+
+
+
+        function paintAnimation (callback){
+
+
+        
+
+            var api = new _.API();
+
+            function inboundHomeCallback (success, data){
+
+                if(success){
+
+                    //var api = new _.API();
+                    api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home",outboundHomeCallback);
+
+                    var vm = new _.ViewModelHomeInbound();
+
+                    var cData = new ChartDataCreator(data);
+
+                    vm.applyModel(data);
+
+
+                    setTimeout(function(){
+                        drawNvd3Home(cData.chartData, "#chartL1", true,0.35,"lockbox-inbound.html",false);
+                        //$('#chartL1').addClass('animated zoomIn');
+                        
+
+                    },200);
+                    
+                   
+                    
+                    
+                }
+                else{
+                    
+                      
+
+                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                    );
+
+                }
+
+            };
+
+
+            function outboundHomeCallback (success, data){
                 
-                  myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+                if(success){
+                   
 
-                    function () {
-                        myApp.hidePreloader();
-                    },
+                    api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home",keyInHomeCallback);
+                  
+                    var vm = new _.ViewModelOutboundHome();
+                    var cData = new ChartDataCreator(data);
+                    vm.applyModel(data);
+                    setTimeout(function(){
+                        drawNvd3Home(cData.chartData, "#chartL3", true,0.35,"lockbox-outbound.html",false);
+                       
+                        
 
-                    function () {
-                        myApp.hidePreloader();
-                    }
-                );
+                    },400);
+                    
 
-            }
+                }
+                else{
+                    
+                     myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
 
-        };
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                    );
+                }
+
+            };
+
+            function keyInHomeCallback (success, data){
+
+                if(success){
+                    
+
+                    api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home",claimHomeCallback);
+                    
+                    var vm = new _.ViewModelHomeKeyIn();
+                    vm.applyModel(data);
+                    
+                    var cData = new ChartDataCreator(data);
+                    setTimeout(function(){
+                        drawNvd3Home(cData.chartKeyinData, "#chartL2", false,0,"keyin-detail.html",false);
+                        
+                        
+                    },600);
+                    
+
+                }
+                else{
+                
+                     myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                    );
+                }
+
+            };
 
 
-        api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home",inboundHomeCallback);
+            function claimHomeCallback (success, data){
 
-       
+                if(success){
+                    
+                    var vm = new _.ViewModelClaim();
+                    
+
+                    var cData = new ChartDataCreator(data);
+                    vm.applyModel(data);
+                    
+                    setTimeout(function(){
+                        drawNvd3Home(cData.chartData, "#chartL4", true,0.35,"claim.html",false);
+                        callback();
+                    },800);
+
+                }
+                else{
+                    
+                      myApp.confirm('Do you want to send Crash Reports?', 'App Crashed', 
+
+                        function () {
+                            myApp.hidePreloader();
+                        },
+
+                        function () {
+                            myApp.hidePreloader();
+                        }
+                    );
+
+                }
+
+            };
+
+
+            api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home",inboundHomeCallback);
+
+       }
+
+
+        startAnimation(function(){
+
+            paintAnimation(callback);
+
+        });
+    
+
+
     };
 
 
@@ -594,7 +690,8 @@ nv.addGraph(function() {
                 var vm = new _.ViewModelHomeInbound();
                 vm.applyModel(data);
                 var cData = new ChartDataCreator(data);
-                drawChartChangeData("InboundDonut", cData.chartData, 0.7);
+                drawNvd3Home(cData.chartData, "#chartL1", true,0.35,"lockbox-inbound.html",false);
+                //drawChartChangeData("InboundDonut", cData.chartData, 0.7);
 
                 var api = new _.API();
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home?forGroupCode="+groupCode+"&forSiteNumber="+siteNumber,outboundHomeCallback);
@@ -628,7 +725,8 @@ nv.addGraph(function() {
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home?forGroupCode="+groupCode+"&forSiteNumber="+siteNumber,keyInHomeCallback);
                 var cData = new ChartDataCreator(data);
                 //console.log('100');
-                drawChartChangeData("OutboundDonut", cData.chartData, 0.7);
+                drawNvd3Home(cData.chartData, "#chartL3", true,0.35,"lockbox-outbound.html",false);
+                //drawChartChangeData("OutboundDonut", cData.chartData, 0.7);
 
             }
             else{
@@ -658,7 +756,8 @@ nv.addGraph(function() {
                 
                 var cData = new ChartDataCreator(data);
                 //console.log(cData.chartKeyinData);
-                drawChartChangeData("keyInboundDonut", cData.chartKeyinData, 0.0);
+                drawNvd3Home(cData.chartKeyinData, "#chartL2", false,0,"keyin-detail.html",false);
+                //drawChartChangeData("keyInboundDonut", cData.chartKeyinData, 0.0);
 
 
             }
@@ -688,7 +787,8 @@ nv.addGraph(function() {
                 vm.applyModel(data);
 
                 var cData = new ChartDataCreator(data);
-                drawChartChangeData("ClaimDonut", cData.chartData, 0.7);
+                //drawChartChangeData("ClaimDonut", cData.chartData, 0.7);
+                drawNvd3Home(cData.chartData, "#chartL4", true,0.35,"claim.html",false);
                 callback();
 
             }
@@ -854,7 +954,8 @@ nv.addGraph(function() {
             api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/batchTAT?forGroupCode='+groupCode+'&forSiteNumber='+siteNumber,function(success, data){
                 if(success){
 
-                    Donut3D.transition("TatPie", data, 100, 79, 20, 0.7);
+                    //Donut3D.transition("TatPie", data, 100, 79, 20, 0.7);
+                    drawNvd3Home(data, "#chartL6", true, 0.35, "", true);
                     
 
                    
@@ -1042,14 +1143,15 @@ nv.addGraph(function() {
         setTimeout(function(){
 
             myApp.hidePreloader();
-                                                        var labels = document.getElementsByClassName("nv-label");
-                        for(var index in labels){
-                            if(labels[index].children){
-                                labels[index].children[1].style.fill="white";
-                            }
-        
-                        }
+            /*
+            var labels = document.getElementsByClassName("nv-label");
+            for(var index in labels){
+                if(labels[index].children){
+                    labels[index].children[1].style.fill="white";
+                }
 
+            }
+            */
 
         },1000);
        

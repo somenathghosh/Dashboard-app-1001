@@ -1,4 +1,4 @@
-
+  
 /********************
  * HTML CSS
  */
@@ -339,7 +339,9 @@ svg .title {
 }
 
 .nvd3.nv-pie path {
-  stroke: #fff;
+  /*stroke: #fff;*/
+  stroke: rgba(116, 113, 113, 0.46); //somenath Ghosh
+
   stroke-width: 1px;
   stroke-opacity: 1;
 }

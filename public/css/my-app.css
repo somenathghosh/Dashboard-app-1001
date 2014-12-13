@@ -19,18 +19,23 @@ a.anchorColor
 
 
 path.slice{
-stroke-width:2px;
+	stroke-width:2px;
 }
+
+
 polyline{
-opacity: .3;
-stroke: black;
-stroke-width: 2px;
-fill: none;
+	opacity: .3;
+	stroke: black;
+	stroke-width: 2px;
+	fill: none;
 } 
+
+
 svg text.percent{
-fill:white;
-text-anchor:middle;
-font-size:12px;
+	fill:white;
+	text-anchor:middle;
+	font-size:12px;
+	font-family: "HelveticaNeue-light";
 }
 
 
@@ -92,12 +97,14 @@ g .disabled{
 
 svg text {
     fill: white;
+    font-family: "HelveticaNeue-light";
 }
 
 
 svg .nvd3 .nv-discretebar .nv-groups text,
 svg .nvd3 .nv-multibarHorizontal .nv-groups text {
-  font-weight: bold;
+  font-weight: light;
+  font-family: "HelveticaNeue-light";
   fill: white;
   stroke: rgba(0,0,0,0);
 }
@@ -839,7 +846,7 @@ i.icon.icon-back {
 
 .popupNavBar{
 
-	background: #3a7cd8;
+	background: #2980b9;
 }
 
 
