@@ -10,7 +10,6 @@
 		<link rel="apple-touch-icon" sizes="152x152" href="img/Dasboard.png">
 		<!-- Your app title -->
 		<title>HL-Board</title>
-		
 		<script src="js/lib/d3.v3.js"></script>
 		<script src="js/lib/nv.d3.js"></script>
 		<script src="js/src/tooltip.js"></script>
@@ -22,11 +21,9 @@
 		<script src="js/src/models/lineChart.js"></script>
 		<script src="js/src/interactiveLayer.js"></script>
 		<script src="js/src/models/stackedAreaChart.js"></script>
-	    <script src="js/src/models/pieChart.js"></script>
+		<script src="js/src/models/pieChart.js"></script>
 		<script src="js/Donut3D.js"></script>
 		<script type="text/javascript" src = "js/jquery-2.1.1.min.js"></script>
-	
-
 		<!-- Path to Framework7 Library CSS-->
 		<link rel="stylesheet" href="css/framework7.css">
 		<link rel="stylesheet" href="css/framework7.themes.css">
@@ -36,7 +33,6 @@
 		<link href="css/font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet">
 		<link type="text/css" href="css/animate.css" rel="stylesheet">
 		<link href="css/nv.d3.css" rel="stylesheet" type="text/css">
-		
 	</head>
 	<body>
 		<!-- Status bar overlay for full screen mode (PhoneGap) -->
@@ -51,7 +47,6 @@
 			<!-- Left panel with reveal effect-->
 			<div class="panel panel-left panel-reveal">
 				<div class="content-block">
-					
 					<div class="list-block">
 						<ul>
 							<li class="item-content" >
@@ -78,7 +73,6 @@
 									<div class="item-title"><a href="#" class="close-panel">Close</a></div>
 								</div>
 							</li>
-							
 						</ul>
 					</div>
 				</div>
@@ -123,7 +117,9 @@
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-inbound-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
-												<div id="lockbox-inbound-file-process" class=" textAlignCenter boxFlip"  ><font class="digital" color="#00FF00"></font></div>
+												<div id="lockbox-inbound-file-process" class=" textAlignCenter boxFlip"  >
+													<font class="digital" color="#00FF00"></font>
+												</div>
 											</div>
 										</a>
 										<div class="labelText">Lockbox Inbound Process</div>
@@ -134,13 +130,13 @@
 										</a>
 									</div>
 									<!--<a href="lockbox-inbound.html" class="">-->
-										<div id="inboundTransition">
+									<div id="inboundTransition">
 										<div  class="row chartCenter" >
-											<div class="col-100" id="chartL1" >  
+											<div class="col-100" id="chartL1" >
 												<svg class="" style="width:300px; height:300px" >
 											</div>
 										</div>
-										</div>
+									</div>
 									<!--</a>-->
 									<div class="row">
 										<div class="divCenter ">
@@ -166,13 +162,13 @@
 										</a>
 									</div>
 									<!--<a href="keyin-detail.html" class="">-->
-										<div id="keyinTransition">
+									<div id="keyinTransition">
 										<div class="row chartCenter" >
-											<div class="col-100" id="chartL2" >  
+											<div class="col-100" id="chartL2" >
 												<svg class="" style="width:300px; height:300px" >
 											</div>
 										</div>
-										</div>
+									</div>
 									<!--</a>-->
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-keyin-file-completed" class="open-popover">
@@ -204,13 +200,13 @@
 										</a>
 									</div>
 									<!--<a href="lockbox-outbound.html" class="">-->
-										<div id="outboundTransition">
+									<div id="outboundTransition">
 										<div class="row chartCenter">
-											<div class="col-100" id="chartL3" >  
+											<div class="col-100" id="chartL3" >
 												<svg class="" style="width:300px; height:300px" >
 											</div>
 										</div>
-										</div>
+									</div>
 									<!--</a>-->
 									<div class="row">
 										<div class="divCenter ">
@@ -235,13 +231,13 @@
 										</a>
 									</div>
 									<!--<a href="claim.html" class="">-->
-										<div id="claimTransition">
+									<div id="claimTransition">
 										<div class="row chartCenter">
-											<div class="col-100" id="chartL4" >  
+											<div class="col-100" id="chartL4" >
 												<svg class="" style="width:300px; height:300px" >
 											</div>
 										</div>
-										</div>
+									</div>
 									<!--</a>-->
 									<div class="row">
 										<div class="divCenter ">
@@ -257,7 +253,7 @@
 							<div class="toolbar-inner">
 								<a href="#tab1" class="tab-link "><span class="fa "></span></a>
 								<a href="#tab2" class="tab-link "><span class="fa "></span></a>
-								<a href="#" data-popup=".popup-filter" class="open-popup"><i class="icon icon-filter "></i></a>
+								<a href="#" data-trig=".popup-filter" class="open-popup" ><i class="icon icon-filter"></i></a>
 							</div>
 						</div>
 					</div>
@@ -280,13 +276,11 @@
 				<div class="pages">
 					<div class="page" data-page="home-filter">
 						<div class="page-content">
-
 							<div class="content-block">
 								<div class="row">
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
 								</div>
 								<div class="list-block">
-									
 									<ul>
 										<!-- Text inputs -->
 										<li>
@@ -298,21 +292,20 @@
 														<input type="text" id="groupCode-home" placeholder="Group Code">
 													</div>
 												</div>
-											</div>-->
-									      <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="group-codes" class="group-codes" name="group-codes">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Group Code</div>
-									            <!-- Selected value, not required -->
-									            <div id="group-code-after" class="item-after group-code-after"></div>
-									          </div>
-									        </div>
-									      </a>
+												</div>-->
+											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+												<!-- select -->
+												<select id="group-codes" class="group-codes" name="group-codes">
+												</select>
+												<div class="item-content">
+													<div class="item-inner">
+														<!-- Select label -->
+														<div class="item-title">Group Code</div>
+														<!-- Selected value, not required -->
+														<div id="group-code-after" class="item-after group-code-after"></div>
+													</div>
+												</div>
+											</a>
 										</li>
 										<li>
 											<!--<div class="item-content">
@@ -323,21 +316,20 @@
 														<input type="text" id="siteNumber-home" placeholder="Site Number">
 													</div>
 												</div>
-											</div>-->
-										<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="site-numbers" class="site-numbers" name="site-numbers">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Site Number</div>
-									            <!-- Selected value, not required -->
-									            <div id="site-number-after" class="item-after site-number-after"></div>
-									          </div>
-									        </div>
-									      </a>
+												</div>-->
+											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+												<!-- select -->
+												<select id="site-numbers" class="site-numbers" name="site-numbers">
+												</select>
+												<div class="item-content">
+													<div class="item-inner">
+														<!-- Select label -->
+														<div class="item-title">Site Number</div>
+														<!-- Selected value, not required -->
+														<div id="site-number-after" class="item-after site-number-after"></div>
+													</div>
+												</div>
+											</a>
 										</li>
 									</ul>
 								</div>
@@ -354,9 +346,6 @@
 				</div>
 			</div>
 		</div>
-
-
-
 		<div class=" popup popup-filter-lockbox-inbound">
 			<div class="view popup-view-inbound">
 				<div class="navbar popupNavBar" >
@@ -372,47 +361,43 @@
 				<div class="pages">
 					<div class="page" data-page="home-filter">
 						<div class="page-content">
-
 							<div class="content-block">
 								<div class="row">
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
 								</div>
 								<div class="list-block">
-									
 									<ul>
 										<!-- Text inputs -->
 										<li>
-												 <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="group-codes" class="group-codes" name="group-codes">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Group Code</div>
-									            <!-- Selected value, not required -->
-									            <div id="group-code-after" class="item-after group-code-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-											<li>
-												<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="site-numbers" class="site-numbers" name="site-numbers">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Site Number</div>
-									            <!-- Selected value, not required -->
-									            <div id="site-number-after" class="item-after site-number-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
+											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+												<!-- select -->
+												<select id="group-codes" class="group-codes" name="group-codes">
+												</select>
+												<div class="item-content">
+													<div class="item-inner">
+														<!-- Select label -->
+														<div class="item-title">Group Code</div>
+														<!-- Selected value, not required -->
+														<div id="group-code-after" class="item-after group-code-after"></div>
+													</div>
+												</div>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+												<!-- select -->
+												<select id="site-numbers" class="site-numbers" name="site-numbers">
+												</select>
+												<div class="item-content">
+													<div class="item-inner">
+														<!-- Select label -->
+														<div class="item-title">Site Number</div>
+														<!-- Selected value, not required -->
+														<div id="site-number-after" class="item-after site-number-after"></div>
+													</div>
+												</div>
+											</a>
+										</li>
 									</ul>
 								</div>
 								<div class="row">
@@ -428,9 +413,6 @@
 				</div>
 			</div>
 		</div>
-
-
-
 		<div class=" popup popup-filter-lockbox-outbound">
 			<div class="view popup-view-outbound">
 				<div class="navbar popupNavBar" >
@@ -446,47 +428,43 @@
 				<div class="pages">
 					<div class="page" data-page="home-filter">
 						<div class="page-content">
-
 							<div class="content-block">
 								<div class="row">
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
 								</div>
 								<div class="list-block">
-									
 									<ul>
 										<!-- Text inputs -->
-											<li>
-												 <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="group-codes" class="group-codes" name="group-codes">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Group Code</div>
-									            <!-- Selected value, not required -->
-									            <div id="group-code-after" class="item-after group-code-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-											<li>
-												<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="site-numbers" class="site-numbers" name="site-numbers">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Site Number</div>
-									            <!-- Selected value, not required -->
-									            <div id="site-number-after" class="item-after site-number-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
+										<li>
+											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+												<!-- select -->
+												<select id="group-codes" class="group-codes" name="group-codes">
+												</select>
+												<div class="item-content">
+													<div class="item-inner">
+														<!-- Select label -->
+														<div class="item-title">Group Code</div>
+														<!-- Selected value, not required -->
+														<div id="group-code-after" class="item-after group-code-after"></div>
+													</div>
+												</div>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+												<!-- select -->
+												<select id="site-numbers" class="site-numbers" name="site-numbers">
+												</select>
+												<div class="item-content">
+													<div class="item-inner">
+														<!-- Select label -->
+														<div class="item-title">Site Number</div>
+														<!-- Selected value, not required -->
+														<div id="site-number-after" class="item-after site-number-after"></div>
+													</div>
+												</div>
+											</a>
+										</li>
 									</ul>
 								</div>
 								<div class="row">
@@ -502,10 +480,6 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
 		<div class=" popup popup-filter-claim">
 			<div class="view popup-view-claim">
 				<div class="navbar popupNavBar" >
@@ -521,47 +495,43 @@
 				<div class="pages">
 					<div class="page" data-page="home-filter">
 						<div class="page-content">
-
 							<div class="content-block">
 								<div class="row">
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
 								</div>
 								<div class="list-block">
-									
 									<ul>
 										<!-- Text inputs -->
-											<li>
-												 <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="group-codes" class="group-codes" name="group-codes">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Group Code</div>
-									            <!-- Selected value, not required -->
-									            <div id="group-code-after" class="item-after group-code-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-											<li>
-												<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="site-numbers" class="site-numbers" name="site-numbers">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Site Number</div>
-									            <!-- Selected value, not required -->
-									            <div id="site-number-after" class="item-after site-number-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
+										<li>
+											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+												<!-- select -->
+												<select id="group-codes" class="group-codes" name="group-codes">
+												</select>
+												<div class="item-content">
+													<div class="item-inner">
+														<!-- Select label -->
+														<div class="item-title">Group Code</div>
+														<!-- Selected value, not required -->
+														<div id="group-code-after" class="item-after group-code-after"></div>
+													</div>
+												</div>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+												<!-- select -->
+												<select id="site-numbers" class="site-numbers" name="site-numbers">
+												</select>
+												<div class="item-content">
+													<div class="item-inner">
+														<!-- Select label -->
+														<div class="item-title">Site Number</div>
+														<!-- Selected value, not required -->
+														<div id="site-number-after" class="item-after site-number-after"></div>
+													</div>
+												</div>
+											</a>
+										</li>
 									</ul>
 								</div>
 								<div class="row">
@@ -577,599 +547,572 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
 		<!-- Registration Settings --> 
 		<div  class="popup popup-app-settings ">
 			<div class="view popup-view">
-			<div class="navbar" style="background: #3a7cd8;">
-				<div class="navbar-inner">
-					
-					<div class="center" style="color:#F2F2F2"> Device Registration</div>
-					
+				<div class="navbar" style="background: #3a7cd8;">
+					<div class="navbar-inner">
+						<div class="center" style="color:#F2F2F2"> Device Registration</div>
+					</div>
 				</div>
-			</div>
-			<div class="pages">
+				<div class="pages">
 					<div class="page" data-page="Registration-filter">
 						<div class="page-content">
-			<div class="content-block">
-				<div class="row">
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+							<div class="content-block">
+								<div class="row">
+									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
 								</div>
-				<div class="list-block">
-					<ul>
-						<!-- Text inputs -->
-						<li>
-							<div class="item-content">
-								<div class="item-media"><i class="icon icon-form-name"></i></div>
-								<div class="item-inner">
-									<div class="item-title label">Name</div>
-									<div id="regName" class="item-input">
-										<input type="text" id="name" placeholder="Full Name">
-									</div>
+								<div class="list-block">
+									<ul>
+										<!-- Text inputs -->
+										<li>
+											<div class="item-content">
+												<div class="item-media"><i class="icon icon-form-name"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Name</div>
+													<div id="regName" class="item-input">
+														<input type="text" id="name" placeholder="Full Name">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="item-content">
+												<div class="item-media"><i class="icon icon-form-email"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">E-mail</div>
+													<div id="regEmail" class="item-input">
+														<input type="email" id="email" placeholder="email">
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="item-content">
+												<div class="item-media"><i class="icon icon-form-password"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Device ID</div>
+													<div id="regId" class="item-input">
+														<input type="text" id="deviceID" placeholder="ID">
+													</div>
+												</div>
+											</div>
+										</li>
+										<!-- Date -->
+										<li>
+											<div class="item-content">
+												<div class="item-media"><i class="icon icon-form-calendar"></i></div>
+												<div class="item-inner">
+													<div class="item-title label">Registration Date</div>
+													<div class="item-input">
+														<input type="text" id="registrationDate" placeholder="Registered day" value="" disabled>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="row">
+									<div class="col-10"></div>
+									<div class="col-10"></div>
+									<div class="col-60 appSetButton"><a href="#" class="button color-blue button-big">Set</a></div>
+									<div class="col-10"></div>
+									<div class="col-10"></div>
 								</div>
 							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-media"><i class="icon icon-form-email"></i></div>
-								<div class="item-inner">
-									<div class="item-title label">E-mail</div>
-									<div id="regEmail" class="item-input">
-										<input type="email" id="email" placeholder="email">
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-media"><i class="icon icon-form-password"></i></div>
-								<div class="item-inner">
-									<div class="item-title label">Device ID</div>
-									<div id="regId" class="item-input">
-										<input type="text" id="deviceID" placeholder="ID">
-									</div>
-								</div>
-							</div>
-						</li>
-						<!-- Date -->
-						<li>
-							<div class="item-content">
-								<div class="item-media"><i class="icon icon-form-calendar"></i></div>
-								<div class="item-inner">
-									<div class="item-title label">Registration Date</div>
-									<div class="item-input">
-										<input type="text" id="registrationDate" placeholder="Registered day" value="" disabled>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
+						</div>
+					</div>
 				</div>
-				<div class="row">
-					<div class="col-10"></div>
-					<div class="col-10"></div>
-					<div class="col-60 appSetButton"><a href="#" class="button color-blue button-big">Set</a></div>
-					<div class="col-10"></div>
-					<div class="col-10"></div>
-				</div>
-			</div>
-
-		</div>
-		</div>
-		</div>
 			</div>
 		</div>
 		
-		<!-- Claim Filter Options -->
+		
 
 		<!-- Key In Page Pop-up -->
 		<div class="popup keyin-popup">
 			<div class="view popup-view-keyin">
-			<div class="navbar popupNavBar   ">
-				<div class="navbar-inner">
-					<div class="right">
+				<div class="navbar popupNavBar   ">
+					<div class="navbar-inner">
+						<div class="right">
 							<a href="#" class="close-popup">
 							<i class="icon icon-cancel"></i>
 							</a>
 						</div>
 						<div class="center" style="color:#F2F2F2"> Filter Settings </div>
+					</div>
 				</div>
-			</div>
 				<div class="pages">
 					<div class="page" data-page="home-filter">
 						<div class="page-content">
-		
-
-
-			<div class="content-block">
-				<div class="row">
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-								</div>
-				<div class="list-block accordion-list">
-					<ul>
-						<li class="accordion-item">
-							<a href="#" class="item-content item-link">
-								<div class="item-inner">
-									<div class="item-title">Work List Status</div>
-								</div>
-							</a>
-							<div class="accordion-item-content">
-								<div class="content-block">
+							<div class="content-block">
+								<div class="row">
 									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-									<div class="list-block">
-										<ul>
-											<!-- Text inputs -->
-											<li>
-												 <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="group-codes" class="group-codes" name="group-codes">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Group Code</div>
-									            <!-- Selected value, not required -->
-									            <div id="group-code-after" class="item-after group-code-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-											<li>
-												<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="site-numbers" class="site-numbers" name="site-numbers">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Site Number</div>
-									            <!-- Selected value, not required -->
-									            <div id="site-number-after" class="item-after site-number-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-											<!-- Select -->
-											<li>
-												<div class="item-content">
-													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-building fa-lg "></span></div>
-													<div class="item-inner">
-														<div class="item-title label">Organization</div>
-														<div class="item-input selectOrg">
-															<select id="org-keyin-worklist">
-																<option value="HLSC">HLSC</option>
-																<option value="TCS">TCS</option>
-																<option value="RM">RM</option>
-															</select>
-														</div>
+								</div>
+								<div class="list-block accordion-list">
+									<ul>
+										<li id="keyin-filter-worklist-status" class="accordion-item">
+											<a href="#" class="item-content item-link">
+												<div class="item-inner">
+													<div class="item-title">Worklist Status</div>
+												</div>
+											</a>
+											<div class="accordion-item-content">
+												<div class="content-block">
+													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+													<div class="list-block">
+														<ul>
+															<!-- Text inputs -->
+															<li>
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="groupCode-keyin-worklist" class="group-codes" name="group-codes">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Group Code</div>
+																			<!-- Selected value, not required -->
+																			<div id="group-code-after" class="item-after group-code-after"></div>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li>
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="siteNumber-keyin-worklist" class="site-numbers" name="site-numbers">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Site Number</div>
+																			<!-- Selected value, not required -->
+																			<div id="site-number-after" class="item-after site-number-after"></div>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<!-- Select -->
+															<li>
+																<div class="item-content">
+																	<div class="item-inner">
+																		<div class="item-title label">Organization</div>
+																		<div class="item-input selectOrg">
+																			<select id="org-keyin-worklist">
+																				<option value="HLSC">HLSC</option>
+																				<option value="TCS">TCS</option>
+																				<option value="RM">RM</option>
+																			</select>
+																		</div>
+																	</div>
+																</div>
+															</li>
+															<li>
+																<div class="item-content">
+																	<div class="item-inner">
+																		<div class="col-10"></div>
+																		<div class="col-80 submitButton-keyin-worklist"><a href="#" class="button button-big close-popup">Submit</a></div>
+																		<div class="col-10"></div>
+																	</div>
+																</div>
+															</li>
+														</ul>
 													</div>
 												</div>
-											</li>
-											<li>
-												<div class="item-content">
-													<div class="item-inner">
-														<div class="col-10"></div>
-														<div class="col-80 submitButton-keyin-worklist"><a href="#" class="button button-big close-popup">Submit</a></div>
-														<div class="col-10"></div>
+											</div>
+										</li>
+										<li id="keyin-filter-volume" class="accordion-item">
+											<a href="#" class="item-content item-link">
+												<div class="item-inner">
+													<div class="item-title">Volume</div>
+												</div>
+											</a>
+											<div class="accordion-item-content">
+												<div class="content-block">
+													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+													<div class="list-block">
+														<ul>
+															<!-- Text inputs -->
+															<li>
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="groupCode-keyin-volume" class="group-codes" name="group-codes">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Group Code</div>
+																			<!-- Selected value, not required -->
+																			<div id="group-code-after" class="item-after group-code-after"></div>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li>
+															<li>
+																<div class="item-content">
+																	<div class="item-inner">
+																		<div class="col-10"></div>
+																		<div class="col-10"></div>
+																		<div class="col-60 submitButton-keyin-volume"><a href="#" class="button button-big close-popup">Submit</a></div>
+																		<div class="col-10"></div>
+																		<div class="col-10"></div>
+																	</div>
+																</div>
+															</li>
+														</ul>
 													</div>
 												</div>
-											</li>
-										</ul>
-
-									</div>
+											</div>
+										</li>
+										<li id="keyin-filter-tat" class="accordion-item">
+											<a href="#" class="item-content item-link">
+												<div class="item-inner">
+													<div class="item-title">TAT</div>
+												</div>
+											</a>
+											<div class="accordion-item-content">
+												<div class="content-block">
+													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+													<div class="list-block">
+														<ul>
+															<!-- Text inputs -->
+															<li>
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="groupCode-keyin-TAT" class="group-codes" name="group-codes">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Group Code</div>
+																			<!-- Selected value, not required -->
+																			<div id="group-code-after" class="item-after group-code-after"></div>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li>
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="siteNumber-keyin-TAT" class="site-numbers" name="site-numbers">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Site Number</div>
+																			<!-- Selected value, not required -->
+																			<div id="site-number-after" class="item-after site-number-after"></div>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li>
+																<div class="item-content">
+																	<div class="item-inner">
+																		<div class="col-10"></div>
+																		<div class="col-10"></div>
+																		<div class="col-60 submitButton-keyin-TAT"><a href="#" class="button button-big close-popup">Submit</a></div>
+																		<div class="col-10"></div>
+																		<div class="col-10"></div>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li id="keyin-filter-mpi" class="accordion-item">
+											<a href="#" class="item-content item-link">
+												<div class="item-inner">
+													<div class="item-title">MPI</div>
+												</div>
+											</a>
+											<div class="accordion-item-content">
+												<div class="content-block">
+													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+													<div class="list-block">
+														<ul>
+															<!-- Text inputs -->
+															<li>
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="groupCode-keyin-MPI" class="group-codes" name="group-codes">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Group Code</div>
+																			<!-- Selected value, not required -->
+																			<div id="group-code-after" class="item-after group-code-after"></div>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li>
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="siteNumber-keyin-MPI" class="site-numbers" name="site-numbers">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Site Number</div>
+																			<!-- Selected value, not required -->
+																			<div id="site-number-after" class="item-after site-number-after"></div>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li>
+																<div class="item-content">
+																	<div class="item-inner">
+																		<div class="col-10"></div>
+																		<div class="col-10"></div>
+																		<div class="col-60 submitButton-keyin-MPI"><a href="#" class="button button-big close-popup">Submit</a></div>
+																		<div class="col-10"></div>
+																		<div class="col-10"></div>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
 								</div>
 							</div>
-						</li>
-						<li class="accordion-item">
-							<a href="#" class="item-content item-link">
-								<div class="item-inner">
-									<div class="item-title">Volume</div>
-								</div>
-							</a>
-							<div class="accordion-item-content">
-								<div class="content-block">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-									<div class="list-block">
-										<ul>
-											<!-- Text inputs -->
-																						<li>
-												 <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="group-codes" class="group-codes" name="group-codes">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Group Code</div>
-									            <!-- Selected value, not required -->
-									            <div id="group-code-after" class="item-after group-code-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-											<li>
-											<li>
-												<div class="item-content">
-													<div class="item-inner">
-														<div class="col-10"></div>
-														<div class="col-10"></div>
-														<div class="col-60 submitButton-keyin-volume"><a href="#" class="button button-big close-popup">Submit</a></div>
-														<div class="col-10"></div>
-														<div class="col-10"></div>
-													</div>
-												</div>
-											</li>
-										</ul>
-										
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="accordion-item">
-							<a href="#" class="item-content item-link">
-								<div class="item-inner">
-									<div class="item-title">TAT</div>
-								</div>
-							</a>
-							<div class="accordion-item-content">
-								<div class="content-block">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-									<div class="list-block">
-										<ul>
-											<!-- Text inputs -->
-																						<li>
-												 <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="group-codes" class="group-codes" name="group-codes">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Group Code</div>
-									            <!-- Selected value, not required -->
-									            <div id="group-code-after" class="item-after group-code-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-											<li>
-												<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="site-numbers" class="site-numbers" name="site-numbers">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Site Number</div>
-									            <!-- Selected value, not required -->
-									            <div id="site-number-after" class="item-after site-number-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-											<li>
-												<div class="item-content">
-													<div class="item-inner">
-														<div class="col-10"></div>
-														<div class="col-10"></div>
-														<div class="col-60 submitButton-keyin-TAT"><a href="#" class="button button-big close-popup">Submit</a></div>
-														<div class="col-10"></div>
-														<div class="col-10"></div>
-													</div>
-												</div>
-											</li>
-										</ul>
-										
-
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="accordion-item">
-							<a href="#" class="item-content item-link">
-								<div class="item-inner">
-									<div class="item-title">MPI</div>
-								</div>
-							</a>
-							<div class="accordion-item-content">
-								<div class="content-block">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-									<div class="list-block">
-										<ul>
-											<!-- Text inputs -->
-											<li>
-												 <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="group-codes" class="group-codes" name="group-codes">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Group Code</div>
-									            <!-- Selected value, not required -->
-									            <div id="group-code-after" class="item-after group-code-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-											<li>
-												<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="site-numbers" class="site-numbers" name="site-numbers">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Site Number</div>
-									            <!-- Selected value, not required -->
-									            <div id="site-number-after" class="item-after site-number-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-											<li>
-												<div class="item-content">
-													<div class="item-inner">
-														<div class="col-10"></div>
-														<div class="col-10"></div>
-														<div class="col-60 submitButton-keyin-MPI"><a href="#" class="button button-big close-popup">Submit</a></div>
-														<div class="col-10"></div>
-														<div class="col-10"></div>
-													</div>
-												</div>
-											</li>
-										</ul>
-
-										
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
+						</div>
+					</div>
 				</div>
-			</div>
-			</div>
-			</div>
-			</div>
-
-
 			</div>
 		</div>
-
-
-
-
-
 		<!-- Reports Page Pop-up -->
 		<div class="popup reports-popup">
-			<div class="navbar">
-				<div class="navbar-inner">
-					<div class="left">
-						<a href="#" class="close-popup">
-						<span>Close</span>
-						</a>
+			<div class="view popup-view-reports">
+				<div class="navbar popupNavBar">
+					<div class="navbar-inner">
+						<div class="right">
+							<a href="#" class="close-popup">
+							<i class="icon icon-cancel"></i>
+							</a>
+						</div>
+						<div class="center" style="color:#F2F2F2"> Filter Settings </div>
 					</div>
-					<div class="right"> Filter Settings </div>
 				</div>
-			</div>
-			<div class="content-block">
-				<div class="list-block accordion-list">
-					<ul>
-						<li class="accordion-item">
-							<a href="#" class="item-content item-link">
-								<div class="item-inner">
-									<div class="item-title">Forecasted vs Actual Volume</div>
-								</div>
-							</a>
-							<div class="accordion-item-content">
-								<div class="content-block">
-
+				<div class="pages">
+					<div class="page" data-page="home-filter">
+						<div class="page-content">
+							<div class="content-block">
+								<div class="row">
 									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-									
-									<div class="list-block">
-										<ul>
-											<!-- Text inputs -->
-											<li>
-												<div class="item-content">
-													<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
-													<div class="item-inner">
-														<div class="item-title label">Group Code</div>
-														<div class="item-input">
-															<input type="text" id="groupCode-reports-volume" placeholder="Group Code">
+								</div>
+								<div class="list-block accordion-list">
+									<ul>
+										<li class="accordion-item">
+											<a href="#" class="item-content item-link">
+												<div class="item-inner">
+													<div class="item-title">Forecasted vs Actual Volume</div>
+												</div>
+											</a>
+											<div class="accordion-item-content">
+												<div class="content-block">
+													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+													<div class="list-block">
+														<ul>
+															<!-- Text inputs -->
+															<li>
+																<div class="item-content">
+																	<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
+																	<div class="item-inner">
+																		<div class="item-title label">Group Code</div>
+																		<div class="item-input">
+																			<input type="text" id="groupCode-reports-volume" placeholder="Group Code">
+																		</div>
+																	</div>
+																</div>
+															</li>
+														</ul>
+														<div><br></div>
+														<div class="row">
+															<div class="col-10"></div>
+															<div class="col-10"></div>
+															<div class="col-60 submitButton-reports-volume"><a href="#" class="button button-big close-popup">Submit</a></div>
+															<div class="col-10"></div>
+															<div class="col-10"></div>
 														</div>
-													</div>
-												</div>
-											</li>
-										</ul>
-										<div><br></div>
-										<div class="row">
-											<div class="col-10"></div>
-											<div class="col-10"></div>
-											<div class="col-60 submitButton-reports-volume"><a href="#" class="button button-big close-popup">Submit</a></div>
-											<div class="col-10"></div>
-											<div class="col-10"></div>
-										</div>
-										<div><br></div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="accordion-item">
-							<a href="#" class="item-content item-link">
-								<div class="item-inner">
-									<div class="item-title">TAT Average &amp; Median</div>
-								</div>
-							</a>
-							<div class="accordion-item-content">
-
-								<div class="content-block">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-									<div class="list-block">
-									<ul>
-										<!-- Text inputs -->
-										<li>
-												 <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="group-codes" class="group-codes" name="group-codes">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Group Code</div>
-									            <!-- Selected value, not required -->
-									            <div id="group-code-after" class="item-after group-code-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-											<li>
-												<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="site-numbers" class="site-numbers" name="site-numbers">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Site Number</div>
-									            <!-- Selected value, not required -->
-									            <div id="site-number-after" class="item-after site-number-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-									</ul>
-									</div>
-									<div><br></div>
-									<div class="row">
-										<div class="col-10"></div>
-										<div class="col-10"></div>
-										<div class="col-60 submitButton-reports-TAT"><a href="#" class="button button-big close-popup">Submit</a></div>
-										<div class="col-10"></div>
-										<div class="col-10"></div>
-									</div>
-									<div><br></div>
-								</div>
-							</div>
-						</li>
-						<li class="accordion-item">
-							<a href="#" class="item-content item-link">
-								<div class="item-inner">
-									<div class="item-title">Claim Volume</div>
-								</div>
-							</a>
-							<div class="accordion-item-content">
-								<div class="content-block">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-									<div class="list-block">
-									<ul>
-										<!-- Text inputs -->
-<li>
-												 <a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="group-codes" class="group-codes" name="group-codes">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Group Code</div>
-									            <!-- Selected value, not required -->
-									            <div id="group-code-after" class="item-after group-code-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-											<li>
-												<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
-									        <!-- select -->
-									        <select id="site-numbers" class="site-numbers" name="site-numbers">
-									          
-									        </select>
-									        <div class="item-content">
-									          <div class="item-inner">
-									            <!-- Select label -->
-									            <div class="item-title">Site Number</div>
-									            <!-- Selected value, not required -->
-									            <div id="site-number-after" class="item-after site-number-after"></div>
-									          </div>
-									        </div>
-									      </a>
-											</li>
-									</ul>
-									</div>
-									<div><br></div>
-									<div class="row">
-										<div class="col-10"></div>
-										<div class="col-10"></div>
-										<div class="col-60 submitButton-reports-claim"><a href="#" class="button button-big close-popup">Submit</a></div>
-										<div class="col-10"></div>
-										<div class="col-10"></div>
-									</div>
-									<div><br></div>
-								</div>
-							</div>
-						</li>
-						<li class="accordion-item">
-							<a href="#" class="item-content item-link">
-								<div class="item-inner">
-									<div class="item-title">Percentage of MPI Used</div>
-								</div>
-							</a>
-							<div class="accordion-item-content">
-								<div class="content-block">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-									<div class="list-block">
-									<ul>
-										<!-- Text inputs -->
-										<li>
-											<div class="item-content">
-												<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
-												<div class="item-inner">
-													<div class="item-title label">Group Code</div>
-													<div class="item-input">
-														<input type="text" id="groupCode-reports-MPI-used" placeholder="Group Code">
+														<div><br></div>
 													</div>
 												</div>
 											</div>
 										</li>
-										<li>
-											<div class="item-content">
-												<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
+										<li class="accordion-item">
+											<a href="#" class="item-content item-link">
 												<div class="item-inner">
-													<div class="item-title label">Site Number</div>
-													<div class="item-input">
-														<input type="text" id="site-number-reports-MPI-used" placeholder="Site Number">
+													<div class="item-title">TAT Average &amp; Median</div>
+												</div>
+											</a>
+											<div class="accordion-item-content">
+												<div class="content-block">
+													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+													<div class="list-block">
+														<ul>
+															<!-- Text inputs -->
+															<li>
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="group-codes" class="group-codes" name="group-codes">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Group Code</div>
+																			<!-- Selected value, not required -->
+																			<div id="group-code-after" class="item-after group-code-after"></div>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li>
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="site-numbers" class="site-numbers" name="site-numbers">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Site Number</div>
+																			<!-- Selected value, not required -->
+																			<div id="site-number-after" class="item-after site-number-after"></div>
+																		</div>
+																	</div>
+																</a>
+															</li>
+														</ul>
 													</div>
+													<div><br></div>
+													<div class="row">
+														<div class="col-10"></div>
+														<div class="col-10"></div>
+														<div class="col-60 submitButton-reports-TAT"><a href="#" class="button button-big close-popup">Submit</a></div>
+														<div class="col-10"></div>
+														<div class="col-10"></div>
+													</div>
+													<div><br></div>
+												</div>
+											</div>
+										</li>
+										<li class="accordion-item">
+											<a href="#" class="item-content item-link">
+												<div class="item-inner">
+													<div class="item-title">Claim Volume</div>
+												</div>
+											</a>
+											<div class="accordion-item-content">
+												<div class="content-block">
+													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+													<div class="list-block">
+														<ul>
+															<!-- Text inputs -->
+															<li>
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="group-codes" class="group-codes" name="group-codes">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Group Code</div>
+																			<!-- Selected value, not required -->
+																			<div id="group-code-after" class="item-after group-code-after"></div>
+																		</div>
+																	</div>
+																</a>
+															</li>
+															<li>
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="site-numbers" class="site-numbers" name="site-numbers">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Site Number</div>
+																			<!-- Selected value, not required -->
+																			<div id="site-number-after" class="item-after site-number-after"></div>
+																		</div>
+																	</div>
+																</a>
+															</li>
+														</ul>
+													</div>
+													<div><br></div>
+													<div class="row">
+														<div class="col-10"></div>
+														<div class="col-10"></div>
+														<div class="col-60 submitButton-reports-claim"><a href="#" class="button button-big close-popup">Submit</a></div>
+														<div class="col-10"></div>
+														<div class="col-10"></div>
+													</div>
+													<div><br></div>
+												</div>
+											</div>
+										</li>
+										<li class="accordion-item">
+											<a href="#" class="item-content item-link">
+												<div class="item-inner">
+													<div class="item-title">Percentage of MPI Used</div>
+												</div>
+											</a>
+											<div class="accordion-item-content">
+												<div class="content-block">
+													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+													<div class="list-block">
+														<ul>
+															<!-- Text inputs -->
+															<li>
+																<div class="item-content">
+																	<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
+																	<div class="item-inner">
+																		<div class="item-title label">Group Code</div>
+																		<div class="item-input">
+																			<input type="text" id="groupCode-reports-MPI-used" placeholder="Group Code">
+																		</div>
+																	</div>
+																</div>
+															</li>
+															<li>
+																<div class="item-content">
+																	<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
+																	<div class="item-inner">
+																		<div class="item-title label">Site Number</div>
+																		<div class="item-input">
+																			<input type="text" id="site-number-reports-MPI-used" placeholder="Site Number">
+																		</div>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+													<div><br></div>
+													<div class="row">
+														<div class="col-10"></div>
+														<div class="col-10"></div>
+														<div class="col-60 submitButton-reports-MPI-used"><a href="#" class="button button-big close-popup">Submit</a></div>
+														<div class="col-10"></div>
+														<div class="col-10"></div>
+													</div>
+													<div><br></div>
 												</div>
 											</div>
 										</li>
 									</ul>
-									</div>
-									<div><br></div>
-									<div class="row">
-										<div class="col-10"></div>
-										<div class="col-10"></div>
-										<div class="col-60 submitButton-reports-MPI-used"><a href="#" class="button button-big close-popup">Submit</a></div>
-										<div class="col-10"></div>
-										<div class="col-10"></div>
-									</div>
-									<div><br></div>
 								</div>
 							</div>
-						</li>
-					</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -1368,9 +1311,8 @@
 				</div>
 			</div>
 		</div>
-    
-    <!--Outbound-->
-    		<div class="popover popover-PPIcon">
+		<!--Outbound-->
+		<div class="popover popover-PPIcon">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
 				<div class="content-block">
@@ -1433,8 +1375,8 @@
 				</div>
 			</div>
 		</div>
-    <!--Claim-->
-    		<div class="popover popover-PLIcon">
+		<!--Claim-->
+		<div class="popover popover-PLIcon">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
 				<div class="content-block">
@@ -1461,7 +1403,6 @@
 				</div>
 			</div>
 		</div>
-    
 		<div class="popover popup-over-reports-slider">
 			<div class="popover-angle"></div>
 			<div class="popover-inner">
@@ -1477,14 +1418,10 @@
 				</div>
 			</div>
 		</div>
-
-		
 		<script type="text/javascript" src="js/framework7.min.js"></script>
 		<script type="text/javascript" src="js/my-app.js"></script>
 		<script type="text/javascript" src="js/reports.js"></script>
 		<script type="text/javascript" src="js/ViewModel.js"></script>
 		<script type="text/javascript" src="js/Tools.js"></script>
-		
-
 	</body>
 </html>

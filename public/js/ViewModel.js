@@ -1,30 +1,30 @@
-var _ = (function(module, $){
+var _ = (function(module, $) {
 
-	module.ViewModelHomeInbound = function(){
+    module.ViewModelHomeInbound = function() {
 
-		var self = this;
-        
-        this.applyModel = function(data){    
+        var self = this;
+
+        this.applyModel = function(data) {
 
             var date = new Date();
 
             self.initialize();
 
-            
-            $('#welcomeName').html('<font>'+'Welcome:  ' + localStorage.registeredUser+'</font>');
+
+            $('#welcomeName').html('<font>' + 'Welcome:  ' + localStorage.registeredUser + '</font>');
             //$('#lastLoginTime').html('<font>'+localStorage.lastVisitedDateTime+'</font>');
-            $('#todaysDate').html('<font >'+date.dateNow() +'</font>');
-            $('#todaysTime').html('<font >'+date.timeNow() +'</font>');
-            $('#lockbox-inbound-file-process').html('<font class="digital" color="#FF9900">'+ data.fileInProcess+'</font>');
-            $('#lockbox-inbound-file-error').html('<font class="digital" color="#DC3912">'+data.fileInError+'</font>');
-            $('#lockbox-inbound-file-processed').html('<font class="digital " color="#00FF00">'+data.fileProcessed+'</font>');
-       
+            $('#todaysDate').html('<font >' + date.dateNow() + '</font>');
+            $('#todaysTime').html('<font >' + date.timeNow() + '</font>');
+            $('#lockbox-inbound-file-process').html('<font class="digital" color="#FCB446">' + data.fileInProcess + '</font>');
+            $('#lockbox-inbound-file-error').html('<font class="digital" color="#FE2E64">' + data.fileInError + '</font>');
+            $('#lockbox-inbound-file-processed').html('<font class="digital " color="#00FF00">' + data.fileProcessed + '</font>');
+
 
 
         };
 
-        this.initialize = function(){
-            
+        this.initialize = function() {
+
             $('#welcomeName').html('');
             $('#lastLoginTime').html('');
             $('#todaysDate').html('');
@@ -32,7 +32,7 @@ var _ = (function(module, $){
             $('#lockbox-inbound-file-process').html('');
             $('#lockbox-inbound-file-error').html('');
             $('#lockbox-inbound-file-processed').html('');
-      
+
 
         };
 
@@ -40,34 +40,34 @@ var _ = (function(module, $){
     }
 
 
-    module.ViewModelHomeKeyIn= function(){
+    module.ViewModelHomeKeyIn = function() {
 
-    	var self = this;
-        this.applyModel = function(data){    
+        var self = this;
+        this.applyModel = function(data) {
 
-        	
+
             var date = new Date();
 
             self.initialize();
 
-            
-            
-            $('#keyInAssigned').html('<font class="digital" color="#DC3912">'+data.assigned+'</font>');
-            $('#keyInProgress').html('<font class="digital" color="#00FF00">'+data.inProgress+'</font>');
-            $('#keyInCompleted').html('<font class="digital" color="#DFC2FC">'+data.completed+'</font>');
-            $('#keyInSubmitted').html('<font class="digital" color="#FF9900">'+data.submitted+'</font>');
-      
+
+
+            $('#keyInAssigned').html('<font class="digital" color="#FE2E64">' + data.assigned + '</font>');
+            $('#keyInProgress').html('<font class="digital" color="#00FF00">' + data.inProgress + '</font>');
+            $('#keyInCompleted').html('<font class="digital" color="#B707FD">' + data.completed + '</font>');
+            $('#keyInSubmitted').html('<font class="digital" color="#FF9900">' + data.submitted + '</font>');
+
 
         };
 
-        this.initialize = function(){
-            
-          
+        this.initialize = function() {
+
+
             $('#keyInAssigned').html('');
             $('#keyInProgress').html('');
             $('#keyInCompleted').html('');
             $('#keyInSubmitted').html('');
-      
+
 
         };
 
@@ -75,32 +75,32 @@ var _ = (function(module, $){
     };
 
 
-    module.ViewModelOutboundHome = function(){
+    module.ViewModelOutboundHome = function() {
 
-    	var self = this;
-        this.applyModel = function(data){    
-        	
+        var self = this;
+        this.applyModel = function(data) {
+
             var date = new Date();
 
             self.initialize();
 
-            
-            
-            $('#lockbox-outbound-file-process').html('<font class="digital" color="#FF9900">'+ data.fileInProcess+'</font>');
-            $('#lockbox-outbound-file-error').html('<font class="digital" color="#DC3912">'+data.fileInError+'</font>');
-            $('#lockbox-outbound-file-processed').html('<font class="digital " color="#00FF00">'+data.fileProcessed+'</font>');
-            
+
+
+            $('#lockbox-outbound-file-process').html('<font class="digital" color="#FCB446">' + data.fileInProcess + '</font>');
+            $('#lockbox-outbound-file-error').html('<font class="digital" color="#FE2E64">' + data.fileInError + '</font>');
+            $('#lockbox-outbound-file-processed').html('<font class="digital " color="#00FF00">' + data.fileProcessed + '</font>');
+
 
 
         };
 
-        this.initialize = function(){
-            
-         
+        this.initialize = function() {
+
+
             $('#lockbox-outbound-file-process').html('');
             $('#lockbox-outbound-file-error').html('');
             $('#lockbox-outbound-file-processed').html('');
-            
+
 
         };
 
@@ -108,33 +108,33 @@ var _ = (function(module, $){
     };
 
 
-    module.ViewModelClaim= function(){
+    module.ViewModelClaim = function() {
 
-    	var self = this;
-        this.applyModel = function(data){    
-        	
+        var self = this;
+        this.applyModel = function(data) {
+
             var date = new Date();
 
             self.initialize();
 
-            
-            
-            $('#claim-file-process').html('<font class="digital" color="#FF9900">'+ data.fileInProcess+'</font>');
-            $('#claim-file-error').html('<font class="digital" color="#DC3912">'+data.fileInError+'</font>');
-            $('#claim-file-processed').html('<font class="digital " color="#00FF00">'+data.fileProcessed+'</font>');
-            
+
+
+            $('#claim-file-process').html('<font class="digital" color="#FCB446">' + data.fileInProcess + '</font>');
+            $('#claim-file-error').html('<font class="digital" color="#FE2E64">' + data.fileInError + '</font>');
+            $('#claim-file-processed').html('<font class="digital " color="#00FF00">' + data.fileProcessed + '</font>');
+
 
 
         };
 
-        this.initialize = function(){
-            
-         
+        this.initialize = function() {
+
+
             $('#claim-file-process').html('');
             $('#claim-file-error').html('');
             $('#claim-file-processed').html('');
-            
-            
+
+
 
         };
 
@@ -142,39 +142,39 @@ var _ = (function(module, $){
     }
 
 
- 
-   module.ViewModelInbound = function(){
 
-    	var self = this;
-        this.applyModel = function(data){
-        	
+    module.ViewModelInbound = function() {
+
+        var self = this;
+        this.applyModel = function(data) {
+
 
             self.initialize();
 
-            $('#WTPGreen').html('<font class="digit" color="#00FF00">' + data.STEP1.fileInProcess +'</font> ');
-            $('#SIGreen').html('<font class="digit" color="#00FF00">' + data.STEP2.fileInProcess +'</font> ');
-            $('#EVGreen').html('<font class="digit" color="#00FF00">' + data.STEP3.fileInProcess +'</font> ');
-            $('#DMGreen').html('<font class="digit" color="#00FF00">' + data.STEP4.fileInProcess +'</font> ');
-            $('#PIGreen').html('<font class="digit" color="#00FF00">' + data.STEP5.fileInProcess +'</font> ');
-            $('#BSGreen').html('<font class="digit" color="#00FF00">' + data.STEP6.fileInProcess +'</font> ');
-            $('#WLGreen').html('<font class="digit" color="#00FF00">' + data.STEP7.fileInProcess +'</font> ');
-            $('#IAGreen').html('<font class="digit" color="#00FF00">' + data.STEP8.fileInProcess +'</font> ');
-            $('#ISGreen').html('<font class="digit" color="#00FF00">' + data.STEP9.fileInProcess +'</font> ');
+            $('#WTPGreen').html('<font class="digit" color="#00FF00">' + data.STEP1.fileInProcess + '</font> ');
+            $('#SIGreen').html('<font class="digit" color="#00FF00">' + data.STEP2.fileInProcess + '</font> ');
+            $('#EVGreen').html('<font class="digit" color="#00FF00">' + data.STEP3.fileInProcess + '</font> ');
+            $('#DMGreen').html('<font class="digit" color="#00FF00">' + data.STEP4.fileInProcess + '</font> ');
+            $('#PIGreen').html('<font class="digit" color="#00FF00">' + data.STEP5.fileInProcess + '</font> ');
+            $('#BSGreen').html('<font class="digit" color="#00FF00">' + data.STEP6.fileInProcess + '</font> ');
+            $('#WLGreen').html('<font class="digit" color="#00FF00">' + data.STEP7.fileInProcess + '</font> ');
+            $('#IAGreen').html('<font class="digit" color="#00FF00">' + data.STEP8.fileInProcess + '</font> ');
+            $('#ISGreen').html('<font class="digit" color="#00FF00">' + data.STEP9.fileInProcess + '</font> ');
 
-            $('#WTPRed').html('<font class="digit" color="#FF0000">' + data.STEP1.fileInError +'</font> ');
-            $('#SIRed').html('<font class="digit" color="#FF0000">' + data.STEP2.fileInError +'</font> ');
-            $('#EVRed').html('<font class="digit" color="#FF0000">' + data.STEP3.fileInError +'</font> ');
-            $('#DMRed').html('<font class="digit" color="#FF0000">' + data.STEP4.fileInError +'</font> ');
-            $('#PIRed').html('<font class="digit" color="#FF0000">' + data.STEP5.fileInError +'</font> ');
-            $('#BSRed').html('<font class="digit" color="#FF0000">' + data.STEP6.fileInError +'</font> ');
-            $('#WLRed').html('<font class="digit" color="#FF0000">' + data.STEP7.fileInError +'</font> ');
-            $('#IARed').html('<font class="digit" color="#FF0000">' + data.STEP8.fileInError +'</font> ');
-            $('#ISRed').html('<font class="digit" color="#FF0000">' + data.STEP9.fileInError +'</font> ');
+            $('#WTPRed').html('<font class="digit" color="#FF0000">' + data.STEP1.fileInError + '</font> ');
+            $('#SIRed').html('<font class="digit" color="#FF0000">' + data.STEP2.fileInError + '</font> ');
+            $('#EVRed').html('<font class="digit" color="#FF0000">' + data.STEP3.fileInError + '</font> ');
+            $('#DMRed').html('<font class="digit" color="#FF0000">' + data.STEP4.fileInError + '</font> ');
+            $('#PIRed').html('<font class="digit" color="#FF0000">' + data.STEP5.fileInError + '</font> ');
+            $('#BSRed').html('<font class="digit" color="#FF0000">' + data.STEP6.fileInError + '</font> ');
+            $('#WLRed').html('<font class="digit" color="#FF0000">' + data.STEP7.fileInError + '</font> ');
+            $('#IARed').html('<font class="digit" color="#FF0000">' + data.STEP8.fileInError + '</font> ');
+            $('#ISRed').html('<font class="digit" color="#FF0000">' + data.STEP9.fileInError + '</font> ');
 
-            
+
         };
 
-        this.initialize = function(){
+        this.initialize = function() {
             $('#WTPGreen').html('');
             $('#SIGreen').html('');
             $('#EVGreen').html('');
@@ -202,34 +202,34 @@ var _ = (function(module, $){
     };
 
 
-    module.ViewModelOutbound = function(){
+    module.ViewModelOutbound = function() {
 
-    	var self = this;
+        var self = this;
 
-        this.applyModel = function(data){
+        this.applyModel = function(data) {
 
             self.initialize();
-            $('#PPGreen').html('<font class="digit" color="#00FF00">' + data.STEP1.fileInProcess +'</font> ');
-            $('#CRGreen').html('<font class="digit" color="#00FF00">' + data.STEP2.fileInProcess +'</font> ');
-            $('#DM2Green').html('<font class="digit" color="#00FF00">' + data.STEP3.fileInProcess +'</font> ');
-            $('#RAGreen').html('<font class="digit" color="#00FF00">' + data.STEP4.fileInProcess +'</font> ');
-            $('#OGGreen').html('<font class="digit" color="#00FF00">' + data.STEP5.fileInProcess +'</font> ');
-            $('#MRGreen').html('<font class="digit" color="#00FF00">' + data.STEP6.fileInProcess +'</font> ');
-            $('#THGreen').html('<font class="digit" color="#00FF00">' + data.STEP7.fileInProcess +'</font> ');
-           
+            $('#PPGreen').html('<font class="digit" color="#00FF00">' + data.STEP1.fileInProcess + '</font> ');
+            $('#CRGreen').html('<font class="digit" color="#00FF00">' + data.STEP2.fileInProcess + '</font> ');
+            $('#DM2Green').html('<font class="digit" color="#00FF00">' + data.STEP3.fileInProcess + '</font> ');
+            $('#RAGreen').html('<font class="digit" color="#00FF00">' + data.STEP4.fileInProcess + '</font> ');
+            $('#OGGreen').html('<font class="digit" color="#00FF00">' + data.STEP5.fileInProcess + '</font> ');
+            $('#MRGreen').html('<font class="digit" color="#00FF00">' + data.STEP6.fileInProcess + '</font> ');
+            $('#THGreen').html('<font class="digit" color="#00FF00">' + data.STEP7.fileInProcess + '</font> ');
 
-            $('#PPRed').html('<font class="digit" color="#FF0000">' + data.STEP1.fileInError +'</font> ');
-            $('#CRRed').html('<font class="digit" color="#FF0000">' + data.STEP2.fileInError +'</font> ');
-            $('#DM2Red').html('<font class="digit" color="#FF0000">' + data.STEP3.fileInError +'</font> ');
-            $('#RARed').html('<font class="digit" color="#FF0000">' + data.STEP4.fileInError +'</font> ');
-            $('#OGRed').html('<font class="digit" color="#FF0000">' + data.STEP5.fileInError +'</font> ');
-            $('#MRRed').html('<font class="digit" color="#FF0000">' + data.STEP6.fileInError +'</font> ');
-            $('#THRed').html('<font class="digit" color="#FF0000">' + data.STEP7.fileInError +'</font> ');
-           
-            
+
+            $('#PPRed').html('<font class="digit" color="#FF0000">' + data.STEP1.fileInError + '</font> ');
+            $('#CRRed').html('<font class="digit" color="#FF0000">' + data.STEP2.fileInError + '</font> ');
+            $('#DM2Red').html('<font class="digit" color="#FF0000">' + data.STEP3.fileInError + '</font> ');
+            $('#RARed').html('<font class="digit" color="#FF0000">' + data.STEP4.fileInError + '</font> ');
+            $('#OGRed').html('<font class="digit" color="#FF0000">' + data.STEP5.fileInError + '</font> ');
+            $('#MRRed').html('<font class="digit" color="#FF0000">' + data.STEP6.fileInError + '</font> ');
+            $('#THRed').html('<font class="digit" color="#FF0000">' + data.STEP7.fileInError + '</font> ');
+
+
         };
 
-        this.initialize = function(){
+        this.initialize = function() {
             $('#PPGreen').html('');
             $('#CRGreen').html('');
             $('#DM2Green').html('');
@@ -237,7 +237,7 @@ var _ = (function(module, $){
             $('#OGGreen').html('');
             $('#MRGreen').html('');
             $('#THGreen').html('');
-            
+
 
             $('#PPRed').html('');
             $('#CRRed').html('');
@@ -246,7 +246,7 @@ var _ = (function(module, $){
             $('#OGRed').html('');
             $('#MRRed').html('');
             $('#THRed').html('');
-          
+
 
 
         };
@@ -256,43 +256,43 @@ var _ = (function(module, $){
 
 
 
-    module.ViewModelClaimDetail = function(){
+    module.ViewModelClaimDetail = function() {
 
-    	var self = this;
-        this.applyModel = function(data){
+        var self = this;
+        this.applyModel = function(data) {
 
             self.initialize();
-            $('#claim-wtp-green').html('<font class="digit" color="#00FF00">' + data.STEP1.fileInProcess +'</font> ');
-            $('#claim-si-green').html('<font class="digit" color="#00FF00">' + data.STEP2.fileInProcess +'</font> ');
-            $('#claim-ex-green').html('<font class="digit" color="#00FF00">' + data.STEP3.fileInProcess +'</font> ');
-            $('#claim-pl-green').html('<font class="digit" color="#00FF00">' + data.STEP4.fileInProcess +'</font> ');
-            $('#claim-mpi-green').html('<font class="digit" color="#00FF00">' + data.STEP5.fileInProcess +'</font> ');
-            
+            $('#claim-wtp-green').html('<font class="digit" color="#00FF00">' + data.STEP1.fileInProcess + '</font> ');
+            $('#claim-si-green').html('<font class="digit" color="#00FF00">' + data.STEP2.fileInProcess + '</font> ');
+            $('#claim-ex-green').html('<font class="digit" color="#00FF00">' + data.STEP3.fileInProcess + '</font> ');
+            $('#claim-pl-green').html('<font class="digit" color="#00FF00">' + data.STEP4.fileInProcess + '</font> ');
+            $('#claim-mpi-green').html('<font class="digit" color="#00FF00">' + data.STEP5.fileInProcess + '</font> ');
 
-            $('#claim-wtp-red').html('<font class="digit" color="#FF0000">' + data.STEP1.fileInError +'</font> ');
-            $('#claim-si-red').html('<font class="digit" color="#FF0000">' + data.STEP2.fileInError +'</font> ');
-            $('#claim-ex-red').html('<font class="digit" color="#FF0000">' + data.STEP3.fileInError +'</font> ');
-            $('#claim-pl-red').html('<font class="digit" color="#FF0000">' + data.STEP4.fileInError +'</font> ');
-            $('#claim-mpi-red').html('<font class="digit" color="#FF0000">' + data.STEP5.fileInError +'</font> ');
-           
-            
+
+            $('#claim-wtp-red').html('<font class="digit" color="#FF0000">' + data.STEP1.fileInError + '</font> ');
+            $('#claim-si-red').html('<font class="digit" color="#FF0000">' + data.STEP2.fileInError + '</font> ');
+            $('#claim-ex-red').html('<font class="digit" color="#FF0000">' + data.STEP3.fileInError + '</font> ');
+            $('#claim-pl-red').html('<font class="digit" color="#FF0000">' + data.STEP4.fileInError + '</font> ');
+            $('#claim-mpi-red').html('<font class="digit" color="#FF0000">' + data.STEP5.fileInError + '</font> ');
+
+
         };
 
-        this.initialize = function(){
+        this.initialize = function() {
             $('#claim-wtp-green').html('');
             $('#claim-si-green').html('');
             $('#claim-ex-green').html('');
             $('#claim-pl-green').html('');
             $('#claim-mpi-green').html('');
-            
+
 
             $('#claim-wtp-red').html('');
             $('#claim-si-red').html('');
             $('#claim-ex-red').html('');
             $('#claim-pl-red').html('');
             $('#claim-mpi-red').html('');
-           
-          
+
+
 
 
         };
@@ -301,17 +301,16 @@ var _ = (function(module, $){
     };
 
 
-    module.ViewModelGroupCode = function(){
-        this.applyModel = function(data, id, idItemtoShow){
+    module.ViewModelGroupCode = function() {
+        this.applyModel = function(data, id, idItemtoShow) {
             $(id).html('');
 
-            var html = '<select name="'+id+'">';
-            for(var i=0; i< data.length ; i++){
-                if(i > 0){
-                    html = html + '<option value="'+data[i]+'">'+data[i]+'</option>';
-                }
-                else{
-                    html = html + '<option value="'+data[i]+'">'+data[i]+'</option>';
+            var html = '<select name="' + id + '">';
+            for (var i = 0; i < data.length; i++) {
+                if (i > 0) {
+                    html = html + '<option value="' + data[i] + '">' + data[i] + '</option>';
+                } else {
+                    html = html + '<option value="' + data[i] + '">' + data[i] + '</option>';
                     $(idItemtoShow).html(data[i]);
                 }
 
@@ -332,17 +331,16 @@ var _ = (function(module, $){
 
 
 
-    module.ViewModelSiteNumber = function(){
-        this.applyModel = function(data, id, idItemtoShow){
+    module.ViewModelSiteNumber = function() {
+        this.applyModel = function(data, id, idItemtoShow) {
             $(id).html('');
 
-            var html = '<select name="'+id+'">';
-            for(var i=0; i< data.length ; i++){
-                if(i > 0){
-                    html = html + '<option value="'+data[i]+'">'+data[i]+'</option>';
-                }
-                else{
-                    html = html + '<option value="'+data[i]+'">'+data[i]+'</option>';
+            var html = '<select name="' + id + '">';
+            for (var i = 0; i < data.length; i++) {
+                if (i > 0) {
+                    html = html + '<option value="' + data[i] + '">' + data[i] + '</option>';
+                } else {
+                    html = html + '<option value="' + data[i] + '">' + data[i] + '</option>';
                     $(idItemtoShow).html(data[i]);
                 }
 
@@ -362,27 +360,27 @@ var _ = (function(module, $){
     };
 
 
-   module.ViewModelSiteMissedTATAndClientMPIDecline = function(){
+    module.ViewModelSiteMissedTATAndClientMPIDecline = function() {
         var self = this;
 
-        this.applyModel = function(data, id){
+        this.applyModel = function(data, id) {
 
-           self.initialize(id);
+            self.initialize(id);
 
-           var html = '';
+            var html = '';
 
-           for ( var i in data){
-                html = html + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">'+data[i] +'</div>' + '</div>' + '</li>'
+            for (var i in data) {
+                html = html + '<li class="item-content">' + '<div class="item-inner">' + '<div class="item-title">' + data[i] + '</div>' + '</div>' + '</li>'
 
-           }
-           $(id).append(html);
+            }
+            $(id).append(html);
 
-            
+
 
         }
 
-        this.initialize = function(id){
-            
+        this.initialize = function(id) {
+
             $(id).html('');
 
         }
@@ -390,10 +388,10 @@ var _ = (function(module, $){
 
     };
 
-    
+
     return module;
 
 
 
 
-})(_ ||{}, $);
+})(_ || {}, $);
