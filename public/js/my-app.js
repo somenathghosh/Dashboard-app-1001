@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     // Initialize your app
     var myApp = new Framework7({
-        swipePanel: 'left',
+        //swipePanel: 'left',
 
         actionsCloseByOutside: false,
         modalCloseByOutside: false,
