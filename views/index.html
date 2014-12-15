@@ -926,7 +926,7 @@
 								</div>
 								<div class="list-block accordion-list">
 									<ul>
-										<li class="accordion-item">
+										<li id="reports-filter-fav" class="accordion-item">
 											<a href="#" class="item-content item-link">
 												<div class="item-inner">
 													<div class="item-title">Forecasted vs Actual Volume</div>
@@ -937,17 +937,22 @@
 													<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
 													<div class="list-block">
 														<ul>
-															<!-- Text inputs -->
+
+														<!-- Text inputs -->
 															<li>
-																<div class="item-content">
-																	<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
-																	<div class="item-inner">
-																		<div class="item-title label">Group Code</div>
-																		<div class="item-input">
-																			<input type="text" id="groupCode-reports-volume" placeholder="Group Code">
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="groupCode-reports-FAV" class="group-codes" name="group-codes">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Group Code</div>
+																			<!-- Selected value, not required -->
+																			<div id="group-code-after" class="item-after group-code-after"></div>
 																		</div>
 																	</div>
-																</div>
+																</a>
 															</li>
 														</ul>
 														<div><br></div>
@@ -963,7 +968,7 @@
 												</div>
 											</div>
 										</li>
-										<li class="accordion-item">
+										<li id="reports-filter-tat" class="accordion-item">
 											<a href="#" class="item-content item-link">
 												<div class="item-inner">
 													<div class="item-title">TAT Average &amp; Median</div>
@@ -978,7 +983,7 @@
 															<li>
 																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
 																	<!-- select -->
-																	<select id="group-codes" class="group-codes" name="group-codes">
+																	<select id="groupCode-reports-TAT" class="group-codes" name="group-codes">
 																	</select>
 																	<div class="item-content">
 																		<div class="item-inner">
@@ -993,7 +998,7 @@
 															<li>
 																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
 																	<!-- select -->
-																	<select id="site-numbers" class="site-numbers" name="site-numbers">
+																	<select id="siteNumber-reports-TAT" class="site-numbers" name="site-numbers">
 																	</select>
 																	<div class="item-content">
 																		<div class="item-inner">
@@ -1019,7 +1024,7 @@
 												</div>
 											</div>
 										</li>
-										<li class="accordion-item">
+										<li id="reports-filter-claim-volume" class="accordion-item">
 											<a href="#" class="item-content item-link">
 												<div class="item-inner">
 													<div class="item-title">Claim Volume</div>
@@ -1034,7 +1039,7 @@
 															<li>
 																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
 																	<!-- select -->
-																	<select id="group-codes" class="group-codes" name="group-codes">
+																	<select id="groupCode-reports-TAT" class="group-codes" name="group-codes">
 																	</select>
 																	<div class="item-content">
 																		<div class="item-inner">
@@ -1049,7 +1054,7 @@
 															<li>
 																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
 																	<!-- select -->
-																	<select id="site-numbers" class="site-numbers" name="site-numbers">
+																	<select id="siteNumber-reports-TAT" class="site-numbers" name="site-numbers">
 																	</select>
 																	<div class="item-content">
 																		<div class="item-inner">
@@ -1075,7 +1080,7 @@
 												</div>
 											</div>
 										</li>
-										<li class="accordion-item">
+										<li id="reports-filter-mpi" class="accordion-item">
 											<a href="#" class="item-content item-link">
 												<div class="item-inner">
 													<div class="item-title">Percentage of MPI Used</div>
@@ -1088,26 +1093,34 @@
 														<ul>
 															<!-- Text inputs -->
 															<li>
-																<div class="item-content">
-																	<div class="item-media icoBox" style="padding-left:9px"><span class="fa fa-hospital-o fa-lg"></span></div>
-																	<div class="item-inner">
-																		<div class="item-title label">Group Code</div>
-																		<div class="item-input">
-																			<input type="text" id="groupCode-reports-MPI-used" placeholder="Group Code">
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="groupCode-reports-MPI" class="group-codes" name="group-codes">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Group Code</div>
+																			<!-- Selected value, not required -->
+																			<div id="group-code-after" class="item-after group-code-after"></div>
 																		</div>
 																	</div>
-																</div>
+																</a>
 															</li>
 															<li>
-																<div class="item-content">
-																	<div class="item-media icoBox" style="padding-left:9px"><i class="fa fa-stethoscope fa-lg"></i></div>
-																	<div class="item-inner">
-																		<div class="item-title label">Site Number</div>
-																		<div class="item-input">
-																			<input type="text" id="site-number-reports-MPI-used" placeholder="Site Number">
+																<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
+																	<!-- select -->
+																	<select id="siteNumber-reports-MPI" class="site-numbers" name="site-numbers">
+																	</select>
+																	<div class="item-content">
+																		<div class="item-inner">
+																			<!-- Select label -->
+																			<div class="item-title">Site Number</div>
+																			<!-- Selected value, not required -->
+																			<div id="site-number-after" class="item-after site-number-after"></div>
 																		</div>
 																	</div>
-																</div>
+																</a>
 															</li>
 														</ul>
 													</div>

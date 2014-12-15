@@ -347,6 +347,12 @@ $(document).ready(function() {
     $$('.popup-filter-claim').on('open', function() {
         setGroupCodes();
     });
+    $$('.popup-view-reports').on('open', function() {
+        setGroupCodes();
+    });
+
+
+
 
 
 
@@ -1390,6 +1396,29 @@ $(document).ready(function() {
 
     myApp.onPageInit('keyin-detail', function(page) {
 
+        $$('#MPI-keyin-popup-icon').on('click', function() {
+            setTimeout(function() {
+                myApp.accordionOpen("#keyin-filter-mpi");
+            }, 100);
+        });
+
+        $$('#TAT-keyin-popup-icon').on('click', function() {
+            setTimeout(function() {
+                myApp.accordionOpen("#keyin-filter-tat");
+            }, 100);
+        });
+        $$('#V-keyin-popup-icon').on('click', function() {
+            setTimeout(function() {
+                myApp.accordionOpen("#keyin-filter-volume");
+            }, 100);
+        });
+
+        $$('#WLS-keyin-popup-icon').on('click', function() {
+            setTimeout(function() {
+                myApp.accordionOpen("#keyin-filter-worklist-status");
+            }, 100);
+        });
+
         myApp.showIndicator();
 
         renderKeyInDetailWorklist();
@@ -1771,6 +1800,29 @@ $(document).ready(function() {
 
     /*-------------*/
     myApp.onPageInit('reports', function(page) {
+
+        $$('#FAV-reports-popup-icon').on('click', function() {
+            setTimeout(function() {
+                myApp.accordionOpen("#reports-filter-fav");
+            }, 100);
+        });
+
+        $$('#TAT-reports-popup-icon').on('click', function() {
+            setTimeout(function() {
+                myApp.accordionOpen("#reports-filter-tat");
+            }, 100);
+        });
+        $$('#CV-reports-popup-icon').on('click', function() {
+            setTimeout(function() {
+                myApp.accordionOpen("#reports-filter-claim-volume");
+            }, 100);
+        });
+
+        $$('#MPI-reports-popup-icon').on('click', function() {
+            setTimeout(function() {
+                myApp.accordionOpen("#reports-filter-mpi");
+            }, 100);
+        });
 
         //myApp.showPreloader('Preparing');
         myApp.showIndicator();
