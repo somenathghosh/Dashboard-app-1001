@@ -39,6 +39,7 @@ app.get('/lockbox-outbound.html', routes.lockboxOutbound);
 app.get('/claim.html', routes.claim);
 app.get('/keyin-detail.html', routes.keyinDetail);
 app.get('/reports', routes.reports);
+app.get('/quality-matrix', routes.qualityMatrix);
 
 
 

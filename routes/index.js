@@ -27,3 +27,7 @@ exports.reports = function(req, res){
   res.render('reports.html');
 };
 
+exports.qualityMatrix = function(req, res){
+  res.render('quality-matrix.html');
+};
+

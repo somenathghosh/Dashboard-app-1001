@@ -1795,8 +1795,9 @@ $(document).ready(function() {
 
     });
 
-
-
+    myApp.onPageInit('quality-matrix', function(page) {
+        $('#goHome').prop("href", "index");
+    });
 
     /*-------------*/
     myApp.onPageInit('reports', function(page) {
