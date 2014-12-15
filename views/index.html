@@ -24,6 +24,8 @@
 		<script src="js/src/models/pieChart.js"></script>
 		<script src="js/Donut3D.js"></script>
 		<script type="text/javascript" src = "js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src = "js/wait.js"></script>
+
 		<!-- Path to Framework7 Library CSS-->
 		<link rel="stylesheet" href="css/framework7.css">
 		<link rel="stylesheet" href="css/framework7.themes.css">
@@ -117,31 +119,33 @@
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-inbound-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
-												<div id="lockbox-inbound-file-process" class=" textAlignCenter boxFlip"  >
-													<font class="digital" color="#00FF00"></font>
+												<div id="lockbox-inbound-file-process" class=" textAlignCenter "  >
+													<font class="digital" color="#00FF00">100</font>
 												</div>
 											</div>
 										</a>
 										<div class="labelText">Lockbox Inbound Process</div>
 										<a href="#" data-popover=".popover-lockbox-inbound-file-error" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
-												<div class="textAlignCenter boxFlip" id="lockbox-inbound-file-error"  ><font class="digital" color="#DC3912"></font></div>
+												<div class="textAlignCenter " id="lockbox-inbound-file-error"  ><font class="digital" color="#DC3912">1</font></div>
 											</div>
 										</a>
 									</div>
 									<!--<a href="lockbox-inbound.html" class="">-->
-									<div id="inboundTransition">
-										<div  class="row chartCenter" >
-											<div class="col-100" id="chartL1" >
-												<svg class="" style="width:300px; height:300px" >
-											</div>
+									
+									<div class="row chartCenter" >
+										<div id="inboundTransition">
+										<div class="col-100" id="chartL1" >
+											<svg class="" style="width:300px; height:300px" >
+										</div>
 										</div>
 									</div>
+									
 									<!--</a>-->
 									<div class="row">
 										<div class="divCenter ">
 											<a href="#" data-popover=".popover-lockbox-inbound-file-processed" class="open-popover">
-												<div class="boxFlip" id="lockbox-inbound-file-processed" ><font class="digital " color="#FF9900"></font>
+												<div class="" id="lockbox-inbound-file-processed" ><font class="digital " color="#FF9900">1000</font>
 												</div>
 											</a>
 										</div>
@@ -151,34 +155,35 @@
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-keyin-file-assigned" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
-												<div class="textAlignCenter boxFlip" id="keyInAssigned" ><font class="digital" color="#FF9900"></font></div>
+												<div class="textAlignCenter " id="keyInAssigned" ><font class="digital" color="#FF9900">100</font></div>
 											</div>
 										</a>
 										<div class="labelText">Key In Process</div>
 										<a href="#" data-popover=".popover-lockbox-keyin-file-progress" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
-												<div class="textAlignCenter boxFlip" id="keyInProgress" ><font class="digital" color="#00FF00"></font></div>
+												<div class="textAlignCenter " id="keyInProgress" ><font class="digital" color="#00FF00">100</font></div>
 											</div>
 										</a>
 									</div>
 									<!--<a href="keyin-detail.html" class="">-->
-									<div id="keyinTransition">
-										<div class="row chartCenter" >
+									
+									<div class="row chartCenter" >
+											<div id="keyinTransition">
 											<div class="col-100" id="chartL2" >
 												<svg class="" style="width:300px; height:300px" >
 											</div>
-										</div>
+											</div>
 									</div>
 									<!--</a>-->
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-keyin-file-completed" class="open-popover">
 											<div style="margin-top: -7px; margin-left: 5px;">
-												<div class="textAlignCenter boxFlip" id="keyInCompleted" ><font class="digital" color="#DFC2FC"></font></div>
+												<div class="textAlignCenter " id="keyInCompleted" ><font class="digital" color="#DFC2FC">100</font></div>
 											</div>
 										</a>
 										<a href="#" data-popover=".popover-lockbox-keyin-file-submitted" class="open-popover">
 											<div style=" margin-top: -7px; margin-right: 5px;">
-												<div class="textAlignCenter boxFlip" id="keyInSubmitted" ><font class="digital" color="#DC3912"></font></div>
+												<div class="textAlignCenter " id="keyInSubmitted" ><font class="digital" color="#DC3912">100</font></div>
 											</div>
 										</a>
 									</div>
@@ -189,19 +194,20 @@
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-outbound-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
-												<div class="textAlignCenter boxFlip" id="lockbox-outbound-file-process" ><font class="digital" color="#00FF00"></font></div>
+												<div class="textAlignCenter " id="lockbox-outbound-file-process" ><font class="digital" color="#00FF00">100</font></div>
 											</div>
 										</a>
 										<div class="labelText">Lockbox Outbound Process</div>
 										<a href="#" data-popover=".popover-lockbox-outbound-file-error" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
-												<div class="textAlignCenter boxFlip" id="lockbox-outbound-file-error"  ><font class="digital" color="#DC3912"></font></div>
+												<div class="textAlignCenter " id="lockbox-outbound-file-error"  ><font class="digital" color="#DC3912">1</font></div>
 											</div>
 										</a>
 									</div>
 									<!--<a href="lockbox-outbound.html" class="">-->
-									<div id="outboundTransition">
-										<div class="row chartCenter">
+									
+									<div class="row chartCenter">
+										<div id="outboundTransition">
 											<div class="col-100" id="chartL3" >
 												<svg class="" style="width:300px; height:300px" >
 											</div>
@@ -211,7 +217,7 @@
 									<div class="row">
 										<div class="divCenter ">
 											<a href="#" data-popover=".popover-lockbox-outbound-file-processed" class="open-popover">
-												<div class="boxFlip" id="lockbox-outbound-file-processed" ><font class="digital " color="#FF9900"></font></div>
+												<div class="" id="lockbox-outbound-file-processed" ><font class="digital " color="#FF9900"></font>1000</div>
 											</a>
 										</div>
 									</div>
@@ -220,19 +226,20 @@
 									<div class="row">
 										<a href="#" data-popover=".popover-claim-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
-												<div class="textAlignCenter boxFlip" id="claim-file-process" ><font class="digital" color="#00FF00"></font></div>
+												<div class="textAlignCenter " id="claim-file-process" ><font class="digital" color="#00FF00"></font>100</div>
 											</div>
 										</a>
 										<div class="labelText">Claim Process</div>
 										<a href="#" data-popover=".popover-claim-file-error" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
-												<div class="textAlignCenter boxFlip" id="claim-file-error"  ><font class="digital" color="#DC3912"></font></div>
+												<div class="textAlignCenter " id="claim-file-error"  ><font class="digital" color="#DC3912"></font>1</div>
 											</div>
 										</a>
 									</div>
 									<!--<a href="claim.html" class="">-->
-									<div id="claimTransition">
-										<div class="row chartCenter">
+									
+									<div class="row chartCenter">
+										<div id="claimTransition">
 											<div class="col-100" id="chartL4" >
 												<svg class="" style="width:300px; height:300px" >
 											</div>
@@ -242,7 +249,7 @@
 									<div class="row">
 										<div class="divCenter ">
 											<a href="#" data-popover=".popover-claim-file-processed" class="open-popover">
-												<div class="boxFlip" id="claim-file-processed" ><font class="digital " color="#FF9900"></font></div>
+												<div class="" id="claim-file-processed" ><font class="digital " color="#FF9900"></font>1000</div>
 											</a>
 										</div>
 									</div>
@@ -346,6 +353,9 @@
 				</div>
 			</div>
 		</div>
+
+
+		<!-- Inbound -->
 		<div class=" popup popup-filter-lockbox-inbound">
 			<div class="view popup-view-inbound">
 				<div class="navbar popupNavBar" >
@@ -371,7 +381,7 @@
 										<li>
 											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
 												<!-- select -->
-												<select id="group-codes" class="group-codes" name="group-codes">
+												<select id="groupCode-inbound" class="group-codes" name="group-codes">
 												</select>
 												<div class="item-content">
 													<div class="item-inner">
@@ -386,7 +396,7 @@
 										<li>
 											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
 												<!-- select -->
-												<select id="site-numbers" class="site-numbers" name="site-numbers">
+												<select id="siteNumber-inbound" class="site-numbers" name="site-numbers">
 												</select>
 												<div class="item-content">
 													<div class="item-inner">
@@ -403,7 +413,7 @@
 								<div class="row">
 									<div class="col-10"></div>
 									<div class="col-10"></div>
-									<div class="col-60 submitButton-home"><a href="#" class="button button-big close-popup ">Submit</a></div>
+									<div class="col-60 submitButton-Inbound-detail"><a href="#" class="button button-big close-popup ">Submit</a></div>
 									<div class="col-10"></div>
 									<div class="col-10"></div>
 								</div>
@@ -413,6 +423,9 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- outbound-->
+
 		<div class=" popup popup-filter-lockbox-outbound">
 			<div class="view popup-view-outbound">
 				<div class="navbar popupNavBar" >
@@ -438,7 +451,7 @@
 										<li>
 											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
 												<!-- select -->
-												<select id="group-codes" class="group-codes" name="group-codes">
+												<select id="groupCode-outbound" class="group-codes" name="group-codes">
 												</select>
 												<div class="item-content">
 													<div class="item-inner">
@@ -453,7 +466,7 @@
 										<li>
 											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
 												<!-- select -->
-												<select id="site-numbers" class="site-numbers" name="site-numbers">
+												<select id="siteNumber-outbound" class="site-numbers" name="site-numbers">
 												</select>
 												<div class="item-content">
 													<div class="item-inner">
@@ -470,7 +483,7 @@
 								<div class="row">
 									<div class="col-10"></div>
 									<div class="col-10"></div>
-									<div class="col-60 submitButton-home"><a href="#" class="button button-big close-popup ">Submit</a></div>
+									<div class="col-60 submitButton-Outbound-detail"><a href="#" class="button button-big close-popup ">Submit</a></div>
 									<div class="col-10"></div>
 									<div class="col-10"></div>
 								</div>
@@ -480,6 +493,8 @@
 				</div>
 			</div>
 		</div>
+		<!-- Claim -->
+
 		<div class=" popup popup-filter-claim">
 			<div class="view popup-view-claim">
 				<div class="navbar popupNavBar" >
@@ -505,7 +520,7 @@
 										<li>
 											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
 												<!-- select -->
-												<select id="group-codes" class="group-codes" name="group-codes">
+												<select id="groupCode-claim" class="group-codes" name="group-codes">
 												</select>
 												<div class="item-content">
 													<div class="item-inner">
@@ -520,7 +535,7 @@
 										<li>
 											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
 												<!-- select -->
-												<select id="site-numbers" class="site-numbers" name="site-numbers">
+												<select id="siteNumber-claim" class="site-numbers" name="site-numbers">
 												</select>
 												<div class="item-content">
 													<div class="item-inner">
@@ -537,7 +552,7 @@
 								<div class="row">
 									<div class="col-10"></div>
 									<div class="col-10"></div>
-									<div class="col-60 submitButton-home"><a href="#" class="button button-big close-popup ">Submit</a></div>
+									<div class="col-60 submitButton-claim-detail"><a href="#" class="button button-big close-popup ">Submit</a></div>
 									<div class="col-10"></div>
 									<div class="col-10"></div>
 								</div>

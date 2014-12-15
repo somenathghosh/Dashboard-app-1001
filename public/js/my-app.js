@@ -10,7 +10,6 @@
  *
  * Released on: November 10, 2014
  ********************************************************************************************************/
-
 "use strict";
 
 $(document).ready(function() {
@@ -172,7 +171,7 @@ $(document).ready(function() {
 
 
     $('.open-popup').on('click', function() {
-        
+
         $('.open-popup').html('');
         $('.open-popup').html('<i class="icon icon-filterFilled "></i>');
         myApp.popup(this.getAttribute('data-trig'));
@@ -180,10 +179,10 @@ $(document).ready(function() {
 
 
     $('.close-popup').on('click', function() {
-        
+
         $('.open-popup').html('');
         $('.open-popup').html('<i class="icon icon-filter "></i>');
-        
+
     });
 
 
@@ -194,127 +193,140 @@ $(document).ready(function() {
 
     /************************************************************************************************/
 
-    //myApp.showPreloader('Loading');
-    myApp.showIndicator();
-    var date = new Date();
-
     var homelink = $('#goHome');
-    localStorage.deviceID = '6ac90d0e-20db-4766-9767-c675bde0ef1f';
-    //localStorage.removeItem("deviceID");
-    setTimeout(function() {
 
-        if (!localStorage.deviceID) {
+    $('.loadingPage').waitForImages({
 
-            myApp.hideIndicator();
+        waitForAll: true,
+        finished: function() {
 
-            $('#registrationDate').val(date.dateNow());
-            myApp.popup('.popup-app-settings');
-            $('.appSetButton').click(function() {
-                var data = {};
-                var checkFlag = true;
-                if ($('#name').val()) {
-                    $('#regName').removeClass("errorClass");
-                    data.fullName = $('#name').val();
-                } else {
-                    checkFlag = false;
-                    $('#regName').addClass("errorClass");
 
-                }
-                if ($('#email').val().indexOf("@") > -1) {
-                    $('#regEmail').removeClass("errorClass");
-                    data.email = $('#email').val();
-                } else {
-                    $('#regEmail').addClass("errorClass");
-                    checkFlag = false;
 
-                }
-                if ($('#deviceID').val()) {
-                    $('#regId').removeClass("errorClass");
-                    data.deviceID = $('#deviceID').val();
-                } else {
-                    $('#regId').addClass("errorClass");
-                    checkFlag = false;
-                }
 
-                if (checkFlag) {
-                    myApp.closeModal('.popup-app-settings');
+            //myApp.showPreloader('Loading');
+            myApp.showIndicator();
+            var date = new Date();
 
-                    data.registrationDate = $('#registrationDate').val();
+
+            localStorage.deviceID = '6ac90d0e-20db-4766-9767-c675bde0ef1f';
+            //localStorage.removeItem("deviceID");
+            setTimeout(function() {
+
+                if (!localStorage.deviceID) {
+
                     myApp.hideIndicator();
-                    myApp.showPreloader('Registering your Device');
 
-                    _.registration(data, function(success) {
-                        if (success) {
+                    $('#registrationDate').val(date.dateNow());
+                    myApp.popup('.popup-app-settings');
+                    $('.appSetButton').click(function() {
+                        var data = {};
+                        var checkFlag = true;
+                        if ($('#name').val()) {
+                            $('#regName').removeClass("errorClass");
+                            data.fullName = $('#name').val();
+                        } else {
+                            checkFlag = false;
+                            $('#regName').addClass("errorClass");
 
-                            localStorage.deviceID = data.deviceID;
-                            localStorage.registeredUser = data.fullName;
+                        }
+                        if ($('#email').val().indexOf("@") > -1) {
+                            $('#regEmail').removeClass("errorClass");
+                            data.email = $('#email').val();
+                        } else {
+                            $('#regEmail').addClass("errorClass");
+                            checkFlag = false;
 
-                            setTimeout(function() {
+                        }
+                        if ($('#deviceID').val()) {
+                            $('#regId').removeClass("errorClass");
+                            data.deviceID = $('#deviceID').val();
+                        } else {
+                            $('#regId').addClass("errorClass");
+                            checkFlag = false;
+                        }
 
-                                myApp.hidePreloader();
-                                myApp.showIndicator();
-                                buildHomePage(function() {
+                        if (checkFlag) {
+                            myApp.closeModal('.popup-app-settings');
+
+                            data.registrationDate = $('#registrationDate').val();
+                            myApp.hideIndicator();
+                            myApp.showPreloader('Registering your Device');
+
+                            _.registration(data, function(success) {
+                                if (success) {
+
+                                    localStorage.deviceID = data.deviceID;
+                                    localStorage.registeredUser = data.fullName;
+
                                     setTimeout(function() {
-                                        myApp.hideIndicator();
-                                        $('#main-view-test-fadein').removeClass('animated zoomIn');
+
+                                        myApp.hidePreloader();
+                                        myApp.showIndicator();
+                                        buildHomePage(function() {
+                                            setTimeout(function() {
+                                                myApp.hideIndicator();
+                                                $('#main-view-test-fadein').removeClass('animated zoomIn');
+
+                                            }, 500);
+                                        });
 
                                     }, 500);
-                                });
-
-                            }, 500);
 
 
 
-                        } else {
+                                } else {
 
 
-                            myApp.alert('This Device is not registered. Please contact help desk for more information. <br> HelpDesk: 800-XXX-XXXX', 'Error:', function() {
-                                myApp.hidePreloader();
-                                myApp.popup('.popup-app-settings');
+                                    myApp.alert('This Device is not registered. Please contact help desk for more information. <br> HelpDesk: 800-XXX-XXXX', 'Error:', function() {
+                                        myApp.hidePreloader();
+                                        myApp.popup('.popup-app-settings');
+
+
+                                    });
+
+
+                                }
 
 
                             });
 
-
                         }
+
+                    });
+
+
+
+
+                } else {
+
+                    //myApp.hidePreloader();
+
+                    localStorage.lastVisitedDateTime = localStorage.visitedNow || (date.dateNow() + ' ' + date.timeNow());
+                    localStorage.visitedNow = date.dateNow() + ' ' + date.timeNow();
+
+                    //myApp.showIndicator();
+
+                    buildHomePage(function() {
+
+                        setTimeout(function() {
+                            myApp.hideIndicator();
+
+                            $('#main-view-test-fadein').removeClass('animated zoomIn');
+
+                        }, 200);
+
+
 
 
                     });
 
+
                 }
 
-            });
-
-
-
-
-        } else {
-
-            //myApp.hidePreloader();
-
-            localStorage.lastVisitedDateTime = localStorage.visitedNow || (date.dateNow() + ' ' + date.timeNow());
-            localStorage.visitedNow = date.dateNow() + ' ' + date.timeNow();
-
-            //myApp.showIndicator();
-
-            buildHomePage(function() {
-
-                setTimeout(function() {
-                    myApp.hideIndicator();
-
-                    $('#main-view-test-fadein').removeClass('animated zoomIn');
-
-                }, 200);
-
-
-
-
-            });
-
+            }, 3000);
 
         }
-
-    }, 2500);
+    });
 
     $$('.popup-filter').on('open', function() {
         setGroupCodes();
@@ -390,8 +402,12 @@ $(document).ready(function() {
                 $(".loadingPage").addClass("hidden");
                 $(".views").removeClass("hidden");
                 $(".overlay").removeClass("hidden");
-
+                var vm = new _.ViewModelHomeWelcome();
+                vm.applyModel();
                 $('#main-view-test-fadein').addClass('animated zoomIn');
+
+
+
                 setTimeout(function() {
 
 
@@ -766,11 +782,13 @@ $(document).ready(function() {
 
             if (success) {
 
+                var vm = new _.ViewModelHomeWelcome();
+                vm.applyModel();
 
                 var vm = new _.ViewModelHomeInbound();
                 vm.applyModel(data);
                 var cData = new _.ChartDataCreator(data);
-                
+
                 pie.draw({
                     data: cData.chartData,
                     showLabels: true,
@@ -821,7 +839,7 @@ $(document).ready(function() {
 
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber, keyInHomeCallback);
                 var cData = new _.ChartDataCreator(data);
-                
+
                 pie.draw({
                     data: cData.chartData,
                     showLabels: true,
@@ -868,7 +886,7 @@ $(document).ready(function() {
                 api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber, claimHomeCallback);
 
                 var cData = new _.ChartDataCreator(data);
-                
+
                 pie.draw({
                     data: cData.chartKeyinData,
                     showLabels: true,
@@ -916,7 +934,7 @@ $(document).ready(function() {
                 vm.applyModel(data);
 
                 var cData = new _.ChartDataCreator(data);
-                
+
                 pie.draw({
                     data: cData.chartData,
                     showLabels: true,
@@ -965,7 +983,7 @@ $(document).ready(function() {
 
         var groupCode = $('#groupCode-home').val();
         var siteNumber = $('#siteNumber-home').val();
-
+        
         refreshBuildHomePage(groupCode, siteNumber, function() {
 
             setTimeout(function() {
@@ -987,6 +1005,7 @@ $(document).ready(function() {
 
     myApp.onPageInit('index', function(page) {
         //myApp.showPreloader("Preparing");
+        myApp.showIndicator();
         var groupCode;
         var siteNumber;
         refreshBuildHomePage(groupCode, siteNumber, function() {
@@ -995,19 +1014,11 @@ $(document).ready(function() {
 
                 myApp.hideIndicator();
 
-            }, 500);
+            }, 1000);
 
         });
 
-        /*
-        buildHomePage(function(){
-            setTimeout(function(){
-                myApp.hidePreloader();
-
-            },500);
-            
-        });
-        */
+       
         homelink.prop("href", "#");
         $('.open-popup').on('click', function() {
             console.log(this.getAttribute('data-trig'));
@@ -1045,7 +1056,7 @@ $(document).ready(function() {
 
         if (groupCode && siteNumber && org) {
 
-            
+
             api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/worklist?forGroupCode=' + groupCode + '&forSiteNumber=' + siteNumber + '&forOrg=' + org, function(success, data) {
                 if (success) {
 
@@ -1068,14 +1079,14 @@ $(document).ready(function() {
 
 
                     }, function() {
-                        if(callback){
-                        callback();
-                    }
-                        
+                        if (callback) {
+                            callback();
+                        }
+
 
                     });
 
-                    
+
 
                 } else {
 
@@ -1152,7 +1163,7 @@ $(document).ready(function() {
 
     };
 
-    function renderKeyInDetailTAT(groupCode, siteNumber,callback) {
+    function renderKeyInDetailTAT(groupCode, siteNumber, callback) {
 
         var pie = new D3PieChart();
         var api = new _.API();
@@ -1177,7 +1188,7 @@ $(document).ready(function() {
 
                     }, function() {
 
-                        if(callback){
+                        if (callback) {
 
                             callback();
                         }
@@ -1185,7 +1196,7 @@ $(document).ready(function() {
                     });
 
                     //console.log(callback);
-                    
+
 
 
                 } else {
@@ -1214,7 +1225,7 @@ $(document).ready(function() {
             api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/batchTAT', function(success, data) {
                 if (success) {
 
-                  
+
                     pie.draw({
                         data: data,
                         showLabels: true,
@@ -1257,7 +1268,7 @@ $(document).ready(function() {
     };
 
 
-    function renderKeyInDetailVolume(groupCode,callback) {
+    function renderKeyInDetailVolume(groupCode, callback) {
 
         var api = new _.API();
         var url;
@@ -1287,15 +1298,15 @@ $(document).ready(function() {
 
 
                 }, function(success) {
-                    if(callback){
+                    if (callback) {
 
-                    callback();
-                }
-                    
+                        callback();
+                    }
+
 
                 });
 
-                
+
 
             } else {
 
@@ -1344,14 +1355,14 @@ $(document).ready(function() {
 
 
                 }, function(success) {
-                    if(callback){
+                    if (callback) {
 
-                    callback();
-                }
-                    
+                        callback();
+                    }
+
                 });
 
-                
+
 
 
             } else {
@@ -1409,11 +1420,11 @@ $(document).ready(function() {
             var org = $('#org-keyin-worklist').val();
 
             myApp.showIndicator();
-            renderKeyInDetailWorklist(groupCode, siteNumber, org, function(){
+            renderKeyInDetailWorklist(groupCode, siteNumber, org, function() {
 
-                setTimeout(function(){
+                setTimeout(function() {
                     myApp.hideIndicator();
-                },500);
+                }, 500);
 
             });
 
@@ -1424,11 +1435,11 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-keyin-volume').val();
             myApp.showIndicator();
-            renderKeyInDetailVolume(groupCode,function(){
+            renderKeyInDetailVolume(groupCode, function() {
 
-                setTimeout(function(){
+                setTimeout(function() {
                     myApp.hideIndicator();
-                },500);
+                }, 500);
 
             });
 
@@ -1441,15 +1452,15 @@ $(document).ready(function() {
             var groupCode = $('#groupCode-keyin-TAT').val();
             var siteNumber = $('#siteNumber-keyin-TAT').val();
             myApp.showIndicator();
-            renderKeyInDetailTAT(groupCode, siteNumber,function(){
+            renderKeyInDetailTAT(groupCode, siteNumber, function() {
 
-                    setTimeout(function(){
+                setTimeout(function() {
 
-                        myApp.hideIndicator();
+                    myApp.hideIndicator();
 
-                    },500);
-                    
-               
+                }, 500);
+
+
 
             });
 
@@ -1460,12 +1471,12 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-keyin-MPI').val();
             var siteNumber = $('#siteNumber-keyin-MPI').val();
-            myApp,showIndicator();
-            renderKeyInDetailMPI(groupCode, siteNumber,function(){
+            myApp, showIndicator();
+            renderKeyInDetailMPI(groupCode, siteNumber, function() {
 
-                setTimeout(function(){
+                setTimeout(function() {
                     myApp.hideIndicator();
-                },500);
+                }, 500);
 
             });
 
@@ -1496,7 +1507,14 @@ $(document).ready(function() {
 
     myApp.onPageInit('claim', function(page) {
 
-        getClaimDetail();
+        myApp.showIndicator();
+
+        getClaimDetail(function() {
+
+            setTimeout(function() {
+                myApp.hideIndicator();
+            }, 1000);
+        });
 
         $('.intClear a').click(function() {
             clearInterval(arrowSequence);
@@ -1542,7 +1560,15 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-claim').val();
             var siteNumber = $('#siteNumber-claim').val();
-            getClaimDetail(groupCode, siteNumber);
+
+            myApp.showIndicator();
+            getClaimDetail(function() {
+
+                setTimeout(function() {
+                    myApp.hideIndicator();
+                }, 1000);
+
+            }, groupCode, siteNumber);
 
 
         });
@@ -1570,7 +1596,16 @@ $(document).ready(function() {
 
 
     myApp.onPageInit('lockbox-outbound', function(page) {
-        getLockboxOutboundDetail();
+
+        myApp.showIndicator();
+        getLockboxOutboundDetail(function() {
+
+            setTimeout(function() {
+                myApp.hideIndicator();
+            }, 1000);
+
+
+        });
 
 
         $('.intClear a').click(function() {
@@ -1614,8 +1649,15 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-outbound').val();
             var siteNumber = $('#siteNumber-outbound').val();
+            myApp.showIndicator();
+            getLockboxOutboundDetail(function() {
 
-            getLockboxOutboundDetail(groupCode, siteNumber);
+                setTimeout(function() {
+                    myApp.hideIndicator();
+                }, 1000);
+
+
+            }, groupCode, siteNumber);
 
 
         });
@@ -1643,7 +1685,16 @@ $(document).ready(function() {
 
     myApp.onPageInit('lockbox-inbound', function(page) {
 
-        getLockboxInboundDetail();
+        myApp.showIndicator();
+
+        getLockboxInboundDetail(function() {
+
+            setTimeout(function() {
+                myApp.hideIndicator();
+            }, 1000);
+
+
+        });
 
 
 
@@ -1686,8 +1737,12 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-inbound').val();
             var siteNumber = $('#siteNumber-inbound').val();
-
-            getLockboxInboundDetail(groupCode, siteNumber);
+            myApp.showIndicator();
+            getLockboxInboundDetail(function() {
+                setTimeout(function() {
+                    myApp.hideIndicator();
+                }, 1000);
+            }, groupCode, siteNumber);
 
 
         });
@@ -1717,8 +1772,8 @@ $(document).ready(function() {
     /*-------------*/
     myApp.onPageInit('reports', function(page) {
 
-        myApp.showPreloader('Preparing');
-
+        //myApp.showPreloader('Preparing');
+        myApp.showIndicator();
         var slides = [
             'Forcasted vs Actual Volume',
             'TAT Average and Median',
@@ -1919,7 +1974,7 @@ $(document).ready(function() {
 
         ////////
 
-        var colorSlide0 = ['#DC3912', '#FF9900'];
+        var colorSlide0 = ['#B45F04', '#FF9900'];
         var streamsSlide0 = ['Forcasted', 'Actual'];
 
         var publicStorage = _.PublicStore.openPort();
@@ -1930,7 +1985,7 @@ $(document).ready(function() {
 
         vBar.triggerIt({
             containerId: '#reports-charts-forcasted-vs-actual',
-            dataFactory: publicStorage.get('dataVolume')(2, 30, streamsSlide0),
+            dataFactory: publicStorage.get('dataVolume')(2, 10, streamsSlide0),
             axisLabel: 'Lockbox EOB Volume Trend',
             color: colorSlide0
         }, function() {
@@ -1965,11 +2020,11 @@ $(document).ready(function() {
                 publicStorage.put('dataVolume', dataFactoryFilter);
             }
 
-            $("#VT-slider").val(30);
-            $("#VT-slider-text").html(30);
+            $("#VT-slider").val(10);
+            $("#VT-slider-text").html(10);
             vBar.triggerIt({
                 containerId: '#reports-charts-forcasted-vs-actual',
-                dataFactory: publicStorage.get('dataVolume')(2, 30, streamsSlide0),
+                dataFactory: publicStorage.get('dataVolume')(2, 10, streamsSlide0),
                 axisLabel: 'Lockbox EOB Volume Trend',
                 color: colorSlide0
             });
@@ -1986,7 +2041,7 @@ $(document).ready(function() {
 
         vBar.triggerIt({
             containerId: '#reports-claim-data-volume',
-            dataFactory: publicStorage.get('claimVolume')(1, 30, streamsSlide2),
+            dataFactory: publicStorage.get('claimVolume')(1, 10, streamsSlide2),
             axisLabel: 'Claim Volume Trend',
             color: colorSlide2
         });
@@ -2018,11 +2073,11 @@ $(document).ready(function() {
 
             }
 
-            $("#CV-slider").val(30);
-            $("#CV-slider-text").html(30);
+            $("#CV-slider").val(10);
+            $("#CV-slider-text").html(10);
             vBar.triggerIt({
                 containerId: '#reports-claim-data-volume',
-                dataFactory: publicStorage.get('claimVolume')(1, 30, streamsSlide2),
+                dataFactory: publicStorage.get('claimVolume')(1, 10, streamsSlide2),
                 axisLabel: 'Claim Volume Trend',
                 color: colorSlide2
             });
@@ -2031,7 +2086,7 @@ $(document).ready(function() {
 
         //////
 
-        var colorSlide3 = ['#61C106'];
+        var colorSlide3 = ['#EE7C02'];
         var streamsSlide3 = ['% Used'];
 
         publicStorage.put('PMU', dataFactory2);
@@ -2039,7 +2094,7 @@ $(document).ready(function() {
 
         vBar.triggerIt({
             containerId: '#reports-percentage-MPI-used',
-            dataFactory: publicStorage.get('PMU')(1, 30, streamsSlide3),
+            dataFactory: publicStorage.get('PMU')(1, 10, streamsSlide3),
             axisLabel: 'Percentage of MPI Used ',
             color: colorSlide3
         });
@@ -2072,12 +2127,12 @@ $(document).ready(function() {
                 publicStorage.put('PMU', dataFactory2Filter);
             }
 
-            $("#PMU-slider").val(30);
-            $("#PMU-slider-text").html(30);
+            $("#PMU-slider").val(10);
+            $("#PMU-slider-text").html(10);
 
             vBar.triggerIt({
                 containerId: '#reports-percentage-MPI-used',
-                dataFactory: publicStorage.get('PMU')(1, 30, streamsSlide3),
+                dataFactory: publicStorage.get('PMU')(1, 10, streamsSlide3),
                 axisLabel: 'Percentage of MPI Used ',
                 color: colorSlide3
             });
@@ -2093,11 +2148,11 @@ $(document).ready(function() {
         publicStorage.put('MPI', stackedAreaChartData);
 
 
-        lChart.triggerIt({
+        stackedChart.triggerIt({
 
             containerId: '#MPI-stacked-area-chart',
-            color: ['#FF2E2E', '#FF9900', '#00FF00'],
-            data: publicStorage.get('MPI')(30)
+            color: ['#00FF00','#FF9900','#FF0000' ],
+            data: publicStorage.get('MPI')(10)
 
         }, function() {
 
@@ -2134,7 +2189,7 @@ $(document).ready(function() {
 
             containerId: '#TAT-line-chart',
             color: ['#00FF00', '#FF9900'],
-            data: publicStorage.get('TAT')(30)
+            data: publicStorage.get('TAT')(10)
         }, function() {
 
 
@@ -2156,14 +2211,14 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-resports-TAT').val();
             var siteNumber = $('#siteNumber-reports-TAT').val();
-            $("#TAT-slider").val(30);
-            $("#TAT-slider-text").html(30);
+            $("#TAT-slider").val(10);
+            $("#TAT-slider-text").html(10);
 
             lChart.triggerIt({
 
                 containerId: '#TAT-line-chart',
                 color: ['#00FF00', '#FF9900'],
-                data: publicStorage.get('TAT')(30)
+                data: publicStorage.get('TAT')(10)
             });
 
         });
@@ -2223,7 +2278,7 @@ $(document).ready(function() {
 
 
         setTimeout(function() {
-            myApp.hidePreloader();
+            myApp.hideIndicator();
 
         }, 1000);
 
@@ -2233,12 +2288,12 @@ $(document).ready(function() {
 
 
 
-    var getLockboxInboundDetail = function(groupCode, siteNumber) {
+    var getLockboxInboundDetail = function(callback, groupCode, siteNumber) {
 
-        myApp.showPreloader('Preparing');
 
         var api = new _.API();
-
+        console.log(groupCode);
+        console.log(siteNumber);
         if (groupCode && siteNumber) {
 
             api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/detail?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber, inboundDetailcallback);
@@ -2264,13 +2319,11 @@ $(document).ready(function() {
 
                 vm.applyModel(data);
 
+                if (callback) {
 
+                    callback();
+                }
 
-                setTimeout(function() {
-
-                    myApp.hidePreloader();
-
-                }, 500);
 
 
             } else {
@@ -2278,11 +2331,11 @@ $(document).ready(function() {
                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     },
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     }
                 );
             }
@@ -2297,9 +2350,9 @@ $(document).ready(function() {
 
 
 
-    var getLockboxOutboundDetail = function(groupCode, siteNumber) {
+    var getLockboxOutboundDetail = function(callback, groupCode, siteNumber) {
 
-        myApp.showPreloader('Preparing');
+        //myApp.showPreloader('Preparing');
 
         var api = new _.API();
 
@@ -2328,11 +2381,9 @@ $(document).ready(function() {
 
                 vm.applyModel(data);
 
-                setTimeout(function() {
-
-                    myApp.hidePreloader();
-
-                }, 500);
+                if (callback) {
+                    callback();
+                }
 
 
             } else {
@@ -2340,11 +2391,11 @@ $(document).ready(function() {
                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     },
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     }
                 );
             }
@@ -2359,16 +2410,14 @@ $(document).ready(function() {
 
 
 
-    var getClaimDetail = function(groupCode, siteNumber) {
+    var getClaimDetail = function(callback, groupCode, siteNumber) {
 
-        myApp.showPreloader('Preparing');
 
         var api = new _.API();
 
         if (groupCode && siteNumber) {
 
             api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/detail?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber, claimDetailcallback);
-
 
         } else {
 
@@ -2381,6 +2430,8 @@ $(document).ready(function() {
         }
 
 
+
+
         function claimDetailcallback(success, data) {
 
             if (success) {
@@ -2389,12 +2440,13 @@ $(document).ready(function() {
                 var vm = new _.ViewModelClaimDetail();
 
                 vm.applyModel(data);
+                if (callback) {
 
-                setTimeout(function() {
+                    callback();
 
-                    myApp.hidePreloader();
+                }
 
-                }, 500);
+
 
 
             } else {
@@ -2402,11 +2454,11 @@ $(document).ready(function() {
                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     },
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     }
                 );
 
