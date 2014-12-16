@@ -1804,7 +1804,115 @@ $(document).ready(function() {
     });
 
     myApp.onPageInit('quality-matrix', function(page) {
+                var lChart = new D3LineChart();
+        var lineChartData = function(range) {
+
+            var data = [];
+            data.push({
+                "key": "CRE Index",
+                "values": []
+            });
+
+
+            if (range < 1) {
+                range = Math.abs(range);
+            }
+
+            for (var i = 1; i <= range; i++) {
+                data[0].values.push([i, Math.floor(Math.random() * 10) + 14]);
+            }
+            return data;
+        };
+
+        var lineChartData2 = function(range) {
+
+            var data = [];
+            data.push({
+                "key": "QC Effectiveness",
+                "values": []
+            });
+
+
+            if (range < 1) {
+                range = Math.abs(range);
+            }
+
+            for (var i = 1; i <= range; i++) {
+                data[0].values.push([i, Math.floor(Math.random() * 10) + 14]);
+            }
+            return data;
+        };
+
+                var dataFactory = function(seriesNum, perSeries, streams) {
+            return new d3.range(0, seriesNum).map(function(d, i) {
+                return {
+                    key: streams[i],
+                    values: new d3.range(0, perSeries).map(function(f, j) {
+                        return {
+                            y: 10 + Math.floor(Math.random() * 10000) + 30000,
+                            x: j + 1
+                        }
+                    })
+                };
+            });
+
+        }
+        var publicStorage = _.PublicStore.openPort();
+        publicStorage.put('dataVolume', dataFactory);
         $('#goHome').prop("href", "index");
+        publicStorage.put('QM', lineChartData);
+        lChart.triggerIt({
+
+            containerId: '#quality-matrix-charts-customer-reported-error',
+            color: ['#00FF00'],
+            data: publicStorage.get('QM')(10)
+        }, function() {
+
+
+        });
+
+        $("#CRE-slider").on('input', function() {
+
+            $("#CRE-slider-text").html(this.value);
+
+            lChart.triggerIt({
+
+                containerId: '#quality-matrix-charts-customer-reported-error',
+                color: ['#00FF00'],
+                data: publicStorage.get('QM')(this.value)
+            });
+
+
+        });
+
+
+
+        publicStorage.put('QCE', lineChartData2);
+        lChart.triggerIt({
+
+            containerId: '#quality-matrix-charts-customer-qc-effectiveness',
+            color: ['#00FF00'],
+            data: publicStorage.get('QCE')(10)
+        }, function() {
+
+
+        });
+
+
+
+
+        $("#QCE-slider").on('input', function() {
+
+            $("#QCE-slider-text").html(this.value);
+            lChart.triggerIt({
+                containerId: '#quality-matrix-charts-customer-qc-effectiveness',
+                color: ['#00FF00'],
+                data: publicStorage.get('QCE')(this.value)
+            });
+
+
+        });
+
     });
 
     /*-------------*/
@@ -2237,7 +2345,6 @@ $(document).ready(function() {
 
 
         //////
-
 
         /////
 
