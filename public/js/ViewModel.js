@@ -13,7 +13,7 @@ var _ = (function(module, $) {
 
 
             $('#lockbox-inbound-file-process').html('<font class="digital animated fadeIn" color="#FCB446">' + data.fileInProcess + '</font>');
-            $('#lockbox-inbound-file-error').html('<font class="digital animated fadeIn" color="#FE2E64">' + data.fileInError + '</font>');
+            $('#lockbox-inbound-file-error').html('<font class="digital animated fadeIn" color="#FF0044">' + data.fileInError + '</font>');
             $('#lockbox-inbound-file-processed').html('<font class="digital animated fadeIn" color="#00FF00">' + data.fileProcessed + '</font>');
 
 
@@ -80,7 +80,7 @@ var _ = (function(module, $) {
 
 
 
-            $('#keyInAssigned').html('<font class="digital animated fadeIn" color="#FE2E64">' + data.assigned + '</font>');
+            $('#keyInAssigned').html('<font class="digital animated fadeIn" color="#FF0044">' + data.assigned + '</font>');
             $('#keyInProgress').html('<font class="digital animated fadeIn" color="#FCB446">' + data.inProgress + '</font>');
             $('#keyInCompleted').html('<font class="digital animated fadeIn" color="#C184FA">' + data.completed + '</font>');
             $('#keyInSubmitted').html('<font class="digital animated fadeIn" color="#00FF00">' + data.submitted + '</font>');
@@ -115,7 +115,7 @@ var _ = (function(module, $) {
 
 
             $('#lockbox-outbound-file-process').html('<font class="digital animated fadeIn" color="#FCB446">' + data.fileInProcess + '</font>');
-            $('#lockbox-outbound-file-error').html('<font class="digital animated fadeIn" color="#FE2E64">' + data.fileInError + '</font>');
+            $('#lockbox-outbound-file-error').html('<font class="digital animated fadeIn" color="#FF0044">' + data.fileInError + '</font>');
             $('#lockbox-outbound-file-processed').html('<font class="digital animated fadeIn" color="#00FF00">' + data.fileProcessed + '</font>');
 
 
@@ -149,7 +149,7 @@ var _ = (function(module, $) {
 
 
             $('#claim-file-process').html('<font class="digital animated fadeIn" color="#FCB446">' + data.fileInProcess + '</font>');
-            $('#claim-file-error').html('<font class="digital animated fadeIn" color="#FE2E64">' + data.fileInError + '</font>');
+            $('#claim-file-error').html('<font class="digital animated fadeIn" color="#FF0044">' + data.fileInError + '</font>');
             $('#claim-file-processed').html('<font class="digital animated fadeIn" color="#00FF00">' + data.fileProcessed + '</font>');
 
 
