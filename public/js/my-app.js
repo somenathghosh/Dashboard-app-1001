@@ -1899,7 +1899,9 @@ $(document).ready(function() {
         });
 
 
-
+         $("#customer-reported-error").on('click', function() {
+            //mainView.loadPage('customer-reported-error');
+         });
 
         $("#QCE-slider").on('input', function() {
 

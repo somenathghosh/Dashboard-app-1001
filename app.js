@@ -40,7 +40,7 @@ app.get('/claim.html', routes.claim);
 app.get('/keyin-detail.html', routes.keyinDetail);
 app.get('/reports', routes.reports);
 app.get('/quality-matrix', routes.qualityMatrix);
-
+app.get('/customer-reported-error', routes.customerReportedError);
 
 
 http.createServer(app).listen(app.get('port'), function(){

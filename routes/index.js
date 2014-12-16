@@ -31,3 +31,6 @@ exports.qualityMatrix = function(req, res){
   res.render('quality-matrix.html');
 };
 
+exports.customerReportedError = function(req, res){
+  res.render('customer-reported-error.html');
+};
