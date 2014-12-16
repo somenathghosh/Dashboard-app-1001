@@ -1927,3 +1927,237 @@ nv.addGraph(function() {
 
 
 });
+
+
+
+
+
+        function paintAnimation(callback) {
+
+
+
+
+            var api = new _.API();
+
+            function inboundHomeCallback(success, data) {
+
+                if (success) {
+
+                
+                    api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home", outboundHomeCallback);
+
+                    var vm = new _.ViewModelHomeInbound();
+
+                    var cData = new _.ChartDataCreator(data);
+
+                    vm.applyModel(data);
+
+
+                    setTimeout(function() {
+                        
+
+                        pie.draw({
+                            data: cData.chartData,
+                            showLabels: true,
+                            labelType: "percent",
+                            isDonut: true,
+                            donutRatio: 0.35,
+                            mainView: mainView,
+                            page: "lockbox-inbound.html",
+                            colors: ["#DC3912", "#FCB446", "#109618"],
+                            selector: "#chartL1",
+                            showLegend: false
+
+
+
+                        }, function() {
+
+
+
+                        });
+
+
+                    }, 200);
+
+
+
+
+                } else {
+
+
+
+                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
+
+                        function() {
+                            myApp.hideIndicator();
+                        },
+
+                        function() {
+                            myApp.hideIndicator();
+                        }
+                    );
+
+                }
+
+            };
+
+
+            function outboundHomeCallback(success, data) {
+
+                if (success) {
+
+
+                    api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home", keyInHomeCallback);
+
+                    var vm = new _.ViewModelOutboundHome();
+                    var cData = new _.ChartDataCreator(data);
+                    vm.applyModel(data);
+                    setTimeout(function() {
+                       
+
+                        pie.draw({
+                            data: cData.chartData,
+                            showLabels: true,
+                            labelType: "percent",
+                            isDonut: true,
+                            donutRatio: 0.35,
+                            mainView: mainView,
+                            page: "lockbox-outbound.html",
+                            colors: ["#DC3912", "#FCB446", "#109618"],
+                            selector: "#chartL3",
+                            showLegend: false
+
+
+
+                        }, function() {
+
+
+                        });
+
+                    }, 400);
+
+
+                } else {
+
+                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
+
+                        function() {
+                            myApp.hideIndicator();
+                        },
+
+                        function() {
+                            myApp.hideIndicator();
+                        }
+                    );
+                }
+
+            };
+
+            function keyInHomeCallback(success, data) {
+
+                if (success) {
+
+
+                    api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home", claimHomeCallback);
+
+                    var vm = new _.ViewModelHomeKeyIn();
+                    vm.applyModel(data);
+
+                    var cData = new _.ChartDataCreator(data);
+                    setTimeout(function() {
+                        
+                        pie.draw({
+                            data: cData.chartKeyinData,
+                            showLabels: true,
+                            labelType: "percent",
+                            isDonut: false,
+                            donutRatio: 0.0,
+                            mainView: mainView,
+                            page: "keyin-detail.html",
+                            colors: ["#109618", "#FCB446", "#AE2706", "#7211CE"],
+                            selector: "#chartL2",
+                            showLegend: false
+
+
+
+                        }, function() {
+
+
+
+                        });
+
+                    }, 600);
+
+
+                } else {
+
+                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
+
+                        function() {
+                            myApp.hideIndicator();
+                        },
+
+                        function() {
+                            myApp.hideIndicator();
+                        }
+                    );
+                }
+
+            };
+
+
+            function claimHomeCallback(success, data) {
+
+                if (success) {
+
+                    var vm = new _.ViewModelClaim();
+
+
+                    var cData = new _.ChartDataCreator(data);
+                    vm.applyModel(data);
+
+                    setTimeout(function() {
+                        
+                        pie.draw({
+                            data: cData.chartData,
+                            showLabels: true,
+                            labelType: "percent",
+                            isDonut: true,
+                            donutRatio: 0.35,
+                            mainView: mainView,
+                            page: "claim.html",
+                            colors: ["#DC3912", "#FCB446", "#109618"],
+                            selector: "#chartL4",
+                            showLegend: false
+
+
+
+                        }, function() {
+
+                            callback();
+
+                        });
+
+                    }, 800);
+
+                } else {
+
+                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
+
+                        function() {
+                            myApp.hideIndicator();
+                        },
+
+                        function() {
+                            myApp.hideIndicator();
+                        }
+                    );
+
+                }
+
+            };
+
+
+            api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home", inboundHomeCallback);
+
+        }

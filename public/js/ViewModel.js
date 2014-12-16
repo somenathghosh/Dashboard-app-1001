@@ -81,9 +81,9 @@ var _ = (function(module, $) {
 
 
             $('#keyInAssigned').html('<font class="digital animated fadeIn" color="#FE2E64">' + data.assigned + '</font>');
-            $('#keyInProgress').html('<font class="digital animated fadeIn" color="#00FF00">' + data.inProgress + '</font>');
-            $('#keyInCompleted').html('<font class="digital animated fadeIn" color="#B707FD">' + data.completed + '</font>');
-            $('#keyInSubmitted').html('<font class="digital animated fadeIn" color="#FF9900">' + data.submitted + '</font>');
+            $('#keyInProgress').html('<font class="digital animated fadeIn" color="#FCB446">' + data.inProgress + '</font>');
+            $('#keyInCompleted').html('<font class="digital animated fadeIn" color="#C184FA">' + data.completed + '</font>');
+            $('#keyInSubmitted').html('<font class="digital animated fadeIn" color="#00FF00">' + data.submitted + '</font>');
 
 
         };

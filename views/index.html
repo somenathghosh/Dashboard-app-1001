@@ -103,7 +103,7 @@
 					<!-- Page, "data-page" contains page name -->
 					<div data-page="index" class="page navbar-fixed toolbar-fixed">
 						<!-- Scrollable page content -->
-						<div id="main-view-test-fadein" class="page-content">
+						<div id="main-view-test-fadein" class="page-content" style="overflow-x: hidden;">
 							<div class="row no-gutter">
 								<div class=" welcomeBG col-50">
 									<div id="welcomeName" class="textAlignLeft"> <font></font></div>
@@ -120,21 +120,20 @@
 										<a href="#" data-popover=".popover-lockbox-inbound-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
 												<div id="lockbox-inbound-file-process" class=" textAlignCenter "  >
-													<font class="digital" color="#00FF00">100</font>
+													<font class="digital" color="#FCB446">100</font>
 												</div>
 											</div>
 										</a>
 										<div class="labelText">Lockbox Inbound Process</div>
 										<a href="#" data-popover=".popover-lockbox-inbound-file-error" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
-												<div class="textAlignCenter " id="lockbox-inbound-file-error"  ><font class="digital" color="#DC3912">1</font></div>
+												<div class="textAlignCenter " id="lockbox-inbound-file-error"  ><font class="digital" color="#FE2E64">1</font></div>
 											</div>
 										</a>
 									</div>
-									<!--<a href="lockbox-inbound.html" class="">-->
 									
-									<div class="row chartCenter" >
-										<div id="inboundTransition">
+									<div class="row" >
+										<div class="chartCenter" id="inboundTransition">
 										<div class="col-100" id="chartL1" >
 											<svg class="" style="width:300px; height:300px" >
 										</div>
@@ -145,30 +144,32 @@
 									<div class="row">
 										<div class="divCenter ">
 											<a href="#" data-popover=".popover-lockbox-inbound-file-processed" class="open-popover">
-												<div class="" id="lockbox-inbound-file-processed" ><font class="digital " color="#FF9900">1000</font>
+												<div class="" id="lockbox-inbound-file-processed" ><font class="digital " color="#00FF00">1000</font>
 												</div>
 											</a>
 										</div>
 									</div>
 								</div>
+
+
 								<div class="boxBG-left-1 col-50" id="keyinProcess">
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-keyin-file-assigned" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
-												<div class="textAlignCenter " id="keyInAssigned" ><font class="digital" color="#FF9900">100</font></div>
+												<div class="textAlignCenter " id="keyInAssigned" ><font class="digital" color="#FE2E64">100</font></div>
 											</div>
 										</a>
 										<div class="labelText">Key In Process</div>
 										<a href="#" data-popover=".popover-lockbox-keyin-file-progress" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
-												<div class="textAlignCenter " id="keyInProgress" ><font class="digital" color="#00FF00">100</font></div>
+												<div class="textAlignCenter " id="keyInProgress" ><font class="digital" color="#FCB446">100</font></div>
 											</div>
 										</a>
 									</div>
 									<!--<a href="keyin-detail.html" class="">-->
 									
-									<div class="row chartCenter" >
-											<div id="keyinTransition">
+									<div class="row " >
+											<div class="chartCenter" id="keyinTransition">
 											<div class="col-100" id="chartL2" >
 												<svg class="" style="width:300px; height:300px" >
 											</div>
@@ -178,36 +179,38 @@
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-keyin-file-completed" class="open-popover">
 											<div style="margin-top: -7px; margin-left: 5px;">
-												<div class="textAlignCenter " id="keyInCompleted" ><font class="digital" color="#DFC2FC">100</font></div>
+												<div class="textAlignCenter " id="keyInCompleted" ><font class="digital" color="#C184FA">100</font></div>
 											</div>
 										</a>
 										<a href="#" data-popover=".popover-lockbox-keyin-file-submitted" class="open-popover">
 											<div style=" margin-top: -7px; margin-right: 5px;">
-												<div class="textAlignCenter " id="keyInSubmitted" ><font class="digital" color="#DC3912">100</font></div>
+												<div class="textAlignCenter " id="keyInSubmitted" ><font class="digital" color="#00FF00">100</font></div>
 											</div>
 										</a>
 									</div>
 								</div>
 							</div>
+
+
 							<div class="row no-gutter boxBG">
 								<div class="boxBG-right-2 col-50" id="outboundProcess">
 									<div class="row">
 										<a href="#" data-popover=".popover-lockbox-outbound-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
-												<div class="textAlignCenter " id="lockbox-outbound-file-process" ><font class="digital" color="#00FF00">100</font></div>
+												<div class="textAlignCenter " id="lockbox-outbound-file-process" ><font class="digital" color="#FCB446">100</font></div>
 											</div>
 										</a>
 										<div class="labelText">Lockbox Outbound Process</div>
 										<a href="#" data-popover=".popover-lockbox-outbound-file-error" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
-												<div class="textAlignCenter " id="lockbox-outbound-file-error"  ><font class="digital" color="#DC3912">1</font></div>
+												<div class="textAlignCenter " id="lockbox-outbound-file-error"  ><font class="digital" color="#FE2E64">1</font></div>
 											</div>
 										</a>
 									</div>
 									<!--<a href="lockbox-outbound.html" class="">-->
 									
-									<div class="row chartCenter">
-										<div id="outboundTransition">
+									<div class="row ">
+										<div class="chartCenter" id="outboundTransition">
 											<div class="col-100" id="chartL3" >
 												<svg class="" style="width:300px; height:300px" >
 											</div>
@@ -217,29 +220,31 @@
 									<div class="row">
 										<div class="divCenter ">
 											<a href="#" data-popover=".popover-lockbox-outbound-file-processed" class="open-popover">
-												<div class="" id="lockbox-outbound-file-processed" ><font class="digital " color="#FF9900"></font>1000</div>
+												<div class="" id="lockbox-outbound-file-processed" ><font class="digital " color="#00FF00">1000</font></div>
 											</a>
 										</div>
 									</div>
 								</div>
+
+
 								<div class="boxBG-left-2 col-50" id="claimFileIn">
 									<div class="row">
 										<a href="#" data-popover=".popover-claim-file-process" class="open-popover">
 											<div style="margin-top: 5px; margin-left: 5px;">
-												<div class="textAlignCenter " id="claim-file-process" ><font class="digital" color="#00FF00"></font>100</div>
+												<div class="textAlignCenter " id="claim-file-process" ><font class="digital" color="#FCB446">100</font></div>
 											</div>
 										</a>
 										<div class="labelText">Claim Process</div>
 										<a href="#" data-popover=".popover-claim-file-error" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
-												<div class="textAlignCenter " id="claim-file-error"  ><font class="digital" color="#DC3912"></font>1</div>
+												<div class="textAlignCenter " id="claim-file-error"  ><font class="digital" color="#FE2E64">1</font></div>
 											</div>
 										</a>
 									</div>
 									<!--<a href="claim.html" class="">-->
 									
-									<div class="row chartCenter">
-										<div id="claimTransition">
+									<div class="row ">
+										<div class="chartCenter" id="claimTransition">
 											<div class="col-100" id="chartL4" >
 												<svg class="" style="width:300px; height:300px" >
 											</div>
@@ -249,7 +254,7 @@
 									<div class="row">
 										<div class="divCenter ">
 											<a href="#" data-popover=".popover-claim-file-processed" class="open-popover">
-												<div class="" id="claim-file-processed" ><font class="digital " color="#FF9900"></font>1000</div>
+												<div class="" id="claim-file-processed" ><font class="digital " color="#00FF00">1000</font></div>
 											</a>
 										</div>
 									</div>
@@ -260,6 +265,7 @@
 							<div class="toolbar-inner">
 								<a href="#tab1" class="tab-link "><span class="fa "></span></a>
 								<a href="#tab2" class="tab-link "><span class="fa "></span></a>
+								
 								<a href="#" data-trig=".popup-filter" class="open-popup" ><i class="icon icon-filter"></i></a>
 							</div>
 						</div>
@@ -285,7 +291,13 @@
 						<div class="page-content">
 							<div class="content-block">
 								<div class="row">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+									<p>You can filter View by Group Code and Site Number. To do so, use filter selecting Group Code and corrosponding Site Number using Quick Smart Select and then tap onto Filter.
+
+									View refreshes in every 15 mins. However, if you wish to refresh the page, tap onto Filter.
+
+									</p> 
+
+									<p>To reset View to All Group Codes and Site Numbers back, tap onto Reset</p>
 								</div>
 								<div class="list-block">
 									<ul>
@@ -302,7 +314,7 @@
 												</div>-->
 											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Group Codes" data-back-onselect="true">
 												<!-- select -->
-												<select id="group-codes" class="group-codes" name="group-codes">
+												<select id="groupCode-home" class="group-codes" name="group-codes">
 												</select>
 												<div class="item-content">
 													<div class="item-inner">
@@ -326,7 +338,7 @@
 												</div>-->
 											<a href="#" class="item-link smart-select" data-searchbar="true" data-searchbar-placeholder="Search Site Numbers" data-back-onselect="true">
 												<!-- select -->
-												<select id="site-numbers" class="site-numbers" name="site-numbers">
+												<select id="siteNumber-home" class="site-numbers" name="site-numbers">
 												</select>
 												<div class="item-content">
 													<div class="item-inner">
@@ -342,9 +354,10 @@
 								</div>
 								<div class="row">
 									<div class="col-10"></div>
-									<div class="col-10"></div>
-									<div class="col-60 submitButton-home"><a href="#" class="button button-big close-popup ">Submit</a></div>
-									<div class="col-10"></div>
+								
+									<div class="col-40 submitButton-home-filter"><a href="#" class="button button-big close-popup ">Filter</a></div>
+									<div class="col-40 submitButton-home-reset"><a href="#" class="button button-big close-popup ">Reset</a></div>
+									
 									<div class="col-10"></div>
 								</div>
 							</div>
@@ -373,7 +386,13 @@
 						<div class="page-content">
 							<div class="content-block">
 								<div class="row">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+									<p>You can filter View by Group Code and Site Number. To do so, use filter selecting Group Code and corrosponding Site Number using Quick Smart Select and then tap onto Filter.
+
+									View refreshes in every 15 mins. However, if you wish to refresh the page, tap onto Filter.
+
+									</p> 
+
+									<p>To reset View to All Group Codes and Site Numbers back, tap onto Reset</p>
 								</div>
 								<div class="list-block">
 									<ul>
@@ -411,11 +430,12 @@
 									</ul>
 								</div>
 								<div class="row">
+									
 									<div class="col-10"></div>
+									<div class="col-40 submitButton-Inbound-detail"><a href="#" class="button button-big close-popup ">Filter</a></div>
+									<div class="col-40 submitButton-Inbound-detail-reset"><a href="#" class="button button-big close-popup ">Reset</a></div>
 									<div class="col-10"></div>
-									<div class="col-60 submitButton-Inbound-detail"><a href="#" class="button button-big close-popup ">Submit</a></div>
-									<div class="col-10"></div>
-									<div class="col-10"></div>
+									
 								</div>
 							</div>
 						</div>
@@ -443,7 +463,13 @@
 						<div class="page-content">
 							<div class="content-block">
 								<div class="row">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+									<p>You can filter View by Group Code and Site Number. To do so, use filter selecting Group Code and corrosponding Site Number using Quick Smart Select and then tap onto Filter.
+
+									View refreshes in every 15 mins. However, if you wish to refresh the page, tap onto Filter.
+
+									</p> 
+
+									<p>To reset View to All Group Codes and Site Numbers back, tap onto Reset</p>
 								</div>
 								<div class="list-block">
 									<ul>
@@ -481,11 +507,12 @@
 									</ul>
 								</div>
 								<div class="row">
+								
 									<div class="col-10"></div>
+									<div class="col-40 submitButton-Outbound-detail"><a href="#" class="button button-big close-popup ">Filter</a></div>
+									<div class="col-40 submitButton-Outbound-detail-reset"><a href="#" class="button button-big close-popup ">Reset</a></div>
 									<div class="col-10"></div>
-									<div class="col-60 submitButton-Outbound-detail"><a href="#" class="button button-big close-popup ">Submit</a></div>
-									<div class="col-10"></div>
-									<div class="col-10"></div>
+									
 								</div>
 							</div>
 						</div>
@@ -512,7 +539,14 @@
 						<div class="page-content">
 							<div class="content-block">
 								<div class="row">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+									<p>You can filter View by Group Code and Site Number. To do so, use filter selecting Group Code and corrosponding Site Number using Quick Smart Select and then tap onto Filter.
+
+									View refreshes in every 15 mins. However, if you wish to refresh the page, tap onto Filter.
+
+									</p> 
+
+									<p>To reset View to All Group Codes and Site Numbers back, tap onto Reset</p>
+									
 								</div>
 								<div class="list-block">
 									<ul>
@@ -550,11 +584,14 @@
 									</ul>
 								</div>
 								<div class="row">
+									
 									<div class="col-10"></div>
+									<div class="col-40 submitButton-claim-detail"><a href="#" class="button button-big close-popup ">Filter</a></div>
+									
+
+									<div class="col-40 submitButton-claim-detail-reset"><a href="#" class="button button-big close-popup ">Reset</a></div>
 									<div class="col-10"></div>
-									<div class="col-60 submitButton-claim-detail"><a href="#" class="button button-big close-popup ">Submit</a></div>
-									<div class="col-10"></div>
-									<div class="col-10"></div>
+									
 								</div>
 							</div>
 						</div>
@@ -562,6 +599,12 @@
 				</div>
 			</div>
 		</div>
+
+
+
+
+
+
 		<!-- Registration Settings --> 
 		<div  class="popup popup-app-settings ">
 			<div class="view popup-view">
@@ -575,7 +618,7 @@
 						<div class="page-content">
 							<div class="content-block">
 								<div class="row">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+									<p></p>
 								</div>
 								<div class="list-block">
 									<ul>
@@ -661,7 +704,7 @@
 						<div class="page-content">
 							<div class="content-block">
 								<div class="row">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+									<p></p>
 								</div>
 								<div class="list-block accordion-list">
 									<ul>
@@ -922,7 +965,7 @@
 						<div class="page-content">
 							<div class="content-block">
 								<div class="row">
-									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+									<p> </p>
 								</div>
 								<div class="list-block accordion-list">
 									<ul>

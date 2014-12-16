@@ -186,12 +186,30 @@ $(document).ready(function() {
     });
 
 
+    function showNotification(options){
+
+        myApp.addNotification({
+            title: options.title || "HL-Board Notification",
+            subtitle: options.subtitle || undefined,
+            message: options.message,
+            hold:options.hold || 5000,
+            media: '<i class="icon icon-notification"></i>'
+        });
+
+
+
+    }
+
+
+
 
     //---------------------------------------------------------------------------------------------//
 
 
 
     /************************************************************************************************/
+
+   
 
     var homelink = $('#goHome');
 
@@ -260,7 +278,7 @@ $(document).ready(function() {
 
                                     setTimeout(function() {
 
-                                        myApp.hidePreloader();
+                                        myApp.hideIndicator();
                                         myApp.showIndicator();
                                         buildHomePage(function() {
                                             setTimeout(function() {
@@ -299,7 +317,7 @@ $(document).ready(function() {
 
                 } else {
 
-                    //myApp.hidePreloader();
+                    //myApp.hideIndicator();
 
                     localStorage.lastVisitedDateTime = localStorage.visitedNow || (date.dateNow() + ' ' + date.timeNow());
                     localStorage.visitedNow = date.dateNow() + ' ' + date.timeNow();
@@ -312,6 +330,11 @@ $(document).ready(function() {
                             myApp.hideIndicator();
 
                             $('#main-view-test-fadein').removeClass('animated zoomIn');
+                            showNotification({
+                                
+                                message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('homeGrCode') + " and Site Number: "+ sessionStorage.getItem('homeSiteNumber')
+
+                            });
 
                         }, 200);
 
@@ -327,6 +350,8 @@ $(document).ready(function() {
 
         }
     });
+
+
 
     $$('.popup-filter').on('open', function() {
         setGroupCodes();
@@ -359,6 +384,8 @@ $(document).ready(function() {
 
     function buildHomePage(callback) {
 
+        sessionStorage.setItem("homeGrCode","All");
+        sessionStorage.setItem("homeSiteNumber","All");
 
 
 
@@ -385,13 +412,13 @@ $(document).ready(function() {
 
                 {
                     label: "File Submitted",
-                    value: 40
+                    value: 100
                 }, {
                     label: "File in Progress",
-                    value: 60
+                    value: 100
                 }, {
                     label: "File Assigned",
-                    value: 20
+                    value: 100
                 },
 
                 {
@@ -530,31 +557,53 @@ $(document).ready(function() {
         }
 
 
+        startAnimation(function() {
 
-        function paintAnimation(callback) {
+            refreshBuildHomePage(callback);
 
-
-
-
-            var api = new _.API();
-
-            function inboundHomeCallback(success, data) {
-
-                if (success) {
-
-                    //var api = new _.API();
-                    api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home", outboundHomeCallback);
-
-                    var vm = new _.ViewModelHomeInbound();
-
-                    var cData = new _.ChartDataCreator(data);
-
-                    vm.applyModel(data);
+        });
 
 
-                    setTimeout(function() {
-                        //drawNvd3Home(cData.chartData, "#chartL1", true,0.35,"lockbox-inbound.html",false);
-                        //$('#chartL1').addClass('animated zoomIn');
+
+    };
+
+
+
+    function refreshBuildHomePage(callback,groupCode, siteNumber) {
+
+
+        var pie = new D3PieChart();
+       
+        myApp.showIndicator();
+
+        var api = new _.API();
+
+        var url;
+
+        if(groupCode && siteNumber){
+            url="https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber;
+        }
+        else{
+            url="https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home";
+        }
+
+        api.getIt(url, inboundHomeCallback);
+
+
+
+        function inboundHomeCallback(success, data) {
+
+            if (success) {
+
+                var vm = new _.ViewModelHomeWelcome();
+                vm.applyModel();
+
+                var vm = new _.ViewModelHomeInbound();
+                vm.applyModel(data);
+                var cData = new _.ChartDataCreator(data);
+
+                setTimeout(function() {
+                        
 
                         pie.draw({
                             data: cData.chartData,
@@ -577,257 +626,31 @@ $(document).ready(function() {
                         });
 
 
-                    }, 200);
-
-
-
-
-                } else {
-
-
-
-                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                        function() {
-                            myApp.hidePreloader();
-                        },
-
-                        function() {
-                            myApp.hidePreloader();
-                        }
-                    );
-
-                }
-
-            };
-
-
-            function outboundHomeCallback(success, data) {
-
-                if (success) {
-
-
-                    api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home", keyInHomeCallback);
-
-                    var vm = new _.ViewModelOutboundHome();
-                    var cData = new _.ChartDataCreator(data);
-                    vm.applyModel(data);
-                    setTimeout(function() {
-                        //drawNvd3Home(cData.chartData, "#chartL3", true,0.35,"lockbox-outbound.html",false);
-
-                        pie.draw({
-                            data: cData.chartData,
-                            showLabels: true,
-                            labelType: "percent",
-                            isDonut: true,
-                            donutRatio: 0.35,
-                            mainView: mainView,
-                            page: "lockbox-outbound.html",
-                            colors: ["#DC3912", "#FCB446", "#109618"],
-                            selector: "#chartL3",
-                            showLegend: false
-
-
-
-                        }, function() {
-
-
-                        });
-
-                    }, 400);
-
-
-                } else {
-
-                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                        function() {
-                            myApp.hidePreloader();
-                        },
-
-                        function() {
-                            myApp.hidePreloader();
-                        }
-                    );
-                }
-
-            };
-
-            function keyInHomeCallback(success, data) {
-
-                if (success) {
-
-
-                    api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home", claimHomeCallback);
-
-                    var vm = new _.ViewModelHomeKeyIn();
-                    vm.applyModel(data);
-
-                    var cData = new _.ChartDataCreator(data);
-                    setTimeout(function() {
-                        //drawNvd3Home(cData.chartKeyinData, "#chartL2", false,0,"keyin-detail.html",false);
-                        pie.draw({
-                            data: cData.chartKeyinData,
-                            showLabels: true,
-                            labelType: "percent",
-                            isDonut: false,
-                            donutRatio: 0.0,
-                            mainView: mainView,
-                            page: "keyin-detail.html",
-                            colors: ["#109618", "#FCB446", "#AE2706", "#7211CE"],
-                            selector: "#chartL2",
-                            showLegend: false
-
-
-
-                        }, function() {
-
-
-
-                        });
-
-                    }, 600);
-
-
-                } else {
-
-                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                        function() {
-                            myApp.hidePreloader();
-                        },
-
-                        function() {
-                            myApp.hidePreloader();
-                        }
-                    );
-                }
-
-            };
-
-
-            function claimHomeCallback(success, data) {
-
-                if (success) {
-
-                    var vm = new _.ViewModelClaim();
-
-
-                    var cData = new _.ChartDataCreator(data);
-                    vm.applyModel(data);
-
-                    setTimeout(function() {
-                        //drawNvd3Home(cData.chartData, "#chartL4", true,0.35,"claim.html",false);
-                        pie.draw({
-                            data: cData.chartData,
-                            showLabels: true,
-                            labelType: "percent",
-                            isDonut: true,
-                            donutRatio: 0.35,
-                            mainView: mainView,
-                            page: "claim.html",
-                            colors: ["#DC3912", "#FCB446", "#109618"],
-                            selector: "#chartL4",
-                            showLegend: false
-
-
-
-                        }, function() {
-
-                            callback();
-
-                        });
-
-                    }, 800);
-
-                } else {
-
-                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                        function() {
-                            myApp.hidePreloader();
-                        },
-
-                        function() {
-                            myApp.hidePreloader();
-                        }
-                    );
-
-                }
-
-            };
-
-
-            api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home", inboundHomeCallback);
-
-        }
-
-
-        startAnimation(function() {
-
-            paintAnimation(callback);
-
-        });
-
-
-
-    };
-
-
-
-    function refreshBuildHomePage(groupCode, siteNumber, callback) {
-
-
-        var pie = new D3PieChart();
-        //myApp.showPreloader('Refreshing');
-        myApp.showIndicator();
-
-        var api = new _.API();
-
-        function inboundHomeCallback(success, data) {
-
-            if (success) {
-
-                var vm = new _.ViewModelHomeWelcome();
-                vm.applyModel();
-
-                var vm = new _.ViewModelHomeInbound();
-                vm.applyModel(data);
-                var cData = new _.ChartDataCreator(data);
-
-                pie.draw({
-                    data: cData.chartData,
-                    showLabels: true,
-                    labelType: "percent",
-                    isDonut: true,
-                    donutRatio: 0.35,
-                    mainView: mainView,
-                    page: "lockbox-inbound.html",
-                    colors: ["#DC3912", "#FCB446", "#109618"],
-                    selector: "#chartL1",
-                    showLegend: false
-
-
-
-                }, function() {
-
-
-
-                });
+                }, 200);
 
                 var api = new _.API();
-                api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber, outboundHomeCallback);
+                var url;
+
+                if(groupCode && siteNumber){
+
+                    url = "https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber;
+                }
+                else{
+                    url = "https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home";
+                }
+               
+                api.getIt(url, outboundHomeCallback);
 
             } else {
 
                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     },
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     }
                 );
 
@@ -843,9 +666,9 @@ $(document).ready(function() {
                 var vm = new _.ViewModelOutboundHome();
                 vm.applyModel(data);
 
-                api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber, keyInHomeCallback);
                 var cData = new _.ChartDataCreator(data);
 
+                setTimeout(function() {
                 pie.draw({
                     data: cData.chartData,
                     showLabels: true,
@@ -864,18 +687,31 @@ $(document).ready(function() {
 
 
                 });
+            },400);
 
+                var url;
+
+                if(groupCode && siteNumber){
+
+                    url="https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber;
+                }
+                else{
+                    url="https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home";
+                }
+
+                api.getIt(url, keyInHomeCallback);
+              
 
             } else {
 
                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     },
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     }
                 );
 
@@ -889,10 +725,11 @@ $(document).ready(function() {
 
                 var vm = new _.ViewModelHomeKeyIn();
                 vm.applyModel(data);
-                api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber, claimHomeCallback);
+                
 
                 var cData = new _.ChartDataCreator(data);
 
+                 setTimeout(function() {
                 pie.draw({
                     data: cData.chartKeyinData,
                     showLabels: true,
@@ -912,18 +749,30 @@ $(document).ready(function() {
 
 
                 });
+            },600);
 
+                var url;
+
+                if(groupCode && siteNumber){
+
+                    url="https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber
+                }
+                else{
+                    url="https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home"
+                }
+
+                api.getIt(url, claimHomeCallback);
 
             } else {
 
                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     },
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     }
                 );
 
@@ -941,6 +790,7 @@ $(document).ready(function() {
 
                 var cData = new _.ChartDataCreator(data);
 
+                 setTimeout(function() {
                 pie.draw({
                     data: cData.chartData,
                     showLabels: true,
@@ -960,17 +810,18 @@ $(document).ready(function() {
                     callback();
 
                 });
+            },800);
 
             } else {
 
                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     },
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     }
                 );
 
@@ -978,31 +829,85 @@ $(document).ready(function() {
 
         };
 
-
-        api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber, inboundHomeCallback);
+        
 
 
     };
 
 
-    $('.submitButton-home').click(function() {
+    $('.submitButton-home-filter').click(function() {
 
         var groupCode = $('#groupCode-home').val();
         var siteNumber = $('#siteNumber-home').val();
+        sessionStorage.setItem("homeGrCode",groupCode);
+        sessionStorage.setItem("homeSiteNumber",siteNumber);
         
-        refreshBuildHomePage(groupCode, siteNumber, function() {
+        if(groupCode==="All" && siteNumber ==="All"){
+
+            refreshBuildHomePage(function() {
+
+                setTimeout(function() {
+
+                    myApp.hideIndicator();
+                    showNotification({
+                                
+                        message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('homeGrCode') + " and Site Number: "+ sessionStorage.getItem('homeSiteNumber')
+
+                    });
+
+                }, 500);
+
+            });
+
+
+        }
+        else{
+
+            refreshBuildHomePage(function() {
+
+                setTimeout(function() {
+
+                    myApp.hideIndicator();
+                    showNotification({
+                                
+                        message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('homeGrCode') + " and Site Number: "+ sessionStorage.getItem('homeSiteNumber')
+
+                    });
+
+                }, 500);
+
+            },groupCode, siteNumber);
+
+        }
+
+
+    });
+
+
+    $('.submitButton-home-reset').click(function() {
+
+
+        sessionStorage.setItem("homeGrCode","All");
+        sessionStorage.setItem("homeSiteNumber","All");
+
+        refreshBuildHomePage(function() {
 
             setTimeout(function() {
 
                 myApp.hideIndicator();
+                showNotification({
+                            
+                    message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('homeGrCode') + " and Site Number: "+ sessionStorage.getItem('homeSiteNumber')
+
+                });
 
             }, 500);
 
         });
 
 
-    });
 
+    });
 
 
 
@@ -1014,7 +919,7 @@ $(document).ready(function() {
         myApp.showIndicator();
         var groupCode;
         var siteNumber;
-        refreshBuildHomePage(groupCode, siteNumber, function() {
+        refreshBuildHomePage(function() {
 
             setTimeout(function() {
 
@@ -1022,7 +927,7 @@ $(document).ready(function() {
 
             }, 1000);
 
-        });
+        },groupCode, siteNumber);
 
        
         homelink.prop("href", "#");
@@ -1099,11 +1004,11 @@ $(document).ready(function() {
                     myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                         function() {
-                            myApp.hidePreloader();
+                            myApp.hideIndicator();
                         },
 
                         function() {
-                            myApp.hidePreloader();
+                            myApp.hideIndicator();
                         }
                     );
 
@@ -1151,11 +1056,11 @@ $(document).ready(function() {
                     myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                         function() {
-                            myApp.hidePreloader();
+                            myApp.hideIndicator();
                         },
 
                         function() {
-                            myApp.hidePreloader();
+                            myApp.hideIndicator();
                         }
                     );
 
@@ -1210,11 +1115,11 @@ $(document).ready(function() {
                     myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                         function() {
-                            myApp.hidePreloader();
+                            myApp.hideIndicator();
                         },
 
                         function() {
-                            myApp.hidePreloader();
+                            myApp.hideIndicator();
                         }
                     );
 
@@ -1257,11 +1162,11 @@ $(document).ready(function() {
                     myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                         function() {
-                            myApp.hidePreloader();
+                            myApp.hideIndicator();
                         },
 
                         function() {
-                            myApp.hidePreloader();
+                            myApp.hideIndicator();
                         }
                     );
 
@@ -1319,11 +1224,11 @@ $(document).ready(function() {
                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     },
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     }
                 );
 
@@ -1376,11 +1281,11 @@ $(document).ready(function() {
                 myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     },
 
                     function() {
-                        myApp.hidePreloader();
+                        myApp.hideIndicator();
                     }
                 );
 
@@ -1591,16 +1496,54 @@ $(document).ready(function() {
             var siteNumber = $('#siteNumber-claim').val();
 
             myApp.showIndicator();
+
+
+            if(groupCode==="All" && siteNumber === "All"){
+
+                getClaimDetail(function() {
+
+                    setTimeout(function() {
+                        myApp.hideIndicator();
+                    }, 1000);
+
+                });
+
+            }
+
+            else{
+
+                getClaimDetail(function() {
+
+                    setTimeout(function() {
+                        myApp.hideIndicator();
+                    }, 1000);
+
+                }, groupCode, siteNumber);
+
+            }
+            
+            
+
+
+        });
+
+        $('.submitButton-claim-detail-reset').click(function() {
+
+            
+
+            myApp.showIndicator();
             getClaimDetail(function() {
 
                 setTimeout(function() {
                     myApp.hideIndicator();
                 }, 1000);
 
-            }, groupCode, siteNumber);
+            });
 
 
         });
+
+
 
         $('.open-popup').on('click', function() {
             console.log(this.getAttribute('data-trig'));
@@ -1679,6 +1622,41 @@ $(document).ready(function() {
             var groupCode = $('#groupCode-outbound').val();
             var siteNumber = $('#siteNumber-outbound').val();
             myApp.showIndicator();
+
+            if(groupCode==="All" && siteNumber === "All"){
+                getLockboxOutboundDetail(function() {
+
+                    setTimeout(function() {
+                        myApp.hideIndicator();
+                    }, 1000);
+
+
+                });
+            }
+            else
+            {
+
+                getLockboxOutboundDetail(function() {
+
+                    setTimeout(function() {
+                        myApp.hideIndicator();
+                    }, 1000);
+
+
+                }, groupCode, siteNumber);
+
+            
+
+            }
+
+
+        });
+
+
+        $('.submitButton-Outbound-detail-reset').click(function() {
+
+            
+            myApp.showIndicator();
             getLockboxOutboundDetail(function() {
 
                 setTimeout(function() {
@@ -1686,10 +1664,11 @@ $(document).ready(function() {
                 }, 1000);
 
 
-            }, groupCode, siteNumber);
+            });
 
 
         });
+
 
         $('.open-popup').on('click', function() {
             console.log(this.getAttribute('data-trig'));
@@ -1767,17 +1746,46 @@ $(document).ready(function() {
             var groupCode = $('#groupCode-inbound').val();
             var siteNumber = $('#siteNumber-inbound').val();
             myApp.showIndicator();
+
+            if(groupCode==="All" && siteNumber === "All"){
+                getLockboxInboundDetail(function() {
+                    setTimeout(function() {
+                        myApp.hideIndicator();
+                    }, 1000);
+                });
+
+            }
+            else{
+                getLockboxInboundDetail(function() {
+                    setTimeout(function() {
+                        myApp.hideIndicator();
+                    }, 1000);
+                }, groupCode, siteNumber);
+            }
+
+        });
+
+
+        $('.submitButton-Inbound-detail-reset').click(function() {
+
+
+           
+            myApp.showIndicator();
             getLockboxInboundDetail(function() {
                 setTimeout(function() {
                     myApp.hideIndicator();
                 }, 1000);
-            }, groupCode, siteNumber);
+            });
 
 
         });
 
+
+
+
+
         $('.open-popup').on('click', function() {
-            console.log(this.getAttribute('data-trig'));
+            //console.log(this.getAttribute('data-trig'));
             $('.open-popup').html('');
             $('.open-popup').html('<i class="icon icon-filterFilled "></i>');
             myApp.popup(this.getAttribute('data-trig'));
@@ -2215,7 +2223,7 @@ $(document).ready(function() {
 
         $("#MLT-slider").on('input', function() {
             $("#MLT-slider-text").html(this.value);
-            lChart.triggerIt({
+            stackedChart.triggerIt({
 
                 containerId: '#MPI-stacked-area-chart',
                 color: ['#FF2E2E', '#FF9900', '#00FF00'],
@@ -2316,7 +2324,7 @@ $(document).ready(function() {
 
 
         $("#list-selector").change(function() {
-            console.log(this.value);
+            //console.log(this.value);
             if (this.value === "Site List Missed TAT") {
                 vm.applyModel(TATMissedSites, "#reports-missed");
 
@@ -2345,8 +2353,8 @@ $(document).ready(function() {
 
 
         var api = new _.API();
-        console.log(groupCode);
-        console.log(siteNumber);
+        //console.log(groupCode);
+        //console.log(siteNumber);
         if (groupCode && siteNumber) {
 
             api.getIt("https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/detail?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber, inboundDetailcallback);

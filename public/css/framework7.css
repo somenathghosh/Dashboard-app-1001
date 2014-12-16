@@ -2109,8 +2109,12 @@ html.android .label-switch input[type="checkbox"] + .checkbox:before {
   transition-duration: 0;
 }
 .button {
+  /* somenath
   border: 1px solid #007aff;
   color: #007aff;
+  */
+  border: 1px solid #3498db;
+  color: #3498db;
   text-decoration: none;
   text-align: center;
   display: block;
