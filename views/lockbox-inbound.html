@@ -10,340 +10,308 @@
 		<title>My App</title>
 	</head>
 	<body>
-		<!-- Status bar overlay for full screen mode (PhoneGap) -->
-		<div class="statusbar-overlay"></div>
-		<!-- Views -->
-		<div class="views">
-		<!-- Your main view, should have "view-main" class -->
-		<div class="view view-main">
-			<!-- Top Navbar-->
-			<div class="navbar">
-				<div class="navbar-inner">
-					<div class="left intClear">
-						<a href="#" class="back link">
-						<i class="icon icon-back"></i>
-						<span>Back</span>
-						</a>
-					</div>
-					<div class="center sliding"><font class="navBarCaption">Lockbox Inbound Process</font></div>
-					<div class="item-content pull right">
-						<div class="item-inner">
-							<div class="item-input"> <font class="navBarCaption">Flow :</font>
-								<label class="label-switch">
-									<input id="isSequnceSelected" type="checkbox" checked>
-									<div class="checkbox"></div>
-								</label>
-							</div>
-						</div>
-					</div>
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="left intClear">
+					<a href="#" class="back link">
+					<i class="icon icon-back"></i>
+					<span>Back</span>
+					</a>
 				</div>
-				</div
-				
-				<div class="pages navbar-through toolbar-through">
-					<!-- Page, "data-page" contains page name -->
-					<div data-page="lockbox-inbound" class="page navbar-through toolbar-fixed">
-						<!-- Scrollable page content -->
-						<div class="page-content pageBackground">
-							
-							
-							<div class="row no-gutter">
-								<div class="boxBGInbound col-33 ">
-									<div class="row">
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="WTPGreen" ><font class="digit" color="#00FF00">100</font> </div>
-										</div>
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="WTPRed" ><font class="digit" color="#FF0000">1</font></div>
-										</div>
-									</div>
-									<div class="row">
-										
-										<div class="col-100 textAlignCenter innerBox ">
-											<div id="WTPIcon" > <font size="11">
-											<a href="#" data-popover=".popover-WPIcon" class="anchorColor open-popover">
-											<i class="fa fa-clock-o fa-4x"></i>
-											</a>
-											</font></div>
-										</div>
-										
-									</div>
-									<div class="row">
-										<div class="col-100 textAlignCenter innerBox "  >
-											<div class=""><font class="navBarCaption">Waiting to be Processed</font> </div>
-										</div>
-									</div>
-								</div>
-								<div class="boxBGInbound col-33 ">
-									<div class="row">
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="SIGreen" ><font class="digit" color="#00FF00">100</font> </div>
-										</div>
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="SIRed" ><font class="digit" color="#FF0000">1</font></div>
-										</div>
-									</div>
-									<div id="icon-10" class="row">
-										<div class=" col-100 textAlignCenter innerBox">
-											
-											<div id="SIIcon" > 
-											<a href="#" data-popover=".popover-SIIcon" class="anchorColor open-popover">
-												<i class="fa fa-home fa-4x"></i>	 
-											</a>
-											</div>
-											
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div class=""><font class="navBarCaption">Site Identification</font></div>
-										</div>
-									</div>
-								</div>
-								<div class="boxBGInbound col-33 ">
-									<div class="row">
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="EVGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-										</div>
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="EVRed" class=""><font class="digit" color="#FF0000">1</font></div>
-										</div>
-									</div>
-									<div id="icon-20" class="row">
-										<div class="col-100 textAlignCenter innerBox">
-
-											<div id="EVIcon" class="" > 
-											<a href="#" data-popover=".popover-EVIcon" class="anchorColor open-popover">
-												<span class="fa fa-share-square-o fa-4x"></span>
-											</a>
-
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div class=""><font class="navBarCaption">Extraction and Validation</font></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="row no-gutter">
-								<div class="boxBGInbound col-33 ">
-									<div class="row">
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="DMGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-										</div>
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="DMRed" class=""><font class="digit" color="#FF0000">1</font></div>
-										</div>
-									</div>
-									<div id="icon-50" class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div id="DMIcon" class="" > 
-											<a href="#" data-popover=".popover-DMIcon" class="anchorColor open-popover">
-											<span class="fa fa-database fa-4x"></span>
-											</a>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div class=""><font class="navBarCaption">Data Management</font></div>
-										</div>
-									</div>
-								</div>
-								<div class="boxBGInbound col-33 ">
-									<div class="row">
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="PIGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-										</div>
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="PIRed" class=""><font class="digit" color="#FF0000">1</font></div>
-										</div>
-									</div>
-									<div id="icon-40" class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div id="PIIcon" class="" > 
-											<a href="#" data-popover=".popover-PIIcon" class="anchorColor open-popover">
-											<span class="fa fa-user fa-4x"></span>
-											</a>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div class=""><font class="navBarCaption">Payer Identification</font></div>
-										</div>
-									</div>
-								</div>
-								<div class="boxBGInbound col-33 ">
-									<div class="row">
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="BSGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
-										</div>
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="BSRed" class=""><font class="digit" color="#FF0000">1</font></div>
-										</div>
-									</div>
-									<div  id="icon-30" class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div id="BSIcon" class="" > 
-											<a href="#" data-popover=".popover-BSIcon" class="anchorColor open-popover">
-											<span class="fa fa-random fa-4x"></span>
-											</a>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div class=""><font class="navBarCaption">Batch Split</font></div>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-
-							
-
-
-							<div class="row no-gutter">
-								<div class="boxBGInbound col-33 ">
-									<div class="row">
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="WLGreen" class=""><font class="digit" color="#00FF00"></font> </div>
-										</div>
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="WLRed" class=""><font class="digit" color="#FF0000"></font></div>
-										</div>
-									</div>
-									<div id="icon-60" class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div id="WLIcon" class="" > 
-											<a href="#" data-popover=".popover-WLIcon" class="anchorColor open-popover">
-												<span class="fa fa-list-alt fa-4x"></span>
-											</a>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div class=""><font class="navBarCaption">WorkList Load</font></div>
-										</div>
-									</div>
-								</div>
-								<div class="boxBGInbound col-33 ">
-									<div class="row">
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="IAGreen" class=""><font class="digit" color="#00FF00"></font> </div>
-										</div>
-										<div class="col-50 textAlignCenter boxFlip">
-											<div id="IARed" class=""><font class="digit" color="#FF0000"></font></div>
-										</div>
-									</div>
-									<div id="icon-51" class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div id="IAIcon" class="" > 
-											<a href="#" data-popover=".popover-IAIcon" class="anchorColor open-popover">
-											<span class="fa fa-archive fa-4x"></span>
-											</a>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div class=""><font class="navBarCaption">Image Archive</font></div>
-										</div>
-									</div>
-								</div>
-								<div class="boxBGInbound col-33 ">
-									<div class="row">
-										<div class="col-50 textAlignCenter boxFlip ">
-											<div id="ISGreen" class=""><font class="digit" color="#00FF00"></font> </div>
-										</div>
-										<div class="col-50 textAlignCenter boxFlip ">
-											<div id="ISRed" class=""><font class="digit" color="#FF0000"></font></div>
-										</div>
-									</div>
-									<div id="icon-41" class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div id="ISIcon" class="" > 
-											<a href="#" data-popover=".popover-ISIcon" class="anchorColor open-popover">
-												<span class="fa fa-image fa-4x"></span>
-											</a>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-100 textAlignCenter innerBox">
-											<div class=""><font class="navBarCaption">Image Split &amp Conversion</font></div>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-
-						
-
-
-							<div class="greySubBGArrow-firstRow-first hidden step step-1" >
-								<div >
-									<img src="img/Arrow White.png"  width="70" height="30">
-								</div>
-							</div>
-							<div class="greySubBGArrow-firstRow-second hidden step step-2" >
-								<div >
-									<img src="img/Arrow White.png"  width="70" height="30">
-								</div>
-							</div>
-
-							<div class="greySubBGArrow-firstRow-vertical hidden step step-3" >
-								<div>
-									<img src="img/Arrow White.png"  width="70" height="30">
-								</div>
-							</div>
-							<div class="greySubBGArrow-secondRow-first  hidden step step-5 ">
-								<div >
-									<img src="img/Arrow White.png"  width="70" height="30">
-								</div>
-							</div>
-							<div class="greySubBGArrow-secondRow-second hidden step step-4" >
-								<div>
-									<img src="img/Arrow White.png"  width="70" height="30">
-								</div>
-							</div>
-							<div class="greySubBGArrow-secondRow-vertical-1  hidden step step-6" >
-								<div>
-									<img src="img/Arrow White.png"  width="70" height="30">
-								</div>
-							</div>
-							<div class="greySubBGArrow-secondRow-vertical-2 hidden step step-4" >
-								<div >
-									<img src="img/Arrow White.png"  width="70" height="30">
-								</div>
-							</div>
-							<div class="greySubBGArrow-thirdRow-first  hidden step step-6" >
-								<div >
-									<img src="img/Arrow White.png"  width="70" height="30">
-								</div>
-							</div>
-							<div class="greySubBGArrow-thirdRow-second  hidden step step-5" >
-								<div >
-									<img src="img/Arrow White.png"  width="70" height="30">
-								</div>
-							</div>
-						</div>
-						<div class="toolbar ">
-							<div class="toolbar-inner">
-								<a href="#tab1" class="tab-link "><span class="fa "></span></a>
-								<a href="#tab2" class="tab-link "><span class="fa "></span></a>
-								<a href="#" data-trig=".popup-filter-lockbox-inbound" class="open-popup"><i class="icon icon-filter"></i></a>
-							</div>
+				<div class="center sliding"><font class="navBarCaption">Lockbox Inbound Process</font></div>
+				<div class="item-content pull right">
+					<div class="item-inner">
+						<div class="item-input">
+							<font class="navBarCaption">Flow :</font>
+							<label class="label-switch">
+								<input id="isSequnceSelected" type="checkbox" checked>
+								<div class="checkbox"></div>
+							</label>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
+		<div class="pages navbar-through toolbar-through">
+			<div data-page="lockbox-inbound" class="page navbar-through toolbar-fixed">
+				<div class="page-content pageBackground">
+					<div class="row no-gutter">
+						<div class="boxBGInbound col-33 ">
+							<div class="row">
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="WTPGreen" ><font class="digit" color="#00FF00">100</font> </div>
+								</div>
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="WTPRed" ><font class="digit" color="#FF0000">1</font></div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-100 textAlignCenter innerBox ">
+									<div id="WTPIcon" > <font size="11">
+										<a href="#" data-popover=".popover-WPIcon" class="anchorColor open-popover">
+										<i class="fa fa-clock-o fa-4x"></i>
+										</a>
+										</font>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-100 textAlignCenter innerBox "  >
+									<div class=""><font class="navBarCaption">Waiting to be Processed</font> </div>
+								</div>
+							</div>
+						</div>
+						<div class="boxBGInbound col-33 ">
+							<div class="row">
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="SIGreen" ><font class="digit" color="#00FF00">100</font> </div>
+								</div>
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="SIRed" ><font class="digit" color="#FF0000">1</font></div>
+								</div>
+							</div>
+							<div id="icon-10" class="row">
+								<div class=" col-100 textAlignCenter innerBox">
+									<div id="SIIcon" > 
+										<a href="#" data-popover=".popover-SIIcon" class="anchorColor open-popover">
+										<i class="fa fa-home fa-4x"></i>	 
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div class=""><font class="navBarCaption">Site Identification</font></div>
+								</div>
+							</div>
+						</div>
+						<div class="boxBGInbound col-33 ">
+							<div class="row">
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="EVGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
+								</div>
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="EVRed" class=""><font class="digit" color="#FF0000">1</font></div>
+								</div>
+							</div>
+							<div id="icon-20" class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div id="EVIcon" class="" > 
+										<a href="#" data-popover=".popover-EVIcon" class="anchorColor open-popover">
+										<span class="fa fa-share-square-o fa-4x"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div class=""><font class="navBarCaption">Extraction and Validation</font></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row no-gutter">
+						<div class="boxBGInbound col-33 ">
+							<div class="row">
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="DMGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
+								</div>
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="DMRed" class=""><font class="digit" color="#FF0000">1</font></div>
+								</div>
+							</div>
+							<div id="icon-50" class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div id="DMIcon" class="" > 
+										<a href="#" data-popover=".popover-DMIcon" class="anchorColor open-popover">
+										<span class="fa fa-database fa-4x"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div class=""><font class="navBarCaption">Data Management</font></div>
+								</div>
+							</div>
+						</div>
+						<div class="boxBGInbound col-33 ">
+							<div class="row">
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="PIGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
+								</div>
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="PIRed" class=""><font class="digit" color="#FF0000">1</font></div>
+								</div>
+							</div>
+							<div id="icon-40" class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div id="PIIcon" class="" > 
+										<a href="#" data-popover=".popover-PIIcon" class="anchorColor open-popover">
+										<span class="fa fa-user fa-4x"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div class=""><font class="navBarCaption">Payer Identification</font></div>
+								</div>
+							</div>
+						</div>
+						<div class="boxBGInbound col-33 ">
+							<div class="row">
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="BSGreen" class=""><font class="digit" color="#00FF00">100</font> </div>
+								</div>
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="BSRed" class=""><font class="digit" color="#FF0000">1</font></div>
+								</div>
+							</div>
+							<div  id="icon-30" class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div id="BSIcon" class="" > 
+										<a href="#" data-popover=".popover-BSIcon" class="anchorColor open-popover">
+										<span class="fa fa-random fa-4x"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div class=""><font class="navBarCaption">Batch Split</font></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row no-gutter">
+						<div class="boxBGInbound col-33 ">
+							<div class="row">
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="WLGreen" class=""><font class="digit" color="#00FF00"></font> </div>
+								</div>
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="WLRed" class=""><font class="digit" color="#FF0000"></font></div>
+								</div>
+							</div>
+							<div id="icon-60" class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div id="WLIcon" class="" > 
+										<a href="#" data-popover=".popover-WLIcon" class="anchorColor open-popover">
+										<span class="fa fa-list-alt fa-4x"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div class=""><font class="navBarCaption">WorkList Load</font></div>
+								</div>
+							</div>
+						</div>
+						<div class="boxBGInbound col-33 ">
+							<div class="row">
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="IAGreen" class=""><font class="digit" color="#00FF00"></font> </div>
+								</div>
+								<div class="col-50 textAlignCenter boxFlip">
+									<div id="IARed" class=""><font class="digit" color="#FF0000"></font></div>
+								</div>
+							</div>
+							<div id="icon-51" class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div id="IAIcon" class="" > 
+										<a href="#" data-popover=".popover-IAIcon" class="anchorColor open-popover">
+										<span class="fa fa-archive fa-4x"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div class=""><font class="navBarCaption">Image Archive</font></div>
+								</div>
+							</div>
+						</div>
+						<div class="boxBGInbound col-33 ">
+							<div class="row">
+								<div class="col-50 textAlignCenter boxFlip ">
+									<div id="ISGreen" class=""><font class="digit" color="#00FF00"></font> </div>
+								</div>
+								<div class="col-50 textAlignCenter boxFlip ">
+									<div id="ISRed" class=""><font class="digit" color="#FF0000"></font></div>
+								</div>
+							</div>
+							<div id="icon-41" class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div id="ISIcon" class="" > 
+										<a href="#" data-popover=".popover-ISIcon" class="anchorColor open-popover">
+										<span class="fa fa-image fa-4x"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-100 textAlignCenter innerBox">
+									<div class=""><font class="navBarCaption">Image Split &amp Conversion</font></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="greySubBGArrow-firstRow-first hidden step step-1" >
+						<div >
+							<img src="img/Arrow White.png"  width="70" height="30">
+						</div>
+					</div>
+					<div class="greySubBGArrow-firstRow-second hidden step step-2" >
+						<div >
+							<img src="img/Arrow White.png"  width="70" height="30">
+						</div>
+					</div>
+					<div class="greySubBGArrow-firstRow-vertical hidden step step-3" >
+						<div>
+							<img src="img/Arrow White.png"  width="70" height="30">
+						</div>
+					</div>
+					<div class="greySubBGArrow-secondRow-first  hidden step step-5 ">
+						<div >
+							<img src="img/Arrow White.png"  width="70" height="30">
+						</div>
+					</div>
+					<div class="greySubBGArrow-secondRow-second hidden step step-4" >
+						<div>
+							<img src="img/Arrow White.png"  width="70" height="30">
+						</div>
+					</div>
+					<div class="greySubBGArrow-secondRow-vertical-1  hidden step step-6" >
+						<div>
+							<img src="img/Arrow White.png"  width="70" height="30">
+						</div>
+					</div>
+					<div class="greySubBGArrow-secondRow-vertical-2 hidden step step-4" >
+						<div >
+							<img src="img/Arrow White.png"  width="70" height="30">
+						</div>
+					</div>
+					<div class="greySubBGArrow-thirdRow-first  hidden step step-6" >
+						<div >
+							<img src="img/Arrow White.png"  width="70" height="30">
+						</div>
+					</div>
+					<div class="greySubBGArrow-thirdRow-second  hidden step step-5" >
+						<div >
+							<img src="img/Arrow White.png"  width="70" height="30">
+						</div>
+					</div>
+				</div>
+				<div class="toolbar ">
+					<div class="toolbar-inner">
+						<a href="#tab1" class="tab-link "><span class="fa "></span></a>
+						<a href="#tab2" class="tab-link "><span class="fa "></span></a>
+						<a href="#" data-trig=".popup-filter-lockbox-inbound" class="open-popup"><i class="icon icon-filter"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

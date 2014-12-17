@@ -181,7 +181,7 @@ var _ = (function(module, $) {
 
 
             setTimeout(function() {
-                self.initialize();
+                //self.initialize();
                 $('#WTPGreen').html('<font class="digit animated fadeIn" color="#00FF00">' + data.STEP1.fileInProcess + '</font> ');
                 $('#SIGreen').html('<font class="digit animated fadeIn"  color="#00FF00">' + data.STEP2.fileInProcess + '</font> ');
                 $('#EVGreen').html('<font class="digit animated fadeIn" color="#00FF00">' + data.STEP3.fileInProcess + '</font> ');

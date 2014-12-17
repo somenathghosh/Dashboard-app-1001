@@ -37,12 +37,13 @@
 		<link href="css/nv.d3.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
+		<div class="statusbar-overlay">
+			</div>
 		<!-- Status bar overlay for full screen mode (PhoneGap) -->
 		<div class="loadingPage">
 		</div>
 		<div class="hidden overlay">
-			<div class="statusbar-overlay">
-			</div>
+			
 			<!-- Panels overlay-->
 			<div class="panel-overlay ">	
 			</div>
@@ -66,9 +67,17 @@
 							<li class="item-content">
 								<div class="item-media icoBox"><i class="icon icon-matrix"></i></div>
 								<div class="item-inner">
-									<div class="item-title"><a id="app-settings" href="quality-matrix" class="close-panel">Quality Matrix</a></div>
+									<div class="item-title"><a href="quality-matrix" class="close-panel">Quality Metrics</a></div>
 								</div>
 							</li>
+							<!--
+							<li class="item-content">
+								<div class="item-media icoBox"><i class="icon icon-gear"></i></div>
+								<div class="item-inner">
+									<div class="item-title"><a href="#" class="close-panel">Settings</a></div>
+								</div>
+							</li>
+							-->
 							<li class="item-content">
 								<div class="item-media icoBox"><i class="icon icon-leftClose"></i></div>
 								<div class="item-inner">
@@ -124,7 +133,7 @@
 												</div>
 											</div>
 										</a>
-										<div class="labelText">Lockbox Inbound Process</div>
+										<div class="labelText ">Lockbox Inbound Process</div>
 										<a href="#" data-popover=".popover-lockbox-inbound-file-error" class="open-popover">
 											<div style="margin-top: 5px; margin-right: 5px;">
 												<div class="textAlignCenter " id="lockbox-inbound-file-error"  ><font class="digital" color="#FF0044">1</font></div>
@@ -298,7 +307,14 @@
 									</p> 
 
 									<p>To reset View to All Group Codes and Site Numbers back, tap onto Reset</p>
+
 								</div>
+								<!--
+								<div class="row">
+									
+									<div class="aniText h2" >Group Code: XXX &amp Site Number:123</div>
+									
+								</div>-->
 								<div class="list-block">
 									<ul>
 										<!-- Text inputs -->
@@ -360,8 +376,19 @@
 									
 									<div class="col-10"></div>
 								</div>
+								
+
 							</div>
 						</div>
+						<!--
+						<div class="toolbar ">
+								<div class="toolbar-inner">
+								<div></div>
+								
+								<div></div>
+								</div>
+								</div>
+							-->
 					</div>
 				</div>
 			</div>
