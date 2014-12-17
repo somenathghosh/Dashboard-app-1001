@@ -23,8 +23,7 @@ $(document).ready(function() {
         actionsCloseByOutside: false,
         modalCloseByOutside: false,
         popupCloseByOutside: false,
-        preloadPreviousPage: false,
-        notificationCloseOnClick:true
+        preloadPreviousPage: false
 
         //modalPreloaderTitle: "Your Dashboard is getting prepared. Please wait….!!!"
     });
@@ -37,6 +36,7 @@ $(document).ready(function() {
 
         dynamicNavbar: true
     });
+
 
     var homePopupView = myApp.addView('.popup-view', {
 
@@ -70,6 +70,11 @@ $(document).ready(function() {
 
         dynamicNavbar: true
     });
+
+    /*var creSortView = myApp.addView('.cre-view-sort', {
+
+        dynamicNavbar: true
+    });*/
 
 
     /**************************************************************************************************/
@@ -193,9 +198,8 @@ $(document).ready(function() {
             title: options.title || "HL-Board Notification",
             subtitle: options.subtitle || undefined,
             message: options.message,
-            hold:options.hold || 4000,
-            media: '<i class="icon icon-notification"></i>',
-            closeOnClick: true
+            hold:options.hold || 5000,
+            media: '<i class="icon icon-notification"></i>'
         });
 
 
@@ -1443,19 +1447,12 @@ $(document).ready(function() {
 
     myApp.onPageInit('claim', function(page) {
 
-        sessionStorage.setItem('claimGrCode',"All");
-        sessionStorage.setItem('claimSiteNumber',"All");
         myApp.showIndicator();
 
         getClaimDetail(function() {
 
             setTimeout(function() {
                 myApp.hideIndicator();
-                showNotification({
-                            subtitle:"You are in Claim",
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('claimGrCode') + " and Site Number: "+ sessionStorage.getItem('claimSiteNumber')
-
-                });
             }, 1000);
         });
 
@@ -1503,8 +1500,6 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-claim').val();
             var siteNumber = $('#siteNumber-claim').val();
-            sessionStorage.setItem('claimGrCode',groupCode);
-            sessionStorage.setItem('claimSiteNumber',siteNumber);
 
             myApp.showIndicator();
 
@@ -1515,11 +1510,6 @@ $(document).ready(function() {
 
                     setTimeout(function() {
                         myApp.hideIndicator();
-                        showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('claimGrCode') + " and Site Number: "+ sessionStorage.getItem('claimSiteNumber')
-
-                        });
                     }, 1000);
 
                 });
@@ -1532,11 +1522,6 @@ $(document).ready(function() {
 
                     setTimeout(function() {
                         myApp.hideIndicator();
-                        showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('claimGrCode') + " and Site Number: "+ sessionStorage.getItem('claimSiteNumber')
-
-                        });
                     }, 1000);
 
                 }, groupCode, siteNumber);
@@ -1551,18 +1536,12 @@ $(document).ready(function() {
         $('.submitButton-claim-detail-reset').click(function() {
 
             
-            sessionStorage.setItem('claimGrCode',"All");
-            sessionStorage.setItem('claimSiteNumber',"All");
+
             myApp.showIndicator();
             getClaimDetail(function() {
 
                 setTimeout(function() {
                     myApp.hideIndicator();
-                    showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('claimGrCode') + " and Site Number: "+ sessionStorage.getItem('claimSiteNumber')
-
-                        });
                 }, 1000);
 
             });
@@ -1596,20 +1575,11 @@ $(document).ready(function() {
 
     myApp.onPageInit('lockbox-outbound', function(page) {
 
-
-        sessionStorage.setItem('outboundGrCode',"All");
-        sessionStorage.setItem('outboundSiteNumber',"All");
-
         myApp.showIndicator();
         getLockboxOutboundDetail(function() {
 
             setTimeout(function() {
                 myApp.hideIndicator();
-                showNotification({
-                            subtitle:"You are in Outbound",
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('outboundGrCode') + " and Site Number: "+ sessionStorage.getItem('outboundSiteNumber')
-
-                        });
             }, 1000);
 
 
@@ -1657,9 +1627,6 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-outbound').val();
             var siteNumber = $('#siteNumber-outbound').val();
-            sessionStorage.setItem('outboundGrCode',groupCode);
-            sessionStorage.setItem('outboundSiteNumber',siteNumber);
-
             myApp.showIndicator();
 
             if(groupCode==="All" && siteNumber === "All"){
@@ -1667,11 +1634,6 @@ $(document).ready(function() {
 
                     setTimeout(function() {
                         myApp.hideIndicator();
-                        showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('outboundGrCode') + " and Site Number: "+ sessionStorage.getItem('outboundSiteNumber')
-
-                        });
                     }, 1000);
 
 
@@ -1684,11 +1646,6 @@ $(document).ready(function() {
 
                     setTimeout(function() {
                         myApp.hideIndicator();
-                        showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('outboundGrCode') + " and Site Number: "+ sessionStorage.getItem('outboundSiteNumber')
-
-                        });
                     }, 1000);
 
 
@@ -1704,20 +1661,12 @@ $(document).ready(function() {
 
         $('.submitButton-Outbound-detail-reset').click(function() {
 
-            sessionStorage.setItem('outboundGrCode',"All");
-            sessionStorage.setItem('outboundSiteNumber',"All");
             
             myApp.showIndicator();
             getLockboxOutboundDetail(function() {
 
                 setTimeout(function() {
                     myApp.hideIndicator();
-                    showNotification({
-                            
-
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('outboundGrCode') + " and Site Number: "+ sessionStorage.getItem('outboundSiteNumber')
-
-                        });
                 }, 1000);
 
 
@@ -1750,23 +1699,12 @@ $(document).ready(function() {
 
     myApp.onPageInit('lockbox-inbound', function(page) {
 
-
-        sessionStorage.setItem('inboundGrCode',"All");
-        sessionStorage.setItem('inboundSiteNumber',"All");
-
-
         myApp.showIndicator();
 
         getLockboxInboundDetail(function() {
 
             setTimeout(function() {
                 myApp.hideIndicator();
-                showNotification({
-
-                            subtitle:"You are in Inbound",
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('inboundGrCode') + " and Site Number: "+ sessionStorage.getItem('inboundSiteNumber')
-
-                        });
             }, 1000);
 
 
@@ -1813,21 +1751,12 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-inbound').val();
             var siteNumber = $('#siteNumber-inbound').val();
-
-            sessionStorage.setItem('inboundGrCode',groupCode);
-            sessionStorage.setItem('inboundSiteNumber',siteNumber);
-
             myApp.showIndicator();
 
             if(groupCode==="All" && siteNumber === "All"){
                 getLockboxInboundDetail(function() {
                     setTimeout(function() {
                         myApp.hideIndicator();
-                        showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('inboundGrCode') + " and Site Number: "+ sessionStorage.getItem('inboundSiteNumber')
-
-                        });
                     }, 1000);
                 });
 
@@ -1836,11 +1765,6 @@ $(document).ready(function() {
                 getLockboxInboundDetail(function() {
                     setTimeout(function() {
                         myApp.hideIndicator();
-                        showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('inboundGrCode') + " and Site Number: "+ sessionStorage.getItem('inboundSiteNumber')
-
-                        });
                     }, 1000);
                 }, groupCode, siteNumber);
             }
@@ -1850,18 +1774,12 @@ $(document).ready(function() {
 
         $('.submitButton-Inbound-detail-reset').click(function() {
 
-            sessionStorage.setItem('inboundGrCode',"All");
-            sessionStorage.setItem('inboundSiteNumber',"All");
+
            
             myApp.showIndicator();
             getLockboxInboundDetail(function() {
                 setTimeout(function() {
                     myApp.hideIndicator();
-                    showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('inboundGrCode') + " and Site Number: "+ sessionStorage.getItem('inboundSiteNumber')
-
-                        });
                 }, 1000);
             });
 
@@ -1892,8 +1810,21 @@ $(document).ready(function() {
     });
 
     myApp.onPageInit('quality-matrix', function(page) {
+         $('input[type=checkbox]').on('click', function() {
+            var clickedBox = this;
+            console.log(document.getElementsByTagName("input").length);
+            for(var i =0; i< document.getElementsByTagName("input").length;i++){
+                if(document.getElementsByTagName("input")[i].type == "checkbox" &&clickedBox != document.getElementsByTagName("input")[i]){
+                                    console.log(document.getElementsByTagName("input")[i]);
+                    document.getElementsByTagName("input")[i].checked = false;
+                }
+            }
+         });
+     });
 
-        var lChart = new D3LineChart();
+
+    myApp.onPageInit('quality-matrix', function(page) {
+                var lChart = new D3LineChart();
         var lineChartData = function(range) {
 
             var data = [];
@@ -1908,7 +1839,7 @@ $(document).ready(function() {
             }
 
             for (var i = 1; i <= range; i++) {
-                data[0].values.push([i, Math.floor(Math.random() * 10)]);
+                data[0].values.push([i, Math.floor(Math.random() * 10) + 14]);
             }
             return data;
         };
@@ -1927,12 +1858,12 @@ $(document).ready(function() {
             }
 
             for (var i = 1; i <= range; i++) {
-                data[0].values.push([i, Math.floor(Math.random() * 100)]);
+                data[0].values.push([i, Math.floor(Math.random() * 10) + 14]);
             }
             return data;
         };
 
-        var dataFactory = function(seriesNum, perSeries, streams) {
+                var dataFactory = function(seriesNum, perSeries, streams) {
             return new d3.range(0, seriesNum).map(function(d, i) {
                 return {
                     key: streams[i],
@@ -1946,10 +1877,8 @@ $(document).ready(function() {
             });
 
         }
-
-
         var publicStorage = _.PublicStore.openPort();
-        //publicStorage.put('dataVolume', dataFactory);
+        publicStorage.put('dataVolume', dataFactory);
         $('#goHome').prop("href", "index");
         publicStorage.put('QM', lineChartData);
         lChart.triggerIt({
@@ -1991,7 +1920,6 @@ $(document).ready(function() {
 
 
          $("#customer-reported-error").on('click', function() {
-            //mainView.loadPage('customer-reported-error');
          });
 
         $("#QCE-slider").on('input', function() {
@@ -2236,7 +2164,7 @@ $(document).ready(function() {
 
         ////////
 
-        var colorSlide0 = ["#109618","#FCB446"];
+        var colorSlide0 = ['#B45F04', '#FF9900'];
         var streamsSlide0 = ['Forcasted', 'Actual'];
 
         var publicStorage = _.PublicStore.openPort();
@@ -2297,7 +2225,7 @@ $(document).ready(function() {
 
         //////
 
-        var colorSlide2 = ['#FCB446'];
+        var colorSlide2 = ['#FF9900'];
         var streamsSlide2 = ['Volume'];
         publicStorage.put('claimVolume', dataFactory);
 
@@ -2348,7 +2276,7 @@ $(document).ready(function() {
 
         //////
 
-        var colorSlide3 = ['#0170BF'];
+        var colorSlide3 = ['#EE7C02'];
         var streamsSlide3 = ['% Used'];
 
         publicStorage.put('PMU', dataFactory2);
@@ -2413,7 +2341,7 @@ $(document).ready(function() {
         stackedChart.triggerIt({
 
             containerId: '#MPI-stacked-area-chart',
-            color: ['#DC3912',"#109618","#FCB446" ],
+            color: ['#00FF00','#FF9900','#FF0000' ],
             data: publicStorage.get('MPI')(10)
 
         }, function() {
@@ -2427,7 +2355,7 @@ $(document).ready(function() {
             stackedChart.triggerIt({
 
                 containerId: '#MPI-stacked-area-chart',
-                color: ['#DC3912',"#109618","#FCB446" ],
+                color: ['#FF2E2E', '#FF9900', '#00FF00'],
                 data: publicStorage.get('MPI')(this.value)
 
             });
@@ -2449,7 +2377,7 @@ $(document).ready(function() {
         lChart.triggerIt({
 
             containerId: '#TAT-line-chart',
-            color: ["#109618","#FCB446"],
+            color: ['#00FF00', '#FF9900'],
             data: publicStorage.get('TAT')(10)
         }, function() {
 
