@@ -33,7 +33,7 @@ table.scrolling-table td,table.scrolling-table th{
 
 
 div.list-block .item-title.label{
-	width:70%;
+	width:65%;
 	white-space:normal;
 }
 
@@ -43,9 +43,10 @@ div.boxBG-slider.leftPannel{
 	height:-moz-calc(100% - 1px );
 	height:calc( 100% - 1px);
 
-	width:-webkit-calc( 20% - 1px);
-	width:-moz-calc(20% - 1px );
-	width:calc( 20% - 1px);
+	width:-webkit-calc( 25% - 1px);
+	width:-moz-calc(25% - 1px );
+	width:calc( 25% - 1px);
+  min-width: 230px;
 
 }
 
@@ -53,10 +54,10 @@ div.boxBG-slider.rightPannel{
 	height:-webkit-calc( 100% - 1px);
 	height:-moz-calc(100% - 1px );
 	height:calc( 100% - 1px);
-
-	width:-webkit-calc( 80% - 1px);
-	width:-moz-calc(80% - 1px );
-	width:calc( 80% - 1px);
+  
+	width:-webkit-calc( 75% - 1px);
+	width:-moz-calc(75% - 1px );
+	width:calc( 75% - 1px);
 	overflow:scroll;
 }
 
