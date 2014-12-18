@@ -1027,11 +1027,12 @@ html.retina.ios-gt-7 .toolbar {
 /* === Search Bar === */
 .searchbar {
   height: 44px;
-  background: #c9c9ce;
+  /*background: #c9c9ce; Somenath Commented added new color */ 
+  background: #6E6E6E;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  border-bottom: 1px solid #b4b4b4;
+  /*border-bottom: 1px solid #b4b4b4; Somenath Commented */ 
   padding: 0 8px;
   overflow: hidden;
   position: relative;
