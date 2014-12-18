@@ -23,7 +23,8 @@ $(document).ready(function() {
         actionsCloseByOutside: false,
         modalCloseByOutside: false,
         popupCloseByOutside: false,
-        preloadPreviousPage: false
+        preloadPreviousPage: false,
+        notificationCloseOnClick:true
 
         //modalPreloaderTitle: "Your Dashboard is getting prepared. Please wait….!!!"
     });
@@ -233,6 +234,7 @@ $(document).ready(function() {
 
 
             localStorage.deviceID = '6ac90d0e-20db-4766-9767-c675bde0ef1f';
+            localStorage.registeredUser= "Tapan Mishra";
             //localStorage.removeItem("deviceID");
             setTimeout(function() {
 
@@ -284,7 +286,7 @@ $(document).ready(function() {
 
                                     setTimeout(function() {
 
-                                        myApp.hideIndicator();
+                                        myApp.hidePreloader();
                                         myApp.showIndicator();
                                         buildHomePage(function() {
                                             setTimeout(function() {
@@ -916,6 +918,8 @@ $(document).ready(function() {
     });
 
 
+    
+
 
     /************************************************************************************************/
 
@@ -1034,8 +1038,30 @@ $(document).ready(function() {
                 if (success) {
                     var cData = new _.ChartDataCreator(data);
 
+                    var chartKeyinDataWorkList = [
+
+                        {
+                            label: "File Submitted",
+                            value: 100
+                        }, {
+                            label: "File Assigned",
+                            value: 100
+                        }, {
+                            label: "File in Progress",
+                            value: 100
+                        }, {
+                            label: "File Completed",
+                            value: 100
+                        }, {
+                            label: "File UnAssigned",
+                            value: 100
+                        }, {
+                            label: "File Rejected",
+                            value: 100
+                        }
+                    ];
                     pie.draw({
-                        data: cData.chartKeyinDataWorkList,
+                        data: chartKeyinDataWorkList,
                         showLabels: true,
                         labelType: "percent",
                         isDonut: false,
@@ -1053,6 +1079,37 @@ $(document).ready(function() {
                     }, function() {
 
                         $('#chartL5').addClass('animated zoomIn');
+                        
+                        setTimeout(function(){
+
+                            pie.draw({
+                                data: cData.chartKeyinDataWorkList,
+                                showLabels: true,
+                                labelType: "percent",
+                                isDonut: false,
+                                donutRatio: 0.0,
+                                mainView: mainView,
+                                page: "",
+                                colors: ["#DC3912", "#FF9900", "#109618", "#7211CE", "#990099", "#000000"],
+                                selector: "#chartL5",
+                                showLegend: false,
+                                width: 500,
+                                height: 500
+
+
+
+                            }, function() {
+
+                                $('#chartL5').removeClass('animated zoomIn');
+                                if (callback) {
+                                    callback();
+                                }
+                                
+
+                            });
+
+
+                        },1000);
 
                     });
 
@@ -1100,7 +1157,9 @@ $(document).ready(function() {
                         page: "",
                         colors: ["#DC3912", "#FCB446", "#109618"],
                         selector: "#chartL6",
-                        showLegend: false
+                        showLegend: false,
+                        width: 400,
+                        height: 400
 
 
                     }, function() {
@@ -1411,7 +1470,7 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-keyin-MPI').val();
             var siteNumber = $('#siteNumber-keyin-MPI').val();
-            myApp, showIndicator();
+            myApp.showIndicator();
             renderKeyInDetailMPI(groupCode, siteNumber, function() {
 
                 setTimeout(function() {
@@ -1424,20 +1483,20 @@ $(document).ready(function() {
 
 
         $('.open-popup').on('click', function() {
-            //console.log(this.getAttribute('data-trig'));
+           
             $('.open-popup').html('');
             $('.open-popup').html('<i class="icon icon-filterFilled "></i>');
             myApp.popup(this.getAttribute('data-trig'));
-            //myApp.accordionOpen(this.getAttribute('x-link'));
+           
 
         });
 
 
         $('.close-popup').on('click', function() {
-            //console.log(this.getAttribute('data-trig'));
+            
             $('.open-popup').html('');
             $('.open-popup').html('<i class="icon icon-filter "></i>');
-            //myApp.popup(this.getAttribute('data-trig'));
+            
         });
 
     });
@@ -1447,12 +1506,19 @@ $(document).ready(function() {
 
     myApp.onPageInit('claim', function(page) {
 
+        sessionStorage.setItem('claimGrCode',"All");
+        sessionStorage.setItem('claimSiteNumber',"All");
         myApp.showIndicator();
 
         getClaimDetail(function() {
 
             setTimeout(function() {
                 myApp.hideIndicator();
+                showNotification({
+                            subtitle:"You are in Claim",
+                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('claimGrCode') + " and Site Number: "+ sessionStorage.getItem('claimSiteNumber')
+
+                });
             }, 1000);
         });
 
@@ -1500,6 +1566,8 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-claim').val();
             var siteNumber = $('#siteNumber-claim').val();
+            sessionStorage.setItem('claimGrCode',groupCode);
+            sessionStorage.setItem('claimSiteNumber',siteNumber);
 
             myApp.showIndicator();
 
@@ -1510,6 +1578,11 @@ $(document).ready(function() {
 
                     setTimeout(function() {
                         myApp.hideIndicator();
+                        showNotification({
+                            
+                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('claimGrCode') + " and Site Number: "+ sessionStorage.getItem('claimSiteNumber')
+
+                        });
                     }, 1000);
 
                 });
@@ -1522,6 +1595,11 @@ $(document).ready(function() {
 
                     setTimeout(function() {
                         myApp.hideIndicator();
+                        showNotification({
+                            
+                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('claimGrCode') + " and Site Number: "+ sessionStorage.getItem('claimSiteNumber')
+
+                        });
                     }, 1000);
 
                 }, groupCode, siteNumber);
@@ -1536,12 +1614,18 @@ $(document).ready(function() {
         $('.submitButton-claim-detail-reset').click(function() {
 
             
-
+            sessionStorage.setItem('claimGrCode',"All");
+            sessionStorage.setItem('claimSiteNumber',"All");
             myApp.showIndicator();
             getClaimDetail(function() {
 
                 setTimeout(function() {
                     myApp.hideIndicator();
+                    showNotification({
+                            
+                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('claimGrCode') + " and Site Number: "+ sessionStorage.getItem('claimSiteNumber')
+
+                        });
                 }, 1000);
 
             });
@@ -1572,14 +1656,22 @@ $(document).ready(function() {
 
 
 
-
     myApp.onPageInit('lockbox-outbound', function(page) {
+
+
+        sessionStorage.setItem('outboundGrCode',"All");
+        sessionStorage.setItem('outboundSiteNumber',"All");
 
         myApp.showIndicator();
         getLockboxOutboundDetail(function() {
 
             setTimeout(function() {
                 myApp.hideIndicator();
+                showNotification({
+                            subtitle:"You are in Outbound",
+                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('outboundGrCode') + " and Site Number: "+ sessionStorage.getItem('outboundSiteNumber')
+
+                        });
             }, 1000);
 
 
@@ -1627,6 +1719,9 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-outbound').val();
             var siteNumber = $('#siteNumber-outbound').val();
+            sessionStorage.setItem('outboundGrCode',groupCode);
+            sessionStorage.setItem('outboundSiteNumber',siteNumber);
+
             myApp.showIndicator();
 
             if(groupCode==="All" && siteNumber === "All"){
@@ -1634,6 +1729,11 @@ $(document).ready(function() {
 
                     setTimeout(function() {
                         myApp.hideIndicator();
+                        showNotification({
+                            
+                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('outboundGrCode') + " and Site Number: "+ sessionStorage.getItem('outboundSiteNumber')
+
+                        });
                     }, 1000);
 
 
@@ -1646,6 +1746,11 @@ $(document).ready(function() {
 
                     setTimeout(function() {
                         myApp.hideIndicator();
+                        showNotification({
+                            
+                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('outboundGrCode') + " and Site Number: "+ sessionStorage.getItem('outboundSiteNumber')
+
+                        });
                     }, 1000);
 
 
@@ -1661,12 +1766,20 @@ $(document).ready(function() {
 
         $('.submitButton-Outbound-detail-reset').click(function() {
 
+            sessionStorage.setItem('outboundGrCode',"All");
+            sessionStorage.setItem('outboundSiteNumber',"All");
             
             myApp.showIndicator();
             getLockboxOutboundDetail(function() {
 
                 setTimeout(function() {
                     myApp.hideIndicator();
+                    showNotification({
+                            
+
+                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('outboundGrCode') + " and Site Number: "+ sessionStorage.getItem('outboundSiteNumber')
+
+                        });
                 }, 1000);
 
 
@@ -1699,12 +1812,23 @@ $(document).ready(function() {
 
     myApp.onPageInit('lockbox-inbound', function(page) {
 
+
+        sessionStorage.setItem('inboundGrCode',"All");
+        sessionStorage.setItem('inboundSiteNumber',"All");
+
+
         myApp.showIndicator();
 
         getLockboxInboundDetail(function() {
 
             setTimeout(function() {
                 myApp.hideIndicator();
+                showNotification({
+
+                            subtitle:"You are in Inbound",
+                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('inboundGrCode') + " and Site Number: "+ sessionStorage.getItem('inboundSiteNumber')
+
+                        });
             }, 1000);
 
 
@@ -1751,12 +1875,21 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-inbound').val();
             var siteNumber = $('#siteNumber-inbound').val();
+
+            sessionStorage.setItem('inboundGrCode',groupCode);
+            sessionStorage.setItem('inboundSiteNumber',siteNumber);
+
             myApp.showIndicator();
 
             if(groupCode==="All" && siteNumber === "All"){
                 getLockboxInboundDetail(function() {
                     setTimeout(function() {
                         myApp.hideIndicator();
+                        showNotification({
+                            
+                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('inboundGrCode') + " and Site Number: "+ sessionStorage.getItem('inboundSiteNumber')
+
+                        });
                     }, 1000);
                 });
 
@@ -1765,6 +1898,11 @@ $(document).ready(function() {
                 getLockboxInboundDetail(function() {
                     setTimeout(function() {
                         myApp.hideIndicator();
+                        showNotification({
+                            
+                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('inboundGrCode') + " and Site Number: "+ sessionStorage.getItem('inboundSiteNumber')
+
+                        });
                     }, 1000);
                 }, groupCode, siteNumber);
             }
@@ -1774,18 +1912,23 @@ $(document).ready(function() {
 
         $('.submitButton-Inbound-detail-reset').click(function() {
 
-
+            sessionStorage.setItem('inboundGrCode',"All");
+            sessionStorage.setItem('inboundSiteNumber',"All");
            
             myApp.showIndicator();
             getLockboxInboundDetail(function() {
                 setTimeout(function() {
                     myApp.hideIndicator();
+                    showNotification({
+                            
+                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('inboundGrCode') + " and Site Number: "+ sessionStorage.getItem('inboundSiteNumber')
+
+                        });
                 }, 1000);
             });
 
 
         });
-
 
 
 
@@ -2164,7 +2307,7 @@ $(document).ready(function() {
 
         ////////
 
-        var colorSlide0 = ['#B45F04', '#FF9900'];
+        var colorSlide0 = ["#109618","#E4A240"];
         var streamsSlide0 = ['Forcasted', 'Actual'];
 
         var publicStorage = _.PublicStore.openPort();
@@ -2222,10 +2365,56 @@ $(document).ready(function() {
         });
 
         ////////
+        /////
 
+
+
+
+        publicStorage.put('TAT', lineChartData);
+
+        lChart.triggerIt({
+
+            containerId: '#TAT-line-chart',
+            color: ["#109618","#E4A240"],
+            data: publicStorage.get('TAT')(10)
+        }, function() {
+
+
+        });
+
+        $("#TAT-slider").on('input', function() {
+
+            $("#TAT-slider-text").html(this.value);
+
+            lChart.triggerIt({
+
+                containerId: '#TAT-line-chart',
+                color: ['#00FF00', '#FF9900'],
+                data: publicStorage.get('TAT')(this.value)
+            });
+        });
+
+        $('.submitButton-reports-TAT').click(function() {
+
+            var groupCode = $('#groupCode-resports-TAT').val();
+            var siteNumber = $('#siteNumber-reports-TAT').val();
+            $("#TAT-slider").val(10);
+            $("#TAT-slider-text").html(10);
+
+            lChart.triggerIt({
+
+                containerId: '#TAT-line-chart',
+                color: ['#00FF00', '#B07E34'],
+                data: publicStorage.get('TAT')(10)
+            });
+
+        });
+
+
+        /////
         //////
 
-        var colorSlide2 = ['#FF9900'];
+        var colorSlide2 = ['#E4A240'];
         var streamsSlide2 = ['Volume'];
         publicStorage.put('claimVolume', dataFactory);
 
@@ -2276,7 +2465,7 @@ $(document).ready(function() {
 
         //////
 
-        var colorSlide3 = ['#EE7C02'];
+        var colorSlide3 = ['#E4A240'];
         var streamsSlide3 = ['% Used'];
 
         publicStorage.put('PMU', dataFactory2);
@@ -2341,7 +2530,7 @@ $(document).ready(function() {
         stackedChart.triggerIt({
 
             containerId: '#MPI-stacked-area-chart',
-            color: ['#00FF00','#FF9900','#FF0000' ],
+            color: ['#DC3912',"#109618","#FCB446" ],
             data: publicStorage.get('MPI')(10)
 
         }, function() {
@@ -2355,7 +2544,7 @@ $(document).ready(function() {
             stackedChart.triggerIt({
 
                 containerId: '#MPI-stacked-area-chart',
-                color: ['#FF2E2E', '#FF9900', '#00FF00'],
+                color: ['#DC3912',"#109618","#FCB446" ],
                 data: publicStorage.get('MPI')(this.value)
 
             });
@@ -2367,53 +2556,7 @@ $(document).ready(function() {
 
         //////
 
-        /////
-
-
-
-
-        publicStorage.put('TAT', lineChartData);
-
-        lChart.triggerIt({
-
-            containerId: '#TAT-line-chart',
-            color: ['#00FF00', '#FF9900'],
-            data: publicStorage.get('TAT')(10)
-        }, function() {
-
-
-        });
-
-        $("#TAT-slider").on('input', function() {
-
-            $("#TAT-slider-text").html(this.value);
-
-            lChart.triggerIt({
-
-                containerId: '#TAT-line-chart',
-                color: ['#00FF00', '#FF9900'],
-                data: publicStorage.get('TAT')(this.value)
-            });
-        });
-
-        $('.submitButton-reports-TAT').click(function() {
-
-            var groupCode = $('#groupCode-resports-TAT').val();
-            var siteNumber = $('#siteNumber-reports-TAT').val();
-            $("#TAT-slider").val(10);
-            $("#TAT-slider-text").html(10);
-
-            lChart.triggerIt({
-
-                containerId: '#TAT-line-chart',
-                color: ['#00FF00', '#FF9900'],
-                data: publicStorage.get('TAT')(10)
-            });
-
-        });
-
-
-        /////
+        
 
 
         var TATMissedSites = [
@@ -2472,6 +2615,7 @@ $(document).ready(function() {
         }, 1000);
 
     });
+
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 

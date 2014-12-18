@@ -3561,7 +3561,7 @@ html.with-statusbar-overlay body .panel {
   -ms-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   left: 0;
-  bottom: 10px;
+  bottom: 0px; /*Somenath */
   width: 100%;
   text-align: center;
   -webkit-transition-duration: 300ms;
