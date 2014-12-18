@@ -1952,7 +1952,10 @@ $(document).ready(function() {
 
     });
 
-    myApp.onPageInit('quality-matrix', function(page) {
+    myApp.onPageInit('customer-reported-error', function(page) {
+        $("#cre-search").attr("disabled", true);
+
+        
          $('input[type=checkbox]').on('click', function() {
             var clickedBox = this;
             console.log(document.getElementsByTagName("input").length);
@@ -1962,7 +1965,70 @@ $(document).ready(function() {
                     document.getElementsByTagName("input")[i].checked = false;
                 }
             }
+            console.log(this.checked);
+            if(this.checked){
+                console.log("got-here");
+                $("#cre-search").prop("disabled", null);
+                $(".data-item").removeClass("item-title");
+                $(".data-item").addClass("item");
+                $(".item-"+clickedBox.id).removeClass("item");
+                $(".item-"+clickedBox.id).addClass("item-title");
+            }else{
+                $(".data-item").removeClass("item-title");
+                $(".data-item").addClass("item");
+                $("#cre-search").attr("disabled", true);
+            }
+
          });
+        var data = [
+                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'reportedDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'noOfError' : 3,
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'typeOfIssue' : 'No Check',
+                        'descriptionData' : 'There is no Check'
+                    }
+                ];
+
+           if(data.length>0){
+            for(var index in  data){
+                    $("#customer-reported-error-table").append(
+                        '<li class="item-content">'+
+                          '<div class="item-inner">'+
+                            '<div class="item data-item item-reported-date">'+data[index].reportedDate+'</div>'+
+                            '<div class="item data-item item-batch-date">'+data[index].batchDate+'</div>'+
+                            '<div class="item data-item item-no-of-error">'+data[index].noOfError+'</div>'+
+                            '<div class="item data-item item-group">'+data[index].group+'</div>' +
+                            '<div class="item data-item item-site">'+data[index].site+'</div>' +
+                            '<div class="item data-item item-type-of-issue">'+data[index].typeOfIssue+'</div>'+ 
+                            '<div class="item data-item item-description">'+data[index].descriptionData+'</div>'+
+                          '</div>'+
+                        '</li>'
+                        );
+
+            }
+           }else{
+                $("#customer-reported-error-table").html(
+                                            '<li class="item-content">'+
+                          '<div class="item-inner">'+
+                            '<div class="item item-reported-date">Nothing found</div>'+
+                        '</li>'
+
+                );
+
+           }
+
      });
 
 
@@ -2062,8 +2128,6 @@ $(document).ready(function() {
         });
 
 
-         $("#customer-reported-error").on('click', function() {
-         });
 
         $("#QCE-slider").on('input', function() {
 

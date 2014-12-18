@@ -11,20 +11,44 @@ a.anchorColor
      
 }
 
-table.scrolling-table{
+.list-block.list-block-header{
+	margin-bottom:0px;
+}
+
+.list-block.list-block-search,.list-block.searchbar-not-found{
+	margin-top:0px;
+}
+.list-block ul.scrolling-table-header{
 	background-color:white;
 	width:95%;
 	margin-top:35px; 
+	margin-bottom:0px; 
+	margin-left:auto; 
+	margin-right:auto; 
+	border-top-left-radius:7px;
+	border-top-right-radius:7px;
+}
+
+.list-block ul.scrolling-table-content{
+	background-color:white;
+	width:95%;
+	margin-top:0px; 
 	margin-bottom:35px; 
 	margin-left:auto; 
 	margin-right:auto; 
-	border-radius: 7px;
-	border-collapse: collapse;
+	border-bottom-right-radius:7px;
+	border-bottom-left-radius:7px;
 }
 
-table.scrolling-table td,table.scrolling-table th{
-	border: 1px solid black;
+.scrolling-table-content div.item, .scrolling-table-content div.item-title, .scrolling-table-header div.item, .scrolling-table-header div.item-title{
+ 	white-space:normal;
+	width:16.66%;
+	text-align:center;
 }
+
+/*.scrolling-table-content div.item-border,.scrolling-table-header div.item-border{
+	border-right:1px solid black; 
+}*/
 
 .page > .searchbar{
 	top:44px;

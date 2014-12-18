@@ -32,7 +32,7 @@
       <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
       <div class="pages navbar-fixed toolbar-fixed">
         <!-- Page, "data-page" contains page name -->
-        <div data-page="quality-matrix" class="page navbar-fixed toolbar-fixed">
+        <div data-page="customer-reported-error" class="page navbar-fixed toolbar-fixed">
           <!-- Scrollable page content -->
           <div  class="page-content" style="height:100%;width:100%;">
           <div class="row" style="height:100%;width:100%;">
@@ -52,7 +52,7 @@
                 <div class="item-title label">Gr Code</div>
                 <div class="item-input">
                   <label class="label-switch">
-                    <input  type="checkbox"/>
+                    <input id="group" type="checkbox"/>
                     <div class="checkbox"></div>
                   </label>
                 </div>
@@ -66,7 +66,7 @@
                 <div class="item-title label">Site</div>
                 <div class="item-input">
                   <label class="label-switch">
-                    <input type="checkbox"/>
+                    <input id="site" type="checkbox"/>
                     <div class="checkbox"></div>
                   </label>
                 </div>
@@ -80,7 +80,7 @@
                 <div class="item-title label">Reported Date</div>
                 <div class="item-input">
                   <label class="label-switch">
-                    <input  type="checkbox"/>
+                    <input id="reported-date" type="checkbox"/>
                     <div class="checkbox"></div>
                   </label>
                 </div>
@@ -94,7 +94,7 @@
                 <div class="item-title label">Batch Date</div>
                 <div class="item-input">
                   <label class="label-switch">
-                    <input type="checkbox"/>
+                    <input id="batch-date" type="checkbox"/>
                     <div class="checkbox"></div>
                   </label>
                 </div>
@@ -108,7 +108,7 @@
                 <div class="item-title label">Type of Issue</div>
                 <div class="item-input">
                   <label class="label-switch">
-                    <input  type="checkbox"/>
+                    <input id="type-of-issue" type="checkbox"/>
                     <div class="checkbox"></div>
                   </label>
                 </div>
@@ -122,222 +122,45 @@
               </div>
 
               <div  class='boxBG-slider rightPannel'>
-                  <table class="scrolling-table">
-                    <tr>
-                      <th>Reported Date</th><th>Batch Date</th><th>no of Error</th><th>Group Site</th><th>Type of Issue</th><th>Description</th>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                                        <tr>
-                      <td>Reported Date</td><td>Batch Date</td><td>no of Error</td><td>Group Site</td><td>Type of Issue</td><td>Description</td>
-                    </tr>
-                  </table>
+                  <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar">
+                    <div class="searchbar-input">
+                      <input id="cre-search" type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>
+                    </div><a href="#" class="searchbar-cancel">Cancel</a>
+                  </form>
 
+
+                 
+                    <!-- This block will be displayed if anything found, and this list block is used a searbar target -->
+                    <div class="list-block list-block-header">
+                      <ul class="scrolling-table-header">
+                        <li class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title item-border">Reported Date</div> 
+                            <div class="item item-border">Batch Date</div> 
+                            <div class="item item-border">no of Error</div> 
+                            <div class="item item-border">Group</div>
+                            <div class="item item-border">Site</div> 
+                            <div class="item item-border">Type of Issue</div> 
+                            <div class="item">Description</div>
+                          </div>
+                      </ul>
+                    </div>
+                    <div class="list-block  searchbar-not-found">
+                       <ul class="scrolling-table-content">
+                        <li class="item-content">
+                          <div class="item-inner">
+                            <div class="item">Nothing found</div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="list-block list-block-search searchbar-found">
+                      <ul id="customer-reported-error-table" class="scrolling-table-content">
+
+                      </ul>
+                    </div>
 
                 
-              </div>
             </div>
             
           </div>
