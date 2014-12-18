@@ -781,8 +781,7 @@ div.icoBox{
         top: 0%;
         margin-left: 0;
         margin-top: 0;,
-        border-radius: 5px;
-		-webkit-border-radius: 5px;
+        
     }
 }
 
@@ -924,7 +923,7 @@ i.icon.icon-gear {
 i.icon.icon-cancel {
   width: 23px;
   height: 23px;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAdZJREFUaAXtWTtuwzAMjbvb7dJT5AidMndpT9opcybfoDlFltY+gMtX2IZAWDIlkWoDSIBhWyTfh3IACTkc6qgdqB2oHagd+IMONCHOYRjOFH9smua9bdtbKNcqNo7j8zRNH4T/3XXdq4/nwReY55/o/kJAFwDu5KqHZxMXaKALWrwjaIRW4o0qr3QdS5txTByhYdbiNbIbACB9Yp90TbiXWBkzTjPgjTaac5kTkKkSHL+9sySyxN5YeJuuFTexONMk1sRa9EXdNQRoYESJ9iXnCMmp9enJmk8RlFKTJVJaHCMsJlfKr5onESjJURWVChYSGoql8rl1wW28myh9hmBsMCl/2eydUMvntI8F6kYgmpvBHI3VmLYJgJsYATAzgylsxU8WJgAePI8g4V6GyYqw1cDBDOO+Pi1uAp8TXFj/2MGhNmDCd5oMxdQEaABJhEpyNLQkY8QIjMlNFpRSmCIspSZFm7gmR1BOrVigJFFDiAaGRKs3R1OAJpZX8FbAgtgCc0v7OmdJaIm9GsBDCSJzDnMCp2VmXGbAjnj+qM6pDsgVB95VuWkD2Jf8O4H7YmZ6Hnff9w5WX5TcW57sXDH8GafJ+RgAE9BSR+1A7UDtQO3A/+rAD5Gj2UCsjf6QAAAAAElFTkSuQmCC");
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAeVJREFUaAXtmT1KBEEQhUcXJ3UTb2AiHsHISNBEr2O0kdfRRMHIyCOIiTcw0XRk0Xo4DcMw3V1dP7MMdMPuDP1T733VvVDNNk1tNQM1AzUDNQM7yMBeSvNk8/xIEw67dnvzcXv5mZrrNXZ893TUdqv736b5ft9cXMV09mMDff+aApwddKsXBMzMNR+GJrThgYKvUwJJkJ92e02L3+hzOjdMgIA2PPRe6HW6JY8WlkwEPPc+ZhLNLMjcMBIIeGSBzAUjhSgC8YbRQBSDeMFoIUQg1jAWEGIQKxgrCBWIFsYSQg0ihbGGMAEphfGAMAPhwnhBmILkYDwhzEFiMOhH0UmPUACa12vsEgVmuG2c/X6dGwTiu4Ag8AgGXSjFzXcCgdGS95H/Kcv4dtmR0W7gYoa2rKM1hsBxAsWifuxTEOE2mRoDqLaZHS2OUc4cKZAJSInBkrklUGoQiTHJmhyUCkRjSLN2CkoMYmHEIkaAEoFYGrCKVQxiJRwyiadFzCIQC8EhwPBdG5sNohUamo69azRYIBqBmOlYv1QrCyINHDPK6ZdoJkEkATlGOXNKtZP3EapYH0jUtfyOQaHY7Cvn8P8MvERbEoRWfdGWvXre7KLOaCDAwAO8pObWsZqBmoGagZqBnWTgD4IwO0hnLnYTAAAAAElFTkSuQmCC");
 }
 
 i.icon.icon-hospital {
@@ -966,7 +965,9 @@ i.icon.icon-notification {
 
 div.popupNavBar{
 
-	background: #747678;
+	
+	-webkit-border-top-right-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .aniText {
@@ -1051,6 +1052,23 @@ html {
 
 }
 
+
+.popup {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+.popup .page {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.popup .navbar {
+    -webkit-border-top-left-radius: 10px;
+    border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px #BDBDBD solid;
+}
 
 
 
