@@ -24,8 +24,8 @@ var MODULE = (function(module, nv) {
 
 
             self.defaultChartConfig(options.containerId, options.dataFactory, {
-                delay: 0,
-                transitionDuration: 0,
+                delay: 3000,
+                transitionDuration: 5000,
                 groupSpacing: .2
             }, options.axisLabel, options.color);
 
@@ -39,6 +39,7 @@ var MODULE = (function(module, nv) {
                     bottom: 100
                 }).transitionDuration(300);
 
+                chart.stacked(false)
                 chart.options(chartOptions);
                 chart.multibar.hideable(true);
                 chart.color(color);
@@ -166,7 +167,9 @@ var MODULE = (function(module, nv) {
                     }).staggerLabels(false)
                     .tooltips(false)
                     .showValues(true)
-                    .transitionDuration(350).color(options.color);
+                    .showYAxis(false)
+                    .width(400)
+                    .transitionDuration(1000).color(options.color);
 
                 chart.yAxis.tickFormat(d3.format(',0f'));
                 chart.valueFormat(d3.format(',0f'));
@@ -224,11 +227,13 @@ var MODULE = (function(module, nv) {
                     .color(options.colors)
                     .pieLabelsOutside(false);
 
+                    
+
 
 
                 d3.select(options.selector + " svg")
                     .datum(options.data)
-                    .transition().duration(350)
+                    .transition().duration(1000)
                     .call(chart);
 
                 return chart;

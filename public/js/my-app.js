@@ -210,7 +210,7 @@ $(document).ready(function() {
             title: options.title || "HL-Board Notification",
             subtitle: options.subtitle || undefined,
             message: options.message,
-            hold:options.hold || 5000,
+            hold:options.hold || 2000,
             media: '<i class="icon icon-notification"></i>'
         });
 
@@ -1097,7 +1097,7 @@ $(document).ready(function() {
 
                     }, function() {
 
-                        $('#chartL5').addClass('animated zoomIn');
+                        //$('#chartL5').addClass('animated zoomIn');
                         
                         setTimeout(function(){
 
@@ -1119,7 +1119,7 @@ $(document).ready(function() {
 
                             }, function() {
 
-                                $('#chartL5').removeClass('animated zoomIn');
+                                //$('#chartL5').removeClass('animated zoomIn');
                                 if (callback) {
                                     callback();
                                 }
@@ -1289,7 +1289,7 @@ $(document).ready(function() {
 
                 discreteBarChart.triggerIt({
 
-                    color: ['#DC3912', '#FF9900'],
+                    color: ['#109618', '#FCB446'],
                     containerId: '#chartL7',
                     data: data
 
@@ -1411,7 +1411,43 @@ $(document).ready(function() {
             }, 100);
         });
         */
+
+        var sliderObject = [    
+
+            function One (){
+                renderKeyInDetailWorklist();
+            },
+
+            function two (){
+                renderKeyInDetailVolume();
+                renderKeyInDetailTAT();
+            }
+
+        ];
+
         myApp.showIndicator();
+
+
+
+        var mySlider = myApp.slider('.slider-container', {
+            speed: 400,
+            spaceBetween: 40,
+            
+            onSlideChangeEnd: function(slider) {
+                //console.log(slider);
+                sliderObject[slider.activeSlideIndex]();
+
+
+
+            },
+            onSlideChangeStart: function(slider) {
+
+                
+            }
+
+
+        });
+
 
         renderKeyInDetailWorklist();
         renderKeyInDetailVolume();
@@ -2566,7 +2602,7 @@ myApp.onPageInit('qc-effectiveness', function(page) {
 
             
         setTimeout(function(){
-            $('#reports-charts-forcasted-vs-actual').addClass('animated zoomIn');
+            //$('#reports-charts-forcasted-vs-actual').addClass('animated zoomIn');
             vBar.triggerIt({
             containerId: '#reports-charts-forcasted-vs-actual',
             dataFactory: publicStorage.get('dataVolume')(2, 10, streamsSlide0),
@@ -2575,7 +2611,7 @@ myApp.onPageInit('qc-effectiveness', function(page) {
             }, function() {
 
                 setTimeout(function(){
-                    $('#reports-charts-forcasted-vs-actual').removeClass('animated zoomIn');
+                    //$('#reports-charts-forcasted-vs-actual').removeClass('animated zoomIn');
                 },1000)
                 
             });

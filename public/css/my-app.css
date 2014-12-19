@@ -197,13 +197,21 @@ svg .nvd3 .nv-multibarHorizontal .nv-groups text {
 }
 
 
+
 .nvd3 .nv-multibar .nv-groups rect, .nvd3 .nv-multibarHorizontal .nv-groups rect, .nvd3 .nv-discretebar .nv-groups rect {
-stroke-opacity: 1;
-fill-opacity: 1;
-transition: fill-opacity 250ms linear;
--moz-transition: fill-opacity 250ms linear;
-/* -webkit-transition: fill-opacity 250ms linear; */
+	stroke-opacity: 1;
+	fill-opacity: .5;
+	transition: fill-opacity 250ms linear;
+	-moz-transition: fill-opacity 250ms linear;
+	-webkit-transition: fill-opacity 250ms linear;
 }
+.nvd3 .nv-discretebar .nv-groups rect {
+
+	fill-opacity: 1;
+
+}
+
+
 
 .legend-container-small{
 	position: relative;
@@ -1118,6 +1126,11 @@ html {
 	color:white;
 }
 
+
+.list-block{
+
+	-webkit-box-shadow: 0 0 3px #ccc;
+}
 
 
 
