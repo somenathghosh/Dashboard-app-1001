@@ -1971,11 +1971,13 @@ $(document).ready(function() {
                 $("#cre-search").prop("disabled", null);
                 $(".data-item").removeClass("item-title");
                 $(".data-item").addClass("item");
+                $(".item-header").removeClass("item-title");
+                $(".item-header").addClass("item");
                 $(".item-"+clickedBox.id).removeClass("item");
                 $(".item-"+clickedBox.id).addClass("item-title");
+                $(".header-"+clickedBox.id).removeClass("item");
+                $(".header-"+clickedBox.id).addClass("item-title");
             }else{
-                $(".data-item").removeClass("item-title");
-                $(".data-item").addClass("item");
                 $("#cre-search").attr("disabled", true);
             }
 

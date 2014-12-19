@@ -29,6 +29,10 @@ a.anchorColor
 	border-top-right-radius:7px;
 }
 
+.item-title.data-item,.item-title.item-header{
+  background-color:#D3D3D3;
+}
+
 .list-block ul.scrolling-table-content{
 	background-color:white;
 	width:95%;
