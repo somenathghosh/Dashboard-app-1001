@@ -11,6 +11,20 @@ a.anchorColor
      
 }
 
+.list-block .item-inner.table-header, .list-block .item-inner.table-content{
+	align-items:stretch;
+	padding:0px;
+}
+
+.item-reported-date.last{
+	border-bottom-left-radius:7px;
+}
+
+.header-reported-date{
+	border-top-left-radius: 7px;
+
+}
+
 .list-block.list-block-header{
 	margin-bottom:0px;
 }

@@ -2024,7 +2024,7 @@ $(document).ready(function() {
             console.log(this.checked);
             if(this.checked){
                 console.log("got-here");
-                $("#cre-search").prop("disabled", null);
+                $("#cre-search").removeAttr("disabled");
                 $(".data-item").removeClass("item-title");
                 $(".data-item").addClass("item");
                 $(".item-header").removeClass("item-title");
@@ -2061,9 +2061,10 @@ $(document).ready(function() {
 
            if(data.length>0){
             for(var index in  data){
+                if(index != data.length-1){
                     $("#customer-reported-error-table").append(
-                        '<li class="item-content">'+
-                          '<div class="item-inner">'+
+                        '<li class="">'+
+                          '<div class="item-inner table-content">'+
                             '<div class="item data-item item-reported-date">'+data[index].reportedDate+'</div>'+
                             '<div class="item data-item item-batch-date">'+data[index].batchDate+'</div>'+
                             '<div class="item data-item item-no-of-error">'+data[index].noOfError+'</div>'+
@@ -2074,6 +2075,21 @@ $(document).ready(function() {
                           '</div>'+
                         '</li>'
                         );
+                }else{
+                    $("#customer-reported-error-table").append(
+                        '<li class="">'+
+                          '<div class="item-inner table-content">'+
+                            '<div class="item data-item item-reported-date last">'+data[index].reportedDate+'</div>'+
+                            '<div class="item data-item item-batch-date">'+data[index].batchDate+'</div>'+
+                            '<div class="item data-item item-no-of-error">'+data[index].noOfError+'</div>'+
+                            '<div class="item data-item item-group">'+data[index].group+'</div>' +
+                            '<div class="item data-item item-site">'+data[index].site+'</div>' +
+                            '<div class="item data-item item-type-of-issue">'+data[index].typeOfIssue+'</div>'+ 
+                            '<div class="item data-item item-description">'+data[index].descriptionData+'</div>'+
+                          '</div>'+
+                        '</li>'
+                        );
+                }
 
             }
            }else{
