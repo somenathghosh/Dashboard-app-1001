@@ -2105,6 +2105,98 @@ $(document).ready(function() {
 
      });
 
+myApp.onPageInit('qc-effectiveness', function(page) {
+        $("#cre-search").attr("disabled", true);
+        $('#qa-date-selector').on('change', function() {
+            $('#qa-date-text').html("QA Date: "+$('#qa-date-selector').val());
+        });
+
+
+         $('input[type=checkbox]').on('change', function() {
+            var clickedBox = this;
+            console.log(document.getElementsByTagName("input").length);
+            for(var i =0; i< document.getElementsByTagName("input").length;i++){
+                if(document.getElementsByTagName("input")[i].type == "checkbox" &&clickedBox != document.getElementsByTagName("input")[i]){
+                                    console.log(document.getElementsByTagName("input")[i]);
+                    document.getElementsByTagName("input")[i].checked = false;
+                }
+            }
+            console.log(this.checked);
+            if(this.checked){
+                console.log("got-here");
+                $("#cre-search").removeAttr("disabled");
+                $(".data-item").removeClass("item-title");
+                $(".data-item").addClass("item");
+                $(".item-header").removeClass("item-title");
+                $(".item-header").addClass("item");
+                $(".item-"+clickedBox.id).removeClass("item");
+                $(".item-"+clickedBox.id).addClass("item-title");
+                $(".header-"+clickedBox.id).removeClass("item");
+                $(".header-"+clickedBox.id).addClass("item-title");
+            }else{
+                $("#cre-search").attr("disabled", true);
+            }
+
+         });
+        var data = [
+                    {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    }
+                ];
+
+           if(data.length>0){
+            for(var index in  data){
+                if(index != data.length-1){
+                    $("#customer-reported-error-table").append(
+                        '<li class="">'+
+                          '<div class="item-inner table-content">'+
+                            '<div class="item data-item item-group">'+data[index].group+'</div>' +
+                            '<div class="item data-item item-site">'+data[index].site+'</div>' +
+                            '<div class="item data-item item-qc-date">'+data[index].qcDate+'</div>'+
+                            '<div class="item data-item item-batch-date">'+data[index].batchDate+'</div>'+
+                            '<div class="item data-item item-description">'+data[index].descriptionData+'</div>'+
+                          '</div>'+
+                        '</li>'
+                        );
+                }else{
+                    $("#customer-reported-error-table").append(
+                       '<li class="">'+
+                          '<div class="item-inner table-content">'+
+                            '<div class="item data-item item-group last">'+data[index].group+'</div>' +
+                            '<div class="item data-item item-site">'+data[index].site+'</div>' +
+                            '<div class="item data-item item-qc-date">'+data[index].qcDate+'</div>'+
+                            '<div class="item data-item item-batch-date">'+data[index].batchDate+'</div>'+
+                            '<div class="item data-item item-description">'+data[index].descriptionData+'</div>'+
+                          '</div>'+
+                        '</li>'
+                        );
+                }
+
+            }
+           }else{
+                $("#customer-reported-error-table").html(
+                                            '<li class="item-content">'+
+                          '<div class="item-inner">'+
+                            '<div class="item item-reported-date">Nothing found</div>'+
+                        '</li>'
+
+                );
+
+           }
+
+     });
+
 
     myApp.onPageInit('quality-matrix', function(page) {
                 var lChart = new D3LineChart();

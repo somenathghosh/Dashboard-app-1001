@@ -17,11 +17,11 @@ a.anchorColor
 	padding:0px;
 }
 
-.item-reported-date.last{
+.item-reported-date.last,.item-group.last{
 	border-bottom-left-radius:7px;
 }
 
-.header-reported-date{
+.header-reported-date,.header-group.first{
 	border-top-left-radius: 7px;
 
 }
