@@ -66,6 +66,17 @@ $(document).ready(function() {
         dynamicNavbar: true
     });
 
+    var keyinPopupViewVolume = myApp.addView('.popup-view-keyin-volume', {
+
+        dynamicNavbar: true
+    });
+
+
+     var keyinPopupViewTAT = myApp.addView('.popup-view-keyin-TAT', {
+
+        dynamicNavbar: true
+    });
+
 
     var reportPopupView = myApp.addView('.popup-view-reports', {
 
@@ -366,6 +377,14 @@ $(document).ready(function() {
     });
 
     $$('.keyin-popup').on('open', function() {
+        setGroupCodes();
+    });
+
+    $$('.keyin-popup-volume').on('open', function() {
+        setGroupCodes();
+    });
+
+    $$('.keyin-popup-TAT').on('open', function() {
         setGroupCodes();
     });
 
@@ -1158,8 +1177,8 @@ $(document).ready(function() {
                         colors: ["#DC3912", "#FCB446", "#109618"],
                         selector: "#chartL6",
                         showLegend: false,
-                        width: 400,
-                        height: 400
+                        width: 450,
+                        height: 450
 
 
                     }, function() {
@@ -1212,7 +1231,9 @@ $(document).ready(function() {
                         page: "",
                         colors: ["#DC3912", "#FCB446", "#109618"],
                         selector: "#chartL6",
-                        showLegend: false
+                        showLegend: false,
+                        width: 450,
+                        height: 450
 
 
                     }, function() {
@@ -1366,6 +1387,7 @@ $(document).ready(function() {
 
     myApp.onPageInit('keyin-detail', function(page) {
 
+        /*
         $$('#MPI-keyin-popup-icon').on('click', function() {
             setTimeout(function() {
                 myApp.accordionOpen("#keyin-filter-mpi");
@@ -1388,13 +1410,13 @@ $(document).ready(function() {
                 myApp.accordionOpen("#keyin-filter-worklist-status");
             }, 100);
         });
-
+        */
         myApp.showIndicator();
 
         renderKeyInDetailWorklist();
         renderKeyInDetailVolume();
         renderKeyInDetailTAT();
-        renderKeyInDetailMPI();
+        //renderKeyInDetailMPI();
 
         setTimeout(function() {
 
@@ -1482,20 +1504,54 @@ $(document).ready(function() {
         });
 
 
-        $('.open-popup').on('click', function() {
+        $('.open-popup-wl').on('click', function() {
            
-            $('.open-popup').html('');
-            $('.open-popup').html('<i class="icon icon-filterFilled "></i>');
+            $('.open-popup-wl').html('');
+            $('.open-popup-wl').html('<i class="icon icon-filterFilled "></i>');
             myApp.popup(this.getAttribute('data-trig'));
            
 
         });
 
 
-        $('.close-popup').on('click', function() {
+        $('.close-popup-wl').on('click', function() {
             
-            $('.open-popup').html('');
-            $('.open-popup').html('<i class="icon icon-filter "></i>');
+            $('.open-popup-wl').html('');
+            $('.open-popup-wl').html('<i class="icon icon-filter "></i>');
+            
+        });
+
+        $('.open-popup-vol').on('click', function() {
+           
+            $('.open-popup-vol').html('');
+            $('.open-popup-vol').html('<i class="icon icon-filterFilled "></i>');
+            myApp.popup(this.getAttribute('data-trig'));
+           
+
+        });
+
+
+        $('.close-popup-vol').on('click', function() {
+            
+            $('.open-popup-vol').html('');
+            $('.open-popup-vol').html('<i class="icon icon-filter "></i>');
+            
+        });
+
+        $('.open-popup-tat').on('click', function() {
+           
+            $('.open-popup-tat').html('');
+            $('.open-popup-tat').html('<i class="icon icon-filterFilled "></i>');
+            myApp.popup(this.getAttribute('data-trig'));
+           
+
+        });
+
+
+        $('.close-popup-tat').on('click', function() {
+            
+            $('.open-popup-tat').html('');
+            $('.open-popup-tat').html('<i class="icon icon-filter "></i>');
             
         });
 
@@ -2172,6 +2228,22 @@ $(document).ready(function() {
         });
 
         //myApp.showPreloader('Preparing');
+        $('.open-popup').on('click', function() {
+            //console.log(this.getAttribute('data-trig'));
+            $('.open-popup').html('');
+            $('.open-popup').html('<i class="icon icon-filterFilled "></i>');
+            myApp.popup(this.getAttribute('data-trig'));
+        });
+
+
+        $('.close-popup').on('click', function() {
+            //console.log(this.getAttribute('data-trig'));
+            $('.open-popup').html('');
+            $('.open-popup').html('<i class="icon icon-filter "></i>');
+            //myApp.popup(this.getAttribute('data-trig'));
+        });
+        
+        
         myApp.showIndicator();
         var slides = [
             'Forcasted vs Actual Volume',
@@ -2380,18 +2452,27 @@ $(document).ready(function() {
         publicStorage.put('dataVolume', dataFactory);
 
 
+      
 
+        
 
-        vBar.triggerIt({
+            
+        setTimeout(function(){
+            $('#reports-charts-forcasted-vs-actual').addClass('animated zoomIn');
+            vBar.triggerIt({
             containerId: '#reports-charts-forcasted-vs-actual',
             dataFactory: publicStorage.get('dataVolume')(2, 10, streamsSlide0),
             axisLabel: 'Lockbox EOB Volume Trend',
             color: colorSlide0
-        }, function() {
+            }, function() {
 
-            $('#reports-charts-forcasted-vs-actual').addClass('animated zoomIn');
-        });
-
+                setTimeout(function(){
+                    $('#reports-charts-forcasted-vs-actual').removeClass('animated zoomIn');
+                },1000)
+                
+            });
+        },1000);
+       
 
         $("#VT-slider").on('input', function() {
 
