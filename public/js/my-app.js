@@ -2057,7 +2057,7 @@ $(document).ready(function() {
                     document.getElementsByTagName("input")[i].checked = false;
                 }
             }
-            console.log(this.checked);
+            console.log(new Date());
             if(this.checked){
                 console.log("got-here");
                 $("#cre-search").removeAttr("disabled");
@@ -2076,6 +2076,223 @@ $(document).ready(function() {
          });
         var data = [
                     {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },
+                                        {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
+                        'reportedDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'noOfError' : 1,
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'typeOfIssue' : 'No Photo',
+                        'descriptionData' : 'There is no Photo'
+                    },                    {
                         'reportedDate':'5-15-2014',
                         'batchDate' : '4-14-2014',
                         'noOfError' : 1,
@@ -2143,13 +2360,43 @@ $(document).ready(function() {
 
 myApp.onPageInit('qc-effectiveness', function(page) {
         $("#cre-search").attr("disabled", true);
-        $('#qa-date-selector').on('change', function() {
+        $('#qa-date-selector').on('input', function() {
             $('#qa-date-text').html("QA Date: "+$('#qa-date-selector').val());
         });
+        ///////////////////
+
+        webshim.setOptions('forms-ext', {
+    replaceUI: 'auto',
+    types: 'date',
+    date: {
+        startView: 2,
+        inlinePicker: true,
+        classes: 'hide-inputbtns'
+    }
+});
+webshim.setOptions('forms', {
+    lazyCustomMessages: true
+});
+//start polyfilling
+webshim.polyfill('forms forms-ext');
+
+//only last example using format display
+$(function () {
+    $('.format-date').each(function () {
+        var $display = $('.date-display', this);
+        $(this).on('change', function (e) {
+            //webshim.format will automatically format date to according to webshim.activeLang or the browsers locale
+            var localizedDate = webshim.format.date($.prop(e.target, 'value'));
+            $display.html(localizedDate);
+        });
+    });
+});
+        ////////////////////
 
 
          $('input[type=checkbox]').on('change', function() {
             var clickedBox = this;
+
             console.log(document.getElementsByTagName("input").length);
             for(var i =0; i< document.getElementsByTagName("input").length;i++){
                 if(document.getElementsByTagName("input")[i].type == "checkbox" &&clickedBox != document.getElementsByTagName("input")[i]){
@@ -2176,6 +2423,202 @@ myApp.onPageInit('qc-effectiveness', function(page) {
          });
         var data = [
                     {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
+                        'qcDate':'5-15-2014',
+                        'batchDate' : '4-14-2014',
+                        'group' : 'BOA',
+                        'site' : 123,
+                        'descriptionData' : 'There is no Photo'
+                    },
+                    {
+                        'qcDate':'5-12-2014',
+                        'batchDate' : '4-24-2014',
+                        'group' : 'TCS',
+                        'site' : 321,
+                        'descriptionData' : 'There is no Check'
+                    },
+                                        {
                         'qcDate':'5-15-2014',
                         'batchDate' : '4-14-2014',
                         'group' : 'BOA',
