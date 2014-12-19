@@ -2012,7 +2012,7 @@ $(document).ready(function() {
         $("#cre-search").attr("disabled", true);
 
         
-         $('input[type=checkbox]').on('click', function() {
+         $('input[type=checkbox]').on('change', function() {
             var clickedBox = this;
             console.log(document.getElementsByTagName("input").length);
             for(var i =0; i< document.getElementsByTagName("input").length;i++){

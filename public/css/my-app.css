@@ -13,6 +13,7 @@ a.anchorColor
 
 .list-block .item-inner.table-header, .list-block .item-inner.table-content{
 	align-items:stretch;
+	-webkit-align-items:stretch;
 	padding:0px;
 }
 
