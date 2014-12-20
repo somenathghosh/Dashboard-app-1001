@@ -84,6 +84,9 @@ var MODULE = (function(module, nv) {
                     })
                     .color(d3.scale.category10().range()).useInteractiveGuideline(true);
 
+                chart.showXAxis(options.showXAxis || true);
+                chart.showYAxis(options.showYAxis || true);
+
                 chart.xAxis.tickFormat(d3.format(',0f'));
 
                 chart.yAxis.tickFormat(d3.format(',0f'));

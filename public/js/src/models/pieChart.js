@@ -198,7 +198,7 @@ nv.models.pieChart = function(mainView, page) {
   });
 
 	pie.dispatch.on('elementClick', function(e) {
-		console.log(e);
+		//console.log(e);
 		mainView.loadPage(page);
   	});
 

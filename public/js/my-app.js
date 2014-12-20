@@ -24,7 +24,7 @@ $(document).ready(function() {
         modalCloseByOutside: false,
         popupCloseByOutside: false,
         preloadPreviousPage: false,
-        notificationCloseOnClick:true
+        notificationCloseOnClick: true
 
         //modalPreloaderTitle: "Your Dashboard is getting prepared. Please wait….!!!"
     });
@@ -72,7 +72,7 @@ $(document).ready(function() {
     });
 
 
-     var keyinPopupViewTAT = myApp.addView('.popup-view-keyin-TAT', {
+    var keyinPopupViewTAT = myApp.addView('.popup-view-keyin-TAT', {
 
         dynamicNavbar: true
     });
@@ -87,6 +87,8 @@ $(document).ready(function() {
 
         dynamicNavbar: true
     });*/
+
+
 
 
     /**************************************************************************************************/
@@ -204,13 +206,21 @@ $(document).ready(function() {
     });
 
 
-    function showNotification(options){
+    function showNotification(options) {
+
+
+        var message = "Currently Viewing for Group Code: " + sessionStorage.getItem('groupCode') + " and Site Number: " + sessionStorage.getItem('siteNumber')
+
+        if (sessionStorage.getItem('org')) {
+
+            message = "Currently Viewing for Group Code: " + sessionStorage.getItem('groupCode') + ", Site Number: " + sessionStorage.getItem('siteNumber') + " & Org: " + sessionStorage.getItem('org');
+
+        }
 
         myApp.addNotification({
-            title: options.title || "HL-Board Notification",
-            subtitle: options.subtitle || undefined,
-            message: options.message,
-            hold:options.hold || 2000,
+            title: options.title || message,
+            hold: options.hold || 3000,
+            //message:options.message|| message,
             media: '<i class="icon icon-notification"></i>'
         });
 
@@ -221,13 +231,70 @@ $(document).ready(function() {
 
 
 
+    var colorPalleton = Object.create(Object.prototype, {
+
+        violet: {
+            writable: false,
+            configurable: false,
+            value: "#990099"
+        },
+        indigo: {
+            writable: false,
+            configurable: false,
+            value: "#04B4AE"
+        },
+        blue: {
+            writable: false,
+            configurable: false,
+            value: "#7211CE"
+        },
+        green: {
+            writable: false,
+            configurable: false,
+            value: "#109618"
+        },
+        yellow: {
+            writable: false,
+            configurable: false,
+            value: "#FCB446"
+        },
+        orange: {
+            writable: false,
+            configurable: false,
+            value: "FF9900"
+        },
+        red: {
+            writable: false,
+            configurable: false,
+            value: "#DC3912"
+        },
+        black: {
+            writable: false,
+            configurable: false,
+            value: "#00000"
+        },
+        white: {
+            writable: false,
+            configurable: false,
+            value: "#fffff"
+        },
+        grey: {
+            writable: false,
+            configurable: false,
+            value: "#A4A4A4"
+        }
+
+    });
+
     //---------------------------------------------------------------------------------------------//
 
 
 
     /************************************************************************************************/
 
-   
+    sessionStorage.removeItem("groupCode");
+    sessionStorage.removeItem("siteNumber");
+    sessionStorage.removeItem("org");
 
     var homelink = $('#goHome');
 
@@ -245,7 +312,7 @@ $(document).ready(function() {
 
 
             localStorage.deviceID = '6ac90d0e-20db-4766-9767-c675bde0ef1f';
-            localStorage.registeredUser= "Tapan Mishra";
+            localStorage.registeredUser = "Tapan Mishra";
             //localStorage.removeItem("deviceID");
             setTimeout(function() {
 
@@ -349,11 +416,7 @@ $(document).ready(function() {
                             myApp.hideIndicator();
 
                             $('#main-view-test-fadein').removeClass('animated zoomIn');
-                            showNotification({
-                                
-                                message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('homeGrCode') + " and Site Number: "+ sessionStorage.getItem('homeSiteNumber')
 
-                            });
 
                         }, 200);
 
@@ -406,13 +469,10 @@ $(document).ready(function() {
 
 
 
-
-
-
     function buildHomePage(callback) {
 
-        sessionStorage.setItem("homeGrCode","All");
-        sessionStorage.setItem("homeSiteNumber","All");
+        sessionStorage.setItem("groupCode", "ALL");
+        sessionStorage.setItem("siteNumber", "ALL");
 
 
 
@@ -480,7 +540,7 @@ $(document).ready(function() {
                         donutRatio: 0.35,
                         mainView: mainView,
                         page: "lockbox-inbound.html",
-                        colors: ["#DC3912", "#FCB446", "#109618"],
+                        colors: [colorPalleton.red, colorPalleton.yellow, colorPalleton.green],
                         selector: "#chartL1",
                         showLegend: false
 
@@ -504,7 +564,7 @@ $(document).ready(function() {
                             donutRatio: 0.35,
                             mainView: mainView,
                             page: "lockbox-outbound.html",
-                            colors: ["#DC3912", "#FCB446", "#109618"],
+                            colors: [colorPalleton.red, colorPalleton.yellow, colorPalleton.green],
                             selector: "#chartL3",
                             showLegend: false
 
@@ -528,7 +588,7 @@ $(document).ready(function() {
                                 donutRatio: 0.0,
                                 mainView: mainView,
                                 page: "keyin-detail.html",
-                                colors: ["#109618", "#FCB446", "#AE2706", "#7211CE"],
+                                colors: [colorPalleton.green, colorPalleton.yellow, colorPalleton.red, colorPalleton.violet],
                                 selector: "#chartL2",
                                 showLegend: false
 
@@ -553,7 +613,7 @@ $(document).ready(function() {
                                     donutRatio: 0.35,
                                     mainView: mainView,
                                     page: "claim.html",
-                                    colors: ["#DC3912", "#FCB446", "#109618"],
+                                    colors: [colorPalleton.red, colorPalleton.yellow, colorPalleton.green],
                                     selector: "#chartL4",
                                     showLegend: false
 
@@ -596,22 +656,21 @@ $(document).ready(function() {
 
 
 
-    function refreshBuildHomePage(callback,groupCode, siteNumber) {
+    function refreshBuildHomePage(callback, groupCode, siteNumber) {
 
 
         var pie = new D3PieChart();
-       
+
         myApp.showIndicator();
 
         var api = new _.API();
 
         var url;
 
-        if(groupCode && siteNumber){
-            url="https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber;
-        }
-        else{
-            url="https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home";
+        if (groupCode && siteNumber) {
+            url = "https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber;
+        } else {
+            url = "https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/inbound/home";
         }
 
         api.getIt(url, inboundHomeCallback);
@@ -630,27 +689,27 @@ $(document).ready(function() {
                 var cData = new _.ChartDataCreator(data);
 
                 setTimeout(function() {
-                        
-
-                        pie.draw({
-                            data: cData.chartData,
-                            showLabels: true,
-                            labelType: "percent",
-                            isDonut: true,
-                            donutRatio: 0.35,
-                            mainView: mainView,
-                            page: "lockbox-inbound.html",
-                            colors: ["#DC3912", "#FCB446", "#109618"],
-                            selector: "#chartL1",
-                            showLegend: false
 
 
-
-                        }, function() {
+                    pie.draw({
+                        data: cData.chartData,
+                        showLabels: true,
+                        labelType: "percent",
+                        isDonut: true,
+                        donutRatio: 0.35,
+                        mainView: mainView,
+                        page: "lockbox-inbound.html",
+                        colors: [colorPalleton.red, colorPalleton.yellow, colorPalleton.green],
+                        selector: "#chartL1",
+                        showLegend: false
 
 
 
-                        });
+                    }, function() {
+
+
+
+                    });
 
 
                 }, 200);
@@ -658,14 +717,13 @@ $(document).ready(function() {
                 var api = new _.API();
                 var url;
 
-                if(groupCode && siteNumber){
+                if (groupCode && siteNumber) {
 
                     url = "https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber;
-                }
-                else{
+                } else {
                     url = "https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/outbound/home";
                 }
-               
+
                 api.getIt(url, outboundHomeCallback);
 
             } else {
@@ -696,38 +754,37 @@ $(document).ready(function() {
                 var cData = new _.ChartDataCreator(data);
 
                 setTimeout(function() {
-                pie.draw({
-                    data: cData.chartData,
-                    showLabels: true,
-                    labelType: "percent",
-                    isDonut: true,
-                    donutRatio: 0.35,
-                    mainView: mainView,
-                    page: "lockbox-outbound.html",
-                    colors: ["#DC3912", "#FCB446", "#109618"],
-                    selector: "#chartL3",
-                    showLegend: false
+                    pie.draw({
+                        data: cData.chartData,
+                        showLabels: true,
+                        labelType: "percent",
+                        isDonut: true,
+                        donutRatio: 0.35,
+                        mainView: mainView,
+                        page: "lockbox-outbound.html",
+                        colors: [colorPalleton.red, colorPalleton.yellow, colorPalleton.green],
+                        selector: "#chartL3",
+                        showLegend: false
 
 
 
-                }, function() {
+                    }, function() {
 
 
-                });
-            },400);
+                    });
+                }, 400);
 
                 var url;
 
-                if(groupCode && siteNumber){
+                if (groupCode && siteNumber) {
 
-                    url="https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber;
-                }
-                else{
-                    url="https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home";
+                    url = "https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber;
+                } else {
+                    url = "https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/home";
                 }
 
                 api.getIt(url, keyInHomeCallback);
-              
+
 
             } else {
 
@@ -752,40 +809,39 @@ $(document).ready(function() {
 
                 var vm = new _.ViewModelHomeKeyIn();
                 vm.applyModel(data);
-                
+
 
                 var cData = new _.ChartDataCreator(data);
 
-                 setTimeout(function() {
-                pie.draw({
-                    data: cData.chartKeyinData,
-                    showLabels: true,
-                    labelType: "percent",
-                    isDonut: false,
-                    donutRatio: 0.0,
-                    mainView: mainView,
-                    page: "keyin-detail.html",
-                    colors: ["#109618", "#FCB446", "#AE2706", "#7211CE"],
-                    selector: "#chartL2",
-                    showLegend: false
+                setTimeout(function() {
+                    pie.draw({
+                        data: cData.chartKeyinData,
+                        showLabels: true,
+                        labelType: "percent",
+                        isDonut: false,
+                        donutRatio: 0.0,
+                        mainView: mainView,
+                        page: "keyin-detail.html",
+                        colors: [colorPalleton.green, colorPalleton.yellow, colorPalleton.red, colorPalleton.violet],
+                        selector: "#chartL2",
+                        showLegend: false
 
 
 
-                }, function() {
+                    }, function() {
 
 
 
-                });
-            },600);
+                    });
+                }, 600);
 
                 var url;
 
-                if(groupCode && siteNumber){
+                if (groupCode && siteNumber) {
 
-                    url="https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber
-                }
-                else{
-                    url="https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home"
+                    url = "https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home?forGroupCode=" + groupCode + "&forSiteNumber=" + siteNumber
+                } else {
+                    url = "https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/claim/home"
                 }
 
                 api.getIt(url, claimHomeCallback);
@@ -817,27 +873,27 @@ $(document).ready(function() {
 
                 var cData = new _.ChartDataCreator(data);
 
-                 setTimeout(function() {
-                pie.draw({
-                    data: cData.chartData,
-                    showLabels: true,
-                    labelType: "percent",
-                    isDonut: true,
-                    donutRatio: 0.35,
-                    mainView: mainView,
-                    page: "claim.html",
-                    colors: ["#DC3912", "#FCB446", "#109618"],
-                    selector: "#chartL4",
-                    showLegend: false
+                setTimeout(function() {
+                    pie.draw({
+                        data: cData.chartData,
+                        showLabels: true,
+                        labelType: "percent",
+                        isDonut: true,
+                        donutRatio: 0.35,
+                        mainView: mainView,
+                        page: "claim.html",
+                        colors: [colorPalleton.red, colorPalleton.yellow, colorPalleton.green],
+                        selector: "#chartL4",
+                        showLegend: false
 
 
 
-                }, function() {
+                    }, function() {
 
-                    callback();
+                        callback();
 
-                });
-            },800);
+                    });
+                }, 800);
 
             } else {
 
@@ -856,7 +912,7 @@ $(document).ready(function() {
 
         };
 
-        
+
 
 
     };
@@ -866,10 +922,10 @@ $(document).ready(function() {
 
         var groupCode = $('#groupCode-home').val();
         var siteNumber = $('#siteNumber-home').val();
-        sessionStorage.setItem("homeGrCode",groupCode);
-        sessionStorage.setItem("homeSiteNumber",siteNumber);
-        
-        if(groupCode==="All" && siteNumber ==="All"){
+        sessionStorage.setItem("groupCode", groupCode);
+        sessionStorage.setItem("siteNumber", siteNumber);
+
+        if (groupCode === "All" && siteNumber === "All") {
 
             refreshBuildHomePage(function() {
 
@@ -877,8 +933,7 @@ $(document).ready(function() {
 
                     myApp.hideIndicator();
                     showNotification({
-                                
-                        message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('homeGrCode') + " and Site Number: "+ sessionStorage.getItem('homeSiteNumber')
+
 
                     });
 
@@ -887,8 +942,7 @@ $(document).ready(function() {
             });
 
 
-        }
-        else{
+        } else {
 
             refreshBuildHomePage(function() {
 
@@ -896,14 +950,13 @@ $(document).ready(function() {
 
                     myApp.hideIndicator();
                     showNotification({
-                                
-                        message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('homeGrCode') + " and Site Number: "+ sessionStorage.getItem('homeSiteNumber')
+
 
                     });
 
                 }, 500);
 
-            },groupCode, siteNumber);
+            }, groupCode, siteNumber);
 
         }
 
@@ -914,8 +967,8 @@ $(document).ready(function() {
     $('.submitButton-home-reset').click(function() {
 
 
-        sessionStorage.setItem("homeGrCode","All");
-        sessionStorage.setItem("homeSiteNumber","All");
+        sessionStorage.setItem("groupCode", "All");
+        sessionStorage.setItem("siteNumber", "All");
 
         refreshBuildHomePage(function() {
 
@@ -923,8 +976,7 @@ $(document).ready(function() {
 
                 myApp.hideIndicator();
                 showNotification({
-                            
-                    message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('homeGrCode') + " and Site Number: "+ sessionStorage.getItem('homeSiteNumber')
+
 
                 });
 
@@ -937,10 +989,17 @@ $(document).ready(function() {
     });
 
 
-    
 
 
     /************************************************************************************************/
+
+    myApp.onPageInit('*', function(page) {
+        console.log(page.name + ' initialized');
+        sessionStorage.removeItem("org");
+        sessionStorage.removeItem("groupCode");
+        sessionStorage.removeItem("siteNumber");
+
+    });
 
 
     myApp.onPageInit('index', function(page) {
@@ -956,12 +1015,12 @@ $(document).ready(function() {
 
             }, 1000);
 
-        },groupCode, siteNumber);
+        }, groupCode, siteNumber);
 
-       
+
         homelink.prop("href", "#");
         $('.open-popup').on('click', function() {
-            console.log(this.getAttribute('data-trig'));
+            //console.log(this.getAttribute('data-trig'));
             $('.open-popup').html('');
             $('.open-popup').html('<i class="icon icon-filterFilled "></i>');
             myApp.popup(this.getAttribute('data-trig'));
@@ -981,291 +1040,242 @@ $(document).ready(function() {
 
 
 
-    myApp.onPageInit('*', function(page) {
-        console.log(page.name + ' initialized');
-
-    });
 
 
 
-    function renderKeyInDetailWorklist(groupCode, siteNumber, org, callback) {
+    function renderKeyInDetailWorklist(callback, groupCode, siteNumber, org) {
 
         var pie = new D3PieChart();
         var api = new _.API();
-
+        var url;
 
         if (groupCode && siteNumber && org) {
 
-
-            api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/worklist?forGroupCode=' + groupCode + '&forSiteNumber=' + siteNumber + '&forOrg=' + org, function(success, data) {
-                if (success) {
-
-                    var cData = new _.ChartDataCreator(data);
-
-                    pie.draw({
-                        data: cData.chartKeyinDataWorkList,
-                        showLabels: true,
-                        labelType: "percent",
-                        isDonut: false,
-                        donutRatio: 0.0,
-                        mainView: mainView,
-                        page: "",
-                        colors: ["#DC3912", "#FF9900", "#109618", "#7211CE", "#990099", "#000000"],
-                        selector: "#chartL5",
-                        showLegend: false,
-                        width: 500,
-                        height: 500
-
-
-
-                    }, function() {
-                        if (callback) {
-                            callback();
-                        }
-
-
-                    });
-
-
-
-                } else {
-
-                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                        function() {
-                            myApp.hideIndicator();
-                        },
-
-                        function() {
-                            myApp.hideIndicator();
-                        }
-                    );
-
-
-                }
-
-            });
-
-
-
-
+            url = 'https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/worklist?forGroupCode=' + groupCode + '&forSiteNumber=' + siteNumber + '&forOrg=' + org;
         } else {
 
-
-
-            api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/worklist', function(success, data) {
-                if (success) {
-                    var cData = new _.ChartDataCreator(data);
-
-                    var chartKeyinDataWorkList = [
-
-                        {
-                            label: "File Submitted",
-                            value: 100
-                        }, {
-                            label: "File Assigned",
-                            value: 100
-                        }, {
-                            label: "File in Progress",
-                            value: 100
-                        }, {
-                            label: "File Completed",
-                            value: 100
-                        }, {
-                            label: "File UnAssigned",
-                            value: 100
-                        }, {
-                            label: "File Rejected",
-                            value: 100
-                        }
-                    ];
-                    pie.draw({
-                        data: chartKeyinDataWorkList,
-                        showLabels: true,
-                        labelType: "percent",
-                        isDonut: false,
-                        donutRatio: 0.0,
-                        mainView: mainView,
-                        page: "",
-                        colors: ["#DC3912", "#FF9900", "#109618", "#7211CE", "#990099", "#000000"],
-                        selector: "#chartL5",
-                        showLegend: false,
-                        width: 500,
-                        height: 500
-
-
-
-                    }, function() {
-
-                        //$('#chartL5').addClass('animated zoomIn');
-                        
-                        setTimeout(function(){
-
-                            pie.draw({
-                                data: cData.chartKeyinDataWorkList,
-                                showLabels: true,
-                                labelType: "percent",
-                                isDonut: false,
-                                donutRatio: 0.0,
-                                mainView: mainView,
-                                page: "",
-                                colors: ["#DC3912", "#FF9900", "#109618", "#7211CE", "#990099", "#000000"],
-                                selector: "#chartL5",
-                                showLegend: false,
-                                width: 500,
-                                height: 500
-
-
-
-                            }, function() {
-
-                                //$('#chartL5').removeClass('animated zoomIn');
-                                if (callback) {
-                                    callback();
-                                }
-                                
-
-                            });
-
-
-                        },1000);
-
-                    });
-
-
-                } else {
-
-                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                        function() {
-                            myApp.hideIndicator();
-                        },
-
-                        function() {
-                            myApp.hideIndicator();
-                        }
-                    );
-
-
-                }
-
-            });
+            url = 'https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/worklist';
 
         }
 
 
+
+
+        api.getIt(url, function(success, data) {
+            if (success) {
+                var cData = new _.ChartDataCreator(data);
+
+                var chartKeyinDataWorkList = [
+
+                    {
+                        label: "File Submitted",
+                        value: 100
+                    }, {
+                        label: "File Assigned",
+                        value: 100
+                    }, {
+                        label: "File in Progress",
+                        value: 100
+                    }, {
+                        label: "File Completed",
+                        value: 100
+                    }, {
+                        label: "File UnAssigned",
+                        value: 100
+                    }, {
+                        label: "File Rejected",
+                        value: 100
+                    }
+                ];
+                pie.draw({
+                    data: chartKeyinDataWorkList,
+                    showLabels: true,
+                    labelType: "percent",
+                    isDonut: false,
+                    donutRatio: 0.0,
+                    mainView: mainView,
+                    page: "",
+                    colors: [colorPalleton.green, colorPalleton.violet, colorPalleton.yellow, colorPalleton.blue, colorPalleton.grey, colorPalleton.red],
+                    selector: "#chartL5",
+                    showLegend: false,
+                    width: 500,
+                    height: 500
+
+
+
+                }, function() {
+
+                    if (callback.start) {
+                        callback.start();
+                    }
+
+
+                    setTimeout(function() {
+
+                        pie.draw({
+                            data: cData.chartKeyinDataWorkList,
+                            showLabels: true,
+                            labelType: "percent",
+                            isDonut: false,
+                            donutRatio: 0.0,
+                            mainView: mainView,
+                            page: "",
+                            colors: [colorPalleton.green, colorPalleton.violet, colorPalleton.yellow, colorPalleton.blue, colorPalleton.grey, colorPalleton.red],
+                            selector: "#chartL5",
+                            showLegend: false,
+                            width: 500,
+                            height: 500
+
+
+
+                        }, function() {
+
+
+
+
+                            if (callback.main) {
+                                callback.main();
+                            }
+
+
+                            if (callback.end) {
+
+                                callback.end();
+
+                            }
+
+
+                        });
+
+
+                    }, 1000);
+
+                });
+
+
+            } else {
+
+                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
+
+                    function() {
+                        myApp.hideIndicator();
+                    },
+
+                    function() {
+                        myApp.hideIndicator();
+                    }
+                );
+
+
+            }
+
+        });
+
+
+
+
     };
 
-    function renderKeyInDetailTAT(groupCode, siteNumber, callback) {
+    function renderKeyInDetailTAT(callback, groupCode, siteNumber) {
 
         var pie = new D3PieChart();
         var api = new _.API();
-
+        var url;
         if (groupCode && siteNumber) {
-
-            api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/batchTAT?forGroupCode=' + groupCode + '&forSiteNumber=' + siteNumber, function(success, data) {
-                if (success) {
-
-                    pie.draw({
-                        data: data,
-                        showLabels: true,
-                        labelType: "percent",
-                        isDonut: false,
-                        donutRatio: 0.0,
-                        mainView: mainView,
-                        page: "",
-                        colors: ["#DC3912", "#FCB446", "#109618"],
-                        selector: "#chartL6",
-                        showLegend: false,
-                        width: 450,
-                        height: 450
-
-
-                    }, function() {
-
-                        if (callback) {
-
-                            callback();
-                        }
-
-                    });
-
-                    //console.log(callback);
-
-
-
-                } else {
-
-                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                        function() {
-                            myApp.hideIndicator();
-                        },
-
-                        function() {
-                            myApp.hideIndicator();
-                        }
-                    );
-
-                }
-
-            });
-
-
+            url = 'https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/batchTAT?forGroupCode=' + groupCode + '&forSiteNumber=' + siteNumber;
         } else {
-
-
-
-
-            api.getIt('https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/batchTAT', function(success, data) {
-                if (success) {
-
-
-                    pie.draw({
-                        data: data,
-                        showLabels: true,
-                        labelType: "percent",
-                        isDonut: false,
-                        donutRatio: 0.0,
-                        mainView: mainView,
-                        page: "",
-                        colors: ["#DC3912", "#FCB446", "#109618"],
-                        selector: "#chartL6",
-                        showLegend: false,
-                        width: 450,
-                        height: 450
-
-
-                    }, function() {
-
-                        $('#chartL6').addClass('animated zoomIn');
-
-                    });
-
-
-                } else {
-
-                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                        function() {
-                            myApp.hideIndicator();
-                        },
-
-                        function() {
-                            myApp.hideIndicator();
-                        }
-                    );
-
-                }
-
-            });
-
+            url = 'https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/batchTAT';
         }
+
+        api.getIt(url, function(success, data) {
+            var recievedData = data;
+            if (success) {
+
+                var sData = [{
+                    label: "Plus",
+                    value: 100
+                }, {
+                    label: "Lite",
+                    value: 1000
+                }, {
+                    label: "Elite",
+                    value: 10000
+                }];
+
+
+                pie.draw({
+                    data: sData,
+                    showLabels: true,
+                    labelType: "percent",
+                    isDonut: true,
+                    donutRatio: 0.35,
+                    mainView: mainView,
+                    page: "",
+                    colors: [colorPalleton.red, colorPalleton.yellow, colorPalleton.green],
+                    selector: "#chartL6",
+                    showLegend: false,
+                    width: 450,
+                    height: 450
+
+
+                }, function() {
+
+                    setTimeout(function() {
+
+
+
+                        pie.draw({
+                            data: recievedData,
+                            showLabels: true,
+                            labelType: "percent",
+                            isDonut: true,
+                            donutRatio: 0.35,
+                            mainView: mainView,
+                            page: "",
+                            colors: [colorPalleton.red, colorPalleton.yellow, colorPalleton.green],
+                            selector: "#chartL6",
+                            showLegend: false,
+                            width: 450,
+                            height: 450
+
+
+                        }, function() {
+
+                            if (callback) {
+
+                                callback();
+                            }
+
+                        });
+
+                    }, 1000);
+
+
+                });
+
+
+            } else {
+
+                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
+
+                    function() {
+                        myApp.hideIndicator();
+                    },
+
+                    function() {
+                        myApp.hideIndicator();
+                    }
+                );
+
+            }
+
+        });
+
 
     };
 
 
-    function renderKeyInDetailVolume(groupCode, callback) {
+    function renderKeyInDetailVolume(callback, groupCode) {
 
         var api = new _.API();
         var url;
@@ -1283,23 +1293,50 @@ $(document).ready(function() {
 
         api.getIt(url, function(success, data) {
 
+            var recievedData = data;
             if (success) {
 
                 var discreteBarChart = new D3DiscreteBarChart();
+                var sData = [{
+                    key: "Cumulative Return",
+                    values: [{
+                        label: "Expected Volume",
+                        value: 0
+                    }, {
+                        label: "Actual Volume",
+                        value: 0
+                    }]
+                }];
 
                 discreteBarChart.triggerIt({
 
-                    color: ['#109618', '#FCB446'],
+                    color: [colorPalleton.green, colorPalleton.yellow],
                     containerId: '#chartL7',
-                    data: data
+                    data: sData
 
 
                 }, function(success) {
-                    if (callback) {
 
-                        callback();
-                    }
+                    setTimeout(function() {
+                        discreteBarChart.triggerIt({
 
+                            color: [colorPalleton.green, colorPalleton.yellow],
+                            containerId: '#chartL7',
+                            data: recievedData
+
+
+                        }, function(success) {
+
+
+
+                            if (callback) {
+
+                                callback();
+                            }
+
+
+                        });
+                    }, 1000);
 
                 });
 
@@ -1327,62 +1364,62 @@ $(document).ready(function() {
 
     };
 
-    function renderKeyInDetailMPI(groupCode, siteNumber, callback) {
+    /*    function renderKeyInDetailMPI(groupCode, siteNumber, callback) {
 
-        var api = new _.API();
-        var url;
+            var api = new _.API();
+            var url;
 
-        if (groupCode && siteNumber) {
+            if (groupCode && siteNumber) {
 
-            url = 'https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/MPI?forGroupCode=' + groupCode + '&forSiteNumber=' + siteNumber;
-        } else {
-            url = 'https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/MPI';
-
-        }
-        api.getIt(url, function(success, data) {
-            if (success) {
-
-                var discreteBarChart = new D3DiscreteBarChart();
-
-                discreteBarChart.triggerIt({
-
-                    color: ['#DC3912', '#FF9900', '#109618', '#000099', '#000000', '#990099', 'gray'],
-                    containerId: '#chartL8',
-                    data: data
-
-
-                }, function(success) {
-                    if (callback) {
-
-                        callback();
-                    }
-
-                });
-
-
-
-
+                url = 'https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/MPI?forGroupCode=' + groupCode + '&forSiteNumber=' + siteNumber;
             } else {
-
-                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                    function() {
-                        myApp.hideIndicator();
-                    },
-
-                    function() {
-                        myApp.hideIndicator();
-                    }
-                );
+                url = 'https://dashboard-server-1001.herokuapp.com/api/v1/dashboard/lockbox/keyin/detail/MPI';
 
             }
+            api.getIt(url, function(success, data) {
+                if (success) {
+
+                    var discreteBarChart = new D3DiscreteBarChart();
+
+                    discreteBarChart.triggerIt({
+
+                        color: ['#DC3912', '#FF9900', '#109618', '#000099', '#000000', '#990099', 'gray'],
+                        containerId: '#chartL8',
+                        data: data
 
 
-        });
+                    }, function(success) {
+                        if (callback) {
+
+                            callback();
+                        }
+
+                    });
 
 
-    };
 
+
+                } else {
+
+                    myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
+
+                        function() {
+                            myApp.hideIndicator();
+                        },
+
+                        function() {
+                            myApp.hideIndicator();
+                        }
+                    );
+
+                }
+
+
+            });
+
+
+        };
+    */
 
 
     myApp.onPageInit('keyin-detail', function(page) {
@@ -1412,27 +1449,33 @@ $(document).ready(function() {
         });
         */
 
-        var sliderObject = [    
+        sessionStorage.setItem("groupCode", "ALL");
+        sessionStorage.setItem("siteNumber", "All");
+        sessionStorage.setItem("org", "HLSC");
 
-            function One (){
-                renderKeyInDetailWorklist();
+
+        myApp.showIndicator();
+
+        var sliderObject = [
+
+            function One() {
+                renderKeyInDetailWorklist({});
             },
 
-            function two (){
+            function two() {
                 renderKeyInDetailVolume();
                 renderKeyInDetailTAT();
             }
 
         ];
 
-        myApp.showIndicator();
 
 
 
         var mySlider = myApp.slider('.slider-container', {
             speed: 400,
             spaceBetween: 40,
-            
+
             onSlideChangeEnd: function(slider) {
                 //console.log(slider);
                 sliderObject[slider.activeSlideIndex]();
@@ -1442,32 +1485,45 @@ $(document).ready(function() {
             },
             onSlideChangeStart: function(slider) {
 
-                
+
             }
 
 
         });
 
 
-        renderKeyInDetailWorklist();
-        renderKeyInDetailVolume();
-        renderKeyInDetailTAT();
-        //renderKeyInDetailMPI();
+        renderKeyInDetailWorklist({
 
-        setTimeout(function() {
+            start: function() {
+                $('#chartL5').addClass('animated zoomIn');
+            },
 
-            myApp.hideIndicator();
-            /*
-            var labels = document.getElementsByClassName("nv-label");
-            for(var index in labels){
-                if(labels[index].children){
-                    labels[index].children[1].style.fill="white";
-                }
+            end: function() {
+                $('#chartL5').removeClass('animated zoomIn');
+            },
+            main: function() {
+
+                renderKeyInDetailVolume(function() {
+
+                    renderKeyInDetailTAT(function() {
+                        setTimeout(function() {
+
+                            myApp.hideIndicator();
+
+
+                        }, 1000);
+
+                    });
+
+                });
 
             }
-            */
 
-        }, 1000);
+
+        });
+
+
+
 
         $('.submitButton-keyin-worklist').click(function() {
 
@@ -1476,13 +1532,50 @@ $(document).ready(function() {
             var siteNumber = $('#siteNumber-keyin-worklist').val();
             var org = $('#org-keyin-worklist').val();
 
+            sessionStorage.setItem("groupCode", groupCode);
+            sessionStorage.setItem("siteNumber", siteNumber);
+            sessionStorage.setItem("org", org);
+
+
+
+
             myApp.showIndicator();
-            renderKeyInDetailWorklist(groupCode, siteNumber, org, function() {
+            renderKeyInDetailWorklist({
+                main: function() {
 
-                setTimeout(function() {
-                    myApp.hideIndicator();
-                }, 500);
+                    setTimeout(function() {
+                        myApp.hideIndicator();
 
+                        showNotification({
+
+
+
+                        });
+                    }, 500);
+
+                }
+            }, groupCode, siteNumber, org);
+
+        });
+
+
+        $('.submitButton-keyin-worklist-reset').click(function() {
+
+            sessionStorage.setItem("groupCode", "ALL");
+            sessionStorage.setItem("siteNumber", "ALL");
+            sessionStorage.setItem("org", "HLSC");
+
+
+            myApp.showIndicator();
+            renderKeyInDetailWorklist({
+                main: function() {
+
+                    setTimeout(function() {
+                        myApp.hideIndicator();
+                        showNotification({});
+                    }, 500);
+
+                }
             });
 
         });
@@ -1491,14 +1584,38 @@ $(document).ready(function() {
 
 
             var groupCode = $('#groupCode-keyin-volume').val();
+
+            sessionStorage.removeItem("org");
+
+            sessionStorage.setItem("groupCode", groupCode);
+
             myApp.showIndicator();
-            renderKeyInDetailVolume(groupCode, function() {
+            renderKeyInDetailVolume(function() {
 
                 setTimeout(function() {
                     myApp.hideIndicator();
+                    showNotification({});
                 }, 500);
 
-            });
+            }, groupCode);
+
+        });
+
+        $('.submitButton-keyin-volume-reset').click(function() {
+
+            sessionStorage.setItem("groupCode", "ALL");
+            sessionStorage.setItem("siteNumber", "ALL");
+            sessionStorage.removeItem("org");
+
+            myApp.showIndicator();
+            renderKeyInDetailVolume(function() {
+
+                setTimeout(function() {
+                    myApp.hideIndicator();
+                    showNotification({});
+                }, 500);
+
+            }, groupCode);
 
         });
 
@@ -1508,12 +1625,45 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-keyin-TAT').val();
             var siteNumber = $('#siteNumber-keyin-TAT').val();
+            sessionStorage.removeItem("org");
+
+            sessionStorage.setItem("groupCode", groupCode);
+            sessionStorage.setItem("siteNumber", siteNumber);
+
             myApp.showIndicator();
-            renderKeyInDetailTAT(groupCode, siteNumber, function() {
+            renderKeyInDetailTAT(function() {
 
                 setTimeout(function() {
 
                     myApp.hideIndicator();
+                    showNotification({});
+
+                }, 500);
+
+
+
+            }, groupCode, siteNumber);
+
+        });
+
+
+        $('.submitButton-keyin-TAT-reset').click(function() {
+
+
+
+
+            sessionStorage.removeItem("org");
+
+            sessionStorage.setItem("groupCode", "ALL");
+            sessionStorage.setItem("siteNumber", "ALL");
+
+            myApp.showIndicator();
+            renderKeyInDetailTAT(function() {
+
+                setTimeout(function() {
+
+                    myApp.hideIndicator();
+                    showNotification({});
 
                 }, 500);
 
@@ -1523,7 +1673,8 @@ $(document).ready(function() {
 
         });
 
-        $('.submitButton-keyin-MPI').click(function() {
+
+        /*$('.submitButton-keyin-MPI').click(function() {
 
 
             var groupCode = $('#groupCode-keyin-MPI').val();
@@ -1537,58 +1688,58 @@ $(document).ready(function() {
 
             });
 
-        });
+        });*/
 
 
         $('.open-popup-wl').on('click', function() {
-           
+
             $('.open-popup-wl').html('');
             $('.open-popup-wl').html('<i class="icon icon-filterFilled "></i>');
             myApp.popup(this.getAttribute('data-trig'));
-           
+
 
         });
 
 
         $('.close-popup-wl').on('click', function() {
-            
+
             $('.open-popup-wl').html('');
             $('.open-popup-wl').html('<i class="icon icon-filter "></i>');
-            
+
         });
 
         $('.open-popup-vol').on('click', function() {
-           
+
             $('.open-popup-vol').html('');
             $('.open-popup-vol').html('<i class="icon icon-filterFilled "></i>');
             myApp.popup(this.getAttribute('data-trig'));
-           
+
 
         });
 
 
         $('.close-popup-vol').on('click', function() {
-            
+
             $('.open-popup-vol').html('');
             $('.open-popup-vol').html('<i class="icon icon-filter "></i>');
-            
+
         });
 
         $('.open-popup-tat').on('click', function() {
-           
+
             $('.open-popup-tat').html('');
             $('.open-popup-tat').html('<i class="icon icon-filterFilled "></i>');
             myApp.popup(this.getAttribute('data-trig'));
-           
+
 
         });
 
 
         $('.close-popup-tat').on('click', function() {
-            
+
             $('.open-popup-tat').html('');
             $('.open-popup-tat').html('<i class="icon icon-filter "></i>');
-            
+
         });
 
     });
@@ -1598,19 +1749,16 @@ $(document).ready(function() {
 
     myApp.onPageInit('claim', function(page) {
 
-        sessionStorage.setItem('claimGrCode',"All");
-        sessionStorage.setItem('claimSiteNumber',"All");
+        sessionStorage.setItem('groupCode', "ALL");
+        sessionStorage.setItem('siteNumber', "ALL");
+
         myApp.showIndicator();
 
         getClaimDetail(function() {
 
             setTimeout(function() {
                 myApp.hideIndicator();
-                showNotification({
-                            subtitle:"You are in Claim",
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('claimGrCode') + " and Site Number: "+ sessionStorage.getItem('claimSiteNumber')
-
-                });
+                showNotification({});
             }, 1000);
         });
 
@@ -1658,66 +1806,53 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-claim').val();
             var siteNumber = $('#siteNumber-claim').val();
-            sessionStorage.setItem('claimGrCode',groupCode);
-            sessionStorage.setItem('claimSiteNumber',siteNumber);
+
+            sessionStorage.setItem('groupCode', groupCode);
+            sessionStorage.setItem('siteNumber', siteNumber);
 
             myApp.showIndicator();
 
 
-            if(groupCode==="All" && siteNumber === "All"){
+            if (groupCode === "All" && siteNumber === "All") {
 
                 getClaimDetail(function() {
 
                     setTimeout(function() {
                         myApp.hideIndicator();
-                        showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('claimGrCode') + " and Site Number: "+ sessionStorage.getItem('claimSiteNumber')
-
-                        });
+                        showNotification({});
                     }, 1000);
 
                 });
 
-            }
-
-            else{
+            } else {
 
                 getClaimDetail(function() {
 
                     setTimeout(function() {
                         myApp.hideIndicator();
-                        showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('claimGrCode') + " and Site Number: "+ sessionStorage.getItem('claimSiteNumber')
-
-                        });
+                        showNotification({});
                     }, 1000);
 
                 }, groupCode, siteNumber);
 
             }
-            
-            
+
+
 
 
         });
 
         $('.submitButton-claim-detail-reset').click(function() {
 
-            
-            sessionStorage.setItem('claimGrCode',"All");
-            sessionStorage.setItem('claimSiteNumber',"All");
+
+            sessionStorage.setItem('groupCode', "ALL");
+            sessionStorage.setItem('siteNumber', "ALL");
             myApp.showIndicator();
             getClaimDetail(function() {
 
                 setTimeout(function() {
                     myApp.hideIndicator();
-                    showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('claimGrCode') + " and Site Number: "+ sessionStorage.getItem('claimSiteNumber')
-
-                        });
+                    showNotification({});
                 }, 1000);
 
             });
@@ -1751,19 +1886,15 @@ $(document).ready(function() {
     myApp.onPageInit('lockbox-outbound', function(page) {
 
 
-        sessionStorage.setItem('outboundGrCode',"All");
-        sessionStorage.setItem('outboundSiteNumber',"All");
+        sessionStorage.setItem('groupCode', "ALL");
+        sessionStorage.setItem('siteNumber', "ALL");
 
         myApp.showIndicator();
         getLockboxOutboundDetail(function() {
 
             setTimeout(function() {
                 myApp.hideIndicator();
-                showNotification({
-                            subtitle:"You are in Outbound",
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('outboundGrCode') + " and Site Number: "+ sessionStorage.getItem('outboundSiteNumber')
-
-                        });
+                showNotification({});
             }, 1000);
 
 
@@ -1811,44 +1942,35 @@ $(document).ready(function() {
 
             var groupCode = $('#groupCode-outbound').val();
             var siteNumber = $('#siteNumber-outbound').val();
-            sessionStorage.setItem('outboundGrCode',groupCode);
-            sessionStorage.setItem('outboundSiteNumber',siteNumber);
+
+            sessionStorage.setItem('groupCode', groupCode);
+            sessionStorage.setItem('siteNumber', siteNumber);
 
             myApp.showIndicator();
 
-            if(groupCode==="All" && siteNumber === "All"){
+            if (groupCode === "All" && siteNumber === "All") {
                 getLockboxOutboundDetail(function() {
 
                     setTimeout(function() {
                         myApp.hideIndicator();
-                        showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('outboundGrCode') + " and Site Number: "+ sessionStorage.getItem('outboundSiteNumber')
-
-                        });
+                        showNotification({});
                     }, 1000);
 
 
                 });
-            }
-            else
-            {
+            } else {
 
                 getLockboxOutboundDetail(function() {
 
                     setTimeout(function() {
                         myApp.hideIndicator();
-                        showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('outboundGrCode') + " and Site Number: "+ sessionStorage.getItem('outboundSiteNumber')
-
-                        });
+                        showNotification({});
                     }, 1000);
 
 
                 }, groupCode, siteNumber);
 
-            
+
 
             }
 
@@ -1858,20 +1980,15 @@ $(document).ready(function() {
 
         $('.submitButton-Outbound-detail-reset').click(function() {
 
-            sessionStorage.setItem('outboundGrCode',"All");
-            sessionStorage.setItem('outboundSiteNumber',"All");
-            
+            sessionStorage.setItem('groupCode', "ALL");
+            sessionStorage.setItem('siteNumber', "ALL");
+
             myApp.showIndicator();
             getLockboxOutboundDetail(function() {
 
                 setTimeout(function() {
                     myApp.hideIndicator();
-                    showNotification({
-                            
-
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('outboundGrCode') + " and Site Number: "+ sessionStorage.getItem('outboundSiteNumber')
-
-                        });
+                    showNotification({});
                 }, 1000);
 
 
@@ -1905,8 +2022,8 @@ $(document).ready(function() {
     myApp.onPageInit('lockbox-inbound', function(page) {
 
 
-        sessionStorage.setItem('inboundGrCode',"All");
-        sessionStorage.setItem('inboundSiteNumber',"All");
+        sessionStorage.setItem('groupCode', "ALL");
+        sessionStorage.setItem('siteNumber', "ALL");
 
 
         myApp.showIndicator();
@@ -1915,12 +2032,7 @@ $(document).ready(function() {
 
             setTimeout(function() {
                 myApp.hideIndicator();
-                showNotification({
-
-                            subtitle:"You are in Inbound",
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('inboundGrCode') + " and Site Number: "+ sessionStorage.getItem('inboundSiteNumber')
-
-                        });
+                showNotification({});
             }, 1000);
 
 
@@ -1968,33 +2080,24 @@ $(document).ready(function() {
             var groupCode = $('#groupCode-inbound').val();
             var siteNumber = $('#siteNumber-inbound').val();
 
-            sessionStorage.setItem('inboundGrCode',groupCode);
-            sessionStorage.setItem('inboundSiteNumber',siteNumber);
+            sessionStorage.setItem('groupCode', groupCode);
+            sessionStorage.setItem('siteNumber', siteNumber);
 
             myApp.showIndicator();
 
-            if(groupCode==="All" && siteNumber === "All"){
+            if (groupCode === "All" && siteNumber === "All") {
                 getLockboxInboundDetail(function() {
                     setTimeout(function() {
                         myApp.hideIndicator();
-                        showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('inboundGrCode') + " and Site Number: "+ sessionStorage.getItem('inboundSiteNumber')
-
-                        });
+                        showNotification({});
                     }, 1000);
                 });
 
-            }
-            else{
+            } else {
                 getLockboxInboundDetail(function() {
                     setTimeout(function() {
                         myApp.hideIndicator();
-                        showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('inboundGrCode') + " and Site Number: "+ sessionStorage.getItem('inboundSiteNumber')
-
-                        });
+                        showNotification({});
                     }, 1000);
                 }, groupCode, siteNumber);
             }
@@ -2004,18 +2107,14 @@ $(document).ready(function() {
 
         $('.submitButton-Inbound-detail-reset').click(function() {
 
-            sessionStorage.setItem('inboundGrCode',"All");
-            sessionStorage.setItem('inboundSiteNumber',"All");
-           
+            sessionStorage.setItem('groupCode', "ALL");
+            sessionStorage.setItem('groupCode', "ALL");
+
             myApp.showIndicator();
             getLockboxInboundDetail(function() {
                 setTimeout(function() {
                     myApp.hideIndicator();
-                    showNotification({
-                            
-                            message:"Currently Viewing for Group Code: "+ sessionStorage.getItem('inboundGrCode') + " and Site Number: "+ sessionStorage.getItem('inboundSiteNumber')
-
-                        });
+                    showNotification({});
                 }, 1000);
             });
 
@@ -2047,638 +2146,573 @@ $(document).ready(function() {
     myApp.onPageInit('customer-reported-error', function(page) {
         $("#cre-search").attr("disabled", true);
 
-        
-         $('input[type=checkbox]').on('change', function() {
+
+        $('input[type=checkbox]').on('change', function() {
             var clickedBox = this;
             console.log(document.getElementsByTagName("input").length);
-            for(var i =0; i< document.getElementsByTagName("input").length;i++){
-                if(document.getElementsByTagName("input")[i].type == "checkbox" &&clickedBox != document.getElementsByTagName("input")[i]){
-                                    console.log(document.getElementsByTagName("input")[i]);
+            for (var i = 0; i < document.getElementsByTagName("input").length; i++) {
+                if (document.getElementsByTagName("input")[i].type == "checkbox" && clickedBox != document.getElementsByTagName("input")[i]) {
+                    console.log(document.getElementsByTagName("input")[i]);
                     document.getElementsByTagName("input")[i].checked = false;
                 }
             }
             console.log(new Date());
-            if(this.checked){
+            if (this.checked) {
                 console.log("got-here");
                 $("#cre-search").removeAttr("disabled");
                 $(".data-item").removeClass("item-title");
                 $(".data-item").addClass("item");
                 $(".item-header").removeClass("item-title");
                 $(".item-header").addClass("item");
-                $(".item-"+clickedBox.id).removeClass("item");
-                $(".item-"+clickedBox.id).addClass("item-title");
-                $(".header-"+clickedBox.id).removeClass("item");
-                $(".header-"+clickedBox.id).addClass("item-title");
-            }else{
+                $(".item-" + clickedBox.id).removeClass("item");
+                $(".item-" + clickedBox.id).addClass("item-title");
+                $(".header-" + clickedBox.id).removeClass("item");
+                $(".header-" + clickedBox.id).addClass("item-title");
+            } else {
                 $("#cre-search").attr("disabled", true);
             }
 
-         });
-        var data = [
-                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },
-                                        {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },                    {
-                        'reportedDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'noOfError' : 1,
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'typeOfIssue' : 'No Photo',
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'reportedDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'noOfError' : 3,
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'typeOfIssue' : 'No Check',
-                        'descriptionData' : 'There is no Check'
-                    }
-                ];
+        });
+        var data = [{
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'noOfError': 1,
+            'group': 'BOA',
+            'site': 123,
+            'typeOfIssue': 'No Photo',
+            'descriptionData': 'There is no Photo'
+        }, {
+            'reportedDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'noOfError': 3,
+            'group': 'TCS',
+            'site': 321,
+            'typeOfIssue': 'No Check',
+            'descriptionData': 'There is no Check'
+        }];
 
-           if(data.length>0){
-            for(var index in  data){
-                if(index != data.length-1){
+        if (data.length > 0) {
+            for (var index in data) {
+                if (index != data.length - 1) {
                     $("#customer-reported-error-table").append(
-                        '<li class="">'+
-                          '<div class="item-inner table-content">'+
-                            '<div class="item data-item item-reported-date">'+data[index].reportedDate+'</div>'+
-                            '<div class="item data-item item-batch-date">'+data[index].batchDate+'</div>'+
-                            '<div class="item data-item item-no-of-error">'+data[index].noOfError+'</div>'+
-                            '<div class="item data-item item-group">'+data[index].group+'</div>' +
-                            '<div class="item data-item item-site">'+data[index].site+'</div>' +
-                            '<div class="item data-item item-type-of-issue">'+data[index].typeOfIssue+'</div>'+ 
-                            '<div class="item data-item item-description">'+data[index].descriptionData+'</div>'+
-                          '</div>'+
+                        '<li class="">' +
+                        '<div class="item-inner table-content">' +
+                        '<div class="item data-item item-reported-date">' + data[index].reportedDate + '</div>' +
+                        '<div class="item data-item item-batch-date">' + data[index].batchDate + '</div>' +
+                        '<div class="item data-item item-no-of-error">' + data[index].noOfError + '</div>' +
+                        '<div class="item data-item item-group">' + data[index].group + '</div>' +
+                        '<div class="item data-item item-site">' + data[index].site + '</div>' +
+                        '<div class="item data-item item-type-of-issue">' + data[index].typeOfIssue + '</div>' +
+                        '<div class="item data-item item-description">' + data[index].descriptionData + '</div>' +
+                        '</div>' +
                         '</li>'
-                        );
-                }else{
+                    );
+                } else {
                     $("#customer-reported-error-table").append(
-                        '<li class="">'+
-                          '<div class="item-inner table-content">'+
-                            '<div class="item data-item item-reported-date last">'+data[index].reportedDate+'</div>'+
-                            '<div class="item data-item item-batch-date">'+data[index].batchDate+'</div>'+
-                            '<div class="item data-item item-no-of-error">'+data[index].noOfError+'</div>'+
-                            '<div class="item data-item item-group">'+data[index].group+'</div>' +
-                            '<div class="item data-item item-site">'+data[index].site+'</div>' +
-                            '<div class="item data-item item-type-of-issue">'+data[index].typeOfIssue+'</div>'+ 
-                            '<div class="item data-item item-description">'+data[index].descriptionData+'</div>'+
-                          '</div>'+
+                        '<li class="">' +
+                        '<div class="item-inner table-content">' +
+                        '<div class="item data-item item-reported-date last">' + data[index].reportedDate + '</div>' +
+                        '<div class="item data-item item-batch-date">' + data[index].batchDate + '</div>' +
+                        '<div class="item data-item item-no-of-error">' + data[index].noOfError + '</div>' +
+                        '<div class="item data-item item-group">' + data[index].group + '</div>' +
+                        '<div class="item data-item item-site">' + data[index].site + '</div>' +
+                        '<div class="item data-item item-type-of-issue">' + data[index].typeOfIssue + '</div>' +
+                        '<div class="item data-item item-description">' + data[index].descriptionData + '</div>' +
+                        '</div>' +
                         '</li>'
-                        );
+                    );
                 }
 
             }
-           }else{
-                $("#customer-reported-error-table").html(
-                                            '<li class="item-content">'+
-                          '<div class="item-inner">'+
-                            '<div class="item item-reported-date">Nothing found</div>'+
-                        '</li>'
+        } else {
+            $("#customer-reported-error-table").html(
+                '<li class="item-content">' +
+                '<div class="item-inner">' +
+                '<div class="item item-reported-date">Nothing found</div>' +
+                '</li>'
 
-                );
+            );
 
-           }
+        }
 
-     });
+    });
 
-myApp.onPageInit('qc-effectiveness', function(page) {
+    myApp.onPageInit('qc-effectiveness', function(page) {
         $("#cre-search").attr("disabled", true);
         $('#qa-date-selector').on('input', function() {
-            $('#qa-date-text').html("QA Date: "+$('#qa-date-selector').val());
+            $('#qa-date-text').html("QA Date: " + $('#qa-date-selector').val());
         });
-        ///////////////////
 
-        webshim.setOptions('forms-ext', {
-    replaceUI: 'auto',
-    types: 'date',
-    date: {
-        startView: 2,
-        inlinePicker: true,
-        classes: 'hide-inputbtns'
-    }
-});
-webshim.setOptions('forms', {
-    lazyCustomMessages: true
-});
-//start polyfilling
-webshim.polyfill('forms forms-ext');
-
-//only last example using format display
-$(function () {
-    $('.format-date').each(function () {
-        var $display = $('.date-display', this);
-        $(this).on('change', function (e) {
-            //webshim.format will automatically format date to according to webshim.activeLang or the browsers locale
-            var localizedDate = webshim.format.date($.prop(e.target, 'value'));
-            $display.html(localizedDate);
-        });
-    });
-});
-        ////////////////////
-
-
-         $('input[type=checkbox]').on('change', function() {
+        $('input[type=checkbox]').on('change', function() {
             var clickedBox = this;
 
             console.log(document.getElementsByTagName("input").length);
-            for(var i =0; i< document.getElementsByTagName("input").length;i++){
-                if(document.getElementsByTagName("input")[i].type == "checkbox" &&clickedBox != document.getElementsByTagName("input")[i]){
-                                    console.log(document.getElementsByTagName("input")[i]);
+            for (var i = 0; i < document.getElementsByTagName("input").length; i++) {
+                if (document.getElementsByTagName("input")[i].type == "checkbox" && clickedBox != document.getElementsByTagName("input")[i]) {
+                    console.log(document.getElementsByTagName("input")[i]);
                     document.getElementsByTagName("input")[i].checked = false;
                 }
             }
             console.log(this.checked);
-            if(this.checked){
+            if (this.checked) {
                 console.log("got-here");
                 $("#cre-search").removeAttr("disabled");
                 $(".data-item").removeClass("item-title");
                 $(".data-item").addClass("item");
                 $(".item-header").removeClass("item-title");
                 $(".item-header").addClass("item");
-                $(".item-"+clickedBox.id).removeClass("item");
-                $(".item-"+clickedBox.id).addClass("item-title");
-                $(".header-"+clickedBox.id).removeClass("item");
-                $(".header-"+clickedBox.id).addClass("item-title");
-            }else{
+                $(".item-" + clickedBox.id).removeClass("item");
+                $(".item-" + clickedBox.id).addClass("item-title");
+                $(".header-" + clickedBox.id).removeClass("item");
+                $(".header-" + clickedBox.id).addClass("item-title");
+            } else {
                 $("#cre-search").attr("disabled", true);
             }
 
-         });
-        var data = [
-                    {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    },
-                                        {
-                        'qcDate':'5-15-2014',
-                        'batchDate' : '4-14-2014',
-                        'group' : 'BOA',
-                        'site' : 123,
-                        'descriptionData' : 'There is no Photo'
-                    },
-                    {
-                        'qcDate':'5-12-2014',
-                        'batchDate' : '4-24-2014',
-                        'group' : 'TCS',
-                        'site' : 321,
-                        'descriptionData' : 'There is no Check'
-                    }
-                ];
+        });
+        var data = [{
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }, {
+            'qcDate': '5-15-2014',
+            'batchDate': '4-14-2014',
+            'group': 'BOA',
+            'site': 123,
+            'descriptionData': 'There is no Photo'
+        }, {
+            'qcDate': '5-12-2014',
+            'batchDate': '4-24-2014',
+            'group': 'TCS',
+            'site': 321,
+            'descriptionData': 'There is no Check'
+        }];
 
-           if(data.length>0){
-            for(var index in  data){
-                if(index != data.length-1){
+        if (data.length > 0) {
+            for (var index in data) {
+                if (index != data.length - 1) {
                     $("#customer-reported-error-table").append(
-                        '<li class="">'+
-                          '<div class="item-inner table-content">'+
-                            '<div class="item data-item item-group">'+data[index].group+'</div>' +
-                            '<div class="item data-item item-site">'+data[index].site+'</div>' +
-                            '<div class="item data-item item-qc-date">'+data[index].qcDate+'</div>'+
-                            '<div class="item data-item item-batch-date">'+data[index].batchDate+'</div>'+
-                            '<div class="item data-item item-description">'+data[index].descriptionData+'</div>'+
-                          '</div>'+
+                        '<li class="">' +
+                        '<div class="item-inner table-content">' +
+                        '<div class="item data-item item-group">' + data[index].group + '</div>' +
+                        '<div class="item data-item item-site">' + data[index].site + '</div>' +
+                        '<div class="item data-item item-qc-date">' + data[index].qcDate + '</div>' +
+                        '<div class="item data-item item-batch-date">' + data[index].batchDate + '</div>' +
+                        '<div class="item data-item item-description">' + data[index].descriptionData + '</div>' +
+                        '</div>' +
                         '</li>'
-                        );
-                }else{
+                    );
+                } else {
                     $("#customer-reported-error-table").append(
-                       '<li class="">'+
-                          '<div class="item-inner table-content">'+
-                            '<div class="item data-item item-group last">'+data[index].group+'</div>' +
-                            '<div class="item data-item item-site">'+data[index].site+'</div>' +
-                            '<div class="item data-item item-qc-date">'+data[index].qcDate+'</div>'+
-                            '<div class="item data-item item-batch-date">'+data[index].batchDate+'</div>'+
-                            '<div class="item data-item item-description">'+data[index].descriptionData+'</div>'+
-                          '</div>'+
+                        '<li class="">' +
+                        '<div class="item-inner table-content">' +
+                        '<div class="item data-item item-group last">' + data[index].group + '</div>' +
+                        '<div class="item data-item item-site">' + data[index].site + '</div>' +
+                        '<div class="item data-item item-qc-date">' + data[index].qcDate + '</div>' +
+                        '<div class="item data-item item-batch-date">' + data[index].batchDate + '</div>' +
+                        '<div class="item data-item item-description">' + data[index].descriptionData + '</div>' +
+                        '</div>' +
                         '</li>'
-                        );
+                    );
                 }
 
             }
-           }else{
-                $("#customer-reported-error-table").html(
-                                            '<li class="item-content">'+
-                          '<div class="item-inner">'+
-                            '<div class="item item-reported-date">Nothing found</div>'+
-                        '</li>'
+        } else {
+            $("#customer-reported-error-table").html(
+                '<li class="item-content">' +
+                '<div class="item-inner">' +
+                '<div class="item item-reported-date">Nothing found</div>' +
+                '</li>'
 
-                );
+            );
 
-           }
+        }
 
-     });
+    });
 
 
     myApp.onPageInit('quality-matrix', function(page) {
-                var lChart = new D3LineChart();
+        var lChart = new D3LineChart();
         var lineChartData = function(range) {
 
             var data = [];
@@ -2717,7 +2751,7 @@ $(function () {
             return data;
         };
 
-                var dataFactory = function(seriesNum, perSeries, streams) {
+        var dataFactory = function(seriesNum, perSeries, streams) {
             return new d3.range(0, seriesNum).map(function(d, i) {
                 return {
                     key: streams[i],
@@ -2829,8 +2863,8 @@ $(function () {
             $('.open-popup').html('<i class="icon icon-filter "></i>');
             //myApp.popup(this.getAttribute('data-trig'));
         });
-        
-        
+
+
         myApp.showIndicator();
         var slides = [
             'Forcasted vs Actual Volume',
@@ -3032,34 +3066,31 @@ $(function () {
 
         ////////
 
-        var colorSlide0 = ["#109618","#E4A240"];
+        var colorSlide0 = ["#109618", "#E4A240"];
         var streamsSlide0 = ['Forcasted', 'Actual'];
 
         var publicStorage = _.PublicStore.openPort();
         publicStorage.put('dataVolume', dataFactory);
 
 
-      
 
-        
 
-            
-        setTimeout(function(){
+        setTimeout(function() {
             //$('#reports-charts-forcasted-vs-actual').addClass('animated zoomIn');
             vBar.triggerIt({
-            containerId: '#reports-charts-forcasted-vs-actual',
-            dataFactory: publicStorage.get('dataVolume')(2, 10, streamsSlide0),
-            axisLabel: 'Lockbox EOB Volume Trend',
-            color: colorSlide0
+                containerId: '#reports-charts-forcasted-vs-actual',
+                dataFactory: publicStorage.get('dataVolume')(2, 10, streamsSlide0),
+                axisLabel: 'Lockbox EOB Volume Trend',
+                color: colorSlide0
             }, function() {
 
-                setTimeout(function(){
+                setTimeout(function() {
                     //$('#reports-charts-forcasted-vs-actual').removeClass('animated zoomIn');
-                },1000)
-                
+                }, 1000)
+
             });
-        },1000);
-       
+        }, 1000);
+
 
         $("#VT-slider").on('input', function() {
 
@@ -3109,7 +3140,7 @@ $(function () {
         lChart.triggerIt({
 
             containerId: '#TAT-line-chart',
-            color: ["#109618","#E4A240"],
+            color: ["#109618", "#E4A240"],
             data: publicStorage.get('TAT')(10)
         }, function() {
 
@@ -3264,7 +3295,7 @@ $(function () {
         stackedChart.triggerIt({
 
             containerId: '#MPI-stacked-area-chart',
-            color: ['#DC3912',"#109618","#FCB446" ],
+            color: ['#DC3912', "#109618", "#FCB446"],
             data: publicStorage.get('MPI')(10)
 
         }, function() {
@@ -3278,7 +3309,7 @@ $(function () {
             stackedChart.triggerIt({
 
                 containerId: '#MPI-stacked-area-chart',
-                color: ['#DC3912',"#109618","#FCB446" ],
+                color: ['#DC3912', "#109618", "#FCB446"],
                 data: publicStorage.get('MPI')(this.value)
 
             });
@@ -3290,7 +3321,7 @@ $(function () {
 
         //////
 
-        
+
 
 
         var TATMissedSites = [
