@@ -105,7 +105,7 @@ div.boxBG-slider.rightPannel{
 }
 
 path.slice{
-	stroke-width:2px;
+	stroke-width:1px;
 }
 
 
@@ -116,6 +116,11 @@ polyline{
 	fill: none;
 } 
 
+svg {
+
+	-webkit-filter: drop-shadow();
+}
+	
 
 svg text.percent{
 	fill:white;
@@ -835,7 +840,10 @@ div.icoBox{
         top: 0%;
         margin-left: 0;
         margin-top: 0;,
-        box-shadow: 13px 13px 13px #d8d8d8;
+		-webkit-box-shadow: -8px 21px 58px 3px rgba(0,0,0,0.73);
+-moz-box-shadow: -8px 21px 58px 3px rgba(0,0,0,0.73);
+box-shadow: -8px 21px 58px 3px rgba(0,0,0,0.73);
+
     }
 }
 
@@ -1138,6 +1146,13 @@ html {
 .list-block{
 
 	-webkit-box-shadow: 0 0 3px #ccc;
+}
+
+
+.shadow {
+    -webkit-filter: drop-shadow( -3px -3px 3px rgba(0,0,0,0.50) );
+            filter: drop-shadow( -3px -3px 3px rgba(0,0,0,0.50) ); /* Same syntax as box-shadow */
+    
 }
 
 

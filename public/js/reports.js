@@ -39,6 +39,7 @@ var MODULE = (function(module, nv) {
                     bottom: 100
                 }).transitionDuration(300);
 
+                chart.forceY([0,100]);
                 chart.stacked(false)
                 chart.options(chartOptions);
                 chart.multibar.hideable(true);
@@ -46,7 +47,7 @@ var MODULE = (function(module, nv) {
                 chart.xAxis.axisLabel(axisLabel).showMaxMin(true).tickFormat(d3.format(',0f'));
 
                 chart.yAxis.tickFormat(d3.format(',0f'));
-
+                //chart.showMaxMin(false);
                 d3.select(containerId + ' svg').datum(data).call(chart);
 
                 nv.utils.windowResize(chart.update);
@@ -76,6 +77,18 @@ var MODULE = (function(module, nv) {
 
         this.renderChart = function(options) {
 
+            /*function getInterpolation() {
+  
+              var interpolate = d3.scale.quantile()
+                  .domain([0,1])
+                  .range(d3.range(1, options.data.length + 1));
+
+              return function(t) {
+                  var interpolatedLine = options.data.slice(0, interpolate(t));
+                  return lineFunction(interpolatedLine);
+                  }
+            };*/
+
             nv.addGraph(function() {
                 var chart = nv.models.lineChart().x(function(d) {
                         return d[0]
@@ -84,17 +97,28 @@ var MODULE = (function(module, nv) {
                     })
                     .color(d3.scale.category10().range()).useInteractiveGuideline(true);
 
+                chart.forceY([0,24]);
                 chart.showXAxis(options.showXAxis || true);
                 chart.showYAxis(options.showYAxis || true);
-
+                
                 chart.xAxis.tickFormat(d3.format(',0f'));
+
+                chart.interpolate("basis");
 
                 chart.yAxis.tickFormat(d3.format(',0f'));
                 chart.color(options.color);
-                d3.select(options.containerId + ' svg').datum(options.data).call(chart);
+                d3.select(options.containerId + ' svg').datum(options.data)
+                    .transition()
+                    .duration(1000)
+                    .delay(function(d, i) { return i / 2 * 1000; })
+                    
+                    .call(chart);
 
 
                 nv.utils.windowResize(chart.update);
+
+                
+
 
                 return chart;
             });
@@ -126,9 +150,15 @@ var MODULE = (function(module, nv) {
 
                 chart.xAxis.tickFormat(d3.format(',0f'));
 
+                /*chart.options({
+                    delay: 3000,
+                    transitionDuration: 5000})*/;
+
+                //chart.interpolate("basis");
+                chart.yDomain([0,24]);
                 chart.yAxis.tickFormat(d3.format(',0f'));
                 chart.color(options.color);
-                d3.select(options.containerId + ' svg').datum(options.data).call(chart);
+                d3.select(options.containerId + ' svg').datum(options.data).transition().duration(1000).call(chart);
 
 
                 nv.utils.windowResize(chart.update);
@@ -174,12 +204,19 @@ var MODULE = (function(module, nv) {
                     .width(400)
                     .transitionDuration(1000).color(options.color);
 
+
+                chart.options({
+                    delay: 3000,
+                    transitionDuration: 5000});
+
                 chart.yAxis.tickFormat(d3.format(',0f'));
                 chart.valueFormat(d3.format(',0f'));
 
-                d3.select(options.containerId + ' svg').datum(options.data).call(chart);
+
+                d3.select(options.containerId + ' svg').datum(options.data).transition().duration(1000).call(chart);
 
                 nv.utils.windowResize(chart.update);
+
 
 
 
@@ -236,7 +273,7 @@ var MODULE = (function(module, nv) {
 
                 d3.select(options.selector + " svg")
                     .datum(options.data)
-                    .transition().duration(1000)
+                    .transition().delay(500).duration(500)
                     .call(chart);
 
                 return chart;

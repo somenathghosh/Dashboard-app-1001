@@ -209,13 +209,22 @@ $(document).ready(function() {
     function showNotification(options) {
 
 
-        var message = "Currently Viewing for Group Code: " + sessionStorage.getItem('groupCode') + " and Site Number: " + sessionStorage.getItem('siteNumber')
+        var message = "Currently Viewing for Group Code: " + sessionStorage.getItem('groupCode') ;
 
-        if (sessionStorage.getItem('org')) {
+        if( sessionStorage.getItem('siteNumber')){
 
-            message = "Currently Viewing for Group Code: " + sessionStorage.getItem('groupCode') + ", Site Number: " + sessionStorage.getItem('siteNumber') + " & Org: " + sessionStorage.getItem('org');
+            message = "Currently Viewing for Group Code: " + sessionStorage.getItem('groupCode') + " and Site Number: " + sessionStorage.getItem('siteNumber');
+
+            if (sessionStorage.getItem('org')) {
+
+                message = "Currently Viewing for Group Code: " + sessionStorage.getItem('groupCode') + ", Site Number: " + sessionStorage.getItem('siteNumber') + " & Org: " + sessionStorage.getItem('org');
+
+            }
 
         }
+        
+
+
 
         myApp.addNotification({
             title: options.title || message,
@@ -261,7 +270,7 @@ $(document).ready(function() {
         orange: {
             writable: false,
             configurable: false,
-            value: "FF9900"
+            value: "#FF9900"
         },
         red: {
             writable: false,
@@ -285,6 +294,26 @@ $(document).ready(function() {
         }
 
     });
+
+    
+    function sendCrashReport () {
+        
+        var argument = Array.prototype.slice.call(arguments, 1);
+
+        myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
+
+
+            function() {
+                argument[0]();
+            },
+
+            function() {
+                argument[1]();
+            }
+        );
+    }
+    
+    
 
     //---------------------------------------------------------------------------------------------//
 
@@ -629,14 +658,14 @@ $(document).ready(function() {
 
 
 
-                            }, 500);
+                            }, 800);
 
-                        }, 500);
+                        }, 800);
 
-                    }, 500);
+                    }, 1000);
 
 
-                }, 500);
+                }, 1000);
             }, 800);
 
 
@@ -728,16 +757,8 @@ $(document).ready(function() {
 
             } else {
 
-                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
+                sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
 
-                    function() {
-                        myApp.hideIndicator();
-                    },
-
-                    function() {
-                        myApp.hideIndicator();
-                    }
-                );
 
             }
 
@@ -788,16 +809,7 @@ $(document).ready(function() {
 
             } else {
 
-                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                    function() {
-                        myApp.hideIndicator();
-                    },
-
-                    function() {
-                        myApp.hideIndicator();
-                    }
-                );
+               sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
 
             }
 
@@ -848,16 +860,7 @@ $(document).ready(function() {
 
             } else {
 
-                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                    function() {
-                        myApp.hideIndicator();
-                    },
-
-                    function() {
-                        myApp.hideIndicator();
-                    }
-                );
+                sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
 
             }
 
@@ -897,16 +900,7 @@ $(document).ready(function() {
 
             } else {
 
-                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                    function() {
-                        myApp.hideIndicator();
-                    },
-
-                    function() {
-                        myApp.hideIndicator();
-                    }
-                );
+                sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
 
             }
 
@@ -1155,17 +1149,7 @@ $(document).ready(function() {
 
             } else {
 
-                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                    function() {
-                        myApp.hideIndicator();
-                    },
-
-                    function() {
-                        myApp.hideIndicator();
-                    }
-                );
-
+                sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
 
             }
 
@@ -1256,16 +1240,7 @@ $(document).ready(function() {
 
             } else {
 
-                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                    function() {
-                        myApp.hideIndicator();
-                    },
-
-                    function() {
-                        myApp.hideIndicator();
-                    }
-                );
+                sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
 
             }
 
@@ -1344,16 +1319,7 @@ $(document).ready(function() {
 
             } else {
 
-                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                    function() {
-                        myApp.hideIndicator();
-                    },
-
-                    function() {
-                        myApp.hideIndicator();
-                    }
-                );
+                sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
 
             }
 
@@ -1463,8 +1429,18 @@ $(document).ready(function() {
             },
 
             function two() {
-                renderKeyInDetailVolume();
-                renderKeyInDetailTAT();
+                myApp.showIndicator();
+                renderKeyInDetailVolume(function(){
+
+                    renderKeyInDetailTAT(function(){
+
+                        setTimeout(function(){
+                            myApp.hideIndicator();
+                        },500);
+                    });
+
+                });
+                
             }
 
         ];
@@ -1480,7 +1456,9 @@ $(document).ready(function() {
                 //console.log(slider);
                 sliderObject[slider.activeSlideIndex]();
 
-
+                sliderObject[slider.activeSlideIndex]= function function_name (argument) {
+                    // body...
+                };
 
             },
             onSlideChangeStart: function(slider) {
@@ -1758,7 +1736,7 @@ $(document).ready(function() {
 
             setTimeout(function() {
                 myApp.hideIndicator();
-                showNotification({});
+                //showNotification({});
             }, 1000);
         });
 
@@ -1852,7 +1830,7 @@ $(document).ready(function() {
 
                 setTimeout(function() {
                     myApp.hideIndicator();
-                    showNotification({});
+                    //showNotification({});
                 }, 1000);
 
             });
@@ -1894,7 +1872,7 @@ $(document).ready(function() {
 
             setTimeout(function() {
                 myApp.hideIndicator();
-                showNotification({});
+                //showNotification({});
             }, 1000);
 
 
@@ -2032,7 +2010,7 @@ $(document).ready(function() {
 
             setTimeout(function() {
                 myApp.hideIndicator();
-                showNotification({});
+                //showNotification({});
             }, 1000);
 
 
@@ -2865,7 +2843,7 @@ $(document).ready(function() {
         });
 
 
-        myApp.showIndicator();
+        
         var slides = [
             'Forcasted vs Actual Volume',
             'TAT Average and Median',
@@ -2888,6 +2866,9 @@ $(document).ready(function() {
                 if (slides[mySlider.activeSlideIndex + 1]) {
 
                     slideName = slides[mySlider.activeSlideIndex + 1] + '&nbsp; <span class="fa  fa-angle-right fa-lg"></span>'
+
+                    slideBuiltFun[mySlider.activeSlideIndex]();
+                    slideBuiltFun[mySlider.activeSlideIndex] = function (argument) {};
 
 
                 } else {
@@ -3046,8 +3027,8 @@ $(document).ready(function() {
 
             for (var i = 1; i <= range; i++) {
                 data[0].values.push([i, Math.floor(Math.random() * 10) + 1]);
-                data[1].values.push([i, 15]);
-                data[2].values.push([i, Math.floor(Math.random() * 10) + 14]);
+                data[1].values.push([i, 5]);
+                data[2].values.push([i, Math.floor(Math.random() * 10) + 1]);
             }
             return data;
         }
@@ -3056,51 +3037,254 @@ $(document).ready(function() {
         var vBar = new D3VerticalBarChart();
         var stackedChart = new D3StackedAreaChart();
         var lChart = new D3LineChart();
+        var publicStorage = _.PublicStore.openPort();
 
-        var reportsVolume = function(n, m, c) {
+         var barChart = function(options, callback){
+
+            if(callback.start){
+
+                callback.start();
+            }
+
+            vBar.triggerIt({
+                containerId: options.containerId,
+                dataFactory: options.dataFactory,
+                axisLabel: options.axisLabel,
+                color: options.color
+            }, function(success) {
+
+                if(success){
+                    if(callback.main){
+                    
+                        callback.main(callback.end());
+
+                        
+                    }
+                }
+                else{
+
+                    sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
+
+                }
+                
+
+            });
 
 
-        }
+        };
+
+
+         var slideBuiltFun = [
+
+            function one(){
+
+                
+
+            },
+
+            function two (argument) {
+
+                myApp.showIndicator();
+                lChart.triggerIt({
+
+                    containerId: '#TAT-line-chart',
+                    color: colorSlide1,
+                    data: publicStorage.get('TAT')(10)
+                }, function(success) {
+
+                    if(success){
+
+                        setTimeout(function(){
+                            myApp.hideIndicator();
+                        },1500);
+
+                    }
+
+                    else{
+
+                        sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
+                    }
+                    
+
+                });
+                
+            },
+
+            function three (argument) {
+                
+                myApp.showIndicator();
+                vBar.triggerIt({
+                    containerId: '#reports-claim-data-volume',
+                    dataFactory: publicStorage.get('claimVolume')(1, 10, streamsSlide2),
+                    axisLabel: 'Claim Volume Trend',
+                    color: colorSlide2
+                }, function(success){
+
+                    if(success){
+
+                        setTimeout(function(){
+                            myApp.hideIndicator();
+                        },3500);
+
+                    }
+
+                    else{
+
+                        sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
+                    }
+
+                });
+
+
+            },
+
+            function four (argument) {
+                
+                myApp.showIndicator();
+                vBar.triggerIt({
+                    containerId: '#reports-percentage-MPI-used',
+                    dataFactory: publicStorage.get('PMU')(1, 10, streamsSlide3),
+                    axisLabel: 'Percentage of MPI Used ',
+                    color: colorSlide3
+                }, function(success){
+
+                    if(success){
+
+                        setTimeout(function(){
+                            myApp.hideIndicator();
+                        },3500);
+
+                    }
+
+                    else{
+
+                        sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
+                    }
+
+
+                });
+            },
+
+            function five (argument) {
+
+                myApp.showIndicator();
+                stackedChart.triggerIt({
+
+                    containerId: '#MPI-stacked-area-chart',
+                    color: [colorPalleton.green, colorPalleton.yellow, colorPalleton.red],
+                    data: publicStorage.get('MPI')(10)
+
+                }, function(success) {
+                    if(success){
+
+                        setTimeout(function(){
+                            myApp.hideIndicator();
+                        },1500);
+
+                    }
+
+                    else{
+
+                        sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
+                    }
+
+
+                });
+            },
+
+            function six (argument) {
+                
+                myApp.showIndicator();
+                setTimeout(function(){
+                    myApp.hideIndicator();
+                },1500);
+
+            }
+
+
+        ];
+
+
 
 
 
         ////////
 
-        var colorSlide0 = ["#109618", "#E4A240"];
+        var colorSlide0 = [colorPalleton.green, colorPalleton.yellow];
         var streamsSlide0 = ['Forcasted', 'Actual'];
-
-        var publicStorage = _.PublicStore.openPort();
         publicStorage.put('dataVolume', dataFactory);
 
 
-
-
+       
+       
         setTimeout(function() {
-            //$('#reports-charts-forcasted-vs-actual').addClass('animated zoomIn');
-            vBar.triggerIt({
-                containerId: '#reports-charts-forcasted-vs-actual',
-                dataFactory: publicStorage.get('dataVolume')(2, 10, streamsSlide0),
-                axisLabel: 'Lockbox EOB Volume Trend',
-                color: colorSlide0
-            }, function() {
 
-                setTimeout(function() {
-                    //$('#reports-charts-forcasted-vs-actual').removeClass('animated zoomIn');
-                }, 1000)
 
-            });
+            barChart({
+                    containerId: '#reports-charts-forcasted-vs-actual',
+                    dataFactory: publicStorage.get('dataVolume')(2, 10, streamsSlide0),
+                    axisLabel: 'Lockbox EOB Volume Trend',
+                    color: colorSlide0
+
+
+                },{
+
+                    start: function(){myApp.showIndicator()},
+                    end: function (){
+
+                                setTimeout(function() {
+                                    myApp.hideIndicator();
+
+                                }, 3500);
+
+                    },
+                    main: function(callback){
+
+                        if(callback){
+
+                            callback();
+                        }
+                    }
+
+
+                });
+
+
+
         }, 1000);
 
 
         $("#VT-slider").on('input', function() {
 
-            $("#VT-slider-text").html(this.value);
-
-            vBar.triggerIt({
+            var self=this;
+            
+            barChart({
                 containerId: '#reports-charts-forcasted-vs-actual',
-                dataFactory: publicStorage.get('dataVolume')(2, this.value, streamsSlide0),
+                dataFactory: publicStorage.get('dataVolume')(2, self.value, streamsSlide0),
                 axisLabel: 'Lockbox EOB Volume Trend',
                 color: colorSlide0
+
+
+            },{
+
+                start: function(){myApp.showIndicator(); $("#VT-slider-text").html(self.value)},
+                end: function (){
+
+                            setTimeout(function() {
+                                myApp.hideIndicator();
+
+                            }, 3500);
+
+                },
+                main: function(callback){
+
+                    if(callback){
+
+                        callback();
+                    }
+                }
+
+
             });
 
 
@@ -3108,28 +3292,56 @@ $(document).ready(function() {
 
         $('.submitButton-reports-volume').click(function(e) {
 
-            var groupCode = $('#groupCode-reports-volume').val();
+            
+            barChart({
 
-            if (!groupCode || groupCode === '') {
-                //console.log(groupCode);
-                publicStorage.put('dataVolume', dataFactory);
-            } else {
-                //console.log(groupCode);
-                publicStorage.put('dataVolume', dataFactoryFilter);
-            }
-
-            $("#VT-slider").val(10);
-            $("#VT-slider-text").html(10);
-            vBar.triggerIt({
                 containerId: '#reports-charts-forcasted-vs-actual',
                 dataFactory: publicStorage.get('dataVolume')(2, 10, streamsSlide0),
                 axisLabel: 'Lockbox EOB Volume Trend',
                 color: colorSlide0
+
+
+            },{
+
+                start: function(){
+                    
+                    myApp.showIndicator(); 
+                    var groupCode = $('#groupCode-reports-FAV').val();
+
+                    $("#VT-slider").val(10);
+                    $("#VT-slider-text").html(10)
+                    publicStorage.put('dataVolume', dataFactoryFilter);
+
+                    sessionStorage.removeItem("siteNumber");
+                    sessionStorage.setItem("groupCode", groupCode);
+
+                },
+                end: function (){
+
+                            setTimeout(function() {
+                                myApp.hideIndicator();
+                                showNotification({});
+
+                            }, 3500);
+
+                },
+                main: function(callback){
+
+                    if(callback){
+
+                        callback();
+                    }
+                }
+
+
             });
+
 
         });
 
         ////////
+        
+
         /////
 
 
@@ -3137,15 +3349,7 @@ $(document).ready(function() {
 
         publicStorage.put('TAT', lineChartData);
 
-        lChart.triggerIt({
-
-            containerId: '#TAT-line-chart',
-            color: ["#109618", "#E4A240"],
-            data: publicStorage.get('TAT')(10)
-        }, function() {
-
-
-        });
+        var colorSlide1 = [colorPalleton.yellow, colorPalleton.green];
 
         $("#TAT-slider").on('input', function() {
 
@@ -3154,23 +3358,38 @@ $(document).ready(function() {
             lChart.triggerIt({
 
                 containerId: '#TAT-line-chart',
-                color: ['#00FF00', '#FF9900'],
+                color: colorSlide1,
                 data: publicStorage.get('TAT')(this.value)
             });
         });
 
         $('.submitButton-reports-TAT').click(function() {
 
-            var groupCode = $('#groupCode-resports-TAT').val();
+            var groupCode = $('#groupCode-reports-TAT').val();
             var siteNumber = $('#siteNumber-reports-TAT').val();
+
+            sessionStorage.setItem("groupCode", groupCode);
+            sessionStorage.setItem("siteNumber", siteNumber);
+
             $("#TAT-slider").val(10);
             $("#TAT-slider-text").html(10);
+
+            myApp.showIndicator();
 
             lChart.triggerIt({
 
                 containerId: '#TAT-line-chart',
-                color: ['#00FF00', '#B07E34'],
+                color: colorSlide1,
                 data: publicStorage.get('TAT')(10)
+            },function(){
+
+                setTimeout(function() {
+                    myApp.hideIndicator();
+                    showNotification({});
+
+                }, 500);
+
+
             });
 
         });
@@ -3179,16 +3398,16 @@ $(document).ready(function() {
         /////
         //////
 
-        var colorSlide2 = ['#E4A240'];
+        var colorSlide2 = [colorPalleton.yellow];
         var streamsSlide2 = ['Volume'];
         publicStorage.put('claimVolume', dataFactory);
 
-        vBar.triggerIt({
+       /* vBar.triggerIt({
             containerId: '#reports-claim-data-volume',
             dataFactory: publicStorage.get('claimVolume')(1, 10, streamsSlide2),
             axisLabel: 'Claim Volume Trend',
             color: colorSlide2
-        });
+        });*/
 
 
         $("#CV-slider").on('input', function() {
@@ -3205,43 +3424,47 @@ $(document).ready(function() {
         $('.submitButton-reports-claim').click(function(e) {
 
             var groupCode = $('#groupCode-reports-claim').val();
-            var siteNumber = $('#site-number-reports-claim').val();
+            var siteNumber = $('#siteNumber-reports-claim').val();
+            publicStorage.put('claimVolume', dataFactoryFilter);
 
-            if (!groupCode || !siteNumber || groupCode === '' || siteNumber === '') {
-
-                publicStorage.put('claimVolume', dataFactory);
-
-            } else {
-
-                publicStorage.put('claimVolume', dataFactoryFilter);
-
-            }
+            sessionStorage.setItem("groupCode", groupCode);
+            sessionStorage.setItem("siteNumber", siteNumber);
 
             $("#CV-slider").val(10);
             $("#CV-slider-text").html(10);
+            myApp.showIndicator();
+
             vBar.triggerIt({
                 containerId: '#reports-claim-data-volume',
                 dataFactory: publicStorage.get('claimVolume')(1, 10, streamsSlide2),
                 axisLabel: 'Claim Volume Trend',
                 color: colorSlide2
+            }, function(){
+
+                setTimeout(function() {
+                    myApp.hideIndicator();
+                    showNotification({});
+
+                }, 500);
+
             });
 
         });
 
         //////
 
-        var colorSlide3 = ['#E4A240'];
+        var colorSlide3 = [colorPalleton.orange];
         var streamsSlide3 = ['% Used'];
 
         publicStorage.put('PMU', dataFactory2);
 
 
-        vBar.triggerIt({
+        /*vBar.triggerIt({
             containerId: '#reports-percentage-MPI-used',
             dataFactory: publicStorage.get('PMU')(1, 10, streamsSlide3),
             axisLabel: 'Percentage of MPI Used ',
             color: colorSlide3
-        });
+        });*/
 
 
         $("#PMU-slider").on('input', function() {
@@ -3260,25 +3483,30 @@ $(document).ready(function() {
 
         $('.submitButton-reports-MPI-used').click(function(e) {
 
-            var groupCode = $('#roupCode-reports-MPI-used').val();
-            var siteNumber = $('#site-number-reports-MPI-used').val();
+            var groupCode = $('#groupCode-reports-MPI').val();
+            var siteNumber = $('#siteNumber-reports-MPI').val();
+            sessionStorage.setItem("groupCode", groupCode);
+            sessionStorage.setItem("siteNumber", siteNumber);
 
-            if (!groupCode || !siteNumber || groupCode === '' || siteNumber === '') {
-                publicStorage.put('PMU', dataFactory2);
-
-            } else {
-
-                publicStorage.put('PMU', dataFactory2Filter);
-            }
-
+            publicStorage.put('PMU', dataFactory2Filter);
+            
             $("#PMU-slider").val(10);
             $("#PMU-slider-text").html(10);
 
+            myApp.showIndicator();
             vBar.triggerIt({
                 containerId: '#reports-percentage-MPI-used',
                 dataFactory: publicStorage.get('PMU')(1, 10, streamsSlide3),
                 axisLabel: 'Percentage of MPI Used ',
                 color: colorSlide3
+            },function(){
+
+                setTimeout(function() {
+                    myApp.hideIndicator();
+                    showNotification({});
+
+                }, 500);
+
             });
 
         });
@@ -3292,7 +3520,7 @@ $(document).ready(function() {
         publicStorage.put('MPI', stackedAreaChartData);
 
 
-        stackedChart.triggerIt({
+        /*stackedChart.triggerIt({
 
             containerId: '#MPI-stacked-area-chart',
             color: ['#DC3912', "#109618", "#FCB446"],
@@ -3301,7 +3529,7 @@ $(document).ready(function() {
         }, function() {
 
 
-        });
+        });*/
 
 
         $("#MLT-slider").on('input', function() {
@@ -3309,7 +3537,7 @@ $(document).ready(function() {
             stackedChart.triggerIt({
 
                 containerId: '#MPI-stacked-area-chart',
-                color: ['#DC3912', "#109618", "#FCB446"],
+                color: [colorPalleton.green, colorPalleton.yellow, colorPalleton.red],
                 data: publicStorage.get('MPI')(this.value)
 
             });
@@ -3374,10 +3602,7 @@ $(document).ready(function() {
 
 
 
-        setTimeout(function() {
-            myApp.hideIndicator();
 
-        }, 1000);
 
     });
 
@@ -3426,16 +3651,7 @@ $(document).ready(function() {
 
             } else {
 
-                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                    function() {
-                        myApp.hideIndicator();
-                    },
-
-                    function() {
-                        myApp.hideIndicator();
-                    }
-                );
+                sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
             }
 
 
@@ -3486,16 +3702,7 @@ $(document).ready(function() {
 
             } else {
 
-                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                    function() {
-                        myApp.hideIndicator();
-                    },
-
-                    function() {
-                        myApp.hideIndicator();
-                    }
-                );
+                sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
             }
 
 
@@ -3549,16 +3756,7 @@ $(document).ready(function() {
 
             } else {
 
-                myApp.confirm('Do you want to send Crash Reports?', 'App Crashed',
-
-                    function() {
-                        myApp.hideIndicator();
-                    },
-
-                    function() {
-                        myApp.hideIndicator();
-                    }
-                );
+                sendCrashReport(function(){myApp.hideIndicator();}, function(){myApp.hideIndicator();});
 
             }
 
@@ -3582,6 +3780,33 @@ $(document).ready(function() {
     $("#claimTransition").on("click", function() {
         mainView.loadPage("claim.html");
     });
+
+    ////
+
+
+
+    /*var defs = svg.append("defs");
+
+      var filter = defs.append("filter")
+          .attr("id", "dropshadow")
+
+      filter.append("feGaussianBlur")
+          .attr("in", "SourceAlpha")
+          .attr("stdDeviation", 4)
+          .attr("result", "blur");
+      filter.append("feOffset")
+          .attr("in", "blur")
+          .attr("dx", 2)
+          .attr("dy", 2)
+          .attr("result", "offsetBlur");
+
+      var feMerge = filter.append("feMerge");
+
+      feMerge.append("feMergeNode")
+          .attr("in", "offsetBlur")
+      feMerge.append("feMergeNode")
+          .attr("in", "SourceGraphic");*/
+
 
 
 
