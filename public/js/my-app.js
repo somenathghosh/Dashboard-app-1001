@@ -2752,7 +2752,9 @@ $(document).ready(function() {
             containerId: '#quality-matrix-charts-customer-reported-error',
             color: ['#00FF00'],
             data: publicStorage.get('QM')(10),
-            forceY: [0,10]
+            forceY: [0,10],
+            showXAxis:true,
+                            showYAxis:true
         }, function() {
 
 
@@ -2767,7 +2769,9 @@ $(document).ready(function() {
                 containerId: '#quality-matrix-charts-customer-reported-error',
                 color: ['#00FF00'],
                 data: publicStorage.get('QM')(this.value),
-                forceY: [0,10]
+                forceY: [0,10],
+                showXAxis:true,
+                            showYAxis:true
             });
 
 
@@ -2781,7 +2785,9 @@ $(document).ready(function() {
             containerId: '#quality-matrix-charts-customer-qc-effectiveness',
             color: ['#00FF00'],
             data: publicStorage.get('QCE')(10),
-            forceY: [0,10]
+            forceY: [0,10],
+            showXAxis:true,
+                            showYAxis:true
         }, function() {
 
 
@@ -2796,7 +2802,9 @@ $(document).ready(function() {
                 containerId: '#quality-matrix-charts-customer-qc-effectiveness',
                 color: ['#00FF00'],
                 data: publicStorage.get('QCE')(this.value),
-                forceY: [0,10]
+                forceY: [0,10],
+                showXAxis:true,
+                            showYAxis:true
             });
 
 
@@ -3008,6 +3016,9 @@ $(document).ready(function() {
         };
 
 
+        
+
+
         var stackedAreaChartData = function(range) {
             var data = [];
             data.push({
@@ -3093,14 +3104,16 @@ $(document).ready(function() {
 
                     containerId: '#TAT-line-chart',
                     color: colorSlide1,
-                    data: publicStorage.get('TAT')(10)
+                    data: publicStorage.get('TAT')(10),
+                    showXAxis:true,
+                    showYAxis:true
                 }, function(success) {
 
                     if(success){
 
                         setTimeout(function(){
                             myApp.hideIndicator();
-                        },1500);
+                        },2500);
 
                     }
 
@@ -3153,6 +3166,8 @@ $(document).ready(function() {
                 }, function(success){
 
                     if(success){
+
+                        
 
                         setTimeout(function(){
                             myApp.hideIndicator();
@@ -3415,7 +3430,8 @@ $(document).ready(function() {
 
                 containerId: '#TAT-line-chart',
                 color: colorSlide1,
-                data: publicStorage.get('TAT')(this.value)
+                data: publicStorage.get('TAT')(this.value),
+                
             });
         });
 
@@ -3436,7 +3452,9 @@ $(document).ready(function() {
 
                 containerId: '#TAT-line-chart',
                 color: colorSlide1,
-                data: publicStorage.get('TAT')(10)
+                data: publicStorage.get('TAT')(10),
+                showXAxis:true,
+                            showYAxis:true
             },function(){
 
                 setTimeout(function() {
@@ -3468,7 +3486,9 @@ $(document).ready(function() {
 
                 containerId: '#TAT-line-chart',
                 color: colorSlide1,
-                data: publicStorage.get('TAT')(10)
+                data: publicStorage.get('TAT')(10),
+                showXAxis:true,
+                            showYAxis:true
             },function(){
 
                 setTimeout(function() {

@@ -146,8 +146,7 @@ nv.models.lineChart = function() {
       // Legend
 
       if (showLegend) {
-        legend.width(availableWidth);
-
+        legend.width(availableWidth );  
         g.select('.nv-legendWrap')
             .datum(data)
             .call(legend);

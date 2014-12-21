@@ -98,8 +98,8 @@ var MODULE = (function(module, nv) {
                     .color(d3.scale.category10().range()).useInteractiveGuideline(true);
 
                 chart.forceY(options.forceY || [0,24]);
-                chart.showXAxis(options.showXAxis || true);
-                chart.showYAxis(options.showYAxis || true);
+                chart.showXAxis(options.showXAxis );
+                chart.showYAxis(options.showYAxis );
                 
                 chart.xAxis.tickFormat(d3.format(',0f'));
 
