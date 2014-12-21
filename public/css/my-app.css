@@ -208,7 +208,7 @@ svg .nvd3 .nv-multibarHorizontal .nv-groups text {
 
 .nvd3 .nv-multibar .nv-groups rect, .nvd3 .nv-multibarHorizontal .nv-groups rect, .nvd3 .nv-discretebar .nv-groups rect {
 	stroke-opacity: 1;
-	fill-opacity: .7;
+	fill-opacity: .6;
 	transition: fill-opacity 250ms linear;
 	-moz-transition: fill-opacity 250ms linear;
 	-webkit-transition: fill-opacity 250ms linear;
