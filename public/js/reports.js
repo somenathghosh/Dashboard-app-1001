@@ -97,7 +97,7 @@ var MODULE = (function(module, nv) {
                     })
                     .color(d3.scale.category10().range()).useInteractiveGuideline(true);
 
-                chart.forceY([0,24]);
+                chart.forceY(options.forceY || [0,24]);
                 chart.showXAxis(options.showXAxis || true);
                 chart.showYAxis(options.showYAxis || true);
                 
@@ -155,7 +155,7 @@ var MODULE = (function(module, nv) {
                     transitionDuration: 5000})*/;
 
                 //chart.interpolate("basis");
-                chart.yDomain([0,24]);
+                chart.yDomain(options.forceY || [0,24]);
                 chart.yAxis.tickFormat(d3.format(',0f'));
                 chart.color(options.color);
                 d3.select(options.containerId + ' svg').datum(options.data).transition().duration(1000).call(chart);
@@ -273,7 +273,7 @@ var MODULE = (function(module, nv) {
 
                 d3.select(options.selector + " svg")
                     .datum(options.data)
-                    .transition().delay(500).duration(500)
+                    .transition().delay(500).duration(1000)
                     .call(chart);
 
                 return chart;

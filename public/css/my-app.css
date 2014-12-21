@@ -34,7 +34,7 @@ a.anchorColor
 	margin-top:0px;
 }
 .list-block ul.scrolling-table-header{
-	background-color:white;
+	background-color:#BDBDBD;
 	width:95%;
 	margin-top:35px; 
 	margin-bottom:0px; 
@@ -42,6 +42,7 @@ a.anchorColor
 	margin-right:auto; 
 	border-top-left-radius:7px;
 	border-top-right-radius:7px;
+	webkit-box-shadow: none;
 }
 
 .item-title.data-item,.item-title.item-header{
@@ -57,6 +58,7 @@ a.anchorColor
 	margin-right:auto; 
 	border-bottom-right-radius:7px;
 	border-bottom-left-radius:7px;
+	webkit-box-shadow: 0 0 0px #ccc;
 }
 
 .scrolling-table-content div.item, .scrolling-table-content div.item-title, .scrolling-table-header div.item, .scrolling-table-header div.item-title{
@@ -178,7 +180,8 @@ g .disabled{
  .labelTextSmall {
  	font-family:"HelveticaNeue-UltraLight";
     color:black;
-    margin-right:20px;
+    margin-right:25px;
+    margin-top: -2px;
 }
 
  .labelIcon {
@@ -205,7 +208,7 @@ svg .nvd3 .nv-multibarHorizontal .nv-groups text {
 
 .nvd3 .nv-multibar .nv-groups rect, .nvd3 .nv-multibarHorizontal .nv-groups rect, .nvd3 .nv-discretebar .nv-groups rect {
 	stroke-opacity: 1;
-	fill-opacity: .5;
+	fill-opacity: .7;
 	transition: fill-opacity 250ms linear;
 	-moz-transition: fill-opacity 250ms linear;
 	-webkit-transition: fill-opacity 250ms linear;
@@ -222,7 +225,7 @@ svg .nvd3 .nv-multibarHorizontal .nv-groups text {
 	position: relative;
 	margin-left: 10px;
 	margin-right: 10px;
-	margin-top: 48px;
+	margin-top: 47px;
 	padding:7px;
 	border:1px solid #585858;
 	background:url('../img/HE-001.jpg');width:473px;height:20px;
@@ -1032,6 +1035,14 @@ i.icon.icon-calendar {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAetJREFUaAXtWstxgzAQlQhX0kSGDuwK3Es+JeRk55QWkvTiCuwOPGkinhyDIkUIexAPFvGRhogZxmb1dt9+BWPMGeFYf3yuRfHzyhjfaLjY8+Tm+XB/dyCokyFDeFIKiyiKvQwiu2D5RsvY7UU2/NsQnoRIr4L4Pj7mXJ2lzlVgRCvdMGceaiDKhT7YbpcxwokntfsSMlgEq7eTgGj3hZ48el5Tuy+hBxYBRA5b6Mmj51UN+1+vX/W+5UaZeYugTccyQhC48JQ6meVcC18fbIuZziUnHtL2K6nP8sxqM6FkYx/OPKToeZLIG6GQ9xJzqAFTsnGPITzcZHnsfh83RGzN+E+qCDYTzkoMJJxaaE+qGQnNsb7+LKa1qvtI3LX69sBE+MW0Vgxkog5xNlsNe93C6v20ZYLt6nKv14K9HJ/yRp9wa4UWhMogZ1uUSFgRo9C2LZsHtjkxxq/6J65IHRn4dQwktAItpiKdw24Guq0Cc2KQH/+nInNurRSuxVdkMa0VA0G96kset19fmUe8nRWhbIlzYlAgcdhRZnzJY0V8ZR7xdg77nE+2FC4UCG4tznZIyZtc/oqCuGFFjg+5UoKKyKAvOa6IL48ceWMgjombTE29sfqS1qf4p89kTjcYPif2u+0GWNAi/c7/F75V0BHJ28KHAAAAAElFTkSuQmCC");
 
 }
+
+
+i.icon.icon-calendar-tap {
+  width: 23px;
+  height: 23px;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAkRJREFUaAXtWr9PwlAQvickrgZXY2KUnWiNq4Ps7k4MRp0cHcHR0QmJg5v/BA6uRvyxV+PiCnE1AZ73mvYVaCs9evAKaZOGctz73n3f3fW9pgggHDsNe1v0xRUIeeAMk+JBLsmLl5PiKwEm0jUJfj4SNeQHIaGJJAr6JyTk2ABWtS3BRRL8JeK8DonWaVGo0x3rEyOChbhPjE8lEjJ3Oky6tAL1SYjPurElwZ3s+i++26eaSKA+ydMZGuD2qSaCYej6jAopSpmBfokaGss+Cb47prB4PRJLMoAO+hVGlFM2rmNifFJGpIAyYHPpqFWjKRvTkQTfWwvAU5mr3pm4jYXx4iZlZCyqQYeMiEHxQ6cO9Eio1xwYF6a0Bld2R/fsrmW4/BamtDIihispMH2WkYAkhg2B2y8lnt36x7UUcr27nK+8VzZ+KGO5fROVFpIoYUCH+d9us3T3tcIdHAUvEZFcDo5wsk88LdNkfCICaiDhkqLC03HxG8nsp4GM3jRSCIz67t3aa70ePKJ9E88W9kx5Vj3D+mCVhsz4pTUqM/G7aTLCathV7I0aMe647lMvM9bSistqmn4sze4FaKLp2TNigoQnoPpkaXbTJIaIqKa36nZNGSlHGkioeP2MqDuXgOo8khgmQmHg+vZ74h4vZ76ah4WaaBuP688bZrGdhm18IiLPZ1vnYeqYsPk9YmJ2xjkzIoxiskBlGWGRkREkywijmCxQC5MR/TyC+/o2SsP5Tx8WpWOCdHRGAu+4YyIYd3Pf9f8Bsdv+YRjttaIAAAAASUVORK5CYII=");
+}
+
 
 
 div.popupNavBar{

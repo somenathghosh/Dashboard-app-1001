@@ -515,10 +515,10 @@ $(document).ready(function() {
                     value: 2
                 }, {
                     label: "File in Process",
-                    value: 30
+                    value: 68
                 }, {
                     label: "File Processed",
-                    value: 68
+                    value: 2
                 }
             ];
 
@@ -528,10 +528,10 @@ $(document).ready(function() {
 
                 {
                     label: "File Submitted",
-                    value: 100
+                    value: 10
                 }, {
                     label: "File in Progress",
-                    value: 100
+                    value: 1000
                 }, {
                     label: "File Assigned",
                     value: 100
@@ -539,7 +539,7 @@ $(document).ready(function() {
 
                 {
                     label: "File Completed",
-                    value: 100
+                    value: 10
                 }
             ];
 
@@ -1009,7 +1009,7 @@ $(document).ready(function() {
 
             }, 1000);
 
-        }, groupCode, siteNumber);
+        });
 
 
         homelink.prop("href", "#");
@@ -1425,7 +1425,7 @@ $(document).ready(function() {
         var sliderObject = [
 
             function One() {
-                renderKeyInDetailWorklist({});
+                
             },
 
             function two() {
@@ -2690,7 +2690,7 @@ $(document).ready(function() {
 
 
     myApp.onPageInit('quality-matrix', function(page) {
-        var lChart = new D3LineChart();
+        var lChart = new D3StackedAreaChart();
         var lineChartData = function(range) {
 
             var data = [];
@@ -2705,7 +2705,7 @@ $(document).ready(function() {
             }
 
             for (var i = 1; i <= range; i++) {
-                data[0].values.push([i, Math.floor(Math.random() * 10) + 14]);
+                data[0].values.push([i, Math.floor(Math.random() * 10) ]);
             }
             return data;
         };
@@ -2724,12 +2724,12 @@ $(document).ready(function() {
             }
 
             for (var i = 1; i <= range; i++) {
-                data[0].values.push([i, Math.floor(Math.random() * 10) + 14]);
+                data[0].values.push([i, Math.floor(Math.random() * 10) ]);
             }
             return data;
         };
 
-        var dataFactory = function(seriesNum, perSeries, streams) {
+/*        var dataFactory = function(seriesNum, perSeries, streams) {
             return new d3.range(0, seriesNum).map(function(d, i) {
                 return {
                     key: streams[i],
@@ -2742,16 +2742,17 @@ $(document).ready(function() {
                 };
             });
 
-        }
+        }*/
         var publicStorage = _.PublicStore.openPort();
-        publicStorage.put('dataVolume', dataFactory);
+        //publicStorage.put('dataVolume', dataFactory);
         $('#goHome').prop("href", "index");
         publicStorage.put('QM', lineChartData);
         lChart.triggerIt({
 
             containerId: '#quality-matrix-charts-customer-reported-error',
             color: ['#00FF00'],
-            data: publicStorage.get('QM')(10)
+            data: publicStorage.get('QM')(10),
+            forceY: [0,10]
         }, function() {
 
 
@@ -2765,7 +2766,8 @@ $(document).ready(function() {
 
                 containerId: '#quality-matrix-charts-customer-reported-error',
                 color: ['#00FF00'],
-                data: publicStorage.get('QM')(this.value)
+                data: publicStorage.get('QM')(this.value),
+                forceY: [0,10]
             });
 
 
@@ -2778,7 +2780,8 @@ $(document).ready(function() {
 
             containerId: '#quality-matrix-charts-customer-qc-effectiveness',
             color: ['#00FF00'],
-            data: publicStorage.get('QCE')(10)
+            data: publicStorage.get('QCE')(10),
+            forceY: [0,10]
         }, function() {
 
 
@@ -2792,7 +2795,8 @@ $(document).ready(function() {
             lChart.triggerIt({
                 containerId: '#quality-matrix-charts-customer-qc-effectiveness',
                 color: ['#00FF00'],
-                data: publicStorage.get('QCE')(this.value)
+                data: publicStorage.get('QCE')(this.value),
+                forceY: [0,10]
             });
 
 
@@ -2806,24 +2810,24 @@ $(document).ready(function() {
         $$('#FAV-reports-popup-icon').on('click', function() {
             setTimeout(function() {
                 myApp.accordionOpen("#reports-filter-fav");
-            }, 100);
+            }, 300);
         });
 
         $$('#TAT-reports-popup-icon').on('click', function() {
             setTimeout(function() {
                 myApp.accordionOpen("#reports-filter-tat");
-            }, 100);
+            }, 300);
         });
         $$('#CV-reports-popup-icon').on('click', function() {
             setTimeout(function() {
                 myApp.accordionOpen("#reports-filter-claim-volume");
-            }, 100);
+            }, 300);
         });
 
         $$('#MPI-reports-popup-icon').on('click', function() {
             setTimeout(function() {
                 myApp.accordionOpen("#reports-filter-mpi");
-            }, 100);
+            }, 300);
         });
 
         //myApp.showPreloader('Preparing');
@@ -2997,8 +3001,8 @@ $(document).ready(function() {
             }
 
             for (var i = 1; i <= range; i++) {
-                data[0].values.push([i, Math.floor(Math.random() * 10) + 14]);
-                data[1].values.push([i, 18]);
+                data[0].values.push([i, Math.floor(Math.random() * 10) + 8]);
+                data[1].values.push([i, 12]);
             }
             return data;
         };
@@ -3292,7 +3296,8 @@ $(document).ready(function() {
 
         $('.submitButton-reports-volume').click(function(e) {
 
-            
+            publicStorage.put('dataVolume', dataFactoryFilter);
+
             barChart({
 
                 containerId: '#reports-charts-forcasted-vs-actual',
@@ -3310,10 +3315,61 @@ $(document).ready(function() {
 
                     $("#VT-slider").val(10);
                     $("#VT-slider-text").html(10)
-                    publicStorage.put('dataVolume', dataFactoryFilter);
+                    
 
                     sessionStorage.removeItem("siteNumber");
                     sessionStorage.setItem("groupCode", groupCode);
+
+                },
+                end: function (){
+
+                            setTimeout(function() {
+                                myApp.hideIndicator();
+                                showNotification({});
+
+                            }, 3500);
+
+                },
+                main: function(callback){
+
+                    if(callback){
+
+                        callback();
+                    }
+                }
+
+
+            });
+
+
+        });
+
+
+        
+        $('.submitButton-reports-volume-reset').click(function(e) {
+
+            publicStorage.put('dataVolume', dataFactory);
+            barChart({
+
+                containerId: '#reports-charts-forcasted-vs-actual',
+                dataFactory: publicStorage.get('dataVolume')(2, 10, streamsSlide0),
+                axisLabel: 'Lockbox EOB Volume Trend',
+                color: colorSlide0
+
+
+            },{
+
+                start: function(){
+                    
+                    myApp.showIndicator(); 
+                    //var groupCode = $('#groupCode-reports-FAV').val();
+
+                    $("#VT-slider").val(10);
+                    $("#VT-slider-text").html(10)
+                    
+
+                    sessionStorage.removeItem("siteNumber");
+                    sessionStorage.setItem("groupCode", "ALL");
 
                 },
                 end: function (){
@@ -3395,6 +3451,37 @@ $(document).ready(function() {
         });
 
 
+        $('.submitButton-reports-TAT-reset').click(function() {
+
+            var groupCode = $('#groupCode-reports-TAT').val();
+            var siteNumber = $('#siteNumber-reports-TAT').val();
+
+            sessionStorage.setItem("groupCode", "ALL");
+            sessionStorage.setItem("siteNumber", "ALL");
+
+            $("#TAT-slider").val(10);
+            $("#TAT-slider-text").html(10);
+
+            myApp.showIndicator();
+
+            lChart.triggerIt({
+
+                containerId: '#TAT-line-chart',
+                color: colorSlide1,
+                data: publicStorage.get('TAT')(10)
+            },function(){
+
+                setTimeout(function() {
+                    myApp.hideIndicator();
+                    showNotification({});
+
+                }, 500);
+
+
+            });
+
+        });
+
         /////
         //////
 
@@ -3451,9 +3538,41 @@ $(document).ready(function() {
 
         });
 
+
+        $('.submitButton-reports-claim-reset').click(function(e) {
+
+            var groupCode = $('#groupCode-reports-claim').val();
+            var siteNumber = $('#siteNumber-reports-claim').val();
+            publicStorage.put('claimVolume', dataFactory);
+
+            sessionStorage.setItem("groupCode", "ALL");
+            sessionStorage.setItem("siteNumber", "ALL");
+
+            $("#CV-slider").val(10);
+            $("#CV-slider-text").html(10);
+            myApp.showIndicator();
+
+            vBar.triggerIt({
+                containerId: '#reports-claim-data-volume',
+                dataFactory: publicStorage.get('claimVolume')(1, 10, streamsSlide2),
+                axisLabel: 'Claim Volume Trend',
+                color: colorSlide2
+            }, function(){
+
+                setTimeout(function() {
+                    myApp.hideIndicator();
+                    showNotification({});
+
+                }, 500);
+
+            });
+
+        });
+
+
         //////
 
-        var colorSlide3 = [colorPalleton.orange];
+        var colorSlide3 = [colorPalleton.yellow];
         var streamsSlide3 = ['% Used'];
 
         publicStorage.put('PMU', dataFactory2);
@@ -3489,6 +3608,37 @@ $(document).ready(function() {
             sessionStorage.setItem("siteNumber", siteNumber);
 
             publicStorage.put('PMU', dataFactory2Filter);
+            
+            $("#PMU-slider").val(10);
+            $("#PMU-slider-text").html(10);
+
+            myApp.showIndicator();
+            vBar.triggerIt({
+                containerId: '#reports-percentage-MPI-used',
+                dataFactory: publicStorage.get('PMU')(1, 10, streamsSlide3),
+                axisLabel: 'Percentage of MPI Used ',
+                color: colorSlide3
+            },function(){
+
+                setTimeout(function() {
+                    myApp.hideIndicator();
+                    showNotification({});
+
+                }, 500);
+
+            });
+
+        });
+
+
+        $('.submitButton-reports-MPI-used-reset').click(function(e) {
+
+            var groupCode = $('#groupCode-reports-MPI').val();
+            var siteNumber = $('#siteNumber-reports-MPI').val();
+            sessionStorage.setItem("groupCode", "ALL");
+            sessionStorage.setItem("siteNumber", "ALL");
+
+            publicStorage.put('PMU', dataFactory2);
             
             $("#PMU-slider").val(10);
             $("#PMU-slider-text").html(10);

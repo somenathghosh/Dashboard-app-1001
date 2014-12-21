@@ -5188,6 +5188,9 @@ nv.models.line = function() {
       var gEnter = wrapEnter.append('g');
       var g = wrap.select('g')
 
+      //console.log('I was here' );
+
+
       gEnter.append('g').attr('class', 'nv-groups');
       gEnter.append('g').attr('class', 'nv-scatterWrap');
 
@@ -5276,6 +5279,11 @@ nv.models.line = function() {
 
 
 
+      
+
+
+
+
       var linePaths = groups.selectAll('path.nv-line')
           .data(function(d) { return [d.values] });
       linePaths.enter().append('path')
@@ -5288,7 +5296,24 @@ nv.models.line = function() {
               .y(function(d,i) { return nv.utils.NaNtoZero(y0(getY(d,i))) })
           );
 
+
+      //Somenath Added
+
+      var totalLength = linePaths.node().getTotalLength();
+      
+      //console.log(totalLength);
+
       linePaths
+      .attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .transition()
+        .duration(2000)
+        .ease("linear")
+        .attr("stroke-dashoffset", 0);
+
+      // end
+
+      /*linePaths
           .transition()
           .attr('d',
             d3.svg.line()
@@ -5297,7 +5322,7 @@ nv.models.line = function() {
               .x(function(d,i) { return nv.utils.NaNtoZero(x(getX(d,i))) })
               .y(function(d,i) { return nv.utils.NaNtoZero(y(getY(d,i))) })
           );
-
+*/
 
 
       //store old scales for use in transitions on update
