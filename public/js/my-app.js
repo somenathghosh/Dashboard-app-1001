@@ -919,7 +919,7 @@ $(document).ready(function() {
         sessionStorage.setItem("groupCode", groupCode);
         sessionStorage.setItem("siteNumber", siteNumber);
 
-        if (groupCode === "All" && siteNumber === "All") {
+        if (groupCode === "ALL" && siteNumber === "ALL") {
 
             refreshBuildHomePage(function() {
 
@@ -961,8 +961,8 @@ $(document).ready(function() {
     $('.submitButton-home-reset').click(function() {
 
 
-        sessionStorage.setItem("groupCode", "All");
-        sessionStorage.setItem("siteNumber", "All");
+        sessionStorage.setItem("groupCode", "ALL");
+        sessionStorage.setItem("siteNumber", "ALL");
 
         refreshBuildHomePage(function() {
 
