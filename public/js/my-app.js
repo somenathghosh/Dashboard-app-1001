@@ -224,7 +224,7 @@ $(document).ready(function() {
         }
         
 
-
+        console.log(options);
 
         myApp.addNotification({
             title: options.title || message,
@@ -988,7 +988,7 @@ $(document).ready(function() {
     /************************************************************************************************/
 
     myApp.onPageInit('*', function(page) {
-        console.log(page.name + ' initialized');
+        //console.log(page.name + ' initialized');
         sessionStorage.removeItem("org");
         sessionStorage.removeItem("groupCode");
         sessionStorage.removeItem("siteNumber");
@@ -1128,6 +1128,8 @@ $(document).ready(function() {
 
 
                             if (callback.main) {
+                                /*console.log('called');
+                                console.log(callback.main);*/
                                 callback.main();
                             }
 
@@ -1503,7 +1505,7 @@ $(document).ready(function() {
 
 
 
-        $('.submitButton-keyin-worklist').click(function() {
+        $('.submitButton-keyin-worklist').unbind('click').click(function() {
 
 
             var groupCode = $('#groupCode-keyin-worklist').val();
@@ -1522,14 +1524,13 @@ $(document).ready(function() {
                 main: function() {
 
                     setTimeout(function() {
+
                         myApp.hideIndicator();
+                        showNotification({});
+                        
 
-                        showNotification({
-
-
-
-                        });
                     }, 500);
+
 
                 }
             }, groupCode, siteNumber, org);
@@ -1537,7 +1538,7 @@ $(document).ready(function() {
         });
 
 
-        $('.submitButton-keyin-worklist-reset').click(function() {
+        $('.submitButton-keyin-worklist-reset').unbind('click').click(function() {
 
             sessionStorage.setItem("groupCode", "ALL");
             sessionStorage.setItem("siteNumber", "ALL");
@@ -1558,13 +1559,13 @@ $(document).ready(function() {
 
         });
 
-        $('.submitButton-keyin-volume').click(function() {
+        $('.submitButton-keyin-volume').unbind('click').click(function() {
 
 
             var groupCode = $('#groupCode-keyin-volume').val();
 
             sessionStorage.removeItem("org");
-
+            sessionStorage.removeItem("siteNumber");
             sessionStorage.setItem("groupCode", groupCode);
 
             myApp.showIndicator();
@@ -1579,10 +1580,11 @@ $(document).ready(function() {
 
         });
 
-        $('.submitButton-keyin-volume-reset').click(function() {
+        $('.submitButton-keyin-volume-reset').unbind('click').click(function() {
 
             sessionStorage.setItem("groupCode", "ALL");
-            sessionStorage.setItem("siteNumber", "ALL");
+            //sessionStorage.setItem("siteNumber", "ALL");
+            essionStorage.removeItem("siteNumber");
             sessionStorage.removeItem("org");
 
             myApp.showIndicator();
@@ -1598,7 +1600,7 @@ $(document).ready(function() {
         });
 
 
-        $('.submitButton-keyin-TAT').click(function() {
+        $('.submitButton-keyin-TAT').unbind('click').click(function() {
 
 
             var groupCode = $('#groupCode-keyin-TAT').val();
@@ -1625,7 +1627,7 @@ $(document).ready(function() {
         });
 
 
-        $('.submitButton-keyin-TAT-reset').click(function() {
+        $('.submitButton-keyin-TAT-reset').unbind('click').click(function() {
 
 
 
@@ -1780,7 +1782,7 @@ $(document).ready(function() {
 
 
 
-        $('.submitButton-claim-detail').click(function() {
+        $('.submitButton-claim-detail').unbind('click').click(function() {
 
             var groupCode = $('#groupCode-claim').val();
             var siteNumber = $('#siteNumber-claim').val();
@@ -1820,7 +1822,7 @@ $(document).ready(function() {
 
         });
 
-        $('.submitButton-claim-detail-reset').click(function() {
+        $('.submitButton-claim-detail-reset').unbind('click').click(function() {
 
 
             sessionStorage.setItem('groupCode', "ALL");
@@ -1830,7 +1832,7 @@ $(document).ready(function() {
 
                 setTimeout(function() {
                     myApp.hideIndicator();
-                    //showNotification({});
+                    showNotification({});
                 }, 1000);
 
             });
@@ -1841,7 +1843,7 @@ $(document).ready(function() {
 
 
         $('.open-popup').on('click', function() {
-            console.log(this.getAttribute('data-trig'));
+            //console.log(this.getAttribute('data-trig'));
             $('.open-popup').html('');
             $('.open-popup').html('<i class="icon icon-filterFilled "></i>');
             myApp.popup(this.getAttribute('data-trig'));
@@ -1916,7 +1918,7 @@ $(document).ready(function() {
 
 
 
-        $('.submitButton-Outbound-detail').click(function() {
+        $('.submitButton-Outbound-detail').unbind('click').click(function() {
 
             var groupCode = $('#groupCode-outbound').val();
             var siteNumber = $('#siteNumber-outbound').val();
@@ -1956,7 +1958,7 @@ $(document).ready(function() {
         });
 
 
-        $('.submitButton-Outbound-detail-reset').click(function() {
+        $('.submitButton-Outbound-detail-reset').unbind('click').click(function() {
 
             sessionStorage.setItem('groupCode', "ALL");
             sessionStorage.setItem('siteNumber', "ALL");
@@ -1977,7 +1979,7 @@ $(document).ready(function() {
 
 
         $('.open-popup').on('click', function() {
-            console.log(this.getAttribute('data-trig'));
+            //console.log(this.getAttribute('data-trig'));
             $('.open-popup').html('');
             $('.open-popup').html('<i class="icon icon-filterFilled "></i>');
             myApp.popup(this.getAttribute('data-trig'));
@@ -2052,7 +2054,7 @@ $(document).ready(function() {
         });
 
 
-        $('.submitButton-Inbound-detail').click(function() {
+        $('.submitButton-Inbound-detail').unbind('click').click(function() {
 
 
             var groupCode = $('#groupCode-inbound').val();
@@ -2083,7 +2085,7 @@ $(document).ready(function() {
         });
 
 
-        $('.submitButton-Inbound-detail-reset').click(function() {
+        $('.submitButton-Inbound-detail-reset').unbind('click').click(function() {
 
             sessionStorage.setItem('groupCode', "ALL");
             sessionStorage.setItem('groupCode', "ALL");
@@ -2127,16 +2129,16 @@ $(document).ready(function() {
 
         $('input[type=checkbox]').on('change', function() {
             var clickedBox = this;
-            console.log(document.getElementsByTagName("input").length);
+            //console.log(document.getElementsByTagName("input").length);
             for (var i = 0; i < document.getElementsByTagName("input").length; i++) {
                 if (document.getElementsByTagName("input")[i].type == "checkbox" && clickedBox != document.getElementsByTagName("input")[i]) {
-                    console.log(document.getElementsByTagName("input")[i]);
+                    //console.log(document.getElementsByTagName("input")[i]);
                     document.getElementsByTagName("input")[i].checked = false;
                 }
             }
-            console.log(new Date());
+            //console.log(new Date());
             if (this.checked) {
-                console.log("got-here");
+                //console.log("got-here");
                 $("#cre-search").removeAttr("disabled");
                 $(".data-item").removeClass("item-title");
                 $(".data-item").addClass("item");
@@ -2440,16 +2442,16 @@ $(document).ready(function() {
         $('input[type=checkbox]').on('change', function() {
             var clickedBox = this;
 
-            console.log(document.getElementsByTagName("input").length);
+            //console.log(document.getElementsByTagName("input").length);
             for (var i = 0; i < document.getElementsByTagName("input").length; i++) {
                 if (document.getElementsByTagName("input")[i].type == "checkbox" && clickedBox != document.getElementsByTagName("input")[i]) {
-                    console.log(document.getElementsByTagName("input")[i]);
+                    //console.log(document.getElementsByTagName("input")[i]);
                     document.getElementsByTagName("input")[i].checked = false;
                 }
             }
-            console.log(this.checked);
+            //console.log(this.checked);
             if (this.checked) {
-                console.log("got-here");
+                //console.log("got-here");
                 $("#cre-search").removeAttr("disabled");
                 $(".data-item").removeClass("item-title");
                 $(".data-item").addClass("item");
@@ -3309,7 +3311,7 @@ $(document).ready(function() {
 
         });
 
-        $('.submitButton-reports-volume').click(function(e) {
+        $('.submitButton-reports-volume').unbind('click').click(function(e) {
 
             publicStorage.put('dataVolume', dataFactoryFilter);
 
@@ -3361,7 +3363,7 @@ $(document).ready(function() {
 
 
         
-        $('.submitButton-reports-volume-reset').click(function(e) {
+        $('.submitButton-reports-volume-reset').unbind('click').click(function(e) {
 
             publicStorage.put('dataVolume', dataFactory);
             barChart({
@@ -3435,7 +3437,7 @@ $(document).ready(function() {
             });
         });
 
-        $('.submitButton-reports-TAT').click(function() {
+        $('.submitButton-reports-TAT').unbind('click').click(function() {
 
             var groupCode = $('#groupCode-reports-TAT').val();
             var siteNumber = $('#siteNumber-reports-TAT').val();
@@ -3469,7 +3471,7 @@ $(document).ready(function() {
         });
 
 
-        $('.submitButton-reports-TAT-reset').click(function() {
+        $('.submitButton-reports-TAT-reset').unbind('click').click(function() {
 
             var groupCode = $('#groupCode-reports-TAT').val();
             var siteNumber = $('#siteNumber-reports-TAT').val();
@@ -3528,7 +3530,7 @@ $(document).ready(function() {
             });
         });
 
-        $('.submitButton-reports-claim').click(function(e) {
+        $('.submitButton-reports-claim').unbind('click').click(function(e) {
 
             var groupCode = $('#groupCode-reports-claim').val();
             var siteNumber = $('#siteNumber-reports-claim').val();
@@ -3559,7 +3561,7 @@ $(document).ready(function() {
         });
 
 
-        $('.submitButton-reports-claim-reset').click(function(e) {
+        $('.submitButton-reports-claim-reset').unbind('click').click(function(e) {
 
             var groupCode = $('#groupCode-reports-claim').val();
             var siteNumber = $('#siteNumber-reports-claim').val();
@@ -3620,7 +3622,7 @@ $(document).ready(function() {
         });
 
 
-        $('.submitButton-reports-MPI-used').click(function(e) {
+        $('.submitButton-reports-MPI-used').unbind('click').click(function(e) {
 
             var groupCode = $('#groupCode-reports-MPI').val();
             var siteNumber = $('#siteNumber-reports-MPI').val();
@@ -3651,7 +3653,7 @@ $(document).ready(function() {
         });
 
 
-        $('.submitButton-reports-MPI-used-reset').click(function(e) {
+        $('.submitButton-reports-MPI-used-reset').unbind('click').click(function(e) {
 
             var groupCode = $('#groupCode-reports-MPI').val();
             var siteNumber = $('#siteNumber-reports-MPI').val();
