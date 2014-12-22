@@ -88,7 +88,7 @@ $(document).ready(function() {
         dynamicNavbar: true
     });*/
 
-    FastClick.attach(document.body);
+    //FastClick.attach(document.body);
 
 
     /**************************************************************************************************/
